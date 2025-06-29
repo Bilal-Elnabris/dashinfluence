@@ -1,6 +1,8 @@
 import { Link } from "wouter";
 import logoPath from "@assets/Transparent-logo_1751231371630.png";
 
+import logo_long from "@assets/logo-long.png";
+
 export default function Footer() {
   return (
     <footer className="bg-[hsl(217,69%,34%)] text-white section-padding">
@@ -10,7 +12,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <img 
-                src={logoPath} 
+                src={logo_long} 
                 alt="DashInfluence Logo" 
                 className="h-8 w-auto mr-3"
               />
