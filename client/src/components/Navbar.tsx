@@ -46,7 +46,7 @@ export default function Navbar() {
           </div>
           
           {/* CTA Button */}
-          <Button className="px-6 py-2.5 bg-[hsl(36,95%,62%)] text-white rounded-lg font-semibold hover:bg-orange-500 transition-colors duration-200">
+          <Button className="bg-[#ffcf00] text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-orange-500 transition-colors duration-200">
             Get Started
           </Button>
         </div>
