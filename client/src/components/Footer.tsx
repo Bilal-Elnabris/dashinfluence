@@ -41,8 +41,8 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="opacity-80">hello@dashinfluence.com</li>
               <li className="opacity-80">(555) 123-4567</li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 transition-opacity">Schedule Consultation</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 transition-opacity">Free Automation Audit</a></li>
+              <li><Link href="/contact" className="opacity-80 hover:opacity-100 transition-opacity">Contact Us</Link></li>
+              <li><a href="https://calendly.com/dashinfluence/consultation" target="_blank" rel="noopener noreferrer" className="opacity-80 hover:opacity-100 transition-opacity">Schedule Consultation</a></li>
             </ul>
           </div>
         </div>
@@ -50,12 +50,12 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm opacity-80 mb-4 md:mb-0">
-            © 2024 DashInfluence. All rights reserved.
+            © 2025 DashInfluence. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="opacity-80 hover:opacity-100 transition-opacity">Privacy Policy</a>
-            <a href="#" className="opacity-80 hover:opacity-100 transition-opacity">Terms of Service</a>
-            <a href="#" className="opacity-80 hover:opacity-100 transition-opacity">Cookie Policy</a>
+            <Link href="/privacy-policy" className="opacity-80 hover:opacity-100 transition-opacity">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="opacity-80 hover:opacity-100 transition-opacity">Terms of Service</Link>
+            <Link href="/cookie-policy" className="opacity-80 hover:opacity-100 transition-opacity">Cookie Policy</Link>
           </div>
         </div>
       </div>

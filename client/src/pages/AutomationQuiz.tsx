@@ -168,7 +168,10 @@ export default function AutomationQuiz() {
               <p className={`text-xl mb-6 ${analysis.color}`}>{analysis.level}</p>
               <div className="max-w-2xl mx-auto">
                 <p className="mb-6 opacity-90">{analysis.recommendation}</p>
-                <Button className="px-8 py-3 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                <Button 
+                  className="px-8 py-3 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors"
+                  onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+                >
                   Get Detailed Analysis
                 </Button>
               </div>

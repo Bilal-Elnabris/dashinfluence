@@ -195,7 +195,10 @@ export default function RevenueCalculator() {
             <Card className="p-8 text-center">
               <CardContent className="p-0">
                 <h4 className="text-xl font-bold mb-4">Ready to Plug the Revenue Leak?</h4>
-                <Button className="w-full bg-[#ffcf00] px-6 py-3 text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                <Button 
+                  className="w-full bg-[#ffcf00] px-6 py-3 text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors"
+                  onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+                >
                   Schedule Free Consultation
                 </Button>
               </CardContent>

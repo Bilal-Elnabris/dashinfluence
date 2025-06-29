@@ -85,7 +85,10 @@ export default function Home() {
             <p className="text-xl max-w-2xl mx-auto mb-8 opacity-90">
               Join 70+ real estate professionals who automate their operations with DashInfluence
             </p>
-            <Button className="px-8 py-4 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors card-hover">
+            <Button 
+              className="px-8 py-4 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors card-hover"
+              onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+            >
               Book Free Consultation
             </Button>
           </div>

@@ -10,6 +10,10 @@ import RevenueCalculator from "@/pages/RevenueCalculator";
 import AutomationQuiz from "@/pages/AutomationQuiz";
 import WorkflowMapper from "@/pages/WorkflowMapper";
 import WhyDashInfluence from "@/pages/WhyDashInfluence";
+import Contact from "@/pages/Contact";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfService from "@/pages/TermsOfService";
+import CookiePolicy from "@/pages/CookiePolicy";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,6 +24,10 @@ function Router() {
       <Route path="/quiz" component={AutomationQuiz} />
       <Route path="/mapper" component={WorkflowMapper} />
       <Route path="/why-us" component={WhyDashInfluence} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-of-service" component={TermsOfService} />
+      <Route path="/cookie-policy" component={CookiePolicy} />
       <Route component={NotFound} />
     </Switch>
   );

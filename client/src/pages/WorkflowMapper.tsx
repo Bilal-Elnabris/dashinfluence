@@ -325,7 +325,10 @@ export default function WorkflowMapper() {
 
             {/* CTA */}
             <div className="mt-8 text-center">
-              <Button className="px-8 py-3 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+              <Button 
+                className="px-8 py-3 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors"
+                onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+              >
                 Map My Specific Workflow
               </Button>
             </div>

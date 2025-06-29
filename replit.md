@@ -104,3 +104,8 @@ Preferred communication style: Simple, everyday language.
 
 Changelog:
 - June 29, 2025. Initial setup
+- June 29, 2025. Updated color scheme from orange to brand yellow (#ffcf00), fixed CSS import order, updated footer year to 2025
+- June 29, 2025. Added contact page, privacy policy, terms of service, and cookie policy pages
+- June 29, 2025. Connected all CTA buttons to Calendly consultation link (https://calendly.com/dashinfluence/consultation)
+- June 29, 2025. Enhanced slider styling with brand colors (yellow thumbs with blue borders)
+- June 29, 2025. Updated monthly leads range to start from 1 instead of 10
