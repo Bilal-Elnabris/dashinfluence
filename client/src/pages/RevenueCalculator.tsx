@@ -195,7 +195,7 @@ export default function RevenueCalculator() {
             <Card className="p-8 text-center">
               <CardContent className="p-0">
                 <h4 className="text-xl font-bold mb-4">Ready to Plug the Revenue Leak?</h4>
-                <Button className="w-full px-6 py-3 bg-[hsl(36,95%,62%)] text-white rounded-lg font-bold hover:bg-orange-500 transition-colors">
+                <Button className="w-full bg-[#ffe36a] px-6 py-3 text-white rounded-lg font-bold hover:bg-orange-500 transition-colors">
                   Schedule Free Consultation
                 </Button>
               </CardContent>
