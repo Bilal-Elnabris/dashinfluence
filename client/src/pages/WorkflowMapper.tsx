@@ -215,7 +215,7 @@ export default function WorkflowMapper() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">Workflow Automation Mapper</h1>
-          <div className="w-24 h-1 bg-[hsl(36,95%,62%)] mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
           <p className="text-xl text-gray-600">Visualize your business processes and identify automation opportunities</p>
         </div>
 
@@ -230,8 +230,8 @@ export default function WorkflowMapper() {
                 variant={selectedWorkflow === key ? "default" : "outline"}
                 className={`p-4 h-auto font-semibold transition-colors ${
                   selectedWorkflow === key
-                    ? 'bg-[hsl(36,95%,62%)] text-white hover:bg-orange-500'
-                    : 'border-gray-200 hover:bg-[hsl(36,95%,62%)] hover:text-white hover:border-[hsl(36,95%,62%)]'
+                    ? 'bg-[#ffcf00] text-[hsl(217,69%,34%)] hover:bg-yellow-400'
+                    : 'border-gray-200 hover:bg-[#ffcf00] hover:text-[hsl(217,69%,34%)] hover:border-[#ffcf00]'
                 }`}
               >
                 {workflow.name}
@@ -310,7 +310,7 @@ export default function WorkflowMapper() {
             {/* Impact Metrics */}
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center p-6 bg-orange-50 rounded-lg">
-                <div className="text-3xl font-bold text-[hsl(36,95%,62%)] mb-2">85%</div>
+                <div className="text-3xl font-bold text-[#ffcf00] mb-2">85%</div>
                 <div className="text-sm font-semibold text-gray-700">Time Saved</div>
               </div>
               <div className="text-center p-6 bg-green-100 rounded-lg">
@@ -325,7 +325,7 @@ export default function WorkflowMapper() {
 
             {/* CTA */}
             <div className="mt-8 text-center">
-              <Button className="px-8 py-3 bg-[hsl(36,95%,62%)] text-white rounded-lg font-bold hover:bg-orange-500 transition-colors">
+              <Button className="px-8 py-3 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors">
                 Map My Specific Workflow
               </Button>
             </div>

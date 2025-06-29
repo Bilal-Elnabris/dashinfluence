@@ -55,7 +55,7 @@ export default function RevenueCalculator() {
           <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">
             Your Revenue Leakage Calculator
           </h1>
-          <div className="w-24 h-1 bg-[hsl(36,95%,62%)] mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Discover how much revenue slips through manual processes and inefficient operations
           </p>
@@ -75,7 +75,7 @@ export default function RevenueCalculator() {
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
-                      min="10"
+                      min="1"
                       max="1000"
                       value={values.leads}
                       onChange={(e) => handleSliderChange('leads', parseInt(e.target.value))}
@@ -174,7 +174,7 @@ export default function RevenueCalculator() {
                   
                   <div className="flex justify-between items-center p-4 bg-orange-50 rounded-lg">
                     <span className="font-semibold">Monthly Revenue Leakage:</span>
-                    <span className="text-3xl font-bold text-[hsl(36,95%,62%)]">{formatCurrency(results.leakage)}</span>
+                    <span className="text-3xl font-bold text-[#ffcf00]">{formatCurrency(results.leakage)}</span>
                   </div>
                 </div>
               </CardContent>
@@ -195,7 +195,7 @@ export default function RevenueCalculator() {
             <Card className="p-8 text-center">
               <CardContent className="p-0">
                 <h4 className="text-xl font-bold mb-4">Ready to Plug the Revenue Leak?</h4>
-                <Button className="w-full bg-[#ffe36a] px-6 py-3 text-white rounded-lg font-bold hover:bg-orange-500 transition-colors">
+                <Button className="w-full bg-[#ffcf00] px-6 py-3 text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors">
                   Schedule Free Consultation
                 </Button>
               </CardContent>

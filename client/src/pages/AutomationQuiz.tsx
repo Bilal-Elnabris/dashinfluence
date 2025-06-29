@@ -158,7 +158,7 @@ export default function AutomationQuiz() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">Quiz Results</h1>
-            <div className="w-24 h-1 bg-[hsl(36,95%,62%)] mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
           </div>
 
           <Card className="gradient-bg text-white p-8 text-center">
@@ -168,7 +168,7 @@ export default function AutomationQuiz() {
               <p className={`text-xl mb-6 ${analysis.color}`}>{analysis.level}</p>
               <div className="max-w-2xl mx-auto">
                 <p className="mb-6 opacity-90">{analysis.recommendation}</p>
-                <Button className="px-8 py-3 bg-[hsl(36,95%,62%)] text-white rounded-lg font-bold hover:bg-orange-500 transition-colors">
+                <Button className="px-8 py-3 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors">
                   Get Detailed Analysis
                 </Button>
               </div>
@@ -184,7 +184,7 @@ export default function AutomationQuiz() {
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">Automation Readiness Quiz</h1>
-          <div className="w-24 h-1 bg-[hsl(36,95%,62%)] mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
           <p className="text-xl text-gray-600">Assess your business automation potential in 2 minutes</p>
         </div>
 
@@ -210,7 +210,7 @@ export default function AutomationQuiz() {
                     key={option.value}
                     className={`flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer transition-colors ${
                       selectedOption === option.value
-                        ? 'bg-[hsl(36,95%,62%)] bg-opacity-10 border-[hsl(36,95%,62%)]'
+                        ? 'bg-[#ffcf00] bg-opacity-10 border-[#ffcf00]'
                         : 'hover:bg-[hsl(210,20%,97%)]'
                     }`}
                   >
@@ -220,7 +220,7 @@ export default function AutomationQuiz() {
                       value={option.value}
                       checked={selectedOption === option.value}
                       onChange={() => handleAnswer(option.score, option.value)}
-                      className="w-4 h-4 text-[hsl(36,95%,62%)]"
+                      className="w-4 h-4 text-[#ffcf00]"
                     />
                     <span className="ml-3 text-lg">{option.label}</span>
                   </label>
@@ -240,7 +240,7 @@ export default function AutomationQuiz() {
               <Button
                 onClick={nextQuestion}
                 disabled={!selectedOption}
-                className="px-6 py-3 bg-[hsl(36,95%,62%)] text-white hover:bg-orange-500"
+                className="px-6 py-3 bg-[#ffcf00] text-[hsl(217,69%,34%)] hover:bg-yellow-400"
               >
                 {currentQuestion === questions.length - 1 ? 'Get Results' : 'Next Question'}
               </Button>

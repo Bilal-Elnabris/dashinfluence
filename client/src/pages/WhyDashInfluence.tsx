@@ -50,7 +50,7 @@ export default function WhyDashInfluence() {
         <div className="section-padding">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">Why Choose DashInfluence?</h1>
-            <div className="w-24 h-1 bg-[hsl(36,95%,62%)] mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We don't just automate processes – we transform businesses with AI that actually works
             </p>
@@ -59,8 +59,8 @@ export default function WhyDashInfluence() {
           {/* Key Differentiators */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="text-center">
-              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Zap className="w-10 h-10 text-[hsl(36,95%,62%)]" />
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Zap className="w-10 h-10 text-[#ffcf00]" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-[hsl(217,69%,34%)]">Industry Expertise</h3>
               <p className="text-gray-600">
@@ -69,8 +69,8 @@ export default function WhyDashInfluence() {
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-[hsl(36,95%,62%)]" />
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-10 h-10 text-[#ffcf00]" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-[hsl(217,69%,34%)]">Proven Results</h3>
               <p className="text-gray-600">
@@ -79,8 +79,8 @@ export default function WhyDashInfluence() {
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Target className="w-10 h-10 text-[hsl(36,95%,62%)]" />
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Target className="w-10 h-10 text-[#ffcf00]" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-[hsl(217,69%,34%)]">Custom Solutions</h3>
               <p className="text-gray-600">
@@ -110,7 +110,7 @@ export default function WhyDashInfluence() {
                     </div>
                   </div>
                   <p className="text-gray-700 mb-4 italic">"{story.quote}"</p>
-                  <div className="text-[hsl(36,95%,62%)] font-bold">{story.result}</div>
+                  <div className="text-[#ffcf00] font-bold">{story.result}</div>
                 </CardContent>
               </Card>
             ))}
@@ -129,8 +129,8 @@ export default function WhyDashInfluence() {
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-[hsl(36,95%,62%)]" />
+              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-[#ffcf00]" />
               </div>
               <div className="text-3xl font-bold text-[hsl(217,69%,34%)] mb-2">500+</div>
               <div className="text-gray-600">Hours Saved Weekly</div>
@@ -179,7 +179,7 @@ export default function WhyDashInfluence() {
             <p className="text-xl max-w-2xl mx-auto mb-8 opacity-90">
               Join successful real estate professionals who've already automated their way to success
             </p>
-            <Button className="px-8 py-4 bg-[hsl(36,95%,62%)] text-white rounded-lg font-bold text-lg hover:bg-orange-500 transition-colors card-hover">
+            <Button className="px-8 py-4 bg-[#ffcf00] text-[hsl(217,69%,34%)] rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors card-hover">
               Schedule Your Free Consultation
             </Button>
           </div>
