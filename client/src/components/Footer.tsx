@@ -5,7 +5,7 @@ import logo_long from "@assets/logo-long.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-[hsl(217,69%,34%)] text-white section-padding">
+    <footer className="text-white section-padding bg-[#203ab5]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
