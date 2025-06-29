@@ -2,6 +2,8 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import logoPath from "@assets/Transparent-logo_1751231371630.png";
 
+import logo_long from "@assets/logo-long.png";
+
 export default function Navbar() {
   const [location] = useLocation();
 
@@ -21,7 +23,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center">
               <img 
-                src={logoPath} 
+                src={logo_long} 
                 alt="DashInfluence Logo" 
                 className="h-8 w-auto"
               />
