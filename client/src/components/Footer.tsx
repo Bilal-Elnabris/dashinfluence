@@ -17,7 +17,7 @@ export default function Footer() {
                 className="h-8 w-auto mr-3"
               />
             </div>
-            <p className="text-lg mb-4">AI Automation That Moves Business Forward</p>
+            <p className="text-lg mb-4">AI That Moves Business Forward.</p>
             <p className="text-sm opacity-80 max-w-md">
               Transforming real estate professionals with intelligent automation solutions that drive real results.
             </p>
