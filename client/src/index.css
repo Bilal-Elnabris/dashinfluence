@@ -116,14 +116,14 @@
     @apply transform scale-105;
   }
 
-  /* Animated underline effect */
-  .animated-underline {
+  /* Static underline effect */
+  .static-underline {
     @apply relative;
   }
 
-  .animated-underline::after {
+  .static-underline::after {
     content: '';
-    @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-current opacity-0 transition-all duration-300 ease-out transform -translate-x-1/2;
+    @apply absolute bottom-0 left-1/2 w-full h-0.5 bg-current transform -translate-x-1/2;
     background-image: repeating-linear-gradient(
       90deg,
       currentColor 0,
@@ -131,10 +131,6 @@
       transparent 8px,
       transparent 16px
     );
-  }
-
-  .animated-underline:hover::after {
-    @apply w-full opacity-100;
   }
 
   /* Dark mode slider styling */

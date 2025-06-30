@@ -11,7 +11,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
-              <span className="text-[#ffcf00] animated-underline">Automated Booking</span><br />
+              <span className="text-[hsl(217,69%,34%)] dark:text-[#ffcf00] static-underline">Automated Booking</span><br />
               <span className="text-foreground">For Car Detailers</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
@@ -37,7 +37,7 @@ export default function Home() {
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   Discover exactly how much revenue leaks from slow, manual processes in your business operations.
                 </p>
-                <Link href="/calculator" className="flex items-center text-[#ffcf00] font-semibold hover:text-orange-400 transition-colors">
+                <Link href="/calculator" className="flex items-center text-[#ffcf00] font-semibold hover:text-yellow-300 transition-colors">
                   Try it now 
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
@@ -54,7 +54,7 @@ export default function Home() {
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   Measure your automation readiness and identify priority areas in just 2 minutes.
                 </p>
-                <Link href="/quiz" className="flex items-center text-[#ffcf00] font-semibold hover:text-orange-400 transition-colors">
+                <Link href="/quiz" className="flex items-center text-[#ffcf00] font-semibold hover:text-yellow-300 transition-colors">
                   Try it now 
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>

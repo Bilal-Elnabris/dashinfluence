@@ -113,3 +113,4 @@ Changelog:
 - June 30, 2025. Added animated underline effect for hero text with dashed line animation
 - June 30, 2025. Fixed button hover effects to scale instead of moving up/down
 - June 30, 2025. Updated all pages to use theme-aware CSS variables for complete theme switching
+- June 30, 2025. Updated AI automation packages to first-month pricing ($300-$1,500), replaced workflow mapper with comprehensive AI services section, fixed button hover effects to use lighter yellow, updated "Automated Booking" text to be theme-aware (blue in light mode, yellow in dark mode) with static dashed underline

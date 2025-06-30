@@ -6,48 +6,48 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function ServicePackages() {
   const packages = [
     {
-      name: "Starter AI Package",
-      price: "$297",
+      name: "Essential AI Package",
+      price: "$300",
       features: [
-        "AI Phone Assistant", 
-        "Automated Booking System", 
-        "SMS Follow-ups",
-        "Basic CRM Integration"
+        "Simple AI Chat Agent", 
+        "Basic Appointment Booking", 
+        "SMS Reminders",
+        "Customer Contact Management"
       ],
-      bookings: "Handle 100+ calls/month",
-      description: "Perfect for small detailing shops ready to automate customer interactions",
+      bookings: "Handle 50+ inquiries/month",
+      description: "Perfect for small detailing shops starting with AI automation",
       popular: false
     },
     {
-      name: "Growth AI Package", 
-      price: "$497",
+      name: "Professional AI Package", 
+      price: "$800",
       features: [
         "AI Phone Assistant",
-        "Advanced Booking System", 
-        "SMS & Email Automation",
-        "Customer Management AI",
+        "Advanced Chat Agent", 
+        "Automated Booking System",
+        "SMS & Email Follow-ups",
         "Review Generation",
         "Lead Qualification"
       ],
-      bookings: "Handle 300+ calls/month",
+      bookings: "Handle 200+ calls/month",
       description: "Ideal for growing detailing businesses ready to scale with AI",
       popular: true
     },
     {
-      name: "Enterprise AI Suite",
-      price: "$797", 
+      name: "Complete AI Suite",
+      price: "$1,500", 
       features: [
-        "Multi-location AI Assistant",
-        "Advanced Booking & Scheduling",
-        "Full Marketing Automation",
-        "AI Customer Support",
+        "AI Voice Agent (24/7 Phone)",
+        "Advanced AI Chatbot",
+        "Full Process Automation",
+        "Customer Journey Mapping",
         "Revenue Analytics AI",
-        "Staff Management AI",
-        "Inventory Tracking",
-        "Custom AI Training"
+        "Multi-channel Communication",
+        "Custom Workflow Design",
+        "Priority Support & Training"
       ],
-      bookings: "Handle 1000+ calls/month",
-      description: "Complete AI automation solution for established detailing operations",
+      bookings: "Handle 500+ calls/month",
+      description: "Complete AI voice agents, chatbots, and full automation solution",
       popular: false
     }
   ];
@@ -90,7 +90,7 @@ export default function ServicePackages() {
                     </CardTitle>
                     <div className="text-4xl font-bold text-[#ffcf00] mb-2">
                       {pkg.price}
-                      <span className="text-lg text-muted-foreground">/month</span>
+                      <span className="text-lg text-muted-foreground"> first month</span>
                     </div>
                     <p className="text-muted-foreground">{pkg.description}</p>
                   </CardHeader>
