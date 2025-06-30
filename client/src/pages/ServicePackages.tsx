@@ -53,7 +53,7 @@ export default function ServicePackages() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="gradient-bg text-white section-padding">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -90,9 +90,9 @@ export default function ServicePackages() {
                     </CardTitle>
                     <div className="text-4xl font-bold text-[#ffcf00] mb-2">
                       {pkg.price}
-                      <span className="text-lg text-gray-600">/month</span>
+                      <span className="text-lg text-muted-foreground">/month</span>
                     </div>
-                    <p className="text-gray-600">{pkg.description}</p>
+                    <p className="text-muted-foreground">{pkg.description}</p>
                   </CardHeader>
                   
                   <CardContent className="space-y-6">
