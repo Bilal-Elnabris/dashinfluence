@@ -114,3 +114,4 @@ Changelog:
 - June 30, 2025. Fixed button hover effects to scale instead of moving up/down
 - June 30, 2025. Updated all pages to use theme-aware CSS variables for complete theme switching
 - June 30, 2025. Updated AI automation packages to first-month pricing ($300-$1,500), replaced workflow mapper with comprehensive AI services section, fixed button hover effects to use lighter yellow, updated "Automated Booking" text to be theme-aware (blue in light mode, yellow in dark mode) with static dashed underline
+- June 30, 2025. Fixed revenue calculator slider styling with white track lines and white thumbs with dark borders, made all text theme-aware (blue in light mode, white in dark mode), updated automation quiz to have single "Book a Call" button instead of detailed analysis

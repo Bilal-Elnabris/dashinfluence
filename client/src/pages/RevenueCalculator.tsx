@@ -88,15 +88,15 @@ export default function RevenueCalculator() {
                       max="50"
                       value={values.avgWashes}
                       onChange={(e) => handleSliderChange('avgWashes', parseInt(e.target.value))}
-                      className="flex-1 h-2 bg-muted rounded-lg appearance-none cursor-pointer slider-thumb"
+                      className="flex-1 h-2 bg-white dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-primary w-16">{values.avgWashes}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">{values.avgWashes}</span>
                   </div>
                 </div>
 
                 {/* Average Weekly Details */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3">Average Weekly Details:</label>
+                  <label className="block text-sm font-semibold mb-3 text-[hsl(217,69%,34%)] dark:text-white">Average Weekly Details:</label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
@@ -104,15 +104,15 @@ export default function RevenueCalculator() {
                       max="20"
                       value={values.avgDetails}
                       onChange={(e) => handleSliderChange('avgDetails', parseInt(e.target.value))}
-                      className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      className="flex-1 h-2 bg-white dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-foreground w-16">{values.avgDetails}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">{values.avgDetails}</span>
                   </div>
                 </div>
 
                 {/* Wash Price */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3">Wash Price ($):</label>
+                  <label className="block text-sm font-semibold mb-3 text-[hsl(217,69%,34%)] dark:text-white">Wash Price ($):</label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
@@ -121,15 +121,15 @@ export default function RevenueCalculator() {
                       value={values.washPrice}
                       step="5"
                       onChange={(e) => handleSliderChange('washPrice', parseInt(e.target.value))}
-                      className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      className="flex-1 h-2 bg-white dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-foreground w-20">{formatCurrency(values.washPrice)}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-20">{formatCurrency(values.washPrice)}</span>
                   </div>
                 </div>
 
                 {/* Detail Price */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3">Detail Price ($):</label>
+                  <label className="block text-sm font-semibold mb-3 text-[hsl(217,69%,34%)] dark:text-white">Detail Price ($):</label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
@@ -138,15 +138,15 @@ export default function RevenueCalculator() {
                       value={values.detailPrice}
                       step="10"
                       onChange={(e) => handleSliderChange('detailPrice', parseInt(e.target.value))}
-                      className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      className="flex-1 h-2 bg-white dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-foreground w-20">{formatCurrency(values.detailPrice)}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-20">{formatCurrency(values.detailPrice)}</span>
                   </div>
                 </div>
 
                 {/* Missed Calls Weekly */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3">Missed Calls (Weekly):</label>
+                  <label className="block text-sm font-semibold mb-3 text-[hsl(217,69%,34%)] dark:text-white">Missed Calls (Weekly):</label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
@@ -154,9 +154,9 @@ export default function RevenueCalculator() {
                       max="25"
                       value={values.missedCalls}
                       onChange={(e) => handleSliderChange('missedCalls', parseInt(e.target.value))}
-                      className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      className="flex-1 h-2 bg-white dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-foreground w-16">{values.missedCalls}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">{values.missedCalls}</span>
                   </div>
                 </div>
               </div>
@@ -172,18 +172,18 @@ export default function RevenueCalculator() {
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-6">
-                  <div className="flex justify-between items-center p-4 bg-red-50 rounded-lg">
-                    <span className="font-semibold">Current Monthly Revenue:</span>
-                    <span className="text-2xl font-bold text-red-600">{formatCurrency(results.currentRevenue)}</span>
+                  <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                    <span className="font-semibold text-[hsl(217,69%,34%)] dark:text-black">Current Monthly Revenue:</span>
+                    <span className="text-2xl font-bold text-red-600 dark:text-red-400">{formatCurrency(results.currentRevenue)}</span>
                   </div>
                   
-                  <div className="flex justify-between items-center p-4 bg-green-50 rounded-lg">
-                    <span className="font-semibold">Potential Monthly Revenue:</span>
-                    <span className="text-2xl font-bold text-green-600">{formatCurrency(results.potentialRevenue)}</span>
+                  <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                    <span className="font-semibold text-[hsl(217,69%,34%)] dark:text-black">Potential Monthly Revenue:</span>
+                    <span className="text-2xl font-bold text-green-600 dark:text-green-400">{formatCurrency(results.potentialRevenue)}</span>
                   </div>
                   
-                  <div className="flex justify-between items-center p-4 bg-orange-50 rounded-lg">
-                    <span className="font-semibold">Monthly Revenue Leakage:</span>
+                  <div className="flex justify-between items-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                    <span className="font-semibold text-[hsl(217,69%,34%)] dark:text-black">Monthly Revenue Leakage:</span>
                     <span className="text-3xl font-bold text-[#ffcf00]">{formatCurrency(results.leakage)}</span>
                   </div>
                 </div>

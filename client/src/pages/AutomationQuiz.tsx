@@ -172,8 +172,11 @@ export default function AutomationQuiz() {
                   className="px-8 py-3 bg-[#ffcf00] text-foreground rounded-lg font-bold hover:bg-yellow-300 transition-colors"
                   onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
                 >
-                  Get Detailed Analysis
+                  Book a Call - Get AI Solutions
                 </Button>
+                <p className="mt-4 text-sm opacity-75">
+                  Get on a call with us to learn how AI can transform your car detailing business
+                </p>
               </div>
             </CardContent>
           </Card>
