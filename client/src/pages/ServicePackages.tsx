@@ -53,7 +53,7 @@ export default function ServicePackages() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="gradient-bg text-white section-padding">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -78,35 +78,35 @@ export default function ServicePackages() {
                 <Card className={`h-full relative ${pkg.popular ? 'border-[#ffcf00] border-2 shadow-lg' : 'border-gray-200'}`}>
                   {pkg.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-[#ffcf00] text-[hsl(217,69%,34%)] px-4 py-1 rounded-full text-sm font-bold">
+                      <div className="bg-[#ffcf00] text-foreground px-4 py-1 rounded-full text-sm font-bold">
                         Most Popular
                       </div>
                     </div>
                   )}
                   
                   <CardHeader className="text-center">
-                    <CardTitle className="text-2xl font-bold text-[hsl(217,69%,34%)]">
+                    <CardTitle className="text-2xl font-bold text-foreground">
                       {pkg.name}
                     </CardTitle>
                     <div className="text-4xl font-bold text-[#ffcf00] mb-2">
                       {pkg.price}
-                      <span className="text-lg text-gray-600">/month</span>
+                      <span className="text-lg text-muted-foreground">/month</span>
                     </div>
-                    <p className="text-gray-600">{pkg.description}</p>
+                    <p className="text-muted-foreground">{pkg.description}</p>
                   </CardHeader>
                   
                   <CardContent className="space-y-6">
-                    <div className="flex items-center justify-center space-x-2 text-[hsl(217,69%,34%)]">
+                    <div className="flex items-center justify-center space-x-2 text-foreground">
                       <Calendar className="w-5 h-5" />
                       <span className="font-semibold">{pkg.bookings}</span>
                     </div>
                     
                     <div className="space-y-3">
-                      <h4 className="font-semibold text-[hsl(217,69%,34%)]">Features Included:</h4>
+                      <h4 className="font-semibold text-foreground">Features Included:</h4>
                       {pkg.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center space-x-3">
                           <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-muted-foreground">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -114,7 +114,7 @@ export default function ServicePackages() {
                     <Button 
                       className={`w-full py-3 font-bold transition-colors ${
                         pkg.popular 
-                          ? 'bg-[#ffcf00] text-[hsl(217,69%,34%)] hover:bg-yellow-400' 
+                          ? 'bg-[#ffcf00] text-foreground hover:bg-orange-400' 
                           : 'bg-[hsl(217,69%,34%)] text-white hover:bg-[hsl(217,69%,40%)]'
                       }`}
                       onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
@@ -136,7 +136,7 @@ export default function ServicePackages() {
                 and recommend the perfect package to maximize your efficiency and profits.
               </p>
               <Button 
-                className="bg-[#ffcf00] text-[hsl(217,69%,34%)] hover:bg-yellow-400 font-bold px-8 py-3"
+                className="bg-[#ffcf00] text-foreground hover:bg-orange-400 font-bold px-8 py-3"
                 onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
               >
                 Schedule Free Consultation

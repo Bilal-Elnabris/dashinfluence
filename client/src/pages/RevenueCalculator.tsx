@@ -58,29 +58,29 @@ export default function RevenueCalculator() {
   };
 
   return (
-    <div className="section-padding bg-white">
+    <div className="section-padding bg-background">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">
+          <h1 className="text-4xl font-bold mb-4 text-foreground">
             Car Detailing Revenue Calculator
           </h1>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Calculate how much revenue you're losing from missed calls and manual booking processes
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Input Section */}
-          <Card className="p-8">
+          <Card className="p-8 bg-card border-border">
             <CardHeader className="p-0 mb-8">
-              <CardTitle className="text-2xl font-bold">Business Metrics</CardTitle>
+              <CardTitle className="text-2xl font-bold text-card-foreground">Business Metrics</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
               <div className="space-y-6">
                 {/* Average Weekly Washes */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3">Average Weekly Washes:</label>
+                  <label className="block text-sm font-semibold mb-3 text-card-foreground">Average Weekly Washes:</label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
@@ -88,9 +88,9 @@ export default function RevenueCalculator() {
                       max="50"
                       value={values.avgWashes}
                       onChange={(e) => handleSliderChange('avgWashes', parseInt(e.target.value))}
-                      className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
+                      className="flex-1 h-2 bg-muted rounded-lg appearance-none cursor-pointer slider-thumb"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] w-16">{values.avgWashes}</span>
+                    <span className="text-lg font-bold text-primary w-16">{values.avgWashes}</span>
                   </div>
                 </div>
 
@@ -106,7 +106,7 @@ export default function RevenueCalculator() {
                       onChange={(e) => handleSliderChange('avgDetails', parseInt(e.target.value))}
                       className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] w-16">{values.avgDetails}</span>
+                    <span className="text-lg font-bold text-foreground w-16">{values.avgDetails}</span>
                   </div>
                 </div>
 
@@ -123,7 +123,7 @@ export default function RevenueCalculator() {
                       onChange={(e) => handleSliderChange('washPrice', parseInt(e.target.value))}
                       className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] w-20">{formatCurrency(values.washPrice)}</span>
+                    <span className="text-lg font-bold text-foreground w-20">{formatCurrency(values.washPrice)}</span>
                   </div>
                 </div>
 
@@ -140,7 +140,7 @@ export default function RevenueCalculator() {
                       onChange={(e) => handleSliderChange('detailPrice', parseInt(e.target.value))}
                       className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] w-20">{formatCurrency(values.detailPrice)}</span>
+                    <span className="text-lg font-bold text-foreground w-20">{formatCurrency(values.detailPrice)}</span>
                   </div>
                 </div>
 
@@ -156,7 +156,7 @@ export default function RevenueCalculator() {
                       onChange={(e) => handleSliderChange('missedCalls', parseInt(e.target.value))}
                       className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] w-16">{values.missedCalls}</span>
+                    <span className="text-lg font-bold text-foreground w-16">{values.missedCalls}</span>
                   </div>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export default function RevenueCalculator() {
               <CardContent className="p-0">
                 <h4 className="text-xl font-bold mb-4">Ready to Plug the Revenue Leak?</h4>
                 <Button 
-                  className="w-full bg-[#ffcf00] px-6 py-3 text-[hsl(217,69%,34%)] rounded-lg font-bold hover:bg-yellow-400 transition-colors"
+                  className="w-full bg-[#ffcf00] px-6 py-3 text-foreground rounded-lg font-bold hover:bg-orange-400 transition-colors"
                   onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
                 >
                   Schedule Free Consultation

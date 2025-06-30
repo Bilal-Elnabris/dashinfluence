@@ -109,3 +109,7 @@ Changelog:
 - June 29, 2025. Connected all CTA buttons to Calendly consultation link (https://calendly.com/dashinfluence/consultation)
 - June 29, 2025. Enhanced slider styling with brand colors (yellow thumbs with blue borders)
 - June 29, 2025. Updated monthly leads range to start from 1 instead of 10
+- June 30, 2025. Implemented comprehensive dark/light mode toggle with theme provider
+- June 30, 2025. Added animated underline effect for hero text with dashed line animation
+- June 30, 2025. Fixed button hover effects to scale instead of moving up/down
+- June 30, 2025. Updated all pages to use theme-aware CSS variables for complete theme switching

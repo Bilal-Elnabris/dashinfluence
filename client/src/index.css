@@ -107,6 +107,36 @@
     @apply transform -translate-y-1 shadow-xl;
   }
 
+  /* Button hover effects - scale instead of translate */
+  .btn-hover {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .btn-hover:hover {
+    @apply transform scale-105;
+  }
+
+  /* Animated underline effect */
+  .animated-underline {
+    @apply relative overflow-hidden;
+  }
+
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-current transform -translate-x-full transition-transform duration-500 ease-out;
+    background-image: repeating-linear-gradient(
+      90deg,
+      currentColor 0,
+      currentColor 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  }
+
+  .animated-underline:hover::after {
+    @apply transform translate-x-0;
+  }
+
   /* Dark mode slider styling */
   .slider-thumb::-webkit-slider-thumb {
     @apply appearance-none w-5 h-5 rounded-full bg-[#ffcf00] border-2 border-primary cursor-pointer;
