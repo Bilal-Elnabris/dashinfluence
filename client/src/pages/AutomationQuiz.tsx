@@ -154,7 +154,7 @@ export default function AutomationQuiz() {
     const analysis = getScoreAnalysis(score);
 
     return (
-      <div className="section-padding bg-background">
+      <div className="section-padding bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">Quiz Results</h1>
@@ -183,12 +183,12 @@ export default function AutomationQuiz() {
   }
 
   return (
-    <div className="section-padding bg-background">
+    <div className="section-padding bg-white">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">Automation Readiness Quiz</h1>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
-          <p className="text-xl text-muted-foreground">Assess your business automation potential in 2 minutes</p>
+          <p className="text-xl text-gray-600">Assess your business automation potential in 2 minutes</p>
         </div>
 
         {/* Progress Bar */}

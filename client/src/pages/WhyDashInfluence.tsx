@@ -44,14 +44,14 @@ export default function WhyDashInfluence() {
   ];
 
   return (
-    <div className="bg-background">
+    <div className="bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="section-padding">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold mb-4 text-[hsl(217,69%,34%)]">Why Choose DashInfluence?</h1>
             <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We don't just automate processes – we transform businesses with AI that actually works
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function WhyDashInfluence() {
                 <Zap className="w-10 h-10 text-[#ffcf00]" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-[hsl(217,69%,34%)]">Industry Expertise</h3>
-              <p className="text-muted-foreground">
+              <p className="text-gray-600">
                 Specialized in real estate automation with deep understanding of your unique challenges and opportunities.
               </p>
             </div>
@@ -73,7 +73,7 @@ export default function WhyDashInfluence() {
                 <CheckCircle className="w-10 h-10 text-[#ffcf00]" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-[hsl(217,69%,34%)]">Proven Results</h3>
-              <p className="text-muted-foreground">
+              <p className="text-gray-600">
                 70+ successful implementations with average 300% ROI within 90 days of deployment.
               </p>
             </div>
@@ -83,7 +83,7 @@ export default function WhyDashInfluence() {
                 <Target className="w-10 h-10 text-[#ffcf00]" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-[hsl(217,69%,34%)]">Custom Solutions</h3>
-              <p className="text-muted-foreground">
+              <p className="text-gray-600">
                 Tailored automation that fits your existing processes, not generic one-size-fits-all solutions.
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function WhyDashInfluence() {
                     />
                     <div>
                       <h4 className="font-bold text-[hsl(217,69%,34%)]">{story.name}</h4>
-                      <p className="text-sm text-muted-foreground">{story.company}</p>
+                      <p className="text-sm text-gray-600">{story.company}</p>
                     </div>
                   </div>
                   <p className="text-gray-700 mb-4 italic">"{story.quote}"</p>
@@ -125,7 +125,7 @@ export default function WhyDashInfluence() {
                 <Users className="w-8 h-8 text-[hsl(217,69%,34%)]" />
               </div>
               <div className="text-3xl font-bold text-[hsl(217,69%,34%)] mb-2">70+</div>
-              <div className="text-muted-foreground">Happy Clients</div>
+              <div className="text-gray-600">Happy Clients</div>
             </div>
             
             <div className="text-center">
@@ -133,7 +133,7 @@ export default function WhyDashInfluence() {
                 <Clock className="w-8 h-8 text-[#ffcf00]" />
               </div>
               <div className="text-3xl font-bold text-[hsl(217,69%,34%)] mb-2">500+</div>
-              <div className="text-muted-foreground">Hours Saved Weekly</div>
+              <div className="text-gray-600">Hours Saved Weekly</div>
             </div>
             
             <div className="text-center">
@@ -141,7 +141,7 @@ export default function WhyDashInfluence() {
                 <Award className="w-8 h-8 text-green-600" />
               </div>
               <div className="text-3xl font-bold text-[hsl(217,69%,34%)] mb-2">300%</div>
-              <div className="text-muted-foreground">Average ROI</div>
+              <div className="text-gray-600">Average ROI</div>
             </div>
             
             <div className="text-center">
@@ -149,7 +149,7 @@ export default function WhyDashInfluence() {
                 <Target className="w-8 h-8 text-purple-600" />
               </div>
               <div className="text-3xl font-bold text-[hsl(217,69%,34%)] mb-2">90</div>
-              <div className="text-muted-foreground">Days to ROI</div>
+              <div className="text-gray-600">Days to ROI</div>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function WhyDashInfluence() {
         <div className="section-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-[hsl(217,69%,34%)]">Our Implementation Process</h2>
-            <p className="text-xl text-muted-foreground">From discovery to optimization, we ensure your success</p>
+            <p className="text-xl text-gray-600">From discovery to optimization, we ensure your success</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
@@ -168,7 +168,7 @@ export default function WhyDashInfluence() {
                   {step.step}
                 </div>
                 <h4 className="font-bold mb-2 text-[hsl(217,69%,34%)]">{step.title}</h4>
-                <p className="text-sm text-muted-foreground">{step.description}</p>
+                <p className="text-sm text-gray-600">{step.description}</p>
               </div>
             ))}
           </div>

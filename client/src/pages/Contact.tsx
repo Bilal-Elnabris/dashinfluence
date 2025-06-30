@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="gradient-bg text-white section-padding">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -28,7 +28,7 @@ export default function Contact() {
               <Card className="shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-2xl text-[hsl(217,69%,34%)]">Send Us a Message</CardTitle>
-                  <p className="text-muted-foreground">Fill out the form below and we'll get back to you within 24 hours.</p>
+                  <p className="text-gray-600">Fill out the form below and we'll get back to you within 24 hours.</p>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -71,7 +71,7 @@ export default function Contact() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold text-[hsl(217,69%,34%)] mb-6">Get In Touch</h2>
-                <p className="text-muted-foreground mb-8">
+                <p className="text-gray-600 mb-8">
                   Ready to revolutionize your business with AI automation? Our experts are standing by to help you 
                   identify opportunities, design solutions, and implement systems that drive real results.
                 </p>
@@ -86,7 +86,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-[hsl(217,69%,34%)]">Email Us</h3>
-                      <p className="text-muted-foreground">hello@dashinfluence.com</p>
+                      <p className="text-gray-600">hello@dashinfluence.com</p>
                     </div>
                   </div>
                 </Card>
@@ -98,7 +98,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-[hsl(217,69%,34%)]">Call Us</h3>
-                      <p className="text-muted-foreground">(555) 123-4567</p>
+                      <p className="text-gray-600">(555) 123-4567</p>
                     </div>
                   </div>
                 </Card>
@@ -110,7 +110,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-[hsl(217,69%,34%)]">Business Hours</h3>
-                      <p className="text-muted-foreground">Mon-Fri: 9:00 AM - 6:00 PM EST</p>
+                      <p className="text-gray-600">Mon-Fri: 9:00 AM - 6:00 PM EST</p>
                     </div>
                   </div>
                 </Card>

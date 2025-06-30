@@ -1,11 +1,14 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
 import logoPath from "@assets/Transparent-logo_1751231371630.png";
 
 import logo_long from "@assets/logo-long.png";
 
 export default function Navbar() {
   const [location] = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -45,10 +48,26 @@ export default function Navbar() {
             </div>
           </div>
           
-          {/* CTA Button */}
-          <Button className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-6 py-2.5 rounded-lg hover:bg-yellow-400 transition-colors duration-200">
-            Get Started
-          </Button>
+          {/* Theme Toggle & CTA Section */}
+          <div className="flex items-center space-x-4">
+            {/* Theme Toggle Button */}
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={toggleTheme}
+              className="text-white hover:bg-white/10"
+            >
+              {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+            </Button>
+            
+            {/* CTA Button */}
+            <Button 
+              className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-6 py-2.5 rounded-lg hover:bg-yellow-400 transition-colors duration-200"
+              onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+            >
+              Get Started
+            </Button>
+          </div>
         </div>
       </div>
     </nav>
