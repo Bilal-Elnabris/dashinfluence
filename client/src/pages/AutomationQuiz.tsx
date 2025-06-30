@@ -12,82 +12,82 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "How many leads do you handle monthly?",
+    question: "How many car wash/detail appointments do you book weekly?",
     options: [
-      { value: "1-50", label: "1-50 leads", score: 1 },
-      { value: "51-100", label: "51-100 leads", score: 2 },
-      { value: "101-200", label: "101-200 leads", score: 3 },
-      { value: "200+", label: "200+ leads", score: 4 },
+      { value: "1-10", label: "1-10 appointments", score: 1 },
+      { value: "11-25", label: "11-25 appointments", score: 2 },
+      { value: "26-50", label: "26-50 appointments", score: 3 },
+      { value: "50+", label: "50+ appointments", score: 4 },
     ],
   },
   {
     id: 2,
-    question: "How much time do you spend on manual lead follow-up daily?",
+    question: "How many customer calls do you miss daily while working on cars?",
     options: [
-      { value: "0-1h", label: "0-1 hours", score: 1 },
-      { value: "1-2h", label: "1-2 hours", score: 2 },
-      { value: "2-4h", label: "2-4 hours", score: 3 },
-      { value: "4h+", label: "4+ hours", score: 4 },
+      { value: "0-1", label: "0-1 calls", score: 1 },
+      { value: "2-3", label: "2-3 calls", score: 2 },
+      { value: "4-6", label: "4-6 calls", score: 3 },
+      { value: "6+", label: "6+ calls", score: 4 },
     ],
   },
   {
     id: 3,
-    question: "What's your current lead conversion rate?",
+    question: "How do customers typically book with you?",
     options: [
-      { value: "0-5%", label: "0-5%", score: 1 },
-      { value: "5-10%", label: "5-10%", score: 2 },
-      { value: "10-15%", label: "10-15%", score: 3 },
-      { value: "15%+", label: "15%+", score: 4 },
+      { value: "phone-only", label: "Phone calls only", score: 1 },
+      { value: "phone-text", label: "Phone and text messages", score: 2 },
+      { value: "social", label: "Social media + phone", score: 3 },
+      { value: "online", label: "Online booking system", score: 4 },
     ],
   },
   {
     id: 4,
-    question: "How do you currently manage appointment scheduling?",
+    question: "How much time do you spend daily on booking and scheduling?",
     options: [
-      { value: "manual", label: "Manual phone calls and emails", score: 1 },
-      { value: "calendar", label: "Online calendar link", score: 2 },
-      { value: "basic-auto", label: "Basic automation tools", score: 3 },
-      { value: "advanced", label: "Advanced scheduling system", score: 4 },
+      { value: "15-30min", label: "15-30 minutes", score: 1 },
+      { value: "30-60min", label: "30-60 minutes", score: 2 },
+      { value: "1-2h", label: "1-2 hours", score: 3 },
+      { value: "2h+", label: "2+ hours", score: 4 },
     ],
   },
   {
     id: 5,
-    question: "How often do qualified leads slip through the cracks?",
+    question: "Do you send appointment reminders to customers?",
     options: [
-      { value: "never", label: "Never", score: 4 },
-      { value: "rarely", label: "Rarely", score: 3 },
-      { value: "sometimes", label: "Sometimes", score: 2 },
-      { value: "often", label: "Often", score: 1 },
+      { value: "never", label: "Never", score: 1 },
+      { value: "manual", label: "Manual texts/calls", score: 2 },
+      { value: "sometimes", label: "Sometimes automated", score: 3 },
+      { value: "automated", label: "Fully automated system", score: 4 },
     ],
   },
   {
     id: 6,
-    question: "What's your biggest operational challenge?",
+    question: "What's your biggest challenge running your car detailing business?",
     options: [
-      { value: "time", label: "Not enough time for follow-ups", score: 4 },
-      { value: "organization", label: "Staying organized", score: 3 },
-      { value: "consistency", label: "Consistent messaging", score: 2 },
-      { value: "tracking", label: "Tracking lead progress", score: 1 },
+      { value: "missing-calls", label: "Missing customer calls while working", score: 4 },
+      { value: "scheduling", label: "Managing appointment scheduling", score: 3 },
+      { value: "no-shows", label: "Dealing with no-shows", score: 2 },
+      { value: "pricing", label: "Pricing my services competitively", score: 1 },
     ],
   },
   {
     id: 7,
-    question: "How do you handle lead nurturing?",
+    question: "How do you currently follow up with potential customers?",
     options: [
-      { value: "manual", label: "Manual emails and calls", score: 1 },
-      { value: "templates", label: "Email templates", score: 2 },
-      { value: "sequences", label: "Automated email sequences", score: 3 },
-      { value: "ai", label: "AI-powered personalization", score: 4 },
+      { value: "none", label: "No follow-up system", score: 1 },
+      { value: "manual", label: "Manual calls when I remember", score: 2 },
+      { value: "scheduled", label: "Scheduled reminder system", score: 3 },
+      { value: "automated", label: "Automated follow-up messages", score: 4 },
     ],
   },
   {
     id: 8,
-    question: "What's your annual revenue goal?",
+    question: "What's your monthly revenue target for your detailing business?",
     options: [
-      { value: "100k", label: "Under $100K", score: 1 },
-      { value: "500k", label: "$100K - $500K", score: 2 },
-      { value: "1m", label: "$500K - $1M", score: 3 },
-      { value: "1m+", label: "$1M+", score: 4 },
+      { value: "5k", label: "Under $5K", score: 1 },
+      { value: "10k", label: "$5K - $10K", score: 2 },
+      { value: "20k", label: "$10K - $20K", score: 3 },
+      { value: "20k+", label: "$20K+", score: 4 },
     ],
   },
 ];
@@ -132,19 +132,19 @@ export default function AutomationQuiz() {
       return {
         level: "High Automation Potential",
         color: "text-green-600",
-        recommendation: "Your business shows excellent automation potential. Key areas for immediate improvement include lead nurturing, appointment scheduling, and follow-up processes. You're ready for advanced AI automation solutions.",
+        recommendation: "Your car detailing business is ready for advanced automation! You're missing significant revenue from manual processes. Our AI can immediately help with appointment booking, customer follow-up, and reducing missed calls.",
       };
     } else if (score >= 60) {
       return {
-        level: "Medium Automation Potential",
+        level: "Medium Automation Potential", 
         color: "text-orange-600",
-        recommendation: "You have good automation fundamentals but significant room for improvement. Focus on automating your most time-consuming manual processes first, then expand to advanced features.",
+        recommendation: "Your detailing business has good fundamentals but you're losing money to inefficient processes. Start with automated booking and SMS reminders to capture more customers while you're working on cars.",
       };
     } else {
       return {
         level: "High Automation Need",
         color: "text-red-600",
-        recommendation: "Your business would benefit tremendously from automation. Start with basic lead management and appointment scheduling, then gradually implement more sophisticated automation as you grow.",
+        recommendation: "Your car detailing business would see immediate ROI from automation. You're likely missing 30-50% of potential bookings. Start with basic automated booking and appointment reminders to stop revenue leakage.",
       };
     }
   };

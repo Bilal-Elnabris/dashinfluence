@@ -11,7 +11,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/calculator", label: "Revenue Calculator" },
     { href: "/quiz", label: "Automation Quiz" },
-    { href: "/mapper", label: "Workflow Mapper" },
+    { href: "/packages", label: "Service Packages" },
     { href: "/why-us", label: "Why DashInfluence" },
   ];
 

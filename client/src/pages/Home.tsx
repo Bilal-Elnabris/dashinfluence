@@ -11,11 +11,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-[hsl(217,69%,34%)]">
-              Stop Losing Revenue to <br />
-              <span className="text-[#ffcf00]">Manual Work</span>
+              <span className="text-[#ffcf00]">Automated Booking</span><br />
+              For Car Detailers
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-              AI automation that books appointments while you sleep. Focus on growth while we handle the operations that drive real business results.
+              AI automation that books wash and detail appointments while you sleep. Never miss another customer call or lose revenue to manual scheduling again.
             </p>
             
             <Link href="/calculator">

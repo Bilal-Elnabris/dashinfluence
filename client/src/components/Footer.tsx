@@ -30,7 +30,7 @@ export default function Footer() {
               <li><Link href="/" className="opacity-80 hover:opacity-100 transition-opacity">Home</Link></li>
               <li><Link href="/calculator" className="opacity-80 hover:opacity-100 transition-opacity">Revenue Calculator</Link></li>
               <li><Link href="/quiz" className="opacity-80 hover:opacity-100 transition-opacity">Automation Quiz</Link></li>
-              <li><Link href="/mapper" className="opacity-80 hover:opacity-100 transition-opacity">Workflow Mapper</Link></li>
+              <li><Link href="/packages" className="opacity-80 hover:opacity-100 transition-opacity">Service Packages</Link></li>
               <li><Link href="/why-us" className="opacity-80 hover:opacity-100 transition-opacity">Why Choose Us</Link></li>
             </ul>
           </div>

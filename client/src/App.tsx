@@ -8,8 +8,9 @@ import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import RevenueCalculator from "@/pages/RevenueCalculator";
 import AutomationQuiz from "@/pages/AutomationQuiz";
-import WorkflowMapper from "@/pages/WorkflowMapper";
+
 import WhyDashInfluence from "@/pages/WhyDashInfluence";
+import ServicePackages from "@/pages/ServicePackages";
 import Contact from "@/pages/Contact";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
@@ -22,7 +23,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/calculator" component={RevenueCalculator} />
       <Route path="/quiz" component={AutomationQuiz} />
-      <Route path="/mapper" component={WorkflowMapper} />
+      <Route path="/packages" component={ServicePackages} />
       <Route path="/why-us" component={WhyDashInfluence} />
       <Route path="/contact" component={Contact} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
