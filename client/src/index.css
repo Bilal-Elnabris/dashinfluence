@@ -134,6 +134,14 @@
   }
 
   /* Custom slider styling */
+  .custom-slider {
+    background: #333 !important;
+  }
+
+  .dark .custom-slider {
+    background: white !important;
+  }
+
   .custom-slider::-webkit-slider-thumb {
     appearance: none;
     height: 20px;
