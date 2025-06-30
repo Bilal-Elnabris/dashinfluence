@@ -62,7 +62,7 @@ export default function Navbar() {
             
             {/* CTA Button */}
             <Button 
-              className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-6 py-2.5 rounded-lg hover:bg-orange-400 transition-colors duration-200"
+              className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition-colors duration-200"
               onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
             >
               Get Started

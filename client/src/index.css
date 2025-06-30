@@ -118,12 +118,12 @@
 
   /* Animated underline effect */
   .animated-underline {
-    @apply relative overflow-hidden;
+    @apply relative;
   }
 
   .animated-underline::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-current transform -translate-x-full transition-transform duration-500 ease-out;
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-current opacity-0 transition-all duration-300 ease-out transform -translate-x-1/2;
     background-image: repeating-linear-gradient(
       90deg,
       currentColor 0,
@@ -134,7 +134,7 @@
   }
 
   .animated-underline:hover::after {
-    @apply transform translate-x-0;
+    @apply w-full opacity-100;
   }
 
   /* Dark mode slider styling */

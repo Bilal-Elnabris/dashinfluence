@@ -169,7 +169,7 @@ export default function AutomationQuiz() {
               <div className="max-w-2xl mx-auto">
                 <p className="mb-6 opacity-90">{analysis.recommendation}</p>
                 <Button 
-                  className="px-8 py-3 bg-[#ffcf00] text-foreground rounded-lg font-bold hover:bg-orange-400 transition-colors"
+                  className="px-8 py-3 bg-[#ffcf00] text-foreground rounded-lg font-bold hover:bg-yellow-300 transition-colors"
                   onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
                 >
                   Get Detailed Analysis
@@ -243,7 +243,7 @@ export default function AutomationQuiz() {
               <Button
                 onClick={nextQuestion}
                 disabled={!selectedOption}
-                className="px-6 py-3 bg-[#ffcf00] text-foreground hover:bg-orange-400"
+                className="px-6 py-3 bg-[#ffcf00] text-foreground hover:bg-yellow-300"
               >
                 {currentQuestion === questions.length - 1 ? 'Get Results' : 'Next Question'}
               </Button>

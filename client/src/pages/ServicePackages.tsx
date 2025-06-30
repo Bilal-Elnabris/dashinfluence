@@ -114,7 +114,7 @@ export default function ServicePackages() {
                     <Button 
                       className={`w-full py-3 font-bold transition-colors ${
                         pkg.popular 
-                          ? 'bg-[#ffcf00] text-foreground hover:bg-orange-400' 
+                          ? 'bg-[#ffcf00] text-foreground hover:bg-yellow-300' 
                           : 'bg-[hsl(217,69%,34%)] text-white hover:bg-[hsl(217,69%,40%)]'
                       }`}
                       onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
@@ -136,7 +136,7 @@ export default function ServicePackages() {
                 and recommend the perfect package to maximize your efficiency and profits.
               </p>
               <Button 
-                className="bg-[#ffcf00] text-foreground hover:bg-orange-400 font-bold px-8 py-3"
+                className="bg-[#ffcf00] text-foreground hover:bg-yellow-300 font-bold px-8 py-3"
                 onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
               >
                 Schedule Free Consultation

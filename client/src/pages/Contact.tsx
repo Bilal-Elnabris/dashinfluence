@@ -60,7 +60,7 @@ export default function Contact() {
                       rows={4}
                     />
                   </div>
-                  <Button className="w-full bg-[#ffcf00] text-foreground hover:bg-orange-400 text-lg py-3">
+                  <Button className="w-full bg-[#ffcf00] text-foreground hover:bg-yellow-300 text-lg py-3">
                     Send Message
                   </Button>
                 </CardContent>
@@ -123,7 +123,7 @@ export default function Contact() {
                   Book a free 30-minute consultation to discuss your automation needs and see how we can help.
                 </p>
                 <Button 
-                  className="bg-[#ffcf00] text-foreground hover:bg-orange-400 font-bold"
+                  className="bg-[#ffcf00] text-foreground hover:bg-yellow-300 font-bold"
                   onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
                 >
                   Schedule Free Consultation

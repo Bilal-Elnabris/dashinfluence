@@ -179,7 +179,7 @@ export default function WhyDashInfluence() {
             <p className="text-xl max-w-2xl mx-auto mb-8 opacity-90">
               Join successful real estate professionals who've already automated their way to success
             </p>
-            <Button className="px-8 py-4 bg-[#ffcf00] text-foreground rounded-lg font-bold text-lg hover:bg-orange-400 transition-colors btn-hover">
+            <Button className="px-8 py-4 bg-[#ffcf00] text-foreground rounded-lg font-bold text-lg hover:bg-yellow-300 transition-colors btn-hover">
               Schedule Your Free Consultation
             </Button>
           </div>
