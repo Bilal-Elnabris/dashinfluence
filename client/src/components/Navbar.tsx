@@ -11,59 +11,72 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/calculator", label: "Revenue Calculator" },
-    { href: "/quiz", label: "Automation Quiz" },
-    { href: "/packages", label: "Service Packages" },
+    { href: "/legacy-home", label: "Home" },
     { href: "/why-us", label: "Why DashInfluence" },
+    { href: "/packages", label: "Service Packages" },
   ];
 
   return (
-    <nav className="bg-[hsl(225,71%,53%)] shadow-lg sticky top-0 z-50 static-optimized">
-      <div className="max-w-6xl mx-auto px-6 bg-[#203ab5]">
+    <nav className="bg-[#203ab5] shadow-lg sticky top-0 z-50 static-optimized">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="flex justify-between items-center py-4">
           {/* Logo Section */}
-          <div className="flex items-center space-x-8">
-            <Link href="/" className="flex items-center">
-              <img 
-                src={logo_long} 
-                alt="DashInfluence Logo" 
-                className="h-8 w-auto"
+          <div className="flex items-center w-full">
+            <Link
+              href="/legacy-home"
+              className="flex items-center mr-10 min-w-fit"
+            >
+              <img
+                src={logo_long}
+                alt="DashInfluence Logo"
+                className="h-10 w-auto align-middle"
+                style={{ marginRight: "0.5rem" }}
               />
             </Link>
-            
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex space-x-8">
+            <div className="hidden lg:flex space-x-10 items-center w-full">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-white font-medium dash-underline px-3 py-2 transition-colors ${
-                    location === item.href ? 'text-orange-300' : 'hover:text-orange-200'
+                  className={`text-white font-extrabold text-lg dash-underline px-3 py-2 transition-colors flex items-center ${
+                    location === item.href
+                      ? "text-orange-300"
+                      : "hover:text-orange-200"
                   }`}
+                  style={{ lineHeight: "2.5rem" }}
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
           </div>
-          
+
           {/* Theme Toggle & CTA Section */}
           <div className="flex items-center space-x-4">
             {/* Theme Toggle Button */}
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               size="icon"
               onClick={toggleTheme}
               className="text-white hover:bg-white/10"
             >
-              {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+              {theme === "light" ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )}
             </Button>
-            
+
             {/* CTA Button */}
-            <Button 
+            <Button
               className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition-colors duration-200"
-              onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+              onClick={() =>
+                window.open(
+                  "https://calendly.com/dashinfluence/consultation",
+                  "_blank"
+                )
+              }
             >
               Get Started
             </Button>

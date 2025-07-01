@@ -11,15 +11,16 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <img 
-                src={logo_long} 
-                alt="DashInfluence Logo" 
+              <img
+                src={logo_long}
+                alt="DashInfluence Logo"
                 className="h-8 w-auto mr-3"
               />
             </div>
             <p className="text-lg mb-4">AI That Moves Business Forward.</p>
             <p className="text-sm opacity-80 max-w-md">
-              Transforming real estate professionals with intelligent automation solutions that drive real results.
+              Transforming real estate professionals with intelligent automation
+              solutions that drive real results.
             </p>
           </div>
 
@@ -27,11 +28,46 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="opacity-80 hover:opacity-100 transition-opacity">Home</Link></li>
-              <li><Link href="/calculator" className="opacity-80 hover:opacity-100 transition-opacity">Revenue Calculator</Link></li>
-              <li><Link href="/quiz" className="opacity-80 hover:opacity-100 transition-opacity">Automation Quiz</Link></li>
-              <li><Link href="/packages" className="opacity-80 hover:opacity-100 transition-opacity">Service Packages</Link></li>
-              <li><Link href="/why-us" className="opacity-80 hover:opacity-100 transition-opacity">Why Choose Us</Link></li>
+              <li>
+                <Link
+                  href="/"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/calculator"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  Revenue Calculator
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/quiz"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  Automation Quiz
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/packages"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  Service Packages
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/why-us"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  Why Choose Us
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -41,8 +77,24 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="opacity-80">hello@dashinfluence.com</li>
               <li className="opacity-80">(555) 123-4567</li>
-              <li><Link href="/contact" className="opacity-80 hover:opacity-100 transition-opacity">Contact Us</Link></li>
-              <li><a href="https://calendly.com/dashinfluence/consultation" target="_blank" rel="noopener noreferrer" className="opacity-80 hover:opacity-100 transition-opacity">Schedule Consultation</a></li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://calendly.com/dashinfluence/new-meeting"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  Schedule Consultation
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -53,9 +105,24 @@ export default function Footer() {
             © 2025 DashInfluence. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <Link href="/privacy-policy" className="opacity-80 hover:opacity-100 transition-opacity">Privacy Policy</Link>
-            <Link href="/terms-of-service" className="opacity-80 hover:opacity-100 transition-opacity">Terms of Service</Link>
-            <Link href="/cookie-policy" className="opacity-80 hover:opacity-100 transition-opacity">Cookie Policy</Link>
+            <Link
+              href="/privacy-policy"
+              className="opacity-80 hover:opacity-100 transition-opacity"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-of-service"
+              className="opacity-80 hover:opacity-100 transition-opacity"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/cookie-policy"
+              className="opacity-80 hover:opacity-100 transition-opacity"
+            >
+              Cookie Policy
+            </Link>
           </div>
         </div>
       </div>

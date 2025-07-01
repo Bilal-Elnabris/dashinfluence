@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -25,7 +25,7 @@
   --destructive-foreground: hsl(210, 20%, 98%);
   --ring: hsl(217, 69%, 34%);
   --radius: 0.5rem;
-  
+
   /* Brand Colors */
   --brand-blue: hsl(217, 69%, 34%);
   --light-blue: hsl(225, 71%, 53%);
@@ -54,12 +54,10 @@
   --destructive: hsl(0, 63%, 45%);
   --destructive-foreground: hsl(0, 0%, 100%);
   --ring: hsl(240, 4%, 84%);
-  
+
   /* Brand Colors - Dark Mode */
   --light-gray: hsl(240, 4%, 16%);
 }
-
-
 
 @layer base {
   * {
@@ -68,7 +66,7 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
   }
 
@@ -83,8 +81,15 @@
   }
 
   .dash-underline::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300;
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[#ffcf00] transition-all duration-300;
+    background-image: repeating-linear-gradient(
+      90deg,
+      #ffcf00 0,
+      #ffcf00 4px,
+      transparent 4px,
+      transparent 8px
+    );
   }
 
   .dash-underline:hover::after {
@@ -92,7 +97,11 @@
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, hsl(217, 69%, 34%) 0%, hsl(225, 71%, 53%) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(217, 69%, 34%) 0%,
+      hsl(225, 71%, 53%) 100%
+    );
   }
 
   .section-padding {
@@ -122,14 +131,14 @@
   }
 
   .static-underline::after {
-    content: '';
+    content: "";
     @apply absolute bottom-0 left-1/2 w-full h-0.5 bg-current transform -translate-x-1/2;
     background-image: repeating-linear-gradient(
       90deg,
       currentColor 0,
-      currentColor 8px,
-      transparent 8px,
-      transparent 16px
+      currentColor 6px,
+      transparent 6px,
+      transparent 12px
     );
   }
 
@@ -233,5 +242,23 @@
     width: 20px;
     border-radius: 50%;
     cursor: pointer;
+  }
+
+  /* Implementation process connecting line animations */
+  @keyframes moveRight {
+    0% {
+      transform: translateX(-10%);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(110%);
+      opacity: 0;
+    }
   }
 }

@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { formatCurrency } from "@/lib/utils";
+import {
+  TrendingUp,
+  DollarSign,
+  Calendar,
+  CheckCircle,
+  Lightbulb,
+  Target,
+  Zap,
+} from "lucide-react";
 
 interface CalculatorState {
   avgWashes: number;
@@ -9,6 +19,7 @@ interface CalculatorState {
   washPrice: number;
   detailPrice: number;
   missedCalls: number;
+  businessSize: "essential" | "professional" | "complete";
 }
 
 export default function RevenueCalculator() {
@@ -18,101 +29,228 @@ export default function RevenueCalculator() {
     washPrice: 75,
     detailPrice: 250,
     missedCalls: 8,
+    businessSize: "professional",
   });
 
   const [results, setResults] = useState({
     currentRevenue: 0,
     potentialRevenue: 0,
-    leakage: 0,
+    monthlyLeakage: 0,
     annualLeakage: 0,
+    implementationCost: 799,
+    monthlyCost: 250,
+    paybackPeriod: 0,
+    roi: 0,
   });
 
+  // Package costs based on business size
+  const packageCosts = {
+    essential: { setup: 299, monthly: 100 },
+    professional: { setup: 799, monthly: 250 },
+    complete: { setup: 1499, monthly: 350 },
+  };
+
   useEffect(() => {
-    // Current monthly revenue
-    const currentWashRevenue = values.avgWashes * values.washPrice * 4; // 4 weeks
+    // Simple current monthly revenue (4 weeks)
+    const currentWashRevenue = values.avgWashes * values.washPrice * 4;
     const currentDetailRevenue = values.avgDetails * values.detailPrice * 4;
     const currentRevenue = currentWashRevenue + currentDetailRevenue;
-    
-    // Lost revenue from missed calls
-    const missedWashRevenue = values.missedCalls * values.washPrice * 4;
-    const missedDetailRevenue = (values.missedCalls * 0.3) * values.detailPrice * 4; // 30% of missed calls would book details
-    const missedRevenue = missedWashRevenue + missedDetailRevenue;
-    
-    // Potential with AI automation (capturing missed calls + improving booking rates)
-    const potentialWashes = (values.avgWashes + values.missedCalls) * 1.2; // 20% improvement
-    const potentialDetails = (values.avgDetails + values.missedCalls * 0.3) * 1.15; // 15% improvement
-    const potentialRevenue = (potentialWashes * values.washPrice + potentialDetails * values.detailPrice) * 4;
-    
-    const leakage = potentialRevenue - currentRevenue;
+
+    // Simple missed revenue calculation
+    // Assume 20% of missed calls convert to bookings
+    const missedCallConversion = 0.2;
+    const recoveredCalls = values.missedCalls * missedCallConversion;
+
+    // Assume 70% of recovered calls are washes, 30% are details
+    const recoveredWashes = recoveredCalls * 0.7;
+    const recoveredDetails = recoveredCalls * 0.3;
+
+    const missedRevenue =
+      (recoveredWashes * values.washPrice +
+        recoveredDetails * values.detailPrice) *
+      4;
+
+    // Potential revenue = current + missed revenue
+    const potentialRevenue = currentRevenue + missedRevenue;
+    const monthlyLeakage = missedRevenue;
+    const annualLeakage = monthlyLeakage * 12;
+
+    // Get costs based on selected business size
+    const costs = packageCosts[values.businessSize];
+    const implementationCost = costs.setup;
+    const monthlyCost = costs.monthly;
+    const annualCost = monthlyCost * 12;
+    const netAnnualBenefit = annualLeakage - annualCost;
+
+    // Only calculate payback and ROI if there's a positive benefit
+    const paybackPeriod =
+      netAnnualBenefit > 0 ? implementationCost / (netAnnualBenefit / 12) : 0;
+    const roi =
+      netAnnualBenefit > 0 ? (netAnnualBenefit / implementationCost) * 100 : 0;
 
     setResults({
       currentRevenue,
       potentialRevenue,
-      leakage,
-      annualLeakage: leakage * 12,
+      monthlyLeakage,
+      annualLeakage,
+      implementationCost,
+      monthlyCost,
+      paybackPeriod,
+      roi,
     });
   }, [values]);
 
   const handleSliderChange = (key: keyof CalculatorState, value: number) => {
-    setValues(prev => ({ ...prev, [key]: value }));
+    setValues((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleSelectChange = (key: keyof CalculatorState, value: string) => {
+    setValues((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
     <div className="section-padding bg-background">
       <div className="max-w-6xl mx-auto px-6">
+        {/* Hero Section with Scientific Facts */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 text-foreground">
-            Car Detailing Revenue Calculator
+            Revenue Calculator
           </h1>
-          <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Calculate how much revenue you're losing from missed calls and manual booking processes
+          <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            Calculate how much revenue you're losing to manual processes
           </p>
+
+          {/* Scientific Facts Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Card className="p-4 bg-blue-50 dark:bg-blue-900/20 border-blue-200">
+              <CardContent className="p-0 text-center">
+                <Target className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                <h3 className="font-bold text-blue-900 dark:text-blue-100 mb-1">
+                  Industry Standard
+                </h3>
+                <p className="text-sm text-blue-700 dark:text-blue-200">
+                  78% of businesses lose revenue due to missed calls
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-4 bg-green-50 dark:bg-green-900/20 border-green-200">
+              <CardContent className="p-0 text-center">
+                <Zap className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                <h3 className="font-bold text-green-900 dark:text-green-100 mb-1">
+                  AI Efficiency
+                </h3>
+                <p className="text-sm text-green-700 dark:text-green-200">
+                  AI automation increases booking rates by 40%
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-4 bg-purple-50 dark:bg-purple-900/20 border-purple-200">
+              <CardContent className="p-0 text-center">
+                <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-2" />
+                <h3 className="font-bold text-purple-900 dark:text-purple-100 mb-1">
+                  ROI Proven
+                </h3>
+                <p className="text-sm text-purple-700 dark:text-purple-200">
+                  Average 300% ROI within 18 months
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Input Section */}
           <Card className="p-8 bg-card border-border">
             <CardHeader className="p-0 mb-8">
-              <CardTitle className="text-2xl font-bold text-card-foreground">Business Metrics</CardTitle>
+              <CardTitle className="text-2xl font-bold text-card-foreground flex items-center">
+                <Target className="w-6 h-6 mr-2" />
+                Your Business Metrics
+              </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
               <div className="space-y-6">
+                {/* Business Size Selection */}
+                <div>
+                  <label className="block text-sm font-semibold mb-3 text-card-foreground">
+                    Select Your Package:
+                  </label>
+                  <select
+                    value={values.businessSize}
+                    onChange={(e) =>
+                      handleSelectChange("businessSize", e.target.value)
+                    }
+                    className="w-full p-3 border rounded-lg bg-background text-card-foreground"
+                  >
+                    <option value="essential">
+                      Essential AI Package ($299 setup + $100/month)
+                    </option>
+                    <option value="professional">
+                      Professional AI Package ($799 setup + $250/month)
+                    </option>
+                    <option value="complete">
+                      Complete AI Suite ($1,499 setup + $350/month)
+                    </option>
+                  </select>
+                </div>
+
                 {/* Average Weekly Washes */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3 text-card-foreground">Average Weekly Washes:</label>
+                  <label className="block text-sm font-semibold mb-3 text-card-foreground">
+                    Average Weekly Washes:
+                  </label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
                       min="1"
                       max="50"
                       value={values.avgWashes}
-                      onChange={(e) => handleSliderChange('avgWashes', parseInt(e.target.value))}
+                      onChange={(e) =>
+                        handleSliderChange(
+                          "avgWashes",
+                          parseInt(e.target.value)
+                        )
+                      }
                       className="flex-1 h-2 bg-gray-800 dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">{values.avgWashes}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">
+                      {values.avgWashes}
+                    </span>
                   </div>
                 </div>
 
                 {/* Average Weekly Details */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3 text-[hsl(217,69%,34%)] dark:text-white">Average Weekly Details:</label>
+                  <label className="block text-sm font-semibold mb-3 text-card-foreground">
+                    Average Weekly Details:
+                  </label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
                       min="1"
                       max="20"
                       value={values.avgDetails}
-                      onChange={(e) => handleSliderChange('avgDetails', parseInt(e.target.value))}
+                      onChange={(e) =>
+                        handleSliderChange(
+                          "avgDetails",
+                          parseInt(e.target.value)
+                        )
+                      }
                       className="flex-1 h-2 bg-gray-800 dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">{values.avgDetails}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">
+                      {values.avgDetails}
+                    </span>
                   </div>
                 </div>
 
                 {/* Wash Price */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3 text-[hsl(217,69%,34%)] dark:text-white">Wash Price ($):</label>
+                  <label className="block text-sm font-semibold mb-3 text-card-foreground">
+                    Wash Price ($):
+                  </label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
@@ -120,16 +258,25 @@ export default function RevenueCalculator() {
                       max="150"
                       value={values.washPrice}
                       step="5"
-                      onChange={(e) => handleSliderChange('washPrice', parseInt(e.target.value))}
+                      onChange={(e) =>
+                        handleSliderChange(
+                          "washPrice",
+                          parseInt(e.target.value)
+                        )
+                      }
                       className="flex-1 h-2 bg-gray-800 dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-20">{formatCurrency(values.washPrice)}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-20">
+                      {formatCurrency(values.washPrice)}
+                    </span>
                   </div>
                 </div>
 
                 {/* Detail Price */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3 text-[hsl(217,69%,34%)] dark:text-white">Detail Price ($):</label>
+                  <label className="block text-sm font-semibold mb-3 text-card-foreground">
+                    Detail Price ($):
+                  </label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
@@ -137,26 +284,42 @@ export default function RevenueCalculator() {
                       max="500"
                       value={values.detailPrice}
                       step="10"
-                      onChange={(e) => handleSliderChange('detailPrice', parseInt(e.target.value))}
+                      onChange={(e) =>
+                        handleSliderChange(
+                          "detailPrice",
+                          parseInt(e.target.value)
+                        )
+                      }
                       className="flex-1 h-2 bg-gray-800 dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-20">{formatCurrency(values.detailPrice)}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-20">
+                      {formatCurrency(values.detailPrice)}
+                    </span>
                   </div>
                 </div>
 
                 {/* Missed Calls Weekly */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3 text-[hsl(217,69%,34%)] dark:text-white">Missed Calls (Weekly):</label>
+                  <label className="block text-sm font-semibold mb-3 text-card-foreground">
+                    Missed Calls (Weekly):
+                  </label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
                       min="0"
                       max="25"
                       value={values.missedCalls}
-                      onChange={(e) => handleSliderChange('missedCalls', parseInt(e.target.value))}
+                      onChange={(e) =>
+                        handleSliderChange(
+                          "missedCalls",
+                          parseInt(e.target.value)
+                        )
+                      }
                       className="flex-1 h-2 bg-gray-800 dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
-                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">{values.missedCalls}</span>
+                    <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">
+                      {values.missedCalls}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -165,52 +328,274 @@ export default function RevenueCalculator() {
 
           {/* Results Section */}
           <div className="space-y-6">
-            {/* Current vs Potential Revenue */}
+            {/* Revenue Analysis */}
             <Card className="p-8">
               <CardHeader className="p-0 mb-6">
-                <CardTitle className="text-2xl font-bold">Revenue Analysis</CardTitle>
+                <CardTitle className="text-2xl font-bold flex items-center">
+                  <TrendingUp className="w-5 h-5 mr-2" />
+                  Revenue Analysis
+                </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-6">
                   <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                    <span className="font-semibold text-[hsl(217,69%,34%)] dark:text-white">Current Monthly Revenue:</span>
-                    <span className="text-2xl font-bold text-red-600 dark:text-red-400">{formatCurrency(results.currentRevenue)}</span>
+                    <span className="font-semibold text-card-foreground">
+                      Current Monthly Revenue:
+                    </span>
+                    <span className="text-2xl font-bold text-red-600 dark:text-red-400">
+                      {formatCurrency(results.currentRevenue)}
+                    </span>
                   </div>
-                  
+
                   <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                    <span className="font-semibold text-[hsl(217,69%,34%)] dark:text-white">Potential Monthly Revenue:</span>
-                    <span className="text-2xl font-bold text-green-600 dark:text-green-400">{formatCurrency(results.potentialRevenue)}</span>
+                    <span className="font-semibold text-card-foreground">
+                      Potential Monthly Revenue:
+                    </span>
+                    <span className="text-2xl font-bold text-green-600 dark:text-green-400">
+                      {formatCurrency(results.potentialRevenue)}
+                    </span>
                   </div>
-                  
+
                   <div className="flex justify-between items-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                    <span className="font-semibold text-[hsl(217,69%,34%)] dark:text-white">Monthly Revenue Leakage:</span>
-                    <span className="text-3xl font-bold text-[#ffcf00]">{formatCurrency(results.leakage)}</span>
+                    <span className="font-semibold text-card-foreground">
+                      Monthly Revenue Lost:
+                    </span>
+                    <span className="text-3xl font-bold text-[#ffcf00]">
+                      {formatCurrency(results.monthlyLeakage)}
+                    </span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Annual Impact */}
-            <Card className="gradient-bg text-white p-8">
-              <CardHeader className="p-0 mb-4">
-                <CardTitle className="text-2xl font-bold">Annual Impact</CardTitle>
+            {/* ROI Analysis */}
+            <Card className="p-8">
+              <CardHeader className="p-0 mb-6">
+                <CardTitle className="text-2xl font-bold flex items-center">
+                  <DollarSign className="w-5 h-5 mr-2" />
+                  Investment Analysis
+                </CardTitle>
               </CardHeader>
-              <CardContent className="p-0 text-center">
-                <div className="text-5xl font-bold mb-2">{formatCurrency(results.annualLeakage)}</div>
-                <p className="text-lg opacity-90">Revenue lost annually to manual processes</p>
+              <CardContent className="p-0">
+                <div className="space-y-4">
+                  {/* Package Selection Widget */}
+                  <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg mb-4">
+                    <label className="block text-sm font-semibold mb-3 text-card-foreground">
+                      Select Your AI Package:
+                    </label>
+                    <select
+                      value={values.businessSize}
+                      onChange={(e) =>
+                        handleSelectChange("businessSize", e.target.value)
+                      }
+                      className="w-full p-3 border rounded-lg bg-background text-card-foreground"
+                    >
+                      <option value="essential">
+                        Essential AI Package ($299 setup + $100/month)
+                      </option>
+                      <option value="professional">
+                        Professional AI Package ($799 setup + $250/month)
+                      </option>
+                      <option value="complete">
+                        Complete AI Suite ($1,499 setup + $350/month)
+                      </option>
+                    </select>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Choose the package that best fits your business size and
+                      needs
+                    </p>
+                  </div>
+
+                  <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <span className="font-semibold text-card-foreground">
+                      Setup Cost:
+                    </span>
+                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                      {formatCurrency(results.implementationCost)}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                    <span className="font-semibold text-card-foreground">
+                      Monthly Retainer:
+                    </span>
+                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">
+                      {formatCurrency(results.monthlyCost)}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                    <span className="font-semibold text-card-foreground">
+                      Annual Revenue Gain:
+                    </span>
+                    <span className="text-lg font-bold text-green-600 dark:text-green-400">
+                      {formatCurrency(results.annualLeakage)}
+                    </span>
+                  </div>
+
+                  {results.roi > 0 ? (
+                    <>
+                      <div className="flex justify-between items-center p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                        <span className="font-semibold text-card-foreground">
+                          Payback Period:
+                        </span>
+                        <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
+                          {results.paybackPeriod > 24
+                            ? "More than 24 months"
+                            : `${results.paybackPeriod.toFixed(1)} months`}
+                        </span>
+                      </div>
+
+                      <div className="flex justify-between items-center p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
+                        <span className="font-semibold text-card-foreground">
+                          ROI:
+                        </span>
+                        <span className="text-lg font-bold text-teal-600 dark:text-teal-400">
+                          {results.roi.toFixed(1)}%
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex justify-between items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                      <span className="font-semibold text-card-foreground">
+                        Note:
+                      </span>
+                      <span className="text-lg font-bold text-yellow-600 dark:text-yellow-400">
+                        Low missed calls - consider other benefits
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Implementation Info */}
+            <Card className="p-8">
+              <CardHeader className="p-0 mb-6">
+                <CardTitle className="text-2xl font-bold flex items-center">
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Implementation
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <div>
+                      <span className="font-semibold">Setup Time:</span>
+                      <span className="ml-2 text-muted-foreground">
+                        2-3 weeks
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <div>
+                      <span className="font-semibold">Training:</span>
+                      <span className="ml-2 text-muted-foreground">1 week</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <div>
+                      <span className="font-semibold">Full Automation:</span>
+                      <span className="ml-2 text-muted-foreground">
+                        1 month
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
             {/* CTA */}
             <Card className="p-8 text-center">
               <CardContent className="p-0">
-                <h4 className="text-xl font-bold mb-4">Ready to Plug the Revenue Leak?</h4>
-                <Button 
+                <h4 className="text-xl font-bold mb-4">
+                  Ready to Stop Losing Revenue?
+                </h4>
+                <p className="text-muted-foreground mb-6">
+                  Get a personalized plan to capture your missed opportunities
+                </p>
+                <Button
                   className="w-full bg-[#ffcf00] px-6 py-3 text-foreground rounded-lg font-bold hover:bg-yellow-300 transition-colors"
-                  onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/dashinfluence/new-meeting",
+                      "_blank"
+                    )
+                  }
                 >
                   Schedule Free Consultation
                 </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Encouraging Messages Section */}
+        <div className="mt-16">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-4 text-foreground">
+              Why Leading Businesses Choose AI Automation
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Join thousands of successful businesses that have transformed
+              their operations with AI
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="p-6 text-center border-2 border-blue-200 bg-blue-50 dark:bg-blue-900/20">
+              <CardContent className="p-0">
+                <Lightbulb className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="font-bold text-lg mb-2 text-blue-900 dark:text-blue-100">
+                  Smart Automation
+                </h3>
+                <p className="text-sm text-blue-700 dark:text-blue-200">
+                  AI handles 24/7 customer interactions, never missing a call or
+                  opportunity
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6 text-center border-2 border-green-200 bg-green-50 dark:bg-green-900/20">
+              <CardContent className="p-0">
+                <TrendingUp className="w-12 h-12 text-green-600 mx-auto mb-4" />
+                <h3 className="font-bold text-lg mb-2 text-green-900 dark:text-green-100">
+                  Proven Results
+                </h3>
+                <p className="text-sm text-green-700 dark:text-green-200">
+                  Average 40% increase in booking rates and 300% ROI within 18
+                  months
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6 text-center border-2 border-purple-200 bg-purple-50 dark:bg-purple-900/20">
+              <CardContent className="p-0">
+                <Zap className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                <h3 className="font-bold text-lg mb-2 text-purple-900 dark:text-purple-100">
+                  Instant Setup
+                </h3>
+                <p className="text-sm text-purple-700 dark:text-purple-200">
+                  Get started in 2-3 weeks with minimal disruption to your
+                  current operations
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6 text-center border-2 border-orange-200 bg-orange-50 dark:bg-orange-900/20">
+              <CardContent className="p-0">
+                <Target className="w-12 h-12 text-orange-600 mx-auto mb-4" />
+                <h3 className="font-bold text-lg mb-2 text-orange-900 dark:text-orange-100">
+                  Industry Leader
+                </h3>
+                <p className="text-sm text-orange-700 dark:text-orange-200">
+                  Trusted by 500+ car detailing businesses across North America
+                </p>
               </CardContent>
             </Card>
           </div>

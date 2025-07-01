@@ -22,7 +22,8 @@ const questions: Question[] = [
   },
   {
     id: 2,
-    question: "How many customer calls do you miss daily while working on cars?",
+    question:
+      "How many customer calls do you miss daily while working on cars?",
     options: [
       { value: "0-1", label: "0-1 calls", score: 1 },
       { value: "2-3", label: "2-3 calls", score: 2 },
@@ -62,12 +63,25 @@ const questions: Question[] = [
   },
   {
     id: 6,
-    question: "What's your biggest challenge running your car detailing business?",
+    question:
+      "What's your biggest challenge running your car detailing business?",
     options: [
-      { value: "missing-calls", label: "Missing customer calls while working", score: 4 },
-      { value: "scheduling", label: "Managing appointment scheduling", score: 3 },
+      {
+        value: "missing-calls",
+        label: "Missing customer calls while working",
+        score: 4,
+      },
+      {
+        value: "scheduling",
+        label: "Managing appointment scheduling",
+        score: 3,
+      },
       { value: "no-shows", label: "Dealing with no-shows", score: 2 },
-      { value: "pricing", label: "Pricing my services competitively", score: 1 },
+      {
+        value: "pricing",
+        label: "Pricing my services competitively",
+        score: 1,
+      },
     ],
   },
   {
@@ -102,12 +116,12 @@ export default function AutomationQuiz() {
 
   const handleAnswer = (score: number, value: string) => {
     setSelectedOption(value);
-    setAnswers(prev => ({ ...prev, [questions[currentQuestion].id]: score }));
+    setAnswers((prev) => ({ ...prev, [questions[currentQuestion].id]: score }));
   };
 
   const nextQuestion = () => {
     if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(prev => prev + 1);
+      setCurrentQuestion((prev) => prev + 1);
       setSelectedOption("");
     } else {
       setShowResults(true);
@@ -116,13 +130,16 @@ export default function AutomationQuiz() {
 
   const previousQuestion = () => {
     if (currentQuestion > 0) {
-      setCurrentQuestion(prev => prev - 1);
+      setCurrentQuestion((prev) => prev - 1);
       setSelectedOption("");
     }
   };
 
   const calculateScore = () => {
-    const totalScore = Object.values(answers).reduce((sum, score) => sum + score, 0);
+    const totalScore = Object.values(answers).reduce(
+      (sum, score) => sum + score,
+      0
+    );
     const maxScore = questions.length * 4;
     return Math.round((totalScore / maxScore) * 100);
   };
@@ -132,19 +149,22 @@ export default function AutomationQuiz() {
       return {
         level: "High Automation Potential",
         color: "text-green-600",
-        recommendation: "Your car detailing business is ready for advanced automation! You're missing significant revenue from manual processes. Our AI can immediately help with appointment booking, customer follow-up, and reducing missed calls.",
+        recommendation:
+          "Your car detailing business is ready for advanced automation! You're missing significant revenue from manual processes. Our AI can immediately help with appointment booking, customer follow-up, and reducing missed calls.",
       };
     } else if (score >= 60) {
       return {
-        level: "Medium Automation Potential", 
+        level: "Medium Automation Potential",
         color: "text-orange-600",
-        recommendation: "Your detailing business has good fundamentals but you're losing money to inefficient processes. Start with automated booking and SMS reminders to capture more customers while you're working on cars.",
+        recommendation:
+          "Your detailing business has good fundamentals but you're losing money to inefficient processes. Start with automated booking and SMS reminders to capture more customers while you're working on cars.",
       };
     } else {
       return {
         level: "High Automation Need",
         color: "text-red-600",
-        recommendation: "Your car detailing business would see immediate ROI from automation. You're likely missing 30-50% of potential bookings. Start with basic automated booking and appointment reminders to stop revenue leakage.",
+        recommendation:
+          "Your car detailing business would see immediate ROI from automation. You're likely missing 30-50% of potential bookings. Start with basic automated booking and appointment reminders to stop revenue leakage.",
       };
     }
   };
@@ -157,25 +177,35 @@ export default function AutomationQuiz() {
       <div className="section-padding bg-background">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4 text-foreground">Quiz Results</h1>
-            <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
+            <h1 className="text-4xl font-bold mb-4 text-foreground">
+              Quiz Results
+            </h1>
+            <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
           </div>
 
           <Card className="gradient-bg text-white p-8 text-center">
             <CardContent className="p-0">
               <h3 className="text-3xl font-bold mb-4">Your Automation Score</h3>
               <div className="text-6xl font-bold mb-2">{score}</div>
-              <p className={`text-xl mb-6 ${analysis.color}`}>{analysis.level}</p>
+              <p className={`text-xl mb-6 ${analysis.color}`}>
+                {analysis.level}
+              </p>
               <div className="max-w-2xl mx-auto">
                 <p className="mb-6 opacity-90">{analysis.recommendation}</p>
-                <Button 
+                <Button
                   className="px-8 py-3 bg-[#ffcf00] text-foreground rounded-lg font-bold hover:bg-yellow-300 transition-colors"
-                  onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/dashinfluence/new-meeting",
+                      "_blank"
+                    )
+                  }
                 >
                   Book a Call - Get AI Solutions
                 </Button>
                 <p className="mt-4 text-sm opacity-75">
-                  Get on a call with us to learn how AI can transform your car detailing business
+                  Get on a call with us to learn how AI can transform your car
+                  detailing business
                 </p>
               </div>
             </CardContent>
@@ -189,15 +219,21 @@ export default function AutomationQuiz() {
     <div className="section-padding bg-background">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">Automation Readiness Quiz</h1>
-          <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6"></div>
-          <p className="text-xl text-muted-foreground">Assess your business automation potential in 2 minutes</p>
+          <h1 className="text-4xl font-bold mb-4 text-foreground">
+            Automation Readiness Quiz
+          </h1>
+          <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Assess your automation potential in just 2 minutes
+          </p>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between text-sm font-medium mb-2">
-            <span>Question {currentQuestion + 1} of {questions.length}</span>
+            <span>
+              Question {currentQuestion + 1} of {questions.length}
+            </span>
             <span>{Math.round(progress)}% Complete</span>
           </div>
           <Progress value={progress} className="h-2" />
@@ -216,8 +252,8 @@ export default function AutomationQuiz() {
                     key={option.value}
                     className={`flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer transition-colors ${
                       selectedOption === option.value
-                        ? 'bg-[#ffcf00] bg-opacity-10 border-[#ffcf00]'
-                        : 'hover:bg-[hsl(210,20%,97%)]'
+                        ? "bg-[#ffcf00] bg-opacity-10 border-[#ffcf00]"
+                        : "hover:bg-[hsl(210,20%,97%)]"
                     }`}
                   >
                     <input
@@ -239,7 +275,9 @@ export default function AutomationQuiz() {
               <Button
                 onClick={previousQuestion}
                 variant="outline"
-                className={`px-6 py-3 ${currentQuestion === 0 ? 'invisible' : ''}`}
+                className={`px-6 py-3 ${
+                  currentQuestion === 0 ? "invisible" : ""
+                }`}
               >
                 Previous
               </Button>
@@ -248,7 +286,9 @@ export default function AutomationQuiz() {
                 disabled={!selectedOption}
                 className="px-6 py-3 bg-[#ffcf00] text-foreground hover:bg-yellow-300"
               >
-                {currentQuestion === questions.length - 1 ? 'Get Results' : 'Next Question'}
+                {currentQuestion === questions.length - 1
+                  ? "Get Results"
+                  : "Next Question"}
               </Button>
             </div>
           </CardContent>

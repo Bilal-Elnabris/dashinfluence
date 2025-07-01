@@ -17,11 +17,17 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import CookiePolicy from "@/pages/CookiePolicy";
 import NotFound from "@/pages/not-found";
+import LegacyHome from "@/pages/LegacyHome";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 function Router() {
+  // Use the custom scroll-to-top hook
+  useScrollToTop();
+
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/legacy-home" component={LegacyHome} />
       <Route path="/calculator" component={RevenueCalculator} />
       <Route path="/quiz" component={AutomationQuiz} />
       <Route path="/packages" component={ServicePackages} />

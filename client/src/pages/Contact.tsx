@@ -14,7 +14,8 @@ export default function Contact() {
             Let's Transform Your Business Together
           </h1>
           <p className="text-xl mb-8 opacity-90">
-            Ready to automate your way to success? Get in touch with our AI automation experts.
+            Ready to automate your way to success? Get in touch with our AI
+            automation experts.
           </p>
         </div>
       </div>
@@ -27,35 +28,52 @@ export default function Contact() {
             <div>
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-foreground">Send Us a Message</CardTitle>
-                  <p className="text-muted-foreground">Fill out the form below and we'll get back to you within 24 hours.</p>
+                  <CardTitle className="text-2xl text-foreground">
+                    Send Us a Message
+                  </CardTitle>
+                  <p className="text-muted-foreground">
+                    Fill out the form below and we'll get back to you within 24
+                    hours.
+                  </p>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-2">First Name</label>
+                      <label className="block text-sm font-medium mb-2">
+                        First Name
+                      </label>
                       <Input placeholder="John" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Last Name</label>
+                      <label className="block text-sm font-medium mb-2">
+                        Last Name
+                      </label>
                       <Input placeholder="Doe" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Email
+                    </label>
                     <Input type="email" placeholder="john@example.com" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Phone</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Phone
+                    </label>
                     <Input type="tel" placeholder="+1 (555) 123-4567" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Company</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Company
+                    </label>
                     <Input placeholder="Your Company Name" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">How can we help you?</label>
-                    <Textarea 
+                    <label className="block text-sm font-medium mb-2">
+                      How can we help you?
+                    </label>
+                    <Textarea
                       placeholder="Tell us about your business challenges and automation needs..."
                       rows={4}
                     />
@@ -70,10 +88,14 @@ export default function Contact() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-foreground mb-6">Get In Touch</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-6">
+                  Get In Touch
+                </h2>
                 <p className="text-muted-foreground mb-8">
-                  Ready to revolutionize your business with AI automation? Our experts are standing by to help you 
-                  identify opportunities, design solutions, and implement systems that drive real results.
+                  Ready to revolutionize your business with AI automation? Our
+                  experts are standing by to help you identify opportunities,
+                  design solutions, and implement systems that drive real
+                  results.
                 </p>
               </div>
 
@@ -85,8 +107,12 @@ export default function Contact() {
                       <Mail className="w-6 h-6 text-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground">Email Us</h3>
-                      <p className="text-muted-foreground">hello@dashinfluence.com</p>
+                      <h3 className="font-semibold text-foreground">
+                        Email Us
+                      </h3>
+                      <p className="text-muted-foreground">
+                        hello@dashinfluence.com
+                      </p>
                     </div>
                   </div>
                 </Card>
@@ -109,8 +135,12 @@ export default function Contact() {
                       <Clock className="w-6 h-6 text-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground">Business Hours</h3>
-                      <p className="text-muted-foreground">Mon-Fri: 9:00 AM - 6:00 PM EST</p>
+                      <h3 className="font-semibold text-foreground">
+                        Business Hours
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Mon-Fri: 9:00 AM - 6:00 PM EST
+                      </p>
                     </div>
                   </div>
                 </Card>
@@ -118,15 +148,23 @@ export default function Contact() {
 
               {/* CTA Section */}
               <Card className="p-6 bg-gradient-to-r from-[hsl(217,69%,34%)] to-[hsl(225,71%,53%)] text-white">
-                <h3 className="text-xl font-bold mb-4">Ready to Get Started?</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  Ready to Get Started?
+                </h3>
                 <p className="mb-6 opacity-90">
-                  Book a free 30-minute consultation to discuss your automation needs and see how we can help.
+                  Book a free 30-minute consultation to discuss your automation
+                  needs and see how we can help.
                 </p>
-                <Button 
-                  className="bg-[#ffcf00] text-foreground hover:bg-yellow-300 font-bold"
-                  onClick={() => window.open('https://calendly.com/dashinfluence/consultation', '_blank')}
+                <Button
+                  className="w-full bg-[#ffcf00] text-foreground hover:bg-yellow-300 font-bold py-3"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/dashinfluence/new-meeting",
+                      "_blank"
+                    )
+                  }
                 >
-                  Schedule Free Consultation
+                  Schedule a Call
                 </Button>
               </Card>
             </div>
