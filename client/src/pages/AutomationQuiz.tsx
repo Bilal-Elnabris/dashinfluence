@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { SparklesCore } from "@/components/SparklesCore";
 
 interface Question {
   id: number;
@@ -12,7 +13,7 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "How many car wash/detail appointments do you book weekly?",
+    question: "How many appointments or jobs do you book weekly?",
     options: [
       { value: "1-10", label: "1-10 appointments", score: 1 },
       { value: "11-25", label: "11-25 appointments", score: 2 },
@@ -23,7 +24,7 @@ const questions: Question[] = [
   {
     id: 2,
     question:
-      "How many customer calls do you miss daily while working on cars?",
+      "How many customer calls do you miss daily while working on your business?",
     options: [
       { value: "0-1", label: "0-1 calls", score: 1 },
       { value: "2-3", label: "2-3 calls", score: 2 },
@@ -63,8 +64,7 @@ const questions: Question[] = [
   },
   {
     id: 6,
-    question:
-      "What's your biggest challenge running your car detailing business?",
+    question: "What's your biggest challenge running your business?",
     options: [
       {
         value: "missing-calls",
@@ -96,7 +96,7 @@ const questions: Question[] = [
   },
   {
     id: 8,
-    question: "What's your monthly revenue target for your detailing business?",
+    question: "What's your monthly revenue target for your business?",
     options: [
       { value: "5k", label: "Under $5K", score: 1 },
       { value: "10k", label: "$5K - $10K", score: 2 },
@@ -150,21 +150,21 @@ export default function AutomationQuiz() {
         level: "High Automation Potential",
         color: "text-green-600",
         recommendation:
-          "Your car detailing business is ready for advanced automation! You're missing significant revenue from manual processes. Our AI can immediately help with appointment booking, customer follow-up, and reducing missed calls.",
+          "Your business is ready for advanced automation! You're missing significant revenue from manual processes. Our AI can immediately help with appointment booking, customer follow-up, and reducing missed calls.",
       };
     } else if (score >= 60) {
       return {
         level: "Medium Automation Potential",
         color: "text-orange-600",
         recommendation:
-          "Your detailing business has good fundamentals but you're losing money to inefficient processes. Start with automated booking and SMS reminders to capture more customers while you're working on cars.",
+          "Your business has good fundamentals but you're losing money to inefficient processes. Start with automated booking and SMS reminders to capture more customers while you're working.",
       };
     } else {
       return {
         level: "High Automation Need",
         color: "text-red-600",
         recommendation:
-          "Your car detailing business would see immediate ROI from automation. You're likely missing 30-50% of potential bookings. Start with basic automated booking and appointment reminders to stop revenue leakage.",
+          "Your business would see immediate ROI from automation. You're likely missing 30-50% of potential bookings. Start with basic automated booking and appointment reminders to stop revenue leakage.",
       };
     }
   };
@@ -174,8 +174,21 @@ export default function AutomationQuiz() {
     const analysis = getScoreAnalysis(score);
 
     return (
-      <div className="section-padding bg-background">
-        <div className="max-w-4xl mx-auto px-6">
+      <div className="section-padding bg-background relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 z-0">
+          <SparklesCore
+            id="tsparticlesquizresults"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={50}
+            className="w-full h-full"
+            particleColor="#6b7280"
+          />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 text-foreground">
               Quiz Results
@@ -204,8 +217,8 @@ export default function AutomationQuiz() {
                   Book a Call - Get AI Solutions
                 </Button>
                 <p className="mt-4 text-sm opacity-75">
-                  Get on a call with us to learn how AI can transform your car
-                  detailing business
+                  Get on a call with us to learn how AI can transform your
+                  business
                 </p>
               </div>
             </CardContent>
@@ -216,15 +229,28 @@ export default function AutomationQuiz() {
   }
 
   return (
-    <div className="section-padding bg-background">
-      <div className="max-w-4xl mx-auto px-6">
+    <div className="section-padding bg-background relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 z-0">
+        <SparklesCore
+          id="tsparticlesquiz"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={50}
+          className="w-full h-full"
+          particleColor="#6b7280"
+        />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 text-foreground">
             Automation Readiness Quiz
           </h1>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Assess your automation potential in just 2 minutes
+            Assess your business automation potential in just 2 minutes
           </p>
         </div>
 
