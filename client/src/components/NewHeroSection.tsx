@@ -42,6 +42,19 @@ export default function NewHeroSection() {
         />
       </div>
 
+      {/* Additional Stars Background for Stats Boxes Section */}
+      <div className="absolute top-1/2 left-0 right-0 h-1/4 z-0 pointer-events-none">
+        <SparklesCore
+          id="tsparticlesseeinactionbg"
+          background="transparent"
+          minSize={0.8}
+          maxSize={2.0}
+          particleDensity={80}
+          className="w-full h-full"
+          particleColor="#FFFFFF"
+        />
+      </div>
+
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 pt-32 pb-16">
         <div className="max-w-6xl mx-auto">

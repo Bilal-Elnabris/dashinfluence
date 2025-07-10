@@ -3,6 +3,11 @@ import WhyChooseAISection from "@/components/WhyChooseAISection";
 import RevenueCalculator from "./RevenueCalculator";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AIPackagesPreview from "@/components/AIPackagesPreview";
+import SEOHead from "@/components/SEOHead";
+import StructuredData, {
+  organizationSchema,
+  serviceSchema,
+} from "@/components/StructuredData";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
@@ -63,6 +68,20 @@ const BUSINESS_TYPES = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* SEO Head Component */}
+      <SEOHead
+        title="AI Business Automation for Car Detailers & More | DashInfluence"
+        description="Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking, smart call handling, and revenue optimization for car detailers, real estate, home services, and more."
+        keywords="AI automation, business automation, car detailing automation, automated booking, AI voice agent, revenue optimization, 24/7 booking, smart call handling"
+        ogTitle="AI Business Automation for Car Detailers & More | DashInfluence"
+        ogDescription="Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking and smart call handling."
+        canonical="https://dashinfluence.com"
+      />
+
+      {/* Structured Data */}
+      <StructuredData type="organization" data={organizationSchema} />
+      <StructuredData type="service" data={serviceSchema} />
+
       {/* Full-page Stars Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <SparklesCore
@@ -131,8 +150,20 @@ export default function Home() {
         </section>
 
         {/* Informative Section 2: Our Proven Approach */}
-        <section className="section-padding bg-white dark:bg-slate-900 border-t border-b border-slate-200 dark:border-slate-700">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+        <section className="section-padding bg-white dark:bg-slate-900 border-t border-b border-slate-200 dark:border-slate-700 relative overflow-hidden">
+          {/* Stars Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticlesprovenapproach"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={50}
+              className="w-full h-full"
+              particleColor="#6b7280"
+            />
+          </div>
+          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our Proven Approach
             </h2>

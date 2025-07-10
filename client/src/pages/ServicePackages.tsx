@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SparklesCore } from "@/components/SparklesCore";
+import SEOHead from "@/components/SEOHead";
 import { useState } from "react";
 import {
   Accordion,
@@ -144,21 +145,9 @@ const INDUSTRIES = [
     ],
   },
   {
-    key: "home-services",
-    label: "Home Services",
+    key: "other",
+    label: "Other",
     icon: Wrench,
-    comingSoon: true,
-  },
-  {
-    key: "health-wellness",
-    label: "Health & Wellness Clinics",
-    icon: HeartPulse,
-    comingSoon: true,
-  },
-  {
-    key: "restaurants-cafes",
-    label: "Restaurants & Cafes",
-    icon: UtensilsCrossed,
     comingSoon: true,
   },
 ];
@@ -169,6 +158,16 @@ export default function ServicePackages() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden relative">
+      {/* SEO Head Component */}
+      <SEOHead
+        title="AI Automation Packages & Pricing | DashInfluence"
+        description="Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages for car detailers, real estate agents, and more. Start at $400."
+        keywords="AI automation packages, automation pricing, car detailing automation, real estate automation, business automation packages"
+        ogTitle="AI Automation Packages & Pricing | DashInfluence"
+        ogDescription="Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages starting at $400."
+        canonical="https://dashinfluence.com/packages"
+      />
+
       {/* Stars Background */}
       <div className="h-full w-full absolute inset-0 z-0">
         <SparklesCore
@@ -233,29 +232,23 @@ export default function ServicePackages() {
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           {industry?.comingSoon ? (
             <div className="text-center">
-              <Card className="max-w-2xl mx-auto p-12 bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white relative overflow-hidden">
-                {/* Animated Background */}
-                <div className="absolute inset-0 z-0">
-                  <SparklesCore
-                    id="tsparticlescomingsoon"
-                    background="transparent"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={50}
-                    className="w-full h-full"
-                    particleColor="#FFFFFF"
-                  />
-                </div>
-                <CardContent className="p-0 relative z-10">
+              <Card className="max-w-2xl mx-auto p-12 bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white border-0">
+                <CardContent className="p-0">
                   <div className="text-6xl mb-6">🚧</div>
                   <h3 className="text-3xl font-bold mb-4">Coming Soon!</h3>
-                  <p className="text-xl mb-6 opacity-90">
-                    We're working hard to bring AI automation to{" "}
-                    {industry.label.toLowerCase()}.
-                    <br />
-                    Stay tuned for exciting packages tailored specifically for
-                    your industry.
-                  </p>
+                  <div className="text-xl mb-6 opacity-90 space-y-4">
+                    <p>
+                      We are currently{" "}
+                      <span className="font-semibold text-[#ffcf00]">
+                        expanding our team
+                      </span>{" "}
+                      to serve more niches.
+                    </p>
+                    <p>
+                      Stay tuned for exciting packages tailored specifically for
+                      your industry.
+                    </p>
+                  </div>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button
                       className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"

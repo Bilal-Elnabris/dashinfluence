@@ -12,6 +12,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/why-us", label: "Why DashInfluence" },
     { href: "/packages", label: "Service Packages" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const toggleMenu = () => {

@@ -199,7 +199,7 @@ export default function WhyDashInfluence() {
         {/* Header */}
         <div className="section-padding">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4 text-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
               Why Choose DashInfluence?
             </h1>
             <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>

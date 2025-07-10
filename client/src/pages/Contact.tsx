@@ -4,10 +4,22 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
+import SEOHead from "@/components/SEOHead";
+import FAQSection from "@/components/FAQSection";
 
 export default function Contact() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+      {/* SEO Head Component */}
+      <SEOHead
+        title="Contact Us & FAQ - AI Automation Experts | DashInfluence"
+        description="Ready to transform your business with AI automation? Contact our experts for a free consultation. Find answers to frequently asked questions about AI automation, pricing, and implementation."
+        keywords="contact us, AI automation FAQ, business automation experts, free consultation, automation support, AI automation questions, automation pricing"
+        ogTitle="Contact Us & FAQ - AI Automation Experts | DashInfluence"
+        ogDescription="Ready to transform your business with AI automation? Contact our experts for a free consultation. Find answers to frequently asked questions."
+        canonical="https://dashinfluence.com/contact"
+      />
+
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -192,7 +204,7 @@ export default function Contact() {
                         Business Hours
                       </h3>
                       <p className="text-muted-foreground">
-                        Mon-Fri: 9:00 AM - 6:00 PM EST
+                        Mon-Fri: 9:00 AM - 6:00 PM MST
                       </p>
                     </div>
                   </div>
@@ -224,6 +236,9 @@ export default function Contact() {
           </div>
         </div>
       </div>
+
+      {/* FAQ Section */}
+      <FAQSection />
     </div>
   );
 }

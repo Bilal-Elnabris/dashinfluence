@@ -1,5 +1,6 @@
 import { useLocation } from "wouter";
 import { Car, Home, Wrench, HeartPulse, Coffee } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 
 const niches = [
   {
@@ -39,7 +40,7 @@ const niches = [
   },
 ];
 
-const iconMap = {
+const iconMap: Record<string, React.ComponentType<any>> = {
   "car-detailing": Car,
   "real-estate": Home,
   "home-services": Wrench,
@@ -51,6 +52,16 @@ export default function RevenueCalculatorSelection() {
   const [, setLocation] = useLocation();
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background py-16 px-4">
+      {/* SEO Head Component */}
+      <SEOHead
+        title="Revenue Calculator - Calculate Your Business Automation ROI | DashInfluence"
+        description="Calculate how much revenue you're losing to missed calls and manual scheduling. See your automation ROI for car detailing, real estate, home services, health & wellness, and restaurants."
+        keywords="revenue calculator, automation ROI, business automation calculator, missed revenue, car detailing calculator, real estate automation"
+        ogTitle="Revenue Calculator - Calculate Your Business Automation ROI | DashInfluence"
+        ogDescription="Calculate how much revenue you're losing to missed calls and manual scheduling. See your automation ROI."
+        canonical="https://dashinfluence.com/calculator"
+      />
+
       <h1 className="text-4xl font-bold mb-8 text-center text-foreground">
         Select Your Business Type
       </h1>
