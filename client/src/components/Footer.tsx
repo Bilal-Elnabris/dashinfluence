@@ -76,7 +76,7 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Contact</h4>
             <ul className="space-y-2 text-sm">
               <li className="opacity-80">hello@dashinfluence.com</li>
-              <li className="opacity-80">(555) 123-4567</li>
+              <li className="opacity-80">(825) 250-0262</li>
               <li>
                 <Link
                   href="/contact"

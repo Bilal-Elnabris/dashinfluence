@@ -202,7 +202,7 @@ export default function TermsOfService() {
                 </p>
                 <div className="mt-4 space-y-1 text-muted-foreground">
                   <p>Email: legal@dashinfluence.com</p>
-                  <p>Phone: (555) 123-4567</p>
+                  <p>Phone: (825) 250-0262</p>
                   <p>Address: DashInfluence, Legal Department</p>
                 </div>
               </CardContent>

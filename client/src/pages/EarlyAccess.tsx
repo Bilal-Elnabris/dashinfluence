@@ -217,7 +217,7 @@ export default function EarlyAccess() {
                     </label>
                     <Input
                       type="tel"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+1 (825) 250-0262"
                       value={formData.phone}
                       onChange={(e) =>
                         handleInputChange("phone", e.target.value)

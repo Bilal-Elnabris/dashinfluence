@@ -8,8 +8,8 @@ import StructuredData, {
   organizationSchema,
   serviceSchema,
 } from "@/components/StructuredData";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "../components/ui/button";
+import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import {
   Brain,
@@ -22,6 +22,7 @@ import {
   Coffee,
 } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
+import { Progress } from "@/components/ui/progress";
 
 const BUSINESS_TYPES = [
   {
@@ -98,9 +99,21 @@ export default function Home() {
         {/* New Hero Section */}
         <NewHeroSection />
 
-        {/* Informative Section 1: How AI Automation Transforms Your Business */}
-        <section className="section-padding bg-gradient-to-r from-slate-100 to-gray-100 dark:from-slate-800 dark:to-gray-800 relative overflow-hidden">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+        {/* How AI Automation Transforms Your Business (moved up) */}
+        <section className="section-padding bg-white dark:bg-slate-900 relative overflow-hidden">
+          {/* Stars Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticlesai-transforms"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={50}
+              className="w-full h-full"
+              particleColor="#6b7280"
+            />
+          </div>
+          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               How AI Automation Transforms Your Business
             </h2>
@@ -149,67 +162,24 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Informative Section 2: Our Proven Approach */}
-        <section className="section-padding bg-white dark:bg-slate-900 border-t border-b border-slate-200 dark:border-slate-700 relative overflow-hidden">
-          {/* Stars Background */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
-            <SparklesCore
-              id="tsparticlesprovenapproach"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={50}
-              className="w-full h-full"
-              particleColor="#6b7280"
-            />
-          </div>
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Proven Approach
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              We don't just implement technology—we partner with you to deliver
-              measurable results using a research-backed, step-by-step process:
-            </p>
-            <ol className="text-left text-base md:text-lg mx-auto max-w-2xl space-y-3 mb-6 list-decimal list-inside">
-              <li>
-                <span className="font-semibold">Assessment:</span> We analyze
-                your current workflows and identify high-impact automation
-                opportunities using industry benchmarks and best practices.
-              </li>
-              <li>
-                <span className="font-semibold">Tailored Solutions:</span> Our
-                team designs AI-powered automations customized to your business
-                needs, ensuring maximum ROI.
-              </li>
-              <li>
-                <span className="font-semibold">Seamless Implementation:</span>{" "}
-                We integrate solutions with minimal disruption, providing
-                training and support every step of the way.
-              </li>
-              <li>
-                <span className="font-semibold">Continuous Optimization:</span>{" "}
-                We monitor performance and refine automations based on real
-                data, so you keep getting better results over time.
-              </li>
-            </ol>
-            <p className="text-base opacity-80">
-              Our approach is trusted by businesses across industries—and it's
-              designed to make your transition to AI automation smooth,
-              effective, and future-proof.
-            </p>
-          </div>
-        </section>
-
         {/* Our Implementation Process */}
         <WhyChooseAISection />
 
-        {/* Select Your Business Type (niche cards) */}
+        {/* Persuasive Calculator Section */}
         <section className="section-padding bg-gradient-to-r from-slate-100 to-gray-100 dark:from-slate-800 dark:to-gray-800 relative overflow-hidden">
           <div className="max-w-5xl mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              Select Your Business Type
+              Are You Leaving Money on the Table? Find Out How Much You're
+              Losing Without AI
             </h2>
+            <p className="text-lg mb-8 opacity-90 max-w-3xl mx-auto">
+              Every day, businesses lose revenue to missed calls, slow
+              follow-ups, and manual processes. Without AI automation, these
+              losses add up—impacting your bottom line and growth potential.
+              Curious how much you could be losing? Use our calculator below to
+              see your potential leakage and discover how AI can help you
+              recover it.
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
               {BUSINESS_TYPES.map((type) => {
                 const Icon = type.icon;

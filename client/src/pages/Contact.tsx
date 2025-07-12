@@ -113,7 +113,7 @@ export default function Contact() {
                     <label className="block text-sm font-medium mb-2">
                       Phone
                     </label>
-                    <Input type="tel" placeholder="+1 (555) 123-4567" />
+                    <Input type="tel" placeholder="+1 (825) 250-0262" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
@@ -189,7 +189,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Call Us</h3>
-                      <p className="text-muted-foreground">(555) 123-4567</p>
+                      <p className="text-muted-foreground">(825) 250-0262</p>
                     </div>
                   </div>
                 </Card>

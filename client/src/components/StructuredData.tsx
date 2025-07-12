@@ -45,7 +45,7 @@ export const organizationSchema = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-555-123-4567",
+    telephone: "+1-825-250-0262",
     contactType: "customer service",
     email: "hello@dashinfluence.com",
   },
