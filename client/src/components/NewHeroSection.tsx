@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLenisScrollAnimation } from "@/hooks/useLenisScroll";
 import { Button } from "@/components/ui/button";
 import {
   ChevronRight,
@@ -15,17 +16,17 @@ import { SparklesCore } from "@/components/SparklesCore";
 
 export default function NewHeroSection() {
   const [scrollY, setScrollY] = useState(0);
+  const { addScrollListener } = useLenisScrollAnimation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    const unsubscribe = addScrollListener((e: any) => {
+      setScrollY(e.scroll);
+    });
 
-    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (unsubscribe) unsubscribe();
     };
-  }, []);
+  }, [addScrollListener]);
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">

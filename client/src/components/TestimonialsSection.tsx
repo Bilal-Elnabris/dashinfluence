@@ -49,7 +49,7 @@ export default function TestimonialsSection() {
     },
     {
       name: "Rob Johnson",
-      company: "Classic Car Detailing",
+      company: "Classic Auto Care",
       image:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
       quote:
@@ -134,8 +134,8 @@ export default function TestimonialsSection() {
           </h2>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Join hundreds of car detailing businesses that have transformed
-            their operations with AI automation
+            Join hundreds of businesses that have transformed their operations
+            with AI automation
           </p>
         </div>
 

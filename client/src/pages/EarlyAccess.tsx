@@ -36,7 +36,7 @@ export default function EarlyAccess() {
     "Health & Wellness Clinics",
     "Restaurants & Cafes",
     "Real Estate",
-    "Car Detailing",
+    "Automotive Services",
     "Other",
   ];
 
@@ -399,8 +399,7 @@ export default function EarlyAccess() {
                   </Button>
                   <Button
                     type="button"
-                    variant="outline"
-                    className="flex-1"
+                    className="flex-1 bg-transparent border border-white/20 text-white hover:bg-white/10"
                     onClick={() => setLocation("/packages")}
                   >
                     <span className="text-sm sm:text-base">

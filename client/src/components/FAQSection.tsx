@@ -47,12 +47,12 @@ export default function FAQSection() {
     ],
     carDetailing: [
       {
-        question: "How does AI automation work for car detailing businesses?",
+        question: "How does AI automation work for automotive businesses?",
         answer:
           "Our AI handles incoming calls, books appointments based on your availability, sends SMS reminders to reduce no-shows, and follows up with customers after service. It integrates with your existing calendar and can handle multiple service types.",
       },
       {
-        question: "Can the AI handle different car detailing services?",
+        question: "Can the AI handle different automotive services?",
         answer:
           "Yes! Our AI can book basic washes, premium details, interior cleaning, ceramic coatings, and any other services you offer. It learns your pricing and can even suggest upsells.",
       },
@@ -137,7 +137,7 @@ export default function FAQSection() {
   const categories = [
     { key: "general", label: "General Questions", icon: "🤖" },
     { key: "technical", label: "Technical Setup", icon: "⚙️" },
-    { key: "carDetailing", label: "Car Detailing", icon: "🚗" },
+    { key: "carDetailing", label: "Automotive Services", icon: "🚗" },
     { key: "realEstate", label: "Real Estate", icon: "🏠" },
     { key: "pricing", label: "Pricing & Packages", icon: "💰" },
     { key: "support", label: "Support & Service", icon: "🛠️" },

@@ -8,7 +8,7 @@ const niches = [
     key: "car-detailing",
     title: "Car Detailers",
     description:
-      "Calculate lost revenue and automation potential for your business.",
+      "Calculate lost revenue and automation potential for your car detailing business.",
     link: "/calculator/car-detailing",
   },
   {
@@ -68,8 +68,8 @@ export default function RevenueCalculatorSelection() {
       {/* SEO Head Component */}
       <SEOHead
         title="Revenue Calculator - Calculate Your Business Automation ROI | DashInfluence"
-        description="Calculate how much revenue you're losing to missed calls and manual scheduling. See your automation ROI for car detailing, real estate, home services, health & wellness, and restaurants."
-        keywords="revenue calculator, automation ROI, business automation calculator, missed revenue, car detailing calculator, real estate automation"
+        description="Calculate how much revenue you're losing to missed calls and manual scheduling. See your automation ROI for automotive services, real estate, home services, health & wellness, and restaurants."
+        keywords="revenue calculator, automation ROI, business automation calculator, missed revenue, automotive calculator, real estate automation"
         ogTitle="Revenue Calculator - Calculate Your Business Automation ROI | DashInfluence"
         ogDescription="Calculate how much revenue you're losing to missed calls and manual scheduling. See your automation ROI."
         canonical="https://dashinfluence.com/calculator"

@@ -18,6 +18,8 @@ import TermsOfService from "@/pages/TermsOfService";
 import CookiePolicy from "@/pages/CookiePolicy";
 import NotFound from "@/pages/not-found";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
+import { ScrollProgress } from "@/components/ScrollOptimizer";
+import { LenisProvider } from "@/components/LenisProvider";
 import CarDetailingCalculator from "@/pages/CarDetailingCalculator";
 import RealEstateCalculator from "@/pages/RealEstateCalculator";
 import HomeServicesCalculator from "@/pages/HomeServicesCalculator";
@@ -68,14 +70,17 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
-          <div className="min-h-screen flex flex-col smooth-scroll">
-            <Navbar />
-            <main className="flex-1">
-              <Router />
-            </main>
-            <Footer />
-          </div>
-          <Toaster />
+          <LenisProvider>
+            <ScrollProgress />
+            <div className="min-h-screen flex flex-col smooth-scroll">
+              <Navbar />
+              <main className="flex-1">
+                <Router />
+              </main>
+              <Footer />
+            </div>
+            <Toaster />
+          </LenisProvider>
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>

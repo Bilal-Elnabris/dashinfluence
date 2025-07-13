@@ -161,8 +161,8 @@ export default function ServicePackages() {
       {/* SEO Head Component */}
       <SEOHead
         title="AI Automation Packages & Pricing | DashInfluence"
-        description="Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages for car detailers, real estate agents, and more. Start at $400."
-        keywords="AI automation packages, automation pricing, car detailing automation, real estate automation, business automation packages"
+        description="Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages for automotive services, real estate agents, and more. Start at $400."
+        keywords="AI automation packages, automation pricing, automotive automation, real estate automation, business automation packages"
         ogTitle="AI Automation Packages & Pricing | DashInfluence"
         ogDescription="Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages starting at $400."
         canonical="https://dashinfluence.com/packages"

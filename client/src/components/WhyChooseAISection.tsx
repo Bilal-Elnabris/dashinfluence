@@ -39,8 +39,7 @@ export default function WhyChooseAISection() {
     {
       icon: <Target className="w-12 h-12 text-orange-600" />,
       title: "Industry Leader",
-      description:
-        "Trusted by 500+ car detailing businesses across North America",
+      description: "Trusted by 150+ businesses across North America",
       color: "orange",
     },
   ];
@@ -121,8 +120,8 @@ export default function WhyChooseAISection() {
               Industry Expertise
             </h3>
             <p className="text-muted-foreground">
-              Specialized in car detailing automation with deep understanding of
-              your unique challenges and opportunities.
+              Specialized in business automation with deep understanding of your
+              unique challenges and opportunities.
             </p>
           </div>
 

@@ -61,7 +61,7 @@ export default function WhyDashInfluence() {
     },
     {
       name: "Rob Johnson",
-      company: "Classic Car Detailing",
+      company: "Classic Auto Care",
       image:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
       quote:
@@ -219,9 +219,9 @@ export default function WhyDashInfluence() {
                 Industry Expertise
               </h3>
               <p className="text-white">
-                While we serve various business types, we specialize in real
-                estate automation with deep understanding of your unique
-                challenges and opportunities.
+                Specialized in business automation with deep understanding of
+                your unique challenges and opportunities across multiple
+                industries.
               </p>
             </div>
 
@@ -489,7 +489,7 @@ export default function WhyDashInfluence() {
 
           {/* Final CTA */}
           <div className="text-center relative">
-            <div className="bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white rounded-xl p-8 relative overflow-hidden">
+            <div className="bg-white text-[hsl(217,69%,34%)] rounded-xl p-8 relative overflow-hidden shadow-xl border border-gray-100">
               {/* Stars Background for CTA */}
               <div className="absolute inset-0 z-0 pointer-events-none">
                 <SparklesCore
@@ -499,19 +499,19 @@ export default function WhyDashInfluence() {
                   maxSize={1.4}
                   particleDensity={60}
                   className="w-full h-full"
-                  particleColor="#FFFFFF"
+                  particleColor="#B0B3B8"
                 />
               </div>
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-4">
+                <h3 className="text-2xl font-bold mb-4 text-[hsl(217,69%,34%)]">
                   Ready to Transform Your Business?
                 </h3>
-                <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+                <p className="text-lg mb-6 text-gray-700 max-w-2xl mx-auto">
                   Join hundreds of successful businesses that have already
                   automated their way to success
                 </p>
                 <Button
-                  className="bg-[#ffcf00] text-black font-bold px-4 sm:px-8 py-3 hover:bg-yellow-300 transition-colors text-sm sm:text-base whitespace-nowrap"
+                  className="bg-[hsl(217,69%,34%)] text-white font-bold px-6 sm:px-8 py-3 hover:bg-[hsl(217,69%,28%)] transition-colors text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl"
                   onClick={() =>
                     window.open(
                       "https://calendly.com/dashinfluence/new-meeting",
@@ -519,7 +519,7 @@ export default function WhyDashInfluence() {
                     )
                   }
                 >
-                  <span className="text-xs sm:text-sm">
+                  <span className="text-sm sm:text-base font-semibold">
                     Schedule Your Free Consultation
                   </span>
                 </Button>

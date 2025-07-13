@@ -29,7 +29,8 @@ const BUSINESS_TYPES = [
   {
     key: "car-detailing",
     label: "Car Detailers",
-    description: "For businesses looking to automate bookings and follow-ups.",
+    description:
+      "For car detailing businesses looking to automate bookings and follow-ups.",
     icon: Car,
     link: "/calculator/car-detailing",
   },
@@ -72,10 +73,10 @@ export default function Home() {
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* SEO Head Component */}
       <SEOHead
-        title="AI Business Automation for Car Detailers & More | DashInfluence"
-        description="Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking, smart call handling, and revenue optimization for car detailers, real estate, home services, and more."
-        keywords="AI automation, business automation, car detailing automation, automated booking, AI voice agent, revenue optimization, 24/7 booking, smart call handling"
-        ogTitle="AI Business Automation for Car Detailers & More | DashInfluence"
+        title="AI Business Automation Solutions | DashInfluence"
+        description="Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking, smart call handling, and revenue optimization for businesses across all industries."
+        keywords="AI automation, business automation, automation solutions, automated booking, AI voice agent, revenue optimization, 24/7 booking, smart call handling"
+        ogTitle="AI Business Automation Solutions | DashInfluence"
         ogDescription="Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking and smart call handling."
         canonical="https://dashinfluence.com"
       />

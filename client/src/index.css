@@ -67,11 +67,38 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-family: "Inter", sans-serif;
-    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html {
+    scroll-padding-top: 2rem;
+  }
+
+  /* Optimize scroll performance */
+  .scroll-optimized {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Smooth scroll for specific elements */
+  .smooth-scroll-element {
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -190,17 +217,51 @@
     box-shadow: 0 0 0 1px var(--primary);
   }
 
-  /* Smooth scrolling optimizations */
+  /* Enhanced smooth scrolling optimizations */
   .smooth-scroll {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    scroll-padding-top: 2rem;
   }
 
   /* Performance optimizations for static objects */
   .static-optimized {
     will-change: auto;
     transform: translateZ(0);
-    backface-visibility: hidden;
+  }
+
+  /* Scroll-triggered animations */
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Parallax scrolling effect */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Smooth section transitions */
+  .section-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced button hover with smooth transitions */
+  .enhanced-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+  }
+
+  .enhanced-hover:hover {
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
 
   /* Custom slider styles */

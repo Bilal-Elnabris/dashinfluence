@@ -24,7 +24,7 @@
     "industries": [
       {
         "name": "Car Detailers",
-        "description": "For businesses looking to automate bookings and follow-ups.",
+        "description": "For car detailing businesses looking to automate bookings and follow-ups.",
         "calculator_url": "/calculator/car-detailing",
         "packages": [
           {
