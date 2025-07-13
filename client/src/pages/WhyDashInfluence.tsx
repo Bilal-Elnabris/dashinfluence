@@ -255,19 +255,18 @@ export default function WhyDashInfluence() {
 
         {/* Testimonials Section */}
         <div className="section-padding bg-white border border-white/10 rounded-3xl mb-16 relative overflow-hidden">
-          {/* Animated Background */}
-          <div className="absolute inset-0 z-0">
+          {/* Stars Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
             <SparklesCore
               id="tsparticlestestimonials2"
               background="transparent"
               minSize={0.6}
               maxSize={1.4}
-              particleDensity={80}
+              particleDensity={50}
               className="w-full h-full"
-              particleColor="#ffcf00"
+              particleColor="#6b7280"
             />
           </div>
-
           <div className="text-center mb-16 relative z-10">
             <h2 className="text-4xl font-bold mb-4 text-foreground">
               What Our Clients Say
@@ -280,17 +279,17 @@ export default function WhyDashInfluence() {
           </div>
 
           <div className="relative max-w-6xl mx-auto px-4 md:px-8 relative z-10">
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - Desktop */}
             <Button
               onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110"
+              className="hidden md:block absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110"
             >
               <ChevronLeft className="w-6 h-6" />
             </Button>
 
             <Button
               onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110"
+              className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110"
             >
               <ChevronRight className="w-6 h-6" />
             </Button>
@@ -356,19 +355,54 @@ export default function WhyDashInfluence() {
               ))}
             </div>
 
-            {/* Dots Indicator */}
-            <div className="flex justify-center mt-8 space-x-2">
-              {testimonialGroups.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "bg-[#ffcf00] scale-125"
-                      : "bg-gray-300 hover:bg-gray-400"
-                  }`}
-                />
-              ))}
+            {/* Mobile Navigation and Dots Indicator */}
+            <div className="flex flex-col items-center mt-8 space-y-4">
+              {/* Mobile Navigation Arrows */}
+              <div className="flex md:hidden items-center justify-center space-x-4">
+                <Button
+                  onClick={prevTestimonial}
+                  className="bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+
+                {/* Dots Indicator */}
+                <div className="flex space-x-2">
+                  {testimonialGroups.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentIndex
+                          ? "bg-[#ffcf00] scale-125"
+                          : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <Button
+                  onClick={nextTestimonial}
+                  className="bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
+              </div>
+
+              {/* Desktop Dots Indicator */}
+              <div className="hidden md:flex justify-center space-x-2">
+                {testimonialGroups.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? "bg-[#ffcf00] scale-125"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@ export default function WhyChooseAISection() {
   ];
 
   return (
-    <div className="section-padding bg-background">
+    <div className="section-padding bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -109,47 +109,6 @@ export default function WhyChooseAISection() {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* Process Overview */}
-        <div className="mb-16 mt-20 pt-16 pb-16 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-900/50 dark:to-blue-900/20 rounded-3xl">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4 text-foreground">
-              Our Implementation Process
-            </h3>
-            <p className="text-xl text-muted-foreground">
-              From discovery to optimization, we ensure your success
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-            {processSteps.map((step, index) => (
-              <div key={step.step} className="relative text-center group">
-                <div className="w-16 h-16 bg-[hsl(217,69%,34%)] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
-                  {step.step}
-                </div>
-                <div className="w-12 h-12 bg-[#ffcf00]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  {step.icon}
-                </div>
-                <h4 className="font-bold mb-2 text-foreground">{step.title}</h4>
-                <p className="text-sm text-muted-foreground">
-                  {step.description}
-                </p>
-              </div>
-            ))}
-
-            {/* Connecting lines overlay */}
-            <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 z-0">
-              <div className="w-full h-full animated-gradient-line opacity-70 rounded-full"></div>
-              <div
-                className="absolute top-0 left-0 w-full h-full opacity-40"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(90deg, transparent 0, transparent 16px, rgba(255, 207, 0, 0.4) 16px, rgba(255, 207, 0, 0.4) 20px)",
-                }}
-              ></div>
-            </div>
-          </div>
         </div>
 
         {/* Key Differentiators */}
@@ -192,55 +151,6 @@ export default function WhyChooseAISection() {
               one-size-fits-all solutions.
             </p>
           </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center relative">
-          <Card className="p-8 bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white relative overflow-hidden">
-            {/* Animated Background */}
-            <div className="absolute inset-0 z-0">
-              <SparklesCore
-                id="tsparticlescta3"
-                background="transparent"
-                minSize={0.6}
-                maxSize={1.4}
-                particleDensity={50}
-                className="w-full h-full"
-                particleColor="#FFFFFF"
-              />
-            </div>
-            <CardContent className="p-0 relative z-10">
-              <h3 className="text-2xl font-bold mb-4">
-                Ready to Transform Your Business?
-              </h3>
-              <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
-                Join hundreds of businesses that have already automated their
-                operations and increased their revenue
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/packages">
-                  <Button className="bg-[#ffcf00] text-black font-bold px-4 sm:px-8 py-3 hover:bg-yellow-300 transition-colors text-sm sm:text-base whitespace-nowrap">
-                    <span className="text-xs sm:text-sm">
-                      View Service Packages
-                    </span>
-                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  </Button>
-                </Link>
-                <Button
-                  className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 sm:px-8 py-3 transition-colors text-sm sm:text-base whitespace-nowrap"
-                  onClick={() =>
-                    window.open(
-                      "https://calendly.com/dashinfluence/new-meeting",
-                      "_blank"
-                    )
-                  }
-                >
-                  <span className="text-xs sm:text-sm">Free Consultation</span>
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </div>

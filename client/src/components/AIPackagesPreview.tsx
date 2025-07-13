@@ -61,7 +61,7 @@ export default function AIPackagesPreview() {
   ];
 
   return (
-    <div className="section-padding bg-background">
+    <div className="section-padding bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">

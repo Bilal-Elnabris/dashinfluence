@@ -1,5 +1,6 @@
 import NewHeroSection from "@/components/NewHeroSection";
 import WhyChooseAISection from "@/components/WhyChooseAISection";
+import ImplementationProcessSection from "@/components/ImplementationProcessSection";
 import RevenueCalculator from "./RevenueCalculator";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AIPackagesPreview from "@/components/AIPackagesPreview";
@@ -83,18 +84,6 @@ export default function Home() {
       <StructuredData type="organization" data={organizationSchema} />
       <StructuredData type="service" data={serviceSchema} />
 
-      {/* Full-page Stars Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <SparklesCore
-          id="tsparticleshomepage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-      </div>
       <div className="relative z-10">
         {/* New Hero Section */}
         <NewHeroSection />
@@ -163,11 +152,58 @@ export default function Home() {
         </section>
 
         {/* Our Implementation Process */}
-        <WhyChooseAISection />
+        <section className="relative overflow-hidden">
+          {/* Stars Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticleswhy-choose"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={50}
+              className="w-full h-full"
+              particleColor="#6b7280"
+            />
+          </div>
+          <div className="relative z-10">
+            <WhyChooseAISection />
+          </div>
+        </section>
+
+        {/* Implementation Process & CTA Section */}
+        <section className="relative overflow-hidden bg-transparent">
+          {/* Stars Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticlesimplementation"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={50}
+              className="w-full h-full"
+              particleColor="#6b7280"
+            />
+          </div>
+          <div className="relative z-10">
+            <ImplementationProcessSection />
+          </div>
+        </section>
 
         {/* Persuasive Calculator Section */}
         <section className="section-padding bg-gradient-to-r from-slate-100 to-gray-100 dark:from-slate-800 dark:to-gray-800 relative overflow-hidden">
-          <div className="max-w-5xl mx-auto px-6 text-center">
+          {/* Stars Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticlescalculator"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={50}
+              className="w-full h-full"
+              particleColor="#6b7280"
+            />
+          </div>
+          <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
               Are You Leaving Money on the Table? Find Out How Much You're
               Losing Without AI
@@ -196,7 +232,6 @@ export default function Home() {
                       <CardContent className="relative z-10 flex flex-col h-full justify-between items-center text-center w-full">
                         <div>
                           <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-[#ffcf00] transition-colors flex items-center justify-center gap-2">
-                            <Icon className="w-7 h-7 text-blue-500 mr-2" />
                             {type.label}
                           </h3>
                           <p className="text-muted-foreground mb-2">
@@ -230,10 +265,42 @@ export default function Home() {
         </section>
 
         {/* Testimonials Section */}
-        <TestimonialsSection />
+        <section className="relative overflow-hidden">
+          {/* Stars Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticlestestimonials"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={50}
+              className="w-full h-full"
+              particleColor="#6b7280"
+            />
+          </div>
+          <div className="relative z-10">
+            <TestimonialsSection />
+          </div>
+        </section>
 
         {/* AI Automation Packages Preview */}
-        <AIPackagesPreview />
+        <section className="relative overflow-hidden bg-transparent">
+          {/* Stars Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticlespackages"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={50}
+              className="w-full h-full"
+              particleColor="#6b7280"
+            />
+          </div>
+          <div className="relative z-10">
+            <AIPackagesPreview />
+          </div>
+        </section>
       </div>
     </div>
   );
