@@ -183,10 +183,10 @@ export default function WhyDashInfluence() {
 
   return (
     <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 min-h-screen relative overflow-hidden">
-      {/* Interactive Animated Background */}
-      <div className="h-full w-full absolute inset-0 z-0">
+      {/* Comprehensive Stars Background - covers entire hero section */}
+      <div className="absolute inset-0 z-0">
         <SparklesCore
-          id="tsparticleswhydash"
+          id="tsparticleswhydashfull"
           background="transparent"
           minSize={0.6}
           maxSize={1.4}
@@ -255,16 +255,16 @@ export default function WhyDashInfluence() {
 
         {/* Testimonials Section */}
         <div className="section-padding bg-white border border-white/10 rounded-3xl mb-16 relative overflow-hidden">
-          {/* Stars Background */}
+          {/* Stars Background for Testimonials */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <SparklesCore
-              id="tsparticlestestimonials2"
+              id="tsparticlestestimonials"
               background="transparent"
               minSize={0.6}
               maxSize={1.4}
-              particleDensity={50}
+              particleDensity={80}
               className="w-full h-full"
-              particleColor="#6b7280"
+              particleColor="#B0B3B8"
             />
           </div>
           <div className="text-center mb-16 relative z-10">
@@ -409,20 +409,7 @@ export default function WhyDashInfluence() {
 
         {/* Stats Section */}
         <div className="section-padding relative overflow-hidden">
-          {/* Animated Background for Stats Section */}
-          <div className="absolute inset-0 z-0">
-            <SparklesCore
-              id="tsparticlesstats"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={60}
-              className="w-full h-full"
-              particleColor="#ffcf00"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-foreground" />
@@ -459,20 +446,7 @@ export default function WhyDashInfluence() {
 
         {/* Process Overview */}
         <div className="section-padding relative overflow-hidden">
-          {/* Animated Background for Process Section */}
-          <div className="absolute inset-0 z-0">
-            <SparklesCore
-              id="tsparticlesprocess"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={60}
-              className="w-full h-full"
-              particleColor="#ffcf00"
-            />
-          </div>
-
-          <div className="text-center mb-12 relative z-10">
+          <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-white">
               Our Implementation Process
             </h2>
@@ -481,7 +455,7 @@ export default function WhyDashInfluence() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16 relative z-10">
+          <div className="relative grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             {processSteps.map((step, index) => (
               <div key={step.step} className="relative text-center group">
                 <div className="w-16 h-16 bg-[hsl(217,69%,34%)] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
@@ -514,29 +488,42 @@ export default function WhyDashInfluence() {
           </div>
 
           {/* Final CTA */}
-          <div className="gradient-bg text-white rounded-xl p-12 text-center relative overflow-hidden">
-            {/* Remove Animated Background */}
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-4">
-                Ready to Transform Your Business?
-              </h2>
-              <p className="text-xl max-w-2xl mx-auto mb-8 opacity-90">
-                Join successful real estate professionals who've already
-                automated their way to success
-              </p>
-              <Button
-                className="px-4 sm:px-8 py-4 bg-[#ffcf00] text-foreground rounded-lg font-bold text-sm sm:text-lg hover:bg-yellow-300 transition-colors btn-hover whitespace-nowrap"
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
-              >
-                <span className="text-sm sm:text-base">
-                  Schedule Your Free Consultation
-                </span>
-              </Button>
+          <div className="text-center relative">
+            <div className="bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white rounded-xl p-8 relative overflow-hidden">
+              {/* Stars Background for CTA */}
+              <div className="absolute inset-0 z-0 pointer-events-none">
+                <SparklesCore
+                  id="tsparticlescta"
+                  background="transparent"
+                  minSize={0.6}
+                  maxSize={1.4}
+                  particleDensity={60}
+                  className="w-full h-full"
+                  particleColor="#FFFFFF"
+                />
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold mb-4">
+                  Ready to Transform Your Business?
+                </h3>
+                <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+                  Join hundreds of successful businesses that have already
+                  automated their way to success
+                </p>
+                <Button
+                  className="bg-[#ffcf00] text-black font-bold px-4 sm:px-8 py-3 hover:bg-yellow-300 transition-colors text-sm sm:text-base whitespace-nowrap"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/dashinfluence/new-meeting",
+                      "_blank"
+                    )
+                  }
+                >
+                  <span className="text-xs sm:text-sm">
+                    Schedule Your Free Consultation
+                  </span>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

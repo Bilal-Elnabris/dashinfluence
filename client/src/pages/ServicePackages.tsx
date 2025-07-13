@@ -168,20 +168,20 @@ export default function ServicePackages() {
         canonical="https://dashinfluence.com/packages"
       />
 
-      {/* Stars Background */}
-      <div className="h-full w-full absolute inset-0 z-0">
-        <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#B0B3B8"
-        />
-      </div>
       {/* Hero Section */}
       <div className="relative z-10 text-white section-padding relative overflow-hidden">
+        {/* Stars Background for Hero */}
+        <div className="absolute inset-0 z-0">
+          <SparklesCore
+            id="tsparticleshero"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={80}
+            className="w-full h-full"
+            particleColor="#B0B3B8"
+          />
+        </div>
         {/* Icon Background */}
         <div
           className="absolute left-1/2 top-0 -translate-x-1/2 opacity-10 pointer-events-none select-none"
@@ -202,7 +202,19 @@ export default function ServicePackages() {
         </div>
       </div>
       {/* Industry Tabs/Cards - moved here */}
-      <div className="relative z-10 flex flex-wrap justify-center gap-4 pt-2 pb-2 max-w-6xl mx-auto w-full px-4">
+      <div className="relative z-10 flex flex-wrap justify-center gap-4 pt-2 pb-2 max-w-6xl mx-auto w-full px-4 relative overflow-hidden">
+        {/* Stars Background for Industry Tabs */}
+        <div className="absolute inset-0 z-0">
+          <SparklesCore
+            id="tsparticlesindustrytabs"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={60}
+            className="w-full h-full"
+            particleColor="#B0B3B8"
+          />
+        </div>
         {INDUSTRIES.map((ind) => (
           <div key={ind.key} className="relative">
             <button
@@ -229,6 +241,18 @@ export default function ServicePackages() {
       </div>
       {/* Package Cards */}
       <div className="relative z-10 section-padding relative overflow-hidden">
+        {/* Stars Background for Package Cards */}
+        <div className="absolute inset-0 z-0">
+          <SparklesCore
+            id="tsparticlespackagecards"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={80}
+            className="w-full h-full"
+            particleColor="#B0B3B8"
+          />
+        </div>
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           {industry?.comingSoon ? (
             <div className="text-center">

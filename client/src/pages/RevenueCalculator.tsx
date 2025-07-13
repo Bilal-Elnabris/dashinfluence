@@ -1,6 +1,7 @@
 import { useLocation } from "wouter";
 import { Car, Home, Wrench, HeartPulse, Coffee } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import { SparklesCore } from "@/components/SparklesCore";
 
 const niches = [
   {
@@ -51,7 +52,19 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 export default function RevenueCalculatorSelection() {
   const [, setLocation] = useLocation();
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background py-16 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background py-16 px-4 relative overflow-hidden">
+      {/* Stars Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <SparklesCore
+          id="tsparticles-revenue-selection"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={80}
+          className="w-full h-full"
+          particleColor="#B0B3B8"
+        />
+      </div>
       {/* SEO Head Component */}
       <SEOHead
         title="Revenue Calculator - Calculate Your Business Automation ROI | DashInfluence"
@@ -62,10 +75,18 @@ export default function RevenueCalculatorSelection() {
         canonical="https://dashinfluence.com/calculator"
       />
 
-      <h1 className="text-4xl font-bold mb-8 text-center text-foreground">
-        Select Your Business Type
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl">
+      <div className="max-w-2xl mx-auto text-center mb-8 relative z-10">
+        <h1 className="text-4xl font-bold mb-4 text-foreground">
+          Discover Your Missed Revenue & Automation Potential
+        </h1>
+        <p className="text-lg text-muted-foreground mb-4">
+          Use our calculator to see how much revenue your business could be
+          losing to missed calls, manual scheduling, and inefficient processes.
+          Select your business type below to get started and see your automation
+          ROI.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl relative z-10">
         {niches.map((niche) => {
           const Icon = iconMap[niche.key];
           return (
@@ -82,8 +103,7 @@ export default function RevenueCalculatorSelection() {
               </div>
               <div className="flex flex-col h-full justify-between relative z-10 w-full">
                 <div>
-                  <h2 className="text-lg font-bold mb-2 text-blue-900 flex items-center gap-2 justify-center">
-                    <Icon className="w-7 h-7 text-blue-500 mr-2" />
+                  <h2 className="text-lg font-bold mb-2 text-blue-900 text-center">
                     {niche.title}
                   </h2>
                   <p className="mb-6 text-gray-700 text-center">
