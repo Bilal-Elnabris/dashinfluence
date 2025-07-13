@@ -46,9 +46,9 @@ export default function RealEstateCalculator() {
 
   // Package costs based on business size
   const packageCosts = {
-    solo: { setup: 700, monthly: 150 },
-    team: { setup: 1500, monthly: 400 },
-    agency: { setup: 3000, monthly: 900 },
+    solo: { setup: 750, monthly: 199 },
+    team: { setup: 1750, monthly: 499 },
+    agency: { setup: 3500, monthly: 999 },
   };
 
   useEffect(() => {
@@ -191,13 +191,13 @@ export default function RealEstateCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="solo">
-                      Solo Agent ($699 setup + $149/month)
+                      Solo Agent ($750 setup + $199/month)
                     </option>
                     <option value="team">
-                      Team ($1,499 setup + $399/month)
+                      Team ($1,750 setup + $499/month)
                     </option>
                     <option value="agency">
-                      Agency ($2,999 setup + $899/month)
+                      Agency ($3,500 setup + $999/month)
                     </option>
                   </select>
                 </div>

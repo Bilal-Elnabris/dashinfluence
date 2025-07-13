@@ -47,9 +47,9 @@ export default function CarDetailingCalculator() {
 
   // Package costs based on business size
   const packageCosts = {
-    essential: { setup: 299, monthly: 100 },
-    professional: { setup: 799, monthly: 250 },
-    complete: { setup: 1499, monthly: 350 },
+    essential: { setup: 400, monthly: 149 },
+    professional: { setup: 900, monthly: 299 },
+    complete: { setup: 1800, monthly: 499 },
   };
 
   useEffect(() => {
@@ -205,13 +205,13 @@ export default function CarDetailingCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="essential">
-                      Essential AI Package ($299 setup + $100/month)
+                      Essential AI Package ($400 setup + $149/month)
                     </option>
                     <option value="professional">
-                      Professional AI Package ($799 setup + $250/month)
+                      Professional AI Package ($900 setup + $299/month)
                     </option>
                     <option value="complete">
-                      Complete AI Suite ($1,499 setup + $350/month)
+                      Complete AI Suite ($1,800 setup + $499/month)
                     </option>
                   </select>
                 </div>

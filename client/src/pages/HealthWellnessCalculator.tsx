@@ -44,9 +44,9 @@ export default function HealthWellnessCalculator() {
 
   // Package costs based on business size
   const packageCosts = {
-    solo: { setup: 500, monthly: 100 },
-    clinic: { setup: 1200, monthly: 300 },
-    center: { setup: 2500, monthly: 700 },
+    solo: { setup: 500, monthly: 99 },
+    clinic: { setup: 1200, monthly: 299 },
+    center: { setup: 2500, monthly: 699 },
   };
 
   useEffect(() => {
@@ -193,13 +193,13 @@ export default function HealthWellnessCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="solo">
-                      Solo Practitioner ($499 setup + $99/month)
+                      Solo Practitioner ($500 setup + $99/month)
                     </option>
                     <option value="clinic">
-                      Clinic ($1,199 setup + $299/month)
+                      Clinic ($1,200 setup + $299/month)
                     </option>
                     <option value="center">
-                      Center ($2,499 setup + $699/month)
+                      Center ($2,500 setup + $699/month)
                     </option>
                   </select>
                 </div>
@@ -488,22 +488,27 @@ export default function HealthWellnessCalculator() {
             </div>
             <CardContent className="p-0 relative z-10">
               <h4 className="text-2xl font-bold mb-4">
-                Ready to Stop Losing Revenue?
+                Health & Wellness AI Automation Coming Soon!
               </h4>
               <p className="mb-6 opacity-90">
-                Get a personalized plan to capture your missed opportunities
+                We're expanding our team to serve health and wellness
+                businesses. Get early access and be the first to know when we
+                launch.
               </p>
-              <Button
-                className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-colors text-sm"
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
-              >
-                Schedule Free Consultation
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"
+                  onClick={() => (window.location.href = "/early-access")}
+                >
+                  Get Early Access
+                </Button>
+                <Button
+                  className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 py-3 transition-colors"
+                  onClick={() => (window.location.href = "/packages")}
+                >
+                  View Available Packages
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>

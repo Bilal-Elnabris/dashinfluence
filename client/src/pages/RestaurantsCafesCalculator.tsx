@@ -15,8 +15,8 @@ import {
 import { SparklesCore } from "@/components/SparklesCore";
 
 interface CalculatorState {
-  avgCovers: number;
-  avgTicket: number;
+  avgOrders: number;
+  avgOrderValue: number;
   missedCalls: number;
   noShowRate: number;
   businessSize: "small" | "medium" | "large";
@@ -24,8 +24,8 @@ interface CalculatorState {
 
 export default function RestaurantsCafesCalculator() {
   const [values, setValues] = useState<CalculatorState>({
-    avgCovers: 60,
-    avgTicket: 25,
+    avgOrders: 60,
+    avgOrderValue: 25,
     missedCalls: 4,
     noShowRate: 8,
     businessSize: "medium",
@@ -44,19 +44,19 @@ export default function RestaurantsCafesCalculator() {
 
   // Package costs based on business size
   const packageCosts = {
-    small: { setup: 400, monthly: 80 },
-    medium: { setup: 1000, monthly: 250 },
-    large: { setup: 2200, monthly: 600 },
+    small: { setup: 400, monthly: 79 },
+    medium: { setup: 1000, monthly: 249 },
+    large: { setup: 2200, monthly: 599 },
   };
 
   useEffect(() => {
-    // Current monthly revenue (covers * ticket * 30 days)
-    const currentRevenue = values.avgCovers * values.avgTicket * 30;
+    // Current monthly revenue (orders * order value * 30 days)
+    const currentRevenue = values.avgOrders * values.avgOrderValue * 30;
 
-    // Missed calls: assume 15% of missed calls could convert to covers
+    // Missed calls: assume 15% of missed calls could convert to orders
     const missedCallConversion = 0.15;
-    const recoveredCovers = values.missedCalls * missedCallConversion * 30;
-    const missedRevenue = recoveredCovers * values.avgTicket;
+    const recoveredOrders = values.missedCalls * missedCallConversion * 30;
+    const missedRevenue = recoveredOrders * values.avgOrderValue;
 
     // No-shows: assume no-shows are 100% lost revenue
     const noShowLoss = (values.noShowRate / 100) * currentRevenue;
@@ -192,44 +192,44 @@ export default function RestaurantsCafesCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="small">
-                      Small ($399 setup + $79/month)
+                      Small ($400 setup + $79/month)
                     </option>
                     <option value="medium">
-                      Medium ($999 setup + $249/month)
+                      Medium ($1,000 setup + $249/month)
                     </option>
                     <option value="large">
-                      Large ($2,199 setup + $599/month)
+                      Large ($2,200 setup + $599/month)
                     </option>
                   </select>
                 </div>
                 {/* Average Covers per Day */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Covers per Day:
+                    Average Orders per Day:
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
                       min="10"
                       max="300"
-                      value={values.avgCovers}
+                      value={values.avgOrders}
                       onChange={(e) =>
                         handleSliderChange(
-                          "avgCovers",
+                          "avgOrders",
                           parseInt(e.target.value)
                         )
                       }
                       className="flex-1 h-2 bg-gray-800 dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
                     <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-16">
-                      {values.avgCovers}
+                      {values.avgOrders}
                     </span>
                   </div>
                 </div>
                 {/* Average Ticket Size */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Ticket Size ($):
+                    Average Order Value ($):
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -237,17 +237,17 @@ export default function RestaurantsCafesCalculator() {
                       min="5"
                       max="100"
                       step="1"
-                      value={values.avgTicket}
+                      value={values.avgOrderValue}
                       onChange={(e) =>
                         handleSliderChange(
-                          "avgTicket",
+                          "avgOrderValue",
                           parseInt(e.target.value)
                         )
                       }
                       className="flex-1 h-2 bg-gray-800 dark:bg-white rounded-lg appearance-none cursor-pointer custom-slider"
                     />
                     <span className="text-lg font-bold text-[hsl(217,69%,34%)] dark:text-white w-20">
-                      {formatCurrency(values.avgTicket)}
+                      {formatCurrency(values.avgOrderValue)}
                     </span>
                   </div>
                 </div>
@@ -488,22 +488,26 @@ export default function RestaurantsCafesCalculator() {
             </div>
             <CardContent className="p-0 relative z-10">
               <h4 className="text-2xl font-bold mb-4">
-                Ready to Stop Losing Revenue?
+                Restaurants & Cafes AI Automation Coming Soon!
               </h4>
               <p className="mb-6 opacity-90">
-                Get a personalized plan to capture your missed opportunities
+                We're expanding our team to serve restaurants and cafes. Get
+                early access and be the first to know when we launch.
               </p>
-              <Button
-                className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-colors text-sm"
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
-              >
-                Schedule Free Consultation
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"
+                  onClick={() => (window.location.href = "/early-access")}
+                >
+                  Get Early Access
+                </Button>
+                <Button
+                  className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 py-3 transition-colors"
+                  onClick={() => (window.location.href = "/packages")}
+                >
+                  View Available Packages
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>

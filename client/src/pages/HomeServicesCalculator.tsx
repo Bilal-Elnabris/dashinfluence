@@ -42,9 +42,9 @@ export default function HomeServicesCalculator() {
 
   // Package costs based on business size
   const packageCosts = {
-    solo: { setup: 400, monthly: 80 },
-    "small-team": { setup: 900, monthly: 200 },
-    company: { setup: 1800, monthly: 500 },
+    solo: { setup: 400, monthly: 79 },
+    "small-team": { setup: 900, monthly: 199 },
+    company: { setup: 1800, monthly: 499 },
   };
 
   useEffect(() => {
@@ -187,13 +187,13 @@ export default function HomeServicesCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="solo">
-                      Solo Operator ($399 setup + $79/month)
+                      Solo Operator ($400 setup + $79/month)
                     </option>
                     <option value="small-team">
-                      Small Team ($899 setup + $199/month)
+                      Small Team ($900 setup + $199/month)
                     </option>
                     <option value="company">
-                      Company ($1,799 setup + $499/month)
+                      Company ($1,800 setup + $499/month)
                     </option>
                   </select>
                 </div>
@@ -455,22 +455,26 @@ export default function HomeServicesCalculator() {
             </div>
             <CardContent className="p-0 relative z-10">
               <h4 className="text-2xl font-bold mb-4">
-                Ready to Stop Losing Revenue?
+                Home Services AI Automation Coming Soon!
               </h4>
               <p className="mb-6 opacity-90">
-                Get a personalized plan to capture your missed opportunities
+                We're expanding our team to serve home services businesses. Get
+                early access and be the first to know when we launch.
               </p>
-              <Button
-                className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-colors text-sm"
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
-              >
-                Schedule Free Consultation
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"
+                  onClick={() => (window.location.href = "/early-access")}
+                >
+                  Get Early Access
+                </Button>
+                <Button
+                  className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 py-3 transition-colors"
+                  onClick={() => (window.location.href = "/packages")}
+                >
+                  View Available Packages
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
