@@ -169,7 +169,10 @@ export default function ServicePackages() {
       />
 
       {/* Hero Section */}
-      <div className="relative z-10 text-white section-padding relative overflow-hidden">
+      <div
+        className="relative z-10 text-white section-padding relative overflow-hidden"
+        style={{ paddingTop: "7rem" }}
+      >
         {/* Stars Background for Hero */}
         <div className="absolute inset-0 z-0">
           <SparklesCore
@@ -184,7 +187,7 @@ export default function ServicePackages() {
         </div>
         {/* Icon Background */}
         <div
-          className="absolute left-1/2 top-0 -translate-x-1/2 opacity-10 pointer-events-none select-none"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none"
           style={{ fontSize: 220, zIndex: 0 }}
         >
           {industry && (

@@ -34,7 +34,10 @@ export default function Contact() {
       </div>
 
       {/* Hero Section */}
-      <div className="text-white section-padding relative z-10 relative overflow-hidden">
+      <div
+        className="text-white section-padding relative z-10 relative overflow-hidden"
+        style={{ paddingTop: "7rem" }}
+      >
         {/* Animated Background for Hero Section */}
         <div className="absolute inset-0 z-0">
           <SparklesCore

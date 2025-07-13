@@ -195,7 +195,7 @@ export default function WhyDashInfluence() {
           particleColor="#FFFFFF"
         />
       </div>
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10 pt-20">
         {/* Header */}
         <div className="section-padding">
           <div className="text-center mb-16">
