@@ -183,35 +183,23 @@ export default function WhyDashInfluence() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative">
-      {/* Full-page stars background for all content */}
-      <div className="absolute inset-0 z-0 w-full h-full">
-        <SparklesCore
-          id="tsparticles-whydash-full"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-      </div>
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-20">
-        {/* Testimonials Section */}
-        <section className="relative w-full overflow-visible pt-20">
-          <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-            <SparklesCore
-              id="tsparticles-testimonials"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={120}
-              className="w-full h-full"
-              particleColor="#FFFFFF"
-            />
-          </div>
-          <div className="relative z-10 max-w-6xl mx-auto px-6">
-            <div className="text-center mb-10 relative z-10">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+      {/* Hero Section with Stars */}
+      <section className="relative min-h-screen overflow-hidden w-full pt-0 pb-0 mb-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <SparklesCore
+            id="tsparticles-y-hero"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={100}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 pt-32 pb-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 text-yellow-300 text-sm font-medium mb-8 backdrop-blur-sm">
                 <Star className="w-4 h-4 mr-2" />
@@ -318,14 +306,14 @@ export default function WhyDashInfluence() {
                   </Button>
 
                   {/* Dots Indicator */}
-                  <div className="flex space-x-3">
+                  <div className="flex items-center space-x-2 mt-0 mb-0">
                     {testimonialGroups.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
                           index === currentIndex
-                            ? "bg-yellow-400 scale-125"
+                            ? "bg-yellow-400 scale-110 shadow-md"
                             : "bg-white/30 hover:bg-white/50"
                         }`}
                       />
@@ -341,184 +329,239 @@ export default function WhyDashInfluence() {
                 </div>
 
                 {/* Desktop Dots Indicator */}
-                <div className="hidden md:flex justify-center space-x-3">
+                <div className="hidden md:flex justify-center items-center space-x-2 mt-0 mb-0">
                   {testimonialGroups.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentIndex(index)}
-                      className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
                         index === currentIndex
-                          ? "bg-yellow-400 scale-125"
+                          ? "bg-yellow-400 scale-110 shadow-md"
                           : "bg-white/30 hover:bg-white/50"
                       }`}
                     />
                   ))}
                 </div>
               </div>
+              {/* Add a healthy gap below the dots */}
+              <div className="mt-10" />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Why Choose DashInfluence Section */}
-        <section className="relative w-full overflow-visible">
-          <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-            <SparklesCore
-              id="tsparticles-whychoose"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={80}
-              className="w-full h-full"
-              particleColor="#B0B3B8"
-            />
-          </div>
-          <div className="relative z-10 max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-                Why Choose DashInfluence?
-              </h1>
-              <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
-              <p className="text-xl text-white max-w-3xl mx-auto">
-                We don't just automate processes – we transform businesses with
-                AI that actually works
-              </p>
-            </div>
-
-            {/* Key Differentiators */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Zap className="w-10 h-10 text-[#ffcf00]" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">
-                  Industry Expertise
-                </h3>
-                <p className="text-white">
-                  Specialized in business automation with deep understanding of
-                  your unique challenges and opportunities across multiple
-                  industries.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="w-10 h-10 text-[#ffcf00]" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">
-                  Proven Results
-                </h3>
-                <p className="text-white">
-                  70+ successful implementations with average 300% ROI within 90
-                  days of deployment.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Target className="w-10 h-10 text-[#ffcf00]" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">
-                  Custom Solutions
-                </h3>
-                <p className="text-white">
-                  Tailored automation that fits your existing processes, not
-                  generic one-size-fits-all solutions.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Process Overview */}
-        <section className="relative w-full overflow-visible">
-          <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-            <SparklesCore
-              id="tsparticles-process"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={60}
-              className="w-full h-full"
-              particleColor="#FFD700"
-            />
-          </div>
-          <div className="relative z-10 max-w-6xl mx-auto px-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4 text-white">
-                Our Implementation Process
-              </h2>
-              <p className="text-xl text-white">
-                From discovery to optimization, we ensure your success
-              </p>
-            </div>
-
-            <div className="relative grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-              {processSteps.map((step, index) => (
-                <div key={step.step} className="relative text-center group">
-                  <div className="w-16 h-16 bg-[hsl(217,69%,34%)] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
-                    {step.step}
-                  </div>
-                  <h4 className="font-bold mb-2 text-white">{step.title}</h4>
-                  <p className="text-sm text-white">{step.description}</p>
-                </div>
-              ))}
-
-              {/* Connecting lines overlay */}
-              <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 z-0">
-                {/* Main gradient line */}
-                <div className="w-full h-full bg-gradient-to-r from-[hsl(217,69%,34%)] via-[#ffcf00] to-[hsl(217,69%,34%)] opacity-70 rounded-full"></div>
-
-                {/* Subtle dashed overlay */}
-                <div
-                  className="absolute top-0 left-0 w-full h-full opacity-40"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(90deg, transparent 0, transparent 16px, rgba(255, 207, 0, 0.4) 16px, rgba(255, 207, 0, 0.4) 20px)",
-                  }}
-                ></div>
-              </div>
-
-              {/* Simple arrow indicators */}
-              <div className="hidden md:block absolute top-6 left-1/4 w-0 h-0 border-l-3 border-l-[#ffcf00] border-t-1.5 border-t-transparent border-b-1.5 border-b-transparent z-10"></div>
-              <div className="hidden md:block absolute top-6 left-1/2 w-0 h-0 border-l-3 border-l-[#ffcf00] border-t-1.5 border-t-transparent border-b-1.5 border-b-transparent z-10"></div>
-              <div className="hidden md:block absolute top-6 left-3/4 w-0 h-0 border-l-3 border-l-[#ffcf00] border-t-1.5 border-t-transparent border-b-1.5 border-b-transparent z-10"></div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section (no stars, large gap above footer, no extra white gap) */}
-        <section className="relative w-full pb-32 mb-24">
-          <div className="relative z-10 max-w-6xl mx-auto px-6">
-            <div className="text-center relative">
-              <div className="bg-white text-[hsl(217,69%,34%)] rounded-xl p-8 relative overflow-hidden shadow-xl border border-gray-100">
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-bold mb-4 text-[hsl(217,69%,34%)]">
-                    Ready to Transform Your Business?
-                  </h3>
-                  <p className="text-lg mb-6 text-gray-700 max-w-2xl mx-auto">
-                    Join hundreds of successful businesses that have already
-                    automated their way to success
-                  </p>
-                  <Button
-                    className="bg-[hsl(217,69%,34%)] text-white font-bold px-6 sm:px-8 py-3 hover:bg-[hsl(217,69%,28%)] transition-colors text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl"
-                    onClick={() =>
-                      window.open(
-                        "https://calendly.com/dashinfluence/new-meeting",
-                        "_blank"
-                      )
-                    }
-                  >
-                    <span className="text-sm sm:text-base font-semibold">
-                      Schedule Your Free Consultation
-                    </span>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* Small gap with white stars above Why Choose DashInfluence */}
+      <div className="relative w-full h-12 mb-2 overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <SparklesCore
+            id="tsparticles-y-gap-above-whychoose"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={40}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
+        </div>
       </div>
-      <Footer />
+
+      {/* Why Choose DashInfluence Section with Stars */}
+      <section className="relative overflow-hidden w-full min-h-[600px]">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <SparklesCore
+            id="tsparticles-y-whychoose"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={80}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
+        </div>
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+              Why Choose DashInfluence?
+            </h1>
+            <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
+            <p className="text-xl text-white max-w-3xl mx-auto">
+              We don't just automate processes – we transform businesses with AI
+              that actually works
+            </p>
+          </div>
+
+          {/* Key Differentiators */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Zap className="w-10 h-10 text-[#ffcf00]" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">
+                Industry Expertise
+              </h3>
+              <p className="text-white">
+                Specialized in business automation with deep understanding of
+                your unique challenges and opportunities across multiple
+                industries.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-10 h-10 text-[#ffcf00]" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">
+                Proven Results
+              </h3>
+              <p className="text-white">
+                70+ successful implementations with average 300% ROI within 90
+                days of deployment.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Target className="w-10 h-10 text-[#ffcf00]" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">
+                Custom Solutions
+              </h3>
+              <p className="text-white">
+                Tailored automation that fits your existing processes, not
+                generic one-size-fits-all solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Implementation Process Section with Stars */}
+      <section className="relative overflow-hidden w-full min-h-[600px]">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <SparklesCore
+            id="tsparticles-y-process"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={80}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
+        </div>
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-4 text-white">
+              Our Implementation Process
+            </h2>
+            <p className="text-xl text-white">
+              From discovery to optimization, we ensure your success
+            </p>
+          </div>
+
+          <div className="relative grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+            {processSteps.map((step, index) => (
+              <div key={step.step} className="relative text-center group">
+                <div className="w-16 h-16 bg-[hsl(217,69%,34%)] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
+                  {step.step}
+                </div>
+                <h4 className="font-bold mb-2 text-white">{step.title}</h4>
+                <p className="text-sm text-white">{step.description}</p>
+              </div>
+            ))}
+
+            {/* Connecting lines overlay */}
+            <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 z-0">
+              {/* Main gradient line */}
+              <div className="w-full h-full bg-gradient-to-r from-[hsl(217,69%,34%)] via-[#ffcf00] to-[hsl(217,69%,34%)] opacity-70 rounded-full"></div>
+
+              {/* Subtle dashed overlay */}
+              <div
+                className="absolute top-0 left-0 w-full h-full opacity-40"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(90deg, transparent 0, transparent 16px, rgba(255, 207, 0, 0.4) 16px, rgba(255, 207, 0, 0.4) 20px)",
+                }}
+              ></div>
+            </div>
+
+            {/* Simple arrow indicators */}
+            <div className="hidden md:block absolute top-6 left-1/4 w-0 h-0 border-l-3 border-l-[#ffcf00] border-t-1.5 border-t-transparent border-b-1.5 border-b-transparent z-10"></div>
+            <div className="hidden md:block absolute top-6 left-1/2 w-0 h-0 border-l-3 border-l-[#ffcf00] border-t-1.5 border-t-transparent border-b-1.5 border-b-transparent z-10"></div>
+            <div className="hidden md:block absolute top-6 left-3/4 w-0 h-0 border-l-3 border-l-[#ffcf00] border-t-1.5 border-t-transparent border-b-1.5 border-b-transparent z-10"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section with Stars in the Box Background */}
+      <section className="relative w-full pb-32 mb-24">
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <div className="text-center relative">
+            <div className="bg-white text-[hsl(217,69%,34%)] rounded-xl p-8 relative overflow-hidden shadow-xl border border-gray-100">
+              {/* Stars behind the entire CTA box */}
+              <div className="absolute inset-0 z-0 pointer-events-none rounded-xl overflow-hidden">
+                <SparklesCore
+                  id="tsparticles-y-cta"
+                  background="transparent"
+                  minSize={0.6}
+                  maxSize={1.4}
+                  particleDensity={60}
+                  className="w-full h-full"
+                  particleColor="#FFFFFF"
+                />
+              </div>
+              {/* Stars behind the CTA button only */}
+              <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-72 h-20 z-0 pointer-events-none">
+                <SparklesCore
+                  id="tsparticles-y-cta-btn"
+                  background="transparent"
+                  minSize={0.6}
+                  maxSize={1.4}
+                  particleDensity={20}
+                  className="w-full h-full"
+                  particleColor="#FFFFFF"
+                />
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold mb-4 text-[hsl(217,69%,34%)]">
+                  Ready to Transform Your Business?
+                </h3>
+                <p className="text-lg mb-6 text-gray-700 max-w-2xl mx-auto">
+                  Join hundreds of successful businesses that have already
+                  automated their way to success
+                </p>
+                <Button
+                  className="bg-[hsl(217,69%,34%)] text-white font-bold px-6 sm:px-8 py-3 hover:bg-[hsl(217,69%,28%)] transition-colors text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/dashinfluence/new-meeting",
+                      "_blank"
+                    )
+                  }
+                >
+                  <span className="text-sm sm:text-base font-semibold">
+                    Schedule Your Free Consultation
+                  </span>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* White stars effect in the last gap above the footer */}
+      <div className="relative w-full h-24 overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <SparklesCore
+            id="tsparticles-y-bottom-gap"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={40}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
+        </div>
+      </div>
     </div>
   );
 }

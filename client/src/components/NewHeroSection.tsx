@@ -96,17 +96,15 @@ export default function NewHeroSection() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex items-center justify-center gap-8 text-gray-400 mb-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-gray-400 mb-12">
               <div className="flex items-center">
                 <Star className="w-5 h-5 text-yellow-400 mr-2" />
                 <span className="text-sm">4.9/5 Rating</span>
               </div>
-              <div className="w-px h-4 bg-gray-600"></div>
               <div className="flex items-center">
                 <Users className="w-5 h-5 text-blue-400 mr-2" />
                 <span className="text-sm">500+ Clients</span>
               </div>
-              <div className="w-px h-4 bg-gray-600"></div>
               <div className="flex items-center">
                 <Clock className="w-5 h-5 text-green-400 mr-2" />
                 <span className="text-sm">24/7 Support</span>

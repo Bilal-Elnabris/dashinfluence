@@ -27,7 +27,11 @@ function LoadingLine({
   );
 }
 
-export default function Navbar() {
+interface NavbarProps {
+  forceDark?: boolean;
+}
+
+export default function Navbar({ forceDark = false }: NavbarProps) {
   const [location] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -44,24 +48,27 @@ export default function Navbar() {
     { href: "/contact", label: "Contact" },
   ];
 
+  // Determine if on mobile
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 767;
+
   // Page-specific navbar behavior configuration
   const pageConfigs = {
-    "/": { disableTransform: false, scrollThreshold: 0.25, darkenOnly: false }, // Home - now transforms at 25%
+    "/": { disableTransform: false, scrollThreshold: 0.22, darkenOnly: false }, // Home
     "/why-us": {
-      disableTransform: true,
-      scrollThreshold: 0,
+      disableTransform: false,
+      scrollThreshold: isMobile ? 0.9 : 0.8,
       darkenOnly: false,
-    }, // Why Influence - no transformation
+    }, // Why Influence
     "/packages": {
       disableTransform: false,
-      scrollThreshold: 0.5,
+      scrollThreshold: isMobile ? 0.025 : 0.5,
       darkenOnly: true,
-    }, // Services - darken only at 50% scroll
+    }, // Services
     "/contact": {
       disableTransform: false,
-      scrollThreshold: 0.2,
+      scrollThreshold: 0.72,
       darkenOnly: true,
-    }, // Contact - darken at 20% scroll
+    }, // Contact
   };
 
   const currentPageConfig =
@@ -85,11 +92,25 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Custom scroll trigger for /packages on mobile
+  let mobilePackagesTrigger = false;
+  if (
+    location === "/packages" &&
+    typeof window !== "undefined" &&
+    window.innerWidth <= 767
+  ) {
+    mobilePackagesTrigger = window.scrollY > window.innerHeight / 6;
+  }
+
   // Show colored navbar based on page-specific configuration
   const coloredNavbar = currentPageConfig.disableTransform
     ? false // Never show colored navbar on pages with disabled transformation
     : currentPageConfig.darkenOnly
-    ? false // Don't show colored navbar for darken-only pages
+    ? location === "/packages" &&
+      typeof window !== "undefined" &&
+      window.innerWidth <= 767
+      ? mobilePackagesTrigger
+      : scrollProgress >= currentPageConfig.scrollThreshold
     : scrollProgress >= currentPageConfig.scrollThreshold;
 
   // Animation effect for colored navbar (only if transformation is enabled)
@@ -121,14 +142,14 @@ export default function Navbar() {
   // Navbar classes for smooth transition
   const navbarBase =
     "fixed top-0 left-0 w-full z-50 static-optimized border-b-0 transition-all duration-400 ease-in-out";
-  const navbarColored =
-    "bg-gradient-to-r from-[#203ab5] via-[#3553e0] to-[#3046c5] shadow-lg border-b border-white/10 backdrop-blur-sm";
-  const navbarTransparent =
-    location === "/contact" && scrollProgress >= 0.2
-      ? "bg-black/30 shadow-none backdrop-blur-sm" // Darkened background for contact page at 20% scroll
-      : location === "/packages" && scrollProgress >= 0.5
-      ? "bg-black/30 shadow-none backdrop-blur-sm" // Darkened background for services at 50% scroll
-      : "bg-transparent shadow-none backdrop-blur-none";
+  const navbarColored = forceDark
+    ? "bg-black text-white shadow-lg border-b border-white/10 backdrop-blur-lg"
+    : "bg-gradient-to-r from-[#203ab5] via-[#3553e0] to-[#3046c5] shadow-lg border-b border-white/10 backdrop-blur-lg";
+  const navbarTransparent = forceDark
+    ? "bg-black text-white shadow-lg border-b border-white/10 backdrop-blur-lg"
+    : location === "/contact" && scrollProgress >= (isMobile ? 0.1 : 1 / 7)
+    ? "bg-black/30 shadow-none backdrop-blur-lg"
+    : "bg-transparent shadow-none backdrop-blur-lg";
 
   // Slide-up animation classes for transparent navbar
   const slideUp = showColored
@@ -145,8 +166,9 @@ export default function Navbar() {
   const hoverNavClass = "hover:bg-white/10";
 
   // 3-column flex layout for logo, nav, CTA
-  const navRow = "flex items-center justify-between px-8 pt-4 pb-4 gap-2";
-  const logoCol = "flex items-center min-w-0";
+  const navRow =
+    "flex items-center justify-between px-4 sm:px-6 md:px-8 pt-3 pb-3 gap-2 w-full overflow-x-hidden";
+  const logoCol = "flex items-center min-w-0 pl-1 sm:pl-2 md:pl-0";
   const navCol = "flex-1 flex justify-center items-center min-w-0";
   const ctaCol = "flex items-center min-w-0";
 
@@ -171,7 +193,8 @@ export default function Navbar() {
                 <img
                   src={logo_long}
                   alt="DashInfluence Logo"
-                  className="h-6 sm:h-8 w-auto max-w-[120px] sm:max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-7 sm:h-8 w-auto max-w-[110px] sm:max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-105 ml-0"
+                  style={{ minWidth: 32 }}
                 />
               </Link>
             </div>
@@ -179,10 +202,7 @@ export default function Navbar() {
             <div
               className={navCol + " hidden lg:flex justify-center items-center"}
             >
-              <div
-                className="flex space-x-8 bg-black/20 rounded-[0.75rem] px-4"
-                style={{ backdropFilter: "blur(8px)" }}
-              >
+              <div className="flex space-x-8 bg-black/20 rounded-[0.75rem] px-4">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
@@ -230,9 +250,14 @@ export default function Navbar() {
               </Button>
             </div>
             {/* Mobile Menu Button */}
-            <div className={ctaCol + " lg:hidden flex space-x-2 justify-end"}>
+            <div
+              className={
+                ctaCol + " lg:hidden flex items-center space-x-3 justify-end"
+              }
+            >
               <Button
-                className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-xs sm:text-sm whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform"
+                className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-4 py-2 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-sm whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform min-w-[100px]"
+                style={{ minHeight: 40 }}
                 onClick={() =>
                   window.open(
                     "https://calendly.com/dashinfluence/new-meeting",
@@ -243,7 +268,8 @@ export default function Navbar() {
                 Get Started
               </Button>
               <Button
-                className="text-white hover:bg-white/10 p-2 transition-all duration-300 hover:scale-110"
+                className="text-white hover:bg-white/10 p-2 ml-1 transition-all duration-300 hover:scale-110 min-w-[40px] min-h-[40px] flex items-center justify-center"
+                style={{ borderRadius: 8 }}
                 onClick={toggleMenu}
               >
                 {isMenuOpen ? (

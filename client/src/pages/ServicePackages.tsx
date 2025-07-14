@@ -145,10 +145,88 @@ const INDUSTRIES = [
     ],
   },
   {
-    key: "other",
-    label: "Other",
+    key: "home-services",
+    label: "Home Services",
     icon: Wrench,
-    comingSoon: true,
+    packages: [
+      {
+        name: "Solo Operator",
+        price: "$400",
+        originalPrice: "$499",
+        monthlyRetainer: "$79",
+        originalMonthlyRetainer: "$99",
+        savings: "SAVE $20/month",
+        features: [
+          "24/7 AI Booking & Call Handling",
+          "Automated Job Scheduling",
+          "SMS/Email Reminders",
+          "Customer Database & CRM",
+          "Review Generation System",
+          "Service Analytics Dashboard",
+        ],
+        bookings: "Handle 40+ jobs/month",
+        description: `Perfect for solo home service operators (plumbers, electricians, cleaners, etc.) who want to automate bookings and reminders. Includes AI-powered call handling, online scheduling, and customer management dashboard.`,
+        popular: false,
+        relatedServices: [
+          "Plumbing",
+          "Electrical",
+          "Cleaning",
+          "Landscaping",
+          "Pest Control",
+          "Appliance Repair",
+        ],
+      },
+      {
+        name: "Small Team",
+        price: "$900",
+        originalPrice: "$1099",
+        monthlyRetainer: "$199",
+        originalMonthlyRetainer: "$249",
+        savings: "SAVE $50/month",
+        features: [
+          "All Solo Operator features",
+          "Team Scheduling & Dispatch",
+          "Upsell/Cross-sell Campaigns",
+          "Advanced Analytics & Reporting",
+        ],
+        bookings: "Handle 120+ jobs/month",
+        description: `Ideal for small home service teams looking to boost efficiency and customer retention. Adds team scheduling, upsell campaigns, and advanced analytics.`,
+        popular: true,
+        relatedServices: [
+          "Plumbing",
+          "Electrical",
+          "Cleaning",
+          "Landscaping",
+          "Pest Control",
+          "Appliance Repair",
+        ],
+      },
+      {
+        name: "Company",
+        price: "$1,800",
+        originalPrice: "$1,999",
+        monthlyRetainer: "$499",
+        originalMonthlyRetainer: "$599",
+        savings: "SAVE $100/month",
+        features: [
+          "All Small Team features",
+          "Custom Integrations (GMB, QuickBooks, etc.)",
+          "Multi-location Management",
+          "Loyalty & Referral Programs",
+        ],
+        bookings: "Handle 300+ jobs/month",
+        description: `For established home service companies ready to scale. Includes custom integrations, multi-location management, and loyalty programs.`,
+        popular: false,
+        relatedServices: [
+          "Plumbing",
+          "Electrical",
+          "Cleaning",
+          "Landscaping",
+          "Pest Control",
+          "Appliance Repair",
+        ],
+      },
+    ],
   },
 ];
 
@@ -169,11 +247,7 @@ export default function ServicePackages() {
       />
 
       {/* Hero Section */}
-      <div
-        className="relative z-10 text-white section-padding relative overflow-hidden"
-        style={{ paddingTop: "7rem" }}
-      >
-        {/* Stars Background for Hero */}
+      <section className="relative z-10 text-white min-h-screen overflow-hidden pt-28 pb-2">
         <div className="absolute inset-0 z-0">
           <SparklesCore
             id="tsparticleshero"
@@ -185,234 +259,235 @@ export default function ServicePackages() {
             particleColor="#B0B3B8"
           />
         </div>
-        {/* Icon Background */}
-        <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none"
-          style={{ fontSize: 220, zIndex: 0 }}
-        >
-          {industry && (
-            <industry.icon className="w-[220px] h-[220px] mx-auto text-blue-400" />
-          )}
-        </div>
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            AI Automation Packages
-          </h1>
-          <p className="text-xl mb-8 opacity-90">
-            Choose the perfect AI solution to automate your{" "}
-            {industry?.label.toLowerCase()} business
-          </p>
-        </div>
-      </div>
-      {/* Industry Tabs/Cards - moved here */}
-      <div className="relative z-10 flex flex-wrap justify-center gap-4 pt-2 pb-2 max-w-6xl mx-auto w-full px-4 relative overflow-hidden">
-        {/* Stars Background for Industry Tabs */}
-        <div className="absolute inset-0 z-0">
-          <SparklesCore
-            id="tsparticlesindustrytabs"
-            background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={60}
-            className="w-full h-full"
-            particleColor="#B0B3B8"
-          />
-        </div>
-        {INDUSTRIES.map((ind) => (
-          <div key={ind.key} className="relative">
-            <button
-              onClick={() => setSelected(ind.key)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-base transition-all border shadow-sm backdrop-blur-md relative
-                ${
-                  selected === ind.key
-                    ? "bg-[#ffcf00] text-black border-[#ffcf00] scale-105"
-                    : "bg-white/10 text-white border-white/20 hover:bg-white/20"
-                }`}
-            >
-              <span className="opacity-80">
-                <ind.icon className="w-5 h-5" />
-              </span>
-              {ind.label}
-            </button>
-            {ind.comingSoon && (
-              <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">
-                COMING SOON
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-      {/* Package Cards */}
-      <div className="relative z-10 section-padding relative overflow-hidden">
-        {/* Stars Background for Package Cards */}
-        <div className="absolute inset-0 z-0">
-          <SparklesCore
-            id="tsparticlespackagecards"
-            background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={80}
-            className="w-full h-full"
-            particleColor="#B0B3B8"
-          />
-        </div>
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          {industry?.comingSoon ? (
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center">
-              <Card className="max-w-2xl mx-auto p-12 bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white border-0">
-                <CardContent className="p-0">
-                  <div className="text-6xl mb-6">🚧</div>
-                  <h3 className="text-3xl font-bold mb-4">Coming Soon!</h3>
-                  <div className="text-xl mb-6 opacity-90 space-y-4">
-                    <p>
-                      We are currently{" "}
-                      <span className="font-semibold text-[#ffcf00]">
-                        expanding our team
-                      </span>{" "}
-                      to serve more niches.
-                    </p>
-                    <p>
-                      Stay tuned for exciting packages tailored specifically for
-                      your industry.
-                    </p>
-                  </div>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button
-                      className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"
-                      onClick={() => (window.location.href = "/early-access")}
-                    >
-                      Get Early Access
-                    </Button>
-                    <Button
-                      className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 py-3 transition-colors"
-                      onClick={() => setSelected("car-detailers")}
-                    >
-                      View Available Packages
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              <h1 className="text-4xl md:text-5xl font-bold mb-2">
+                AI Automation Packages
+              </h1>
+              <p className="text-xl mb-2 opacity-90">
+                Choose the perfect AI solution to automate your{" "}
+                {industry?.label.toLowerCase()} business
+              </p>
             </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {industry?.packages?.map((pkg, index) => (
-                <motion.div
-                  key={pkg.name}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Card
-                    className={`h-full relative overflow-visible ${
-                      pkg.popular
-                        ? "border-[#ffcf00] border-2 shadow-lg"
-                        : "border-gray-200"
-                    }`}
+            {/* Industry Tabs/Cards - moved here, right below heading */}
+            <div className="flex flex-wrap justify-center gap-4 pt-2 pb-2 w-full overflow-hidden">
+              {/* Stars Background for Industry Tabs */}
+              <div className="absolute inset-0 z-0">
+                <SparklesCore
+                  id="tsparticlesindustrytabs"
+                  background="transparent"
+                  minSize={0.6}
+                  maxSize={1.4}
+                  particleDensity={60}
+                  className="w-full h-full"
+                  particleColor="#B0B3B8"
+                />
+              </div>
+              {INDUSTRIES.map((ind) => (
+                <div key={ind.key} className="relative">
+                  <button
+                    onClick={() => setSelected(ind.key)}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-base transition-all border shadow-sm backdrop-blur-md relative
+                      ${
+                        selected === ind.key
+                          ? "bg-[#ffcf00] text-black border-[#ffcf00] scale-105"
+                          : "bg-white/10 text-white border-white/20 hover:bg-white/20"
+                      }`}
                   >
-                    {/* Icon Background for Card */}
-                    <div
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none"
-                      style={{ fontSize: 120, zIndex: 0 }}
-                    >
-                      <industry.icon className="w-[120px] h-[120px] mx-auto text-blue-400" />
+                    <span className="opacity-80">
+                      <ind.icon className="w-5 h-5" />
+                    </span>
+                    {ind.label}
+                  </button>
+                  {ind.comingSoon && (
+                    <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">
+                      COMING SOON
                     </div>
-                    {pkg.popular && (
-                      <div
-                        className="absolute left-1/2 -translate-x-1/2 z-20 bg-[#ffcf00] text-blue-900 font-bold px-5 py-1 rounded-full shadow-lg pointer-events-none"
-                        style={{
-                          minWidth: 130,
-                          textAlign: "center",
-                          top: "-18px",
-                        }}
-                      >
-                        Most Popular
-                      </div>
-                    )}
-                    <CardHeader className="text-center relative z-10">
-                      <CardTitle className="text-2xl font-bold text-foreground">
-                        {pkg.name}
-                      </CardTitle>
-                      <div className="price-display mb-4">
-                        <div className="text-4xl font-bold text-[#ffcf00] mb-1">
-                          {pkg.price}
-                          <span className="text-lg text-muted-foreground">
-                            {" "}
-                            setup
-                          </span>
-                        </div>
-                        <div className="text-2xl font-bold text-foreground mb-1">
-                          {pkg.monthlyRetainer}
-                          <span className="text-sm text-muted-foreground">
-                            {" "}
-                            /month
-                          </span>
-                        </div>
-                        <div className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-1">
-                          {pkg.savings}
-                        </div>
-                        <div className="text-sm text-muted-foreground line-through">
-                          Originally {pkg.originalMonthlyRetainer}/month
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-6 relative z-10">
-                      <div className="flex items-center justify-center space-x-2 text-foreground">
-                        <Calendar className="w-5 h-5" />
-                        <span className="font-semibold">{pkg.bookings}</span>
-                      </div>
-                      <div className="space-y-3">
-                        <h4 className="font-semibold text-foreground">
-                          Features Included:
-                        </h4>
-                        {pkg.features.map((feature, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-center space-x-3"
-                          >
-                            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                            <span className="text-muted-foreground">
-                              {feature}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="desc">
-                          <AccordionTrigger className="w-full text-left px-0 py-2 font-semibold text-blue-700 hover:underline">
-                            Show More Details
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="text-sm text-foreground/90 whitespace-pre-line">
-                              {pkg.description}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                      <Button
-                        className={`w-full py-3 font-bold transition-colors text-sm sm:text-base whitespace-nowrap ${
-                          pkg.popular
-                            ? "bg-[#ffcf00] text-foreground hover:bg-yellow-300"
-                            : "bg-[hsl(217,69%,34%)] text-white hover:bg-[hsl(217,69%,40%)]"
-                        }`}
-                        onClick={() =>
-                          window.open(
-                            "https://calendly.com/dashinfluence/new-meeting",
-                            "_blank"
-                          )
-                        }
-                      >
-                        <span className="text-sm sm:text-base">
-                          Get Started
-                        </span>
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                  )}
+                </div>
               ))}
             </div>
-          )}
+            {/* Package Cards - right below tabs */}
+            <div className="section-padding relative overflow-hidden">
+              {/* Stars Background for Package Cards */}
+              <div className="absolute inset-0 z-0">
+                <SparklesCore
+                  id="tsparticlespackagecards"
+                  background="transparent"
+                  minSize={0.6}
+                  maxSize={1.4}
+                  particleDensity={80}
+                  className="w-full h-full"
+                  particleColor="#B0B3B8"
+                />
+              </div>
+              <div className="max-w-6xl mx-auto px-6 relative z-10">
+                {industry?.comingSoon ? (
+                  <div className="text-center">
+                    <Card className="max-w-2xl mx-auto p-12 bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white border-0">
+                      <CardContent className="p-0">
+                        <div className="text-6xl mb-6">🚧</div>
+                        <h3 className="text-3xl font-bold mb-4">
+                          Coming Soon!
+                        </h3>
+                        <div className="text-xl mb-6 opacity-90 space-y-4">
+                          <p>
+                            We are currently{" "}
+                            <span className="font-semibold text-[#ffcf00]">
+                              expanding our team
+                            </span>{" "}
+                            to serve more niches.
+                          </p>
+                          <p>
+                            Stay tuned for exciting packages tailored
+                            specifically for your industry.
+                          </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                          <Button
+                            className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"
+                            onClick={() =>
+                              (window.location.href = "/early-access")
+                            }
+                          >
+                            Get Early Access
+                          </Button>
+                          <Button
+                            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 py-3 transition-colors"
+                            onClick={() => setSelected("car-detailers")}
+                          >
+                            View Available Packages
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {industry?.packages?.map((pkg, index) => (
+                      <motion.div
+                        key={pkg.name}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <Card
+                          className={`h-full relative overflow-visible ${
+                            pkg.popular
+                              ? "border-[#ffcf00] border-2 shadow-lg"
+                              : "border-gray-200"
+                          }`}
+                        >
+                          {/* Icon Background for Card */}
+                          <div
+                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none"
+                            style={{ fontSize: 120, zIndex: 0 }}
+                          >
+                            <industry.icon className="w-[120px] h-[120px] mx-auto text-blue-400" />
+                          </div>
+                          {pkg.popular && (
+                            <div
+                              className="absolute left-1/2 -translate-x-1/2 z-20 bg-[#ffcf00] text-blue-900 font-bold px-5 py-1 rounded-full shadow-lg pointer-events-none"
+                              style={{
+                                minWidth: 130,
+                                textAlign: "center",
+                                top: "-18px",
+                              }}
+                            >
+                              Most Popular
+                            </div>
+                          )}
+                          <CardHeader className="text-center relative z-10">
+                            <CardTitle className="text-2xl font-bold text-foreground">
+                              {pkg.name}
+                            </CardTitle>
+                            <div className="price-display mb-4">
+                              <div className="text-4xl font-bold text-[#ffcf00] mb-1">
+                                {pkg.price}
+                                <span className="text-lg text-muted-foreground">
+                                  {" "}
+                                  setup
+                                </span>
+                              </div>
+                              <div className="text-2xl font-bold text-foreground mb-1">
+                                {pkg.monthlyRetainer}
+                                <span className="text-sm text-muted-foreground">
+                                  {" "}
+                                  /month
+                                </span>
+                              </div>
+                              <div className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-1">
+                                {pkg.savings}
+                              </div>
+                              <div className="text-sm text-muted-foreground line-through">
+                                Originally {pkg.originalMonthlyRetainer}/month
+                              </div>
+                            </div>
+                          </CardHeader>
+                          <CardContent className="space-y-6 relative z-10">
+                            <div className="flex items-center justify-center space-x-2 text-foreground">
+                              <Calendar className="w-5 h-5" />
+                              <span className="font-semibold">
+                                {pkg.bookings}
+                              </span>
+                            </div>
+                            <div className="space-y-3">
+                              <h4 className="font-semibold text-foreground">
+                                Features Included:
+                              </h4>
+                              {pkg.features.map((feature, idx) => (
+                                <div
+                                  key={idx}
+                                  className="flex items-center space-x-3"
+                                >
+                                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                                  <span className="text-muted-foreground">
+                                    {feature}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                            <Accordion type="single" collapsible>
+                              <AccordionItem value="desc">
+                                <AccordionTrigger className="w-full text-left px-0 py-2 font-semibold text-blue-700 hover:underline">
+                                  Show More Details
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                  <div className="text-sm text-foreground/90 whitespace-pre-line">
+                                    {pkg.description}
+                                  </div>
+                                </AccordionContent>
+                              </AccordionItem>
+                            </Accordion>
+                            <Button
+                              className={`w-full py-3 font-bold transition-colors text-sm sm:text-base whitespace-nowrap ${
+                                pkg.popular
+                                  ? "bg-[#ffcf00] text-foreground hover:bg-yellow-300"
+                                  : "bg-[hsl(217,69%,34%)] text-white hover:bg-[hsl(217,69%,40%)]"
+                              }`}
+                              onClick={() =>
+                                window.open(
+                                  "https://calendly.com/dashinfluence/new-meeting",
+                                  "_blank"
+                                )
+                              }
+                            >
+                              <span className="text-sm sm:text-base">
+                                Get Started
+                              </span>
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
