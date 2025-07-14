@@ -14,6 +14,8 @@ export default function TestimonialsSectionInteractive() {
   const [isDesktop, setIsDesktop] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [focusedCardIndex, setFocusedCardIndex] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [testimonialsPerPage, setTestimonialsPerPage] = useState(4);
   const gridRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -81,6 +83,33 @@ export default function TestimonialsSectionInteractive() {
       quote: "Exceptional service delivered beyond our expectations.",
     },
   ];
+
+  // Responsive testimonials per page
+  useEffect(() => {
+    function updateTestimonialsPerPage() {
+      if (window.innerWidth <= 640) {
+        setTestimonialsPerPage(1);
+      } else if (window.innerWidth <= 1024) {
+        setTestimonialsPerPage(2);
+      } else if (window.innerWidth <= 1280) {
+        setTestimonialsPerPage(3);
+      } else {
+        setTestimonialsPerPage(4);
+      }
+      setCurrentPage(0); // Reset to first page on resize
+    }
+    updateTestimonialsPerPage();
+    window.addEventListener("resize", updateTestimonialsPerPage);
+    return () =>
+      window.removeEventListener("resize", updateTestimonialsPerPage);
+  }, []);
+
+  // Calculate paginated testimonials
+  const totalPages = Math.ceil(testimonials.length / testimonialsPerPage);
+  const paginatedTestimonials = testimonials.slice(
+    currentPage * testimonialsPerPage,
+    currentPage * testimonialsPerPage + testimonialsPerPage
+  );
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -329,17 +358,17 @@ export default function TestimonialsSectionInteractive() {
             ref={heroSubtitleRef}
             className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-opacity duration-300"
           >
-            Hover over the grid to explore testimonials in a dynamic 3D view.
+            Swipe or use arrows to explore testimonials.
           </p>
         </div>
-        <div className="flex justify-center">
+        <div className="flex flex-col items-center">
           <div
             ref={viewportRef}
             style={{
               position: "relative",
               width: "100%",
               maxWidth: 1000,
-              height: 600,
+              minHeight: 340,
               background:
                 "linear-gradient(135deg,rgba(32,58,181,0.9),rgba(48,70,197,0.9))",
               borderRadius: "1rem",
@@ -348,57 +377,26 @@ export default function TestimonialsSectionInteractive() {
               overflow: "hidden",
               boxShadow: "0 10px 40px rgba(0,0,0,0.4)",
               perspective: 1200,
+              marginBottom: 24,
             }}
           >
-            <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-              {[...Array(30)].map((_, i) => (
-                <div
-                  key={i}
-                  style={{
-                    position: "absolute",
-                    width: 4,
-                    height: 4,
-                    background: "white",
-                    borderRadius: "50%",
-                    animation: "twinkle 2s ease-in-out infinite",
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 2}s`,
-                    animationDuration: `${1.5 + Math.random() * 1.5}s`,
-                    opacity: 0.4 + Math.random() * 0.6,
-                  }}
-                />
-              ))}
-            </div>
             <div
               ref={gridRef}
+              className={`grid gap-6 p-6 justify-center items-center w-full h-full`}
               style={{
-                position: "absolute",
-                width: "calc(4*300px + 3*10px)",
-                height: "calc(2*300px + 1*10px)",
-                display: "grid",
-                gridTemplateColumns: "repeat(4,1fr)",
-                gridTemplateRows: "repeat(2,1fr)",
-                gap: "10px",
-                transition:
-                  "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                willChange: "transform",
-                transform: isHovered
-                  ? "translate(-50%, -50%)"
-                  : "translate(-50%, -50%) rotateX(15deg) rotateY(0deg) skewY(-10deg)",
-                transformOrigin: "center center",
-                top: "50%",
-                left: "50%",
-                overflow: "visible",
+                gridTemplateColumns: `repeat(${testimonialsPerPage}, minmax(0, 1fr))`,
+                minHeight: 300,
+                transition: "grid-template-columns 0.3s",
               }}
             >
-              {testimonials.map((testimonial, i) => (
+              {paginatedTestimonials.map((testimonial, i) => (
                 <div
                   key={i}
                   className="testimonial-card"
                   style={{
-                    width: 300,
-                    height: 300,
+                    width: "100%",
+                    maxWidth: 340,
+                    minHeight: 300,
                     padding: 16,
                     display: "flex",
                     flexDirection: "column",
@@ -413,7 +411,7 @@ export default function TestimonialsSectionInteractive() {
                     borderRadius: "0.5rem",
                     transition: "all 0.2s ease-out",
                     boxShadow: "0 5px 15px rgba(0,0,0,0.3)",
-                    transform: "scale(0.9)",
+                    margin: "0 auto",
                   }}
                   onClick={() => openLightbox(testimonial)}
                   role="button"
@@ -479,20 +477,36 @@ export default function TestimonialsSectionInteractive() {
                 </div>
               ))}
             </div>
-            <div
-              style={{
-                position: "absolute",
-                bottom: 16,
-                right: 16,
-                background: "rgba(0,0,0,0.5)",
-                padding: "4px 8px",
-                borderRadius: 6,
-                fontSize: 12,
-                color: "#d1d5db",
-                transition: "opacity 0.3s",
-              }}
-            >
-              Move cursor to explore
+            {/* Pagination Controls */}
+            <div className="flex justify-center items-center gap-2 absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
+                disabled={currentPage === 0}
+                className="rounded-full bg-white/80 text-[#203ab5] px-3 py-1 font-bold shadow hover:bg-white transition disabled:opacity-50"
+                aria-label="Previous testimonials page"
+              >
+                &#8592;
+              </button>
+              {Array.from({ length: totalPages }).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentPage(idx)}
+                  className={`w-3 h-3 rounded-full mx-1 ${
+                    currentPage === idx ? "bg-[#ffcf00]" : "bg-white/50"
+                  }`}
+                  aria-label={`Go to testimonials page ${idx + 1}`}
+                />
+              ))}
+              <button
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(totalPages - 1, p + 1))
+                }
+                disabled={currentPage === totalPages - 1}
+                className="rounded-full bg-white/80 text-[#203ab5] px-3 py-1 font-bold shadow hover:bg-white transition disabled:opacity-50"
+                aria-label="Next testimonials page"
+              >
+                &#8594;
+              </button>
             </div>
           </div>
         </div>

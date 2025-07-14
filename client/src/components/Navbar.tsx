@@ -256,18 +256,6 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
               }
             >
               <Button
-                className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-4 py-2 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-sm whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform min-w-[100px]"
-                style={{ minHeight: 40 }}
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
-              >
-                Get Started
-              </Button>
-              <Button
                 className="text-white hover:bg-white/10 p-2 ml-1 transition-all duration-300 hover:scale-110 min-w-[40px] min-h-[40px] flex items-center justify-center"
                 style={{ borderRadius: 8 }}
                 onClick={toggleMenu}
@@ -397,17 +385,6 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
             </div>
             {/* Mobile Menu Button */}
             <div className={ctaCol + " lg:hidden flex space-x-2 justify-end"}>
-              <Button
-                className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-xs sm:text-sm whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform"
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
-              >
-                Get Started
-              </Button>
               <Button
                 className="text-white hover:bg-white/10 p-2 transition-all duration-300 hover:scale-110"
                 onClick={toggleMenu}
