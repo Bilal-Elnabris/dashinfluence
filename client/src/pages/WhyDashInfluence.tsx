@@ -12,12 +12,28 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SparklesCore } from "@/components/SparklesCore";
 import Footer from "@/components/Footer";
 
 export default function WhyDashInfluence() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [testimonialsPerPage, setTestimonialsPerPage] = useState(3);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 640) {
+        setTestimonialsPerPage(1);
+      } else if (window.innerWidth < 1024) {
+        setTestimonialsPerPage(2);
+      } else {
+        setTestimonialsPerPage(3);
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const testimonials = [
     {
@@ -122,10 +138,10 @@ export default function WhyDashInfluence() {
     },
   ];
 
-  // Group testimonials into sets of 3
+  // Group testimonials based on testimonialsPerPage
   const testimonialGroups = [];
-  for (let i = 0; i < testimonials.length; i += 3) {
-    testimonialGroups.push(testimonials.slice(i, i + 3));
+  for (let i = 0; i < testimonials.length; i += testimonialsPerPage) {
+    testimonialGroups.push(testimonials.slice(i, i + testimonialsPerPage));
   }
 
   const nextTestimonial = () => {
@@ -238,7 +254,15 @@ export default function WhyDashInfluence() {
               </Button>
 
               {/* Current Group of Testimonials */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500 ease-in-out">
+              <div
+                className={`grid gap-8 transition-all duration-500 ease-in-out ${
+                  testimonialsPerPage === 1
+                    ? "grid-cols-1"
+                    : testimonialsPerPage === 2
+                    ? "grid-cols-1 sm:grid-cols-2"
+                    : "grid-cols-1 md:grid-cols-3"
+                }`}
+              >
                 {testimonialGroups[currentIndex]?.map((testimonial, index) => (
                   <div
                     key={index}
