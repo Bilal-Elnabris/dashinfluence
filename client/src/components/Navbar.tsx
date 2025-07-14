@@ -343,7 +343,7 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
         style={{ position: "fixed" }}
       >
         <LoadingLine coloredNavbar={true} progress={scrollProgress} />
-        <div className="w-full px-8 relative">
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 relative">
           <div className={navRow}>
             {/* Logo Section */}
             <div className={logoCol}>
@@ -352,25 +352,11 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
                 className="flex items-center group"
                 onClick={closeMenu}
               >
-                {/* Show "Why" + logo on mobile, just logo on desktop */}
-                {isMobile ? (
-                  <span className="flex items-center gap-1">
-                    <span className="font-extrabold text-lg leading-none text-white">
-                      Why
-                    </span>
-                    <img
-                      src={logo_long}
-                      alt="DashInfluence Logo"
-                      className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 group-hover:scale-105 -mt-1.5"
-                    />
-                  </span>
-                ) : (
-                  <img
-                    src={logo_long}
-                    alt="DashInfluence Logo"
-                    className="h-6 sm:h-8 w-auto max-w-[120px] sm:max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
-                  />
-                )}
+                <img
+                  src={logo_long}
+                  alt="DashInfluence Logo"
+                  className="h-6 sm:h-8 w-auto max-w-[120px] sm:max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
+                />
               </Link>
             </div>
             {/* Desktop Navigation Links */}
