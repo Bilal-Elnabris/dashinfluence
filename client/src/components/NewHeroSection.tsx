@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLenisScrollAnimation } from "@/hooks/useLenisScroll";
+// import { useLenisScrollAnimation } from "@/hooks/useLenisScroll";
 import { Button } from "@/components/ui/button";
 import {
   ChevronRight,
@@ -16,24 +16,24 @@ import { SparklesCore } from "@/components/SparklesCore";
 
 export default function NewHeroSection() {
   const [scrollY, setScrollY] = useState(0);
-  const { addScrollListener } = useLenisScrollAnimation();
+  // const { addScrollListener } = useLenisScrollAnimation();
 
-  useEffect(() => {
-    const unsubscribe = addScrollListener((e: any) => {
-      setScrollY(e.scroll);
-    });
+  // useEffect(() => {
+  //   const unsubscribe = addScrollListener((e: any) => {
+  //     setScrollY(e.scroll);
+  //   });
 
-    return () => {
-      if (unsubscribe) unsubscribe();
-    };
-  }, [addScrollListener]);
+  //   return () => {
+  //     if (unsubscribe) unsubscribe();
+  //   };
+  // }, [addScrollListener]);
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
-      {/* Interactive Animated Background */}
-      <div className="h-full w-full absolute inset-0 z-0">
+      {/* Stars Background for Hero Section */}
+      <div className="absolute inset-0 z-0">
         <SparklesCore
-          id="tsparticlesfullpage"
+          id="tsparticlesherohome"
           background="transparent"
           minSize={0.6}
           maxSize={1.4}
@@ -42,20 +42,6 @@ export default function NewHeroSection() {
           particleColor="#FFFFFF"
         />
       </div>
-
-      {/* Additional Stars Background for Stats Boxes Section */}
-      <div className="absolute top-1/2 left-0 right-0 h-1/4 z-0 pointer-events-none">
-        <SparklesCore
-          id="tsparticlesseeinactionbg"
-          background="transparent"
-          minSize={0.8}
-          maxSize={2.0}
-          particleDensity={80}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-      </div>
-
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 pt-32 pb-16">
         <div className="max-w-6xl mx-auto">
@@ -129,7 +115,19 @@ export default function NewHeroSection() {
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {/* Stars Background for Stats Grid */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <SparklesCore
+                id="tsparticlesherostats"
+                background="transparent"
+                minSize={0.6}
+                maxSize={1.4}
+                particleDensity={100}
+                className="w-full h-full"
+                particleColor="#FFFFFF"
+              />
+            </div>
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-all duration-300 group">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <TrendingUp className="w-8 h-8 text-white" />

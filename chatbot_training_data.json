@@ -2,7 +2,7 @@
   "company_info": {
     "name": "DashInfluence",
     "tagline": "AI-Powered Business Automation",
-    "description": "Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking, smart call handling, and revenue optimization for car detailers, real estate, home services, and more.",
+    "description": "Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking, smart call handling, and revenue optimization for car detailers, real estate, and home services.",
     "website": "https://dashinfluence.com",
     "contact": {
       "email": "hello@dashinfluence.com",
@@ -21,19 +21,28 @@
   },
   "services": {
     "overview": "AI business automation that works while you sleep, booking appointments and growing your business 24/7. Our AI handles incoming calls, books appointments, sends reminders, qualifies leads, and manages customer communications automatically.",
+    "available_industries": [
+      "Car Detailers",
+      "Real Estate Agents & Brokers",
+      "Home Services"
+    ],
+    "coming_soon_industries": [
+      "Health & Wellness Clinics",
+      "Restaurants & Cafes"
+    ],
     "industries": [
       {
         "name": "Car Detailers",
         "description": "For car detailing businesses looking to automate bookings and follow-ups.",
         "calculator_url": "/calculator/car-detailing",
+        "available": true,
         "packages": [
           {
             "name": "Essential",
             "price": "$400",
-            "original_price": "$499",
-            "monthly_retainer": "$149",
-            "original_monthly_retainer": "$199",
-            "savings": "SAVE $50/month",
+            "monthly_retainer": "$800",
+            "original_monthly_retainer": "$1000",
+            "savings": "SAVE $200/month",
             "features": [
               "24/7 Booking AI Chat",
               "Real-Time Scheduling",
@@ -46,11 +55,10 @@
           },
           {
             "name": "Professional",
-            "price": "$900",
-            "original_price": "$1099",
-            "monthly_retainer": "$299",
-            "original_monthly_retainer": "$349",
-            "savings": "SAVE $50/month",
+            "price": "$600",
+            "monthly_retainer": "$1200",
+            "original_monthly_retainer": "$1500",
+            "savings": "SAVE $300/month",
             "features": [
               "All Essential features",
               "Repeat Customer Automation",
@@ -62,11 +70,10 @@
           },
           {
             "name": "Complete",
-            "price": "$1800",
-            "original_price": "$1999",
-            "monthly_retainer": "$499",
-            "original_monthly_retainer": "$599",
-            "savings": "SAVE $100/month",
+            "price": "$800",
+            "monthly_retainer": "$1600",
+            "original_monthly_retainer": "$2000",
+            "savings": "SAVE $400/month",
             "features": [
               "All Professional features",
               "AI Phone Call Handling",
@@ -83,13 +90,13 @@
         "name": "Real Estate Agents & Brokers",
         "description": "For agents and brokers who want to capture more leads and automate client communication.",
         "calculator_url": "/calculator/real-estate",
+        "available": true,
         "packages": [
           {
             "name": "Solo Agent",
             "price": "$750",
-            "original_price": "$750",
             "monthly_retainer": "$199",
-            "original_monthly_retainer": "$199",
+            "original_monthly_retainer": "$249",
             "savings": "SAVE $50/month",
             "features": [
               "24/7 AI Lead Capture Chat",
@@ -104,10 +111,9 @@
           {
             "name": "Team",
             "price": "$1,750",
-            "original_price": "$1,750",
             "monthly_retainer": "$499",
-            "original_monthly_retainer": "$499",
-            "savings": "SAVE $50/month",
+            "original_monthly_retainer": "$599",
+            "savings": "SAVE $100/month",
             "features": [
               "All Solo Agent features",
               "Automated Email Campaigns",
@@ -121,10 +127,9 @@
           {
             "name": "Agency",
             "price": "$3,500",
-            "original_price": "$3,500",
             "monthly_retainer": "$999",
-            "original_monthly_retainer": "$999",
-            "savings": "SAVE $100/month",
+            "original_monthly_retainer": "$1199",
+            "savings": "SAVE $200/month",
             "features": [
               "All Team features",
               "AI Call Answering Service",
@@ -140,22 +145,73 @@
       {
         "name": "Home Services",
         "description": "For plumbing, HVAC, electrical, and other home service contractors ready for automation.",
-        "calculator_url": "/calculator/home-services"
+        "calculator_url": "/calculator/home-services",
+        "available": true,
+        "packages": [
+          {
+            "name": "Essential",
+            "price": "$400",
+            "monthly_retainer": "$800",
+            "original_monthly_retainer": "$1000",
+            "savings": "SAVE $200/month",
+            "features": [
+              "24/7 Emergency Call Handling",
+              "Automated Scheduling System",
+              "SMS Appointment Reminders",
+              "Customer Database Management",
+              "Service History Tracking"
+            ],
+            "bookings": "Handle 50+ service calls/month",
+            "description": "Perfect for home service contractors who want to automate emergency calls and regular appointments. The AI handles urgent service requests, books appointments, and sends reminders to reduce no-shows."
+          },
+          {
+            "name": "Professional",
+            "price": "$600",
+            "monthly_retainer": "$1200",
+            "original_monthly_retainer": "$1500",
+            "savings": "SAVE $300/month",
+            "features": [
+              "All Essential features",
+              "Automated Follow-up System",
+              "Service Analytics Dashboard",
+              "Inventory Management Alerts"
+            ],
+            "bookings": "Handle 150+ service calls/month",
+            "description": "Ideal for growing home service businesses. Adds automated follow-ups after service completion, review requests, and inventory tracking to ensure you never run out of essential supplies."
+          },
+          {
+            "name": "Complete",
+            "price": "$800",
+            "monthly_retainer": "$1600",
+            "original_monthly_retainer": "$2000",
+            "savings": "SAVE $400/month",
+            "features": [
+              "All Professional features",
+              "AI Emergency Call Routing",
+              "Advanced Business Reports",
+              "Automated Upsell Campaigns",
+              "Integration with Service Software"
+            ],
+            "bookings": "Handle 500+ service calls/month",
+            "description": "For established home service businesses ready to fully automate. Includes AI-powered emergency call handling, advanced analytics, automated upsell campaigns, and integration with popular service management software."
+          }
+        ]
       },
       {
         "name": "Health & Wellness Clinics",
         "description": "For clinics, dentists, and therapists seeking to reduce no-shows and automate reminders.",
-        "calculator_url": "/calculator/health-wellness"
+        "calculator_url": "/calculator/health-wellness",
+        "available": false,
+        "coming_soon": true,
+        "early_access_url": "/early-access"
       },
       {
         "name": "Restaurants & Cafes",
         "description": "For venues wanting to automate reservations, reminders, and guest communication.",
-        "calculator_url": "/calculator/restaurants-cafes"
-      },
-      {
-        "name": "Other",
-        "description": "We are currently expanding our team to serve more niches. Contact us to discuss automation solutions for your industry.",
-        "coming_soon": true
+        "calculator_url": "/calculator/restaurants-cafes",
+        "available": false,
+        "coming_soon": true,
+        "early_access_url": "/early-access"
       }
     ]
   },
@@ -204,7 +260,11 @@
       },
       {
         "question": "Is AI automation expensive?",
-        "answer": "Our packages start at just $400 with monthly retainers from $149. Most businesses see ROI within the first month through increased bookings and reduced operational costs."
+        "answer": "Our packages start at just $400 with monthly retainers from $800. Most businesses see ROI within the first month through increased bookings and reduced operational costs."
+      },
+      {
+        "question": "Which industries do you currently serve?",
+        "answer": "We currently serve Car Detailers, Real Estate Agents & Brokers, and Home Services contractors. We're actively expanding our team to serve Health & Wellness clinics and Restaurants & Cafes - you can join our early access list for these industries."
       }
     ],
     "technical": [
@@ -241,14 +301,38 @@
         "answer": "Absolutely! The AI can answer questions about property features, pricing, availability, and neighborhood information. It can also schedule virtual tours and in-person showings."
       }
     ],
+    "home_services": [
+      {
+        "question": "How does AI automation work for home service contractors?",
+        "answer": "Our AI handles emergency calls 24/7, books appointments, sends reminders, and manages customer communications. It can prioritize urgent service requests and schedule regular maintenance appointments."
+      },
+      {
+        "question": "Can the AI handle emergency service calls?",
+        "answer": "Yes! Our AI is specifically designed to handle emergency calls for home services. It can assess urgency, route calls appropriately, and schedule emergency appointments while maintaining your regular booking schedule."
+      }
+    ],
+    "coming_soon": [
+      {
+        "question": "Do you serve Health & Wellness clinics?",
+        "answer": "We're currently expanding our team to serve Health & Wellness clinics. You can join our early access list to be notified when we launch this service. We expect to be available for this industry soon."
+      },
+      {
+        "question": "Do you serve Restaurants & Cafes?",
+        "answer": "We're actively developing automation solutions for Restaurants & Cafes. Join our early access list to be among the first to know when we launch this service."
+      },
+      {
+        "question": "How can I get early access to new industries?",
+        "answer": "Visit our early access page to join the waitlist for upcoming industries. We'll notify you as soon as we're ready to serve your industry with our AI automation solutions."
+      }
+    ],
     "pricing": [
       {
         "question": "What's included in each automation package?",
-        "answer": "Our Essential package ($400) includes 24/7 booking AI, SMS reminders, and basic analytics. Professional ($900) adds repeat customer automation and advanced analytics. Complete ($1800) includes AI phone handling and full business intelligence."
+        "answer": "Our Essential package ($400) includes 24/7 booking AI, SMS reminders, and basic analytics. Professional ($600) adds repeat customer automation and advanced analytics. Complete ($800) includes AI phone handling and full business intelligence."
       },
       {
         "question": "Are there any hidden fees?",
-        "answer": "No hidden fees! Our pricing is transparent with monthly retainers starting at $149. All features are clearly outlined in each package."
+        "answer": "No hidden fees! Our pricing is transparent with monthly retainers starting at $800. All features are clearly outlined in each package."
       },
       {
         "question": "Can I upgrade or downgrade my package?",
@@ -331,6 +415,20 @@
         "quote": "Our team was drowning in administrative work. Now our AI handles appointment scheduling, follow-ups, and client communications. We focus purely on closing deals.",
         "result": "Saved 30 hours/week across team"
       }
+    ],
+    "home_services": [
+      {
+        "name": "John Martinez",
+        "company": "Martinez Plumbing",
+        "quote": "Emergency calls used to wake me up at 2 AM. Now the AI handles them professionally and only wakes me for real emergencies. My sleep is better, and my customers are happier.",
+        "result": "Reduced emergency call stress by 80%"
+      },
+      {
+        "name": "Lisa Park",
+        "company": "Park HVAC Services",
+        "quote": "The AI books appointments and sends reminders automatically. No more no-shows, and my calendar is always organized. It's like having a perfect office manager.",
+        "result": "Eliminated no-shows completely"
+      }
     ]
   },
   "features": {
@@ -361,22 +459,18 @@
   },
   "pricing_summary": {
     "starting_price": "$400",
-    "monthly_retainer_start": "$149",
+    "monthly_retainer_start": "$800",
     "packages": ["Essential", "Professional", "Complete"],
-    "industries": [
-      "Car Detailers",
-      "Real Estate",
-      "Home Services",
-      "Health & Wellness",
-      "Restaurants & Cafes"
-    ],
+    "available_industries": ["Car Detailers", "Real Estate", "Home Services"],
+    "coming_soon_industries": ["Health & Wellness", "Restaurants & Cafes"],
     "guarantee": "30-day satisfaction guarantee"
   },
   "contact_options": {
     "consultation": "https://calendly.com/dashinfluence/new-meeting",
     "email": "hello@dashinfluence.com",
     "phone": "(825) 250-0262",
-    "hours": "Mon-Fri: 9:00 AM - 6:00 PM MST"
+    "hours": "Mon-Fri: 9:00 AM - 6:00 PM MST",
+    "early_access": "/early-access"
   },
   "website_pages": [
     "/",
@@ -394,5 +488,21 @@
     "/privacy-policy",
     "/terms-of-service",
     "/cookie-policy"
-  ]
+  ],
+  "current_promotion": {
+    "active": true,
+    "title": "Launch Promotion - 90% Off for First 3 Clients",
+    "description": "We're offering an exclusive 90% discount on our AI automation services for the first three clients in each industry, in exchange for testimonials and feedback.",
+    "terms": "This promotion is limited to the first three clients per industry (Car Detailers, Real Estate, Home Services) who sign up. In exchange for the 90% discount, we ask for honest testimonials and feedback to help us improve our services.",
+    "discount": "90% off setup and first 3 months of service",
+    "availability": "Limited to first 3 clients per industry",
+    "requirements": "Testimonials and feedback in exchange for discount"
+  },
+  "bot_instructions": {
+    "available_industries_response": "We currently serve Car Detailers, Real Estate Agents & Brokers, and Home Services contractors. For these industries, I can provide detailed information about our packages and pricing.",
+    "coming_soon_response": "We're actively expanding our team to serve Health & Wellness clinics and Restaurants & Cafes. You can join our early access list at /early-access to be notified when we launch these services.",
+    "pricing_update": "Our current pricing starts at $400 setup with monthly retainers from $800. We've updated our pricing to better reflect the value and ROI our automation provides.",
+    "promotion_response": "We're currently running an exclusive launch promotion! The first three clients in each industry get 90% off our AI automation services in exchange for testimonials and feedback. This is a limited-time offer to help us gather real-world feedback while providing incredible value to early adopters.",
+    "consultation_cta": "Would you like to schedule a free consultation to discuss how AI automation can work for your specific business? I can help you book a time that works for you."
+  }
 }

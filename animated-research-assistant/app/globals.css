@@ -26,7 +26,11 @@
 
 .bg-grid-white\/\[0\.02\] {
   background-size: 30px 30px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px
+    ),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
@@ -42,6 +46,20 @@
   }
 }
 
+section > .pointer-events-none {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
+  min-width: 100vw !important;
+  max-width: 100vw !important;
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }

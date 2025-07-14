@@ -10,7 +10,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
 
   useEffect(() => {
     // Initialize Lenis with optimal settings for smooth scrolling
-    lenisRef.current = new Lenis({
+    const lenis = new Lenis({
       duration: 1.2, // Smooth scroll duration
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function
       orientation: "vertical",
@@ -20,6 +20,10 @@ export function LenisProvider({ children }: LenisProviderProps) {
       touchMultiplier: 2,
       infinite: false,
     });
+
+    lenisRef.current = lenis;
+    // Set the global exported lenisRef
+    lenisRef.current = lenis;
 
     // RAF loop for Lenis
     function raf(time: number) {

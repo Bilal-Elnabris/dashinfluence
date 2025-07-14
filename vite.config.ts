@@ -38,5 +38,14 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
+    hmr: {
+      overlay: false,
+    },
+  },
+  optimizeDeps: {
+    force: true,
+  },
+  esbuild: {
+    target: "es2020",
   },
 });

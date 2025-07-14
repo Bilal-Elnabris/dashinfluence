@@ -2,7 +2,6 @@ import NewHeroSection from "@/components/NewHeroSection";
 import WhyChooseAISection from "@/components/WhyChooseAISection";
 import ImplementationProcessSection from "@/components/ImplementationProcessSection";
 import RevenueCalculator from "./RevenueCalculator";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import AIPackagesPreview from "@/components/AIPackagesPreview";
 import SEOHead from "@/components/SEOHead";
 import StructuredData, {
@@ -24,6 +23,7 @@ import {
 } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
 import { Progress } from "@/components/ui/progress";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 const BUSINESS_TYPES = [
   {
@@ -80,25 +80,23 @@ export default function Home() {
         ogDescription="Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking and smart call handling."
         canonical="https://dashinfluence.com"
       />
-
       {/* Structured Data */}
       <StructuredData type="organization" data={organizationSchema} />
       <StructuredData type="service" data={serviceSchema} />
-
       <div className="relative z-10">
         {/* New Hero Section */}
         <NewHeroSection />
 
         {/* How AI Automation Transforms Your Business (moved up) */}
         <section className="section-padding bg-white dark:bg-slate-900 relative overflow-hidden">
-          {/* Stars Background */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
+          {/* Stars Background for How AI Automation Transforms Section */}
+          <div className="absolute inset-0 z-0">
             <SparklesCore
-              id="tsparticlesai-transforms"
+              id="tsparticleshowai"
               background="transparent"
               minSize={0.6}
               maxSize={1.4}
-              particleDensity={50}
+              particleDensity={100}
               className="w-full h-full"
               particleColor="#6b7280"
             />
@@ -265,35 +263,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="relative overflow-hidden">
-          {/* Stars Background */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
-            <SparklesCore
-              id="tsparticlestestimonials"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={50}
-              className="w-full h-full"
-              particleColor="#6b7280"
-            />
-          </div>
-          <div className="relative z-10">
-            <TestimonialsSection />
-          </div>
-        </section>
-
         {/* AI Automation Packages Preview */}
-        <section className="relative overflow-hidden bg-transparent">
-          {/* Stars Background */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
+        <section className="relative overflow-visible bg-transparent pt-8 pb-0">
+          {/* Continuous Stars Background from Packages to Footer */}
+          <div
+            className="absolute inset-0 z-0 pointer-events-none h-[calc(100%+8rem)]"
+            style={{ bottom: "-8rem" }}
+          >
             <SparklesCore
-              id="tsparticlespackages"
+              id="tsparticlespackages-continuous"
               background="transparent"
               minSize={0.6}
               maxSize={1.4}
-              particleDensity={50}
+              particleDensity={80}
               className="w-full h-full"
               particleColor="#6b7280"
             />

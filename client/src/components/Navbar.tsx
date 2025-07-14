@@ -39,10 +39,33 @@ export default function Navbar() {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/why-us", label: "logo", isLogo: true },
+    { href: "/why-us", label: "Why Influence", isLogo: true },
     { href: "/packages", label: "Services" },
     { href: "/contact", label: "Contact" },
   ];
+
+  // Page-specific navbar behavior configuration
+  const pageConfigs = {
+    "/": { disableTransform: false, scrollThreshold: 0.25, darkenOnly: false }, // Home - now transforms at 25%
+    "/why-us": {
+      disableTransform: true,
+      scrollThreshold: 0,
+      darkenOnly: false,
+    }, // Why Influence - no transformation
+    "/packages": {
+      disableTransform: false,
+      scrollThreshold: 0.5,
+      darkenOnly: true,
+    }, // Services - darken only at 50% scroll
+    "/contact": {
+      disableTransform: false,
+      scrollThreshold: 0.2,
+      darkenOnly: true,
+    }, // Contact - darken at 20% scroll
+  };
+
+  const currentPageConfig =
+    pageConfigs[location as keyof typeof pageConfigs] || pageConfigs["/"];
 
   useEffect(() => {
     setIsHome(location === "/");
@@ -62,11 +85,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Show colored navbar when progress reaches 20% (1/5 of the page)
-  const coloredNavbar = scrollProgress >= 0.2;
+  // Show colored navbar based on page-specific configuration
+  const coloredNavbar = currentPageConfig.disableTransform
+    ? false // Never show colored navbar on pages with disabled transformation
+    : currentPageConfig.darkenOnly
+    ? false // Don't show colored navbar for darken-only pages
+    : scrollProgress >= currentPageConfig.scrollThreshold;
 
-  // Animation effect for colored navbar
+  // Animation effect for colored navbar (only if transformation is enabled)
   useEffect(() => {
+    if (currentPageConfig.disableTransform) {
+      // Keep navbar transparent on pages with disabled transformation
+      setShowColored(false);
+      setHasAnimated(false);
+      return;
+    }
+
     if (coloredNavbar && !showColored) {
       setShowColored(true);
       setTimeout(() => setHasAnimated(true), 400); // Animation duration
@@ -74,7 +108,7 @@ export default function Navbar() {
       setShowColored(false);
       setHasAnimated(false);
     }
-  }, [coloredNavbar]);
+  }, [coloredNavbar, currentPageConfig.disableTransform]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -89,19 +123,26 @@ export default function Navbar() {
     "fixed top-0 left-0 w-full z-50 static-optimized border-b-0 transition-all duration-400 ease-in-out";
   const navbarColored =
     "bg-gradient-to-r from-[#203ab5] via-[#3553e0] to-[#3046c5] shadow-lg border-b border-white/10 backdrop-blur-sm";
-  const navbarTransparent = "bg-transparent shadow-none backdrop-blur-none";
+  const navbarTransparent =
+    location === "/contact" && scrollProgress >= 0.2
+      ? "bg-black/30 shadow-none backdrop-blur-sm" // Darkened background for contact page at 20% scroll
+      : location === "/packages" && scrollProgress >= 0.5
+      ? "bg-black/30 shadow-none backdrop-blur-sm" // Darkened background for services at 50% scroll
+      : "bg-transparent shadow-none backdrop-blur-none";
+
+  // Slide-up animation classes for transparent navbar
+  const slideUp = showColored
+    ? "opacity-0 pointer-events-none -translate-y-8 transition-all duration-400 ease-in-out"
+    : "opacity-100 pointer-events-auto translate-y-0 transition-all duration-400 ease-in-out";
 
   // Slide-down animation classes
-  const slideDown =
-    showColored && !hasAnimated
-      ? "opacity-0 -translate-y-10 pointer-events-none transition-all duration-400 ease-in-out"
-      : showColored && hasAnimated
-      ? "opacity-100 translate-y-0 pointer-events-auto transition-all duration-400 ease-in-out"
-      : "hidden transition-all duration-400 ease-in-out";
+  const slideDown = showColored
+    ? "opacity-100 translate-y-0 pointer-events-auto transition-all duration-400 ease-in-out"
+    : "opacity-0 pointer-events-none -translate-y-8 transition-all duration-400 ease-in-out";
 
   // Active nav item rounded corners
-  const activeNavClass = "bg-white/20 rounded-xl";
-  const hoverNavClass = "hover:bg-white/10 rounded-xl";
+  const activeNavClass = "bg-white/20";
+  const hoverNavClass = "hover:bg-white/10";
 
   // 3-column flex layout for logo, nav, CTA
   const navRow = "flex items-center justify-between px-8 pt-4 pb-4 gap-2";
@@ -113,11 +154,7 @@ export default function Navbar() {
     <>
       {/* Transparent navbar always rendered, but hidden when colored navbar is visible */}
       <nav
-        className={`${navbarBase} ${navbarTransparent} ${
-          showColored
-            ? "opacity-0 pointer-events-none"
-            : "opacity-100 pointer-events-auto"
-        } transition-all duration-400`}
+        className={`${navbarBase} ${navbarTransparent} ${slideUp}`}
         ref={navRef}
         style={{ position: "fixed" }}
       >
@@ -139,32 +176,44 @@ export default function Navbar() {
               </Link>
             </div>
             {/* Desktop Navigation Links */}
-            <div className={navCol + " hidden lg:flex space-x-8"}>
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-white no-underline font-extrabold text-base dash-underline px-3 py-2 transition-all duration-300 flex items-center relative group ${
-                    location === item.href ? activeNavClass : hoverNavClass
-                  }`}
-                  style={{ lineHeight: "2.5rem" }}
-                  onClick={closeMenu}
-                >
-                  {item.isLogo ? (
-                    <span className="flex items-center gap-1">
-                      <span className="font-extrabold text-lg">Why</span>
-                      <img
-                        src={logo_long}
-                        alt="DashInfluence Logo"
-                        className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300"
-                      />
-                    </span>
-                  ) : (
-                    <span className="relative z-10">{item.label}</span>
-                  )}
-                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                </Link>
-              ))}
+            <div
+              className={navCol + " hidden lg:flex justify-center items-center"}
+            >
+              <div
+                className="flex space-x-8 bg-black/20 rounded-[0.75rem] px-4"
+                style={{ backdropFilter: "blur(8px)" }}
+              >
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`text-white no-underline font-extrabold text-base dash-underline px-3 py-2 transition-all duration-300 flex items-center relative group rounded-t-[0.75rem] h-16 justify-center ${
+                      location === item.href ? activeNavClass : hoverNavClass
+                    }`}
+                    style={{ lineHeight: "2.5rem" }}
+                    onClick={closeMenu}
+                  >
+                    {item.isLogo ? (
+                      <span className="flex items-center gap-1 px-3 py-2">
+                        <span className="font-extrabold text-lg leading-none">
+                          Why
+                        </span>
+                        <img
+                          src={logo_long}
+                          alt="DashInfluence Logo"
+                          className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 -mt-1.5"
+                        />
+                      </span>
+                    ) : (
+                      <span className="relative z-10">{item.label}</span>
+                    )}
+                    <div
+                      className="absolute left-0 right-0 bottom-0 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 h-16 rounded-t-[0.75rem]"
+                      style={{ borderRadius: "0.75rem 0.75rem 0 0" }}
+                    ></div>
+                  </Link>
+                ))}
+              </div>
             </div>
             {/* Desktop CTA Section */}
             <div className={ctaCol + " hidden lg:flex"}>
@@ -208,7 +257,9 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <div
             className={`lg:hidden border-t-0 bg-transparent transition-all duration-400 overflow-hidden ${
-              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              isMenuOpen
+                ? "max-h-96 opacity-100 backdrop-blur-md bg-black/40"
+                : "max-h-0 opacity-0"
             }`}
           >
             <div className="px-4 py-4 space-y-4">
@@ -229,7 +280,20 @@ export default function Navbar() {
                       : "none",
                   }}
                 >
-                  {item.label}
+                  {item.isLogo ? (
+                    <span className="flex items-center gap-1">
+                      <span className="font-extrabold text-lg leading-none">
+                        Why
+                      </span>
+                      <img
+                        src={logo_long}
+                        alt="DashInfluence Logo"
+                        className="h-6 w-auto max-w-[100px] object-contain -mt-1.5"
+                      />
+                    </span>
+                  ) : (
+                    <span className="relative z-10">{item.label}</span>
+                  )}
                 </Link>
               ))}
             </div>
@@ -264,25 +328,30 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-white no-underline font-extrabold text-base dash-underline px-3 py-2 transition-all duration-300 flex items-center relative group ${
+                  className={`text-white no-underline font-extrabold text-base dash-underline px-3 py-2 transition-all duration-300 flex items-center relative group rounded-t-[0.75rem] h-16 justify-center ${
                     location === item.href ? activeNavClass : hoverNavClass
                   }`}
                   style={{ lineHeight: "2.5rem" }}
                   onClick={closeMenu}
                 >
                   {item.isLogo ? (
-                    <span className="flex items-center gap-1">
-                      <span className="font-extrabold text-lg">Why</span>
+                    <span className="flex items-center gap-1 px-3 py-2">
+                      <span className="font-extrabold text-lg leading-none">
+                        Why
+                      </span>
                       <img
                         src={logo_long}
                         alt="DashInfluence Logo"
-                        className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300"
+                        className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 -mt-1.5"
                       />
                     </span>
                   ) : (
                     <span className="relative z-10">{item.label}</span>
                   )}
-                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                  <div
+                    className="absolute left-0 right-0 bottom-0 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 h-16 rounded-t-[0.75rem]"
+                    style={{ borderRadius: "0.75rem 0.75rem 0 0" }}
+                  ></div>
                 </Link>
               ))}
             </div>

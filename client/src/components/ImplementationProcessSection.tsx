@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Target, Lightbulb, Zap, TrendingUp, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { SparklesCore } from "@/components/SparklesCore";
 
 export default function ImplementationProcessSection() {
   const processSteps = [
@@ -78,6 +79,18 @@ export default function ImplementationProcessSection() {
         {/* CTA Section */}
         <div className="text-center relative">
           <Card className="p-8 bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white relative overflow-hidden">
+            {/* Stars Background */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <SparklesCore
+                id="tsparticlescta"
+                background="transparent"
+                minSize={0.6}
+                maxSize={1.4}
+                particleDensity={50}
+                className="w-full h-full"
+                particleColor="#ffffff"
+              />
+            </div>
             <CardContent className="p-0 relative z-10">
               <h3 className="text-2xl font-bold mb-4">
                 Ready to Transform Your Business?

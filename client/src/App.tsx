@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import RevenueCalculator from "@/pages/RevenueCalculator";
 import AutomationQuiz from "@/pages/AutomationQuiz";
-
 import WhyDashInfluence from "@/pages/WhyDashInfluence";
 import ServicePackages from "@/pages/ServicePackages";
 import Contact from "@/pages/Contact";
@@ -28,9 +27,7 @@ import RestaurantsCafesCalculator from "@/pages/RestaurantsCafesCalculator";
 import EarlyAccess from "@/pages/EarlyAccess";
 
 function Router() {
-  // Use the custom scroll-to-top hook
   useScrollToTop();
-
   return (
     <Switch>
       <Route path="/" component={Home} />
