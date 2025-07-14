@@ -167,10 +167,10 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
 
   // 3-column flex layout for logo, nav, CTA
   const navRow =
-    "flex items-center justify-between px-4 sm:px-6 md:px-8 pt-3 pb-3 gap-2 w-full overflow-x-hidden";
-  const logoCol = "flex items-center min-w-0 pl-1 sm:pl-2 md:pl-0";
+    "flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-8 pt-3 pb-3 gap-2 w-full overflow-x-hidden";
+  const logoCol = "flex items-center min-w-0 pl-0 sm:pl-1 md:pl-2 lg:pl-0";
   const navCol = "flex-1 flex justify-center items-center min-w-0";
-  const ctaCol = "flex items-center min-w-0";
+  const ctaCol = "flex items-center min-w-0 pr-0 sm:pr-1 md:pr-2 lg:pr-0";
 
   return (
     <>
