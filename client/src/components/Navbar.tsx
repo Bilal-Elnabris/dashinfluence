@@ -167,10 +167,10 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
 
   // 3-column flex layout for logo, nav, CTA
   const navRow =
-    "flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-8 pt-3 pb-3 gap-2 w-full overflow-x-hidden";
-  const logoCol = "flex items-center min-w-0 pl-0 sm:pl-1 md:pl-2 lg:pl-0";
+    "flex items-center justify-between px-0 lg:px-8 pt-3 pb-3 gap-2 w-full overflow-x-hidden";
+  const logoCol = "flex items-center min-w-0 pl-0 ml-2 lg:pl-0 lg:ml-0";
   const navCol = "flex-1 flex justify-center items-center min-w-0";
-  const ctaCol = "flex items-center min-w-0 pr-0 sm:pr-1 md:pr-2 lg:pr-0";
+  const ctaCol = "flex items-center min-w-0 pr-0 mr-2 lg:pr-0 lg:mr-0";
 
   return (
     <>
@@ -181,7 +181,7 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
         style={{ position: "fixed" }}
       >
         <LoadingLine coloredNavbar={false} progress={scrollProgress} />
-        <div className="w-full px-8 relative">
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 relative">
           <div className={navRow}>
             {/* Logo Section */}
             <div className={logoCol}>
@@ -256,15 +256,34 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
               }
             >
               <Button
-                className="text-white hover:bg-white/10 p-2 ml-1 transition-all duration-300 hover:scale-110 min-w-[40px] min-h-[40px] flex items-center justify-center"
+                className="text-white hover:bg-white/10 p-2 ml-1 transition-all duration-300 hover:scale-110 min-w-[40px] min-h-[40px] flex items-center justify-center relative overflow-hidden focus:outline-none focus:ring-0 focus:border-none active:outline-none active:ring-0 active:border-none"
                 style={{ borderRadius: 8 }}
                 onClick={toggleMenu}
               >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6 transition-transform duration-300 rotate-180" />
-                ) : (
-                  <Menu className="h-6 w-6 transition-transform duration-300" />
-                )}
+                <span
+                  className="absolute inset-0 flex items-center justify-center transition-all duration-300"
+                  style={{
+                    opacity: isMenuOpen ? 0 : 1,
+                    transform: isMenuOpen
+                      ? "rotate(90deg) scale(0.7)"
+                      : "rotate(0deg) scale(1)",
+                    transition: "opacity 0.3s, transform 0.3s",
+                  }}
+                >
+                  <Menu className="h-6 w-6" />
+                </span>
+                <span
+                  className="absolute inset-0 flex items-center justify-center transition-all duration-300"
+                  style={{
+                    opacity: isMenuOpen ? 1 : 0,
+                    transform: isMenuOpen
+                      ? "rotate(0deg) scale(1)"
+                      : "rotate(-90deg) scale(0.7)",
+                    transition: "opacity 0.3s, transform 0.3s",
+                  }}
+                >
+                  <X className="h-6 w-6" />
+                </span>
               </Button>
             </div>
           </div>
