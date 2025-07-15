@@ -87,8 +87,8 @@ export default function AIPackagesPreview() {
                 {/* Popular Badge */}
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-[#ffcf00] text-black font-bold px-4 py-2 rounded-full text-sm">
-                      Most Popular
+                    <div className="bg-[#ffcf00] text-black font-bold px-2 py-1 text-xs rounded-full md:px-4 md:py-2 md:text-sm max-[375px]:px-1 max-[375px]:py-0.5 max-[375px]:text-[10px] max-[371px]:hidden">
+                      <span className="whitespace-nowrap">Most Popular</span>
                     </div>
                   </div>
                 )}

@@ -300,11 +300,6 @@ export default function ServicePackages() {
                     </span>
                     {ind.label}
                   </button>
-                  {ind.comingSoon && (
-                    <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">
-                      COMING SOON
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -323,49 +318,9 @@ export default function ServicePackages() {
                 />
               </div>
               <div className="max-w-6xl mx-auto px-6 relative z-10">
-                {industry?.comingSoon ? (
-                  <div className="text-center">
-                    <Card className="max-w-2xl mx-auto p-12 bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white border-0">
-                      <CardContent className="p-0">
-                        <div className="text-6xl mb-6">🚧</div>
-                        <h3 className="text-3xl font-bold mb-4">
-                          Coming Soon!
-                        </h3>
-                        <div className="text-xl mb-6 opacity-90 space-y-4">
-                          <p>
-                            We are currently{" "}
-                            <span className="font-semibold text-[#ffcf00]">
-                              expanding our team
-                            </span>{" "}
-                            to serve more niches.
-                          </p>
-                          <p>
-                            Stay tuned for exciting packages tailored
-                            specifically for your industry.
-                          </p>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                          <Button
-                            className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"
-                            onClick={() =>
-                              (window.location.href = "/early-access")
-                            }
-                          >
-                            Get Early Access
-                          </Button>
-                          <Button
-                            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 py-3 transition-colors"
-                            onClick={() => setSelected("car-detailers")}
-                          >
-                            View Available Packages
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ) : (
+                {industry ? (
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {industry?.packages?.map((pkg, index) => (
+                    {industry.packages?.map((pkg, index) => (
                       <motion.div
                         key={pkg.name}
                         initial={{ opacity: 0, y: 50 }}
@@ -388,11 +343,9 @@ export default function ServicePackages() {
                           </div>
                           {pkg.popular && (
                             <div
-                              className="absolute left-1/2 -translate-x-1/2 z-20 bg-[#ffcf00] text-blue-900 font-bold px-5 py-1 rounded-full shadow-lg pointer-events-none"
+                              className="absolute left-1/2 -translate-x-1/2 z-20 bg-[#ffcf00] text-blue-900 font-bold px-4 py-1 rounded-full shadow-lg pointer-events-none text-sm sm:text-base whitespace-nowrap min-w-[110px] text-center"
                               style={{
-                                minWidth: 130,
-                                textAlign: "center",
-                                top: "-18px",
+                                top: "-16px",
                               }}
                             >
                               Most Popular
@@ -482,7 +435,7 @@ export default function ServicePackages() {
                       </motion.div>
                     ))}
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
           </div>
