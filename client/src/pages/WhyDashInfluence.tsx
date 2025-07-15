@@ -517,7 +517,7 @@ export default function WhyDashInfluence() {
       </section>
 
       {/* CTA Section with Stars in the Box Background */}
-      <section className="relative w-full pb-32 mb-24">
+      <section className="relative w-full pb-16 mb-12">
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <div className="text-center relative">
             <div className="bg-white text-[hsl(217,69%,34%)] rounded-xl p-8 relative overflow-hidden shadow-xl border border-gray-100">
@@ -573,7 +573,7 @@ export default function WhyDashInfluence() {
       </section>
 
       {/* White stars effect in the last gap above the footer */}
-      <div className="relative w-full h-24 overflow-hidden">
+      <div className="relative w-full h-12 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <SparklesCore
             id="tsparticles-y-bottom-gap"
