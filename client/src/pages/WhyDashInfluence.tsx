@@ -520,19 +520,19 @@ export default function WhyDashInfluence() {
       <section className="relative w-full pb-16 mb-12">
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <div className="text-center relative">
+            {/* Stars behind the entire CTA section - extending beyond the box */}
+            <div className="absolute inset-0 -m-8 z-0 pointer-events-none">
+              <SparklesCore
+                id="tsparticles-y-cta-section"
+                background="transparent"
+                minSize={0.6}
+                maxSize={1.4}
+                particleDensity={60}
+                className="w-full h-full"
+                particleColor="#FFFFFF"
+              />
+            </div>
             <div className="bg-white text-[hsl(217,69%,34%)] rounded-xl p-8 relative overflow-hidden shadow-xl border border-gray-100">
-              {/* Stars behind the entire CTA box */}
-              <div className="absolute inset-0 z-0 pointer-events-none rounded-xl overflow-hidden">
-                <SparklesCore
-                  id="tsparticles-y-cta"
-                  background="transparent"
-                  minSize={0.6}
-                  maxSize={1.4}
-                  particleDensity={60}
-                  className="w-full h-full"
-                  particleColor="#FFFFFF"
-                />
-              </div>
               {/* Stars behind the CTA button only */}
               <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-72 h-20 z-0 pointer-events-none">
                 <SparklesCore
@@ -545,7 +545,7 @@ export default function WhyDashInfluence() {
                   particleColor="#FFFFFF"
                 />
               </div>
-              <div className="relative z-10">
+              <div className="relative z-20">
                 <h3 className="text-2xl font-bold mb-4 text-[hsl(217,69%,34%)]">
                   Ready to Transform Your Business?
                 </h3>
@@ -580,7 +580,7 @@ export default function WhyDashInfluence() {
             background="transparent"
             minSize={0.6}
             maxSize={1.4}
-            particleDensity={40}
+            particleDensity={70}
             className="w-full h-full"
             particleColor="#FFFFFF"
           />
