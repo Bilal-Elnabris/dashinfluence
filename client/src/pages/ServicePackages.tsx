@@ -661,26 +661,6 @@ export default function ServicePackages() {
           </div>
         </div>
       </section>
-      {/* Add-ons Section */}
-      <div className="max-w-6xl mx-auto px-6 mt-8 mb-4">
-        <div className="bg-blue-900/80 border border-blue-700 rounded-xl p-6 text-white shadow-lg flex flex-col items-center">
-          <h3 className="text-lg font-bold mb-2 text-[#ffcf00]">
-            {isArabic ? "الإضافات الاختيارية" : "Optional Add-Ons"}
-          </h3>
-          <ul className="text-base mb-2">
-            <li className="mb-1">
-              {isArabic ? "تكامل جوجل" : "Google Integration"}{" "}
-              <span className="font-semibold">($50/mo)</span>
-            </li>
-            {/* Add more add-ons here as needed */}
-          </ul>
-          <p className="text-sm text-blue-200">
-            {isArabic
-              ? "تحسين خطة الأساس مع التكاملات القوية والميزات. يمكن تحديد الإضافات أثناء التنصيب أو من خلال إتصال الفريق."
-              : "Enhance your base plan with powerful integrations and features. Add-ons can be selected during onboarding or by contacting our team."}
-          </p>
-        </div>
-      </div>
     </div>
   );
 }

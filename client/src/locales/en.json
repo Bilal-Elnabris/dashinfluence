@@ -417,5 +417,13 @@
       "cta": "Book a Call - Get AI Solutions",
       "ctaSub": "Get on a call with us to learn how AI can transform your business"
     }
+  },
+  "whyInfluence": {
+    "testimonials": {
+      "badge": "Client Success Stories",
+      "heading1": "What Our",
+      "heading2": "Clients Say",
+      "intro": "Join hundreds of businesses that have transformed their operations with AI automation"
+    }
   }
 }

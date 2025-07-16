@@ -314,15 +314,16 @@ export default function WhyDashInfluence() {
     >
       {/* Hero Section with Stars */}
       <section className="relative min-h-screen overflow-hidden w-full pt-0 pb-0 mb-0">
+        {/* Stars background for the entire testimonials section */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <SparklesCore
-            id="tsparticles-y-hero"
+            id="tsparticles-testimonials-stars-section"
             background="transparent"
             minSize={0.6}
             maxSize={1.4}
-            particleDensity={100}
+            particleDensity={60}
             className="w-full h-full"
-            particleColor="#FFFFFF"
+            particleColor="#FFD700"
           />
         </div>
         <div className="relative z-10 container mx-auto px-4 pt-32 pb-16">
@@ -331,21 +332,19 @@ export default function WhyDashInfluence() {
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 text-yellow-300 text-sm font-medium mb-8 backdrop-blur-sm">
                 <Star className="w-4 h-4 mr-2" />
-                <span>Client Success Stories</span>
+                <span>{t("whyInfluence.testimonials.badge")}</span>
               </div>
 
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight">
-                <span className="block">What Our</span>
-                <span className="block bg-gradient-to-r from-[#ffcf00] via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                  Clients Say
+                <span className="block">
+                  {t("whyInfluence.testimonials.heading1")}
+                </span>
+                <span className="block bg-gradient-to-r from-[#ffcf00] via-yellow-400 to-orange-400 bg-clip-text text-transparent text-6xl md:text-8xl leading-normal pb-3">
+                  {t("whyInfluence.testimonials.heading2")}
                 </span>
               </h2>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-                Join hundreds of businesses that have transformed their
-                operations with{" "}
-                <span className="text-yellow-400 font-semibold">
-                  AI automation
-                </span>
+                {t("whyInfluence.testimonials.intro")}
               </p>
             </div>
 
@@ -378,7 +377,7 @@ export default function WhyDashInfluence() {
                 {testimonialGroups[currentIndex]?.map((testimonial, index) => (
                   <div
                     key={index}
-                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-all duration-300 group transform hover:scale-105"
+                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-all duration-300 group transform hover:scale-105 relative overflow-hidden"
                     style={{
                       animation: `slideIn 0.5s ease-out ${index * 0.1}s both`,
                     }}
@@ -386,6 +385,19 @@ export default function WhyDashInfluence() {
                     {/* Quote Icon */}
                     <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                       <Quote className="w-8 h-8 text-white" />
+                    </div>
+
+                    {/* Stars background behind the avatar circle */}
+                    <div className="absolute left-1/2 top-[120px] -translate-x-1/2 -z-10 w-24 h-24 pointer-events-none">
+                      <SparklesCore
+                        id={`tsparticles-testimonial-avatar-stars-${index}`}
+                        background="transparent"
+                        minSize={0.4}
+                        maxSize={1.0}
+                        particleDensity={18}
+                        className="w-full h-full"
+                        particleColor="#FFD700"
+                      />
                     </div>
 
                     {/* Rating */}
@@ -498,7 +510,20 @@ export default function WhyDashInfluence() {
                 </div>
               </div>
               {/* Add a healthy gap below the dots */}
-              <div className="mt-10" />
+              <div className="mt-10 relative w-full h-12 overflow-visible">
+                {/* Stars background for the lower portion of the testimonials card section */}
+                <div className="absolute inset-0 z-0 pointer-events-none w-full h-full">
+                  <SparklesCore
+                    id="tsparticles-testimonials-lower-gap"
+                    background="transparent"
+                    minSize={0.6}
+                    maxSize={1.4}
+                    particleDensity={40}
+                    className="w-full h-full"
+                    particleColor="#FFD700"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -640,8 +665,8 @@ export default function WhyDashInfluence() {
               {isArabic ? (
                 <>
                   من أول لقاء حتى تحقيق النتائج، نعمل معك كشريك حقيقي: نكتشف
-                  احتياجاتك، نصمم الحلول الأنسب، ننفذها بسلاسة مع تدريب فريقك ودعمك الكامل، ونواصل التحسين
-                  والتطوير لضمان نجاحك الدائم.
+                  احتياجاتك، نصمم الحلول الأنسب، ننفذها بسلاسة مع تدريب فريقك
+                  ودعمك الكامل، ونواصل التحسين والتطوير لضمان نجاحك الدائم.
                 </>
               ) : (
                 <>From discovery to optimization, we ensure your success</>
@@ -709,6 +734,18 @@ export default function WhyDashInfluence() {
 
       {/* CTA Section with Stars in the Box Background */}
       <section className="relative w-full pb-16 mb-12">
+        {/* Stars background for the entire CTA section */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <SparklesCore
+            id="tsparticles-cta-stars-section"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={60}
+            className="w-full h-full"
+            particleColor="#FFD700"
+          />
+        </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <div className="bg-white text-[hsl(217,69%,34%)] rounded-xl p-8 relative overflow-hidden shadow-xl border border-gray-100 text-center">
             <h3 className="text-2xl font-bold mb-4 text-[hsl(217,69%,34%)]">
