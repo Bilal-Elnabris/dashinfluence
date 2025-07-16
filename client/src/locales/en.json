@@ -1,0 +1,421 @@
+{
+  "nav": {
+    "home": "Home",
+    "why": "Why Influence",
+    "services": "Services",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "language": "العربية",
+  "home": {
+    "seo": {
+      "title": "AI Business Automation Solutions | DashInfluence",
+      "description": "Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking, smart call handling, and revenue optimization for businesses across all industries.",
+      "keywords": "AI automation, business automation, automation solutions, automated booking, AI voice agent, revenue optimization, 24/7 booking, smart call handling",
+      "ogTitle": "AI Business Automation Solutions | DashInfluence",
+      "ogDescription": "Transform your business with AI automation. Stop losing revenue to missed calls and manual scheduling. 24/7 automated booking and smart call handling."
+    },
+    "howAI": {
+      "heading": "How AI Automation Transforms Your Business",
+      "intro": "AI automation isn't just a buzzword—it's a proven driver of business growth, efficiency, and innovation. Here's what the research shows:",
+      "productivity": {
+        "title": "Productivity Boost:",
+        "text": "According to McKinsey, businesses that implement AI automation see up to a 40% increase in productivity and a significant reduction in manual errors."
+      },
+      "cost": {
+        "title": "Cost Savings:",
+        "text": "Deloitte reports that AI-driven automation can reduce operational costs by 20-30% on average."
+      },
+      "customer": {
+        "title": "Customer Experience:",
+        "text": "AI enables 24/7 support, faster response times, and personalized service, leading to higher customer satisfaction and retention."
+      },
+      "data": {
+        "title": "Data-Driven Decisions:",
+        "text": "AI systems analyze vast amounts of data to uncover insights and opportunities that humans might miss."
+      },
+      "scalability": {
+        "title": "Scalability:",
+        "text": "Automation allows your business to grow without a linear increase in costs or headcount."
+      },
+      "outro": "These are not just claims—they're results seen by leading businesses worldwide. Our solutions are designed to bring these benefits to your business, no matter your size or industry."
+    },
+    "implementation": {
+      "heading": "How DashInfluence Drives Your Success with AI Automation",
+      "intro": "Our implementation process is designed to ensure a smooth and successful transition to AI automation. We work closely with you to understand your unique business needs and goals, and then develop a customized AI solution that integrates seamlessly with your existing systems.",
+      "steps": [
+        {
+          "title": "Discovery Phase",
+          "description": "We begin by conducting a thorough analysis of your current business processes, identifying pain points, and defining clear objectives for AI automation."
+        },
+        {
+          "title": "Design Phase",
+          "description": "Based on the discovery, we design an AI solution that is tailored to your specific needs, ensuring it aligns with your business goals and operational requirements."
+        },
+        {
+          "title": "Development Phase",
+          "description": "Our development team builds the AI model and integrates it with your existing systems, including your CRM, booking platforms, and communication channels."
+        },
+        {
+          "title": "Training Phase",
+          "description": "We train the AI model on a vast dataset of real-world interactions to ensure it learns and improves over time, becoming more accurate and efficient."
+        },
+        {
+          "title": "Deployment Phase",
+          "description": "Finally, we deploy the AI solution to your production environment, ensuring high availability and scalability."
+        }
+      ],
+      "conclusion": "Our implementation process is not just about delivering technology—it's about achieving tangible business results. We are committed to your success and will work tirelessly to ensure your AI automation journey is smooth and rewarding.",
+      "ctaHeading": "Ready to take your business to the next level?",
+      "ctaIntro": "Join hundreds of businesses that have already automated their operations and increased their revenue.",
+      "viewPackages": "View Packages",
+      "freeConsultation": "Free Consultation"
+    },
+    "businessTypes": {
+      "carDetailers": {
+        "label": "Car Detailers",
+        "description": "For car detailing businesses looking to automate bookings and follow-ups."
+      },
+      "realEstate": {
+        "label": "Real Estate Agents & Brokers",
+        "description": "For agents and brokers who want to capture more leads and automate client communication."
+      },
+      "homeServices": {
+        "label": "Home Services",
+        "description": "For plumbing, HVAC, electrical, and other home service contractors ready for automation."
+      },
+      "healthWellness": {
+        "label": "Health & Wellness Clinics",
+        "description": "For clinics, dentists, and therapists seeking to reduce no-shows and automate reminders."
+      },
+      "restaurantsCafes": {
+        "label": "Restaurants & Cafes",
+        "description": "For venues wanting to automate reservations, reminders, and guest communication."
+      }
+    },
+    "calculator": {
+      "heading": "Are You Leaving Money on the Table? Find Out How Much You're Losing Without AI",
+      "intro": "Every day, businesses lose revenue to missed calls, slow follow-ups, and manual processes. Without AI automation, these losses add up—impacting your bottom line and growth potential. Curious how much you could be losing? Use our calculator below to see your potential leakage and discover how AI can help you recover it.",
+      "button": "Calculate My Leakage"
+    },
+    "hero": {
+      "badge": "AI-Powered Business Automation",
+      "heading1": "Transform Your",
+      "heading2": "Business",
+      "subtitle1": "Stop losing revenue to missed calls and manual scheduling.",
+      "subtitle2": "AI automation",
+      "subtitle3": "that works while you sleep, booking appointments and growing your business 24/7.",
+      "cta1": "Calculate Revenue Loss",
+      "cta2": "Free Consultation",
+      "trust1": "4.9/5 Rating",
+      "trust2": "500+ Clients",
+      "trust3": "24/7 Support"
+    }
+  },
+  "contact": {
+    "seo": {
+      "title": "Contact Us & FAQ - AI Automation Experts | DashInfluence",
+      "description": "Ready to transform your business with AI automation? Contact our experts for a free consultation. Find answers to frequently asked questions about AI automation, pricing, and implementation.",
+      "keywords": "contact us, AI automation FAQ, business automation experts, free consultation, automation support, AI automation questions, automation pricing",
+      "ogTitle": "Contact Us & FAQ - AI Automation Experts | DashInfluence",
+      "ogDescription": "Ready to transform your business with AI automation? Contact our experts for a free consultation. Find answers to frequently asked questions."
+    },
+    "hero": {
+      "heading": "Let's Transform Your Business Together",
+      "intro": "Ready to automate your way to success? Get in touch with our AI automation experts."
+    },
+    "form": {
+      "heading": "Send Us a Message",
+      "intro": "Fill out the form below and we'll get back to you within 24 hours.",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "John",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Doe",
+      "email": "Email",
+      "emailPlaceholder": "john@example.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+1 (825) 250-0262",
+      "company": "Company",
+      "companyPlaceholder": "Your Company Name",
+      "message": "How can we help you?",
+      "messagePlaceholder": "Tell us about your business challenges and automation needs...",
+      "button": "Send Message"
+    },
+    "info": {
+      "heading": "Get In Touch",
+      "intro": "Ready to revolutionize your business with AI automation? Our experts are standing by to help you identify opportunities, design solutions, and implement systems that drive real results.",
+      "emailHeading": "Email Us",
+      "phoneHeading": "Call Us",
+      "hoursHeading": "Business Hours",
+      "hours": "Mon-Fri: 9:00 AM - 6:00 PM MST"
+    },
+    "cta": {
+      "heading": "Ready to Get Started?",
+      "intro": "Book a free 30-minute consultation to discuss your automation needs and see how we can help.",
+      "button": "Schedule a Call"
+    }
+  },
+  "carCalc": {
+    "heading": "Car Detailing Revenue Calculator",
+    "intro": "Calculate how much revenue you're losing to manual processes and missed calls, and see how AI automation can boost your business.",
+    "facts": {
+      "industry": "Industry Standard",
+      "industryDesc": "78% of businesses lose revenue due to missed calls",
+      "ai": "AI Efficiency",
+      "aiDesc": "AI automation increases booking rates by 40%",
+      "roi": "ROI Proven",
+      "roiDesc": "Average 300% ROI within 18 months"
+    },
+    "metrics": "Your Business Metrics",
+    "selectPackage": "Select Your Package:",
+    "packages": {
+      "essential": "Essential AI Package ($400 setup + $149/month)",
+      "professional": "Professional AI Package ($900 setup + $299/month)",
+      "complete": "Complete AI Suite ($1,800 setup + $499/month)"
+    },
+    "avgWashes": "Average Weekly Washes:",
+    "avgDetails": "Average Weekly Details:",
+    "washPrice": "Wash Price ($):",
+    "detailPrice": "Detail Price ($):",
+    "missedCalls": "Missed Calls (Weekly):",
+    "revenueAnalysis": "Revenue Analysis",
+    "currentRevenue": "Current Monthly Revenue:",
+    "potentialRevenue": "Potential Monthly Revenue:",
+    "monthlyLeakage": "Monthly Revenue Lost:",
+    "investmentAnalysis": "Investment Analysis",
+    "selectAIpackage": "Select Your AI Package:",
+    "packageDescription": "Choose the package that best fits your business size and needs",
+    "setupCost": "Setup Cost:",
+    "monthlyRetainer": "Monthly Retainer:",
+    "annualRevenueGain": "Annual Revenue Gain:",
+    "paybackPeriod": "Payback Period:",
+    "months": "months",
+    "paybackMoreThan24": "More than 24 months",
+    "roi": "ROI:",
+    "note": "Note:",
+    "considerBenefits": "Low missed calls - consider other benefits",
+    "implementation": "Implementation",
+    "setupTime": "Setup Time:",
+    "setupTimeDesc": "2-3 weeks",
+    "training": "Training:",
+    "trainingDesc": "1 week",
+    "fullAutomation": "Full Automation:",
+    "fullAutomationDesc": "1 month",
+    "cta": {
+      "heading": "Ready to Stop Losing Revenue?",
+      "intro": "Get a personalized plan to capture your missed opportunities",
+      "button": "Schedule Free Consultation"
+    }
+  },
+  "healthCalc": {
+    "heading": "Health & Wellness Leakage Calculator",
+    "intro": "Calculate how much revenue you're losing to missed calls, no-shows, and manual processes.",
+    "facts": {
+      "industry": "Missed Opportunities",
+      "industryDesc": "30% of calls to clinics go unanswered (MGMA)",
+      "ai": "AI Efficiency",
+      "aiDesc": "Automated reminders reduce no-shows by 40%",
+      "roi": "ROI Proven",
+      "roiDesc": "Clinics using automation see 120%+ ROI in 12 months"
+    },
+    "metrics": "Your Business Metrics",
+    "selectPackage": "Select Your Package:",
+    "packages": {
+      "solo": "Solo Practitioner ($500 setup + $99/month)",
+      "clinic": "Clinic ($1,200 setup + $299/month)",
+      "center": "Center ($2,500 setup + $699/month)"
+    },
+    "cta": {
+      "heading": "Ready to Automate Your Clinic?",
+      "intro": "See how much you could save and grow with AI automation.",
+      "button": "Get Started"
+    }
+  },
+  "homeServicesCalc": {
+    "heading": "Home Services Leakage Calculator",
+    "intro": "Calculate how much revenue you're losing to missed calls and manual processes.",
+    "facts": {
+      "ai": "AI Efficiency",
+      "aiDesc": "Automated booking increases job conversion by 30%",
+      "roi": "ROI Proven",
+      "roiDesc": "Companies using automation see 150%+ ROI in 12 months"
+    },
+    "months": "{{count}} months",
+    "moreThan24Months": "More than 24 months",
+    "cta": {
+      "heading": "Home Services AI Automation Coming Soon!",
+      "intro": "We're expanding our team to serve home services businesses. Get early access and be the first to know when we launch.",
+      "earlyAccess": "Get Early Access",
+      "viewPackages": "View Available Packages"
+    },
+    "packages": {
+      "solo": "Solo Operator ($500 setup + $149/month)",
+      "smallTeam": "Small Team ($900 setup + $299/month)"
+    }
+  },
+  "realEstateCalc": {
+    "heading": "Real Estate Leakage Calculator",
+    "intro": "Calculate how much revenue you're losing to missed leads and manual processes.",
+    "facts": {
+      "ai": "AI Efficiency",
+      "aiDesc": "Automated follow-up increases conversion by 50%",
+      "roi": "ROI Proven",
+      "roiDesc": "Teams using automation see 200%+ ROI in 12 months"
+    },
+    "avgLeads": "Average New Leads per Month:",
+    "avgDeals": "Average Closed Deals per Month:",
+    "avgCommission": "Average Commission per Deal ($):",
+    "missedLeads": "Missed Leads per Month:",
+    "followUpRate": "Follow-up Rate (%):",
+    "revenueAnalysis": "Revenue Analysis",
+    "currentRevenue": "Current Monthly Revenue:",
+    "potentialRevenue": "Potential Monthly Revenue:",
+    "monthlyLeakage": "Monthly Revenue Lost:",
+    "investmentAnalysis": "Investment Analysis",
+    "setupCost": "Setup Cost:",
+    "monthlyRetainer": "Monthly Retainer:",
+    "annualRevenueGain": "Annual Revenue Gain:",
+    "paybackPeriod": "Payback Period:",
+    "months": "{{count}} months",
+    "moreThan24Months": "More than 24 months",
+    "roi": "ROI:",
+    "note": "Note:",
+    "lowMissedLeads": "Low missed leads - consider other benefits",
+    "implementation": "Implementation",
+    "setupTime": "Setup Time:",
+    "setupTimeDesc": "2-3 weeks",
+    "training": "Training:",
+    "trainingDesc": "1 week",
+    "fullAutomation": "Full Automation:",
+    "fullAutomationDesc": "1 month",
+    "cta": {
+      "heading": "Ready to Stop Losing Revenue?",
+      "intro": "Get a personalized plan to capture your missed opportunities",
+      "button": "Schedule Free Consultation"
+    }
+  },
+  "restaurantsCalc": {
+    "heading": "Restaurants & Cafes Leakage Calculator",
+    "intro": "Calculate how much revenue you're losing to missed calls, no-shows, and manual processes.",
+    "facts": {
+      "industry": "Missed Opportunities",
+      "industryDesc": "20% of restaurant calls go unanswered (Toast POS)",
+      "ai": "AI Efficiency",
+      "aiDesc": "Automated booking reduces no-shows by 30%",
+      "roi": "ROI Proven",
+      "roiDesc": "Restaurants using automation see 100%+ ROI in 12 months"
+    },
+    "metrics": "Your Business Metrics",
+    "selectPackage": "Select Your Package:",
+    "packages": {
+      "small": "Small ($500 setup + $149/month)",
+      "medium": "Medium ($1,000 setup + $299/month)",
+      "large": "Large ($2,200 setup + $599/month)"
+    },
+    "cta": {
+      "heading": "Restaurants & Cafes AI Automation Coming Soon!",
+      "intro": "We're expanding our team to serve restaurants and cafes. Get early access and be the first to know when we launch.",
+      "earlyAccess": "Get Early Access",
+      "viewPackages": "View Available Packages"
+    }
+  },
+  "quiz": {
+    "heading": "Business Automation Readiness Quiz",
+    "intro": "Answer a few quick questions to see how much your business could benefit from AI automation. Get a personalized analysis in under 2 minutes.",
+    "progress": "Question {{current}} of {{total}}",
+    "percentComplete": "{{percent}}% Complete",
+    "previous": "Previous",
+    "nextQuestion": "Next",
+    "getResults": "Get My Results",
+    "questions": {
+      "1": {
+        "question": "How many appointments or jobs do you book weekly?",
+        "options": {
+          "1": "1-10 appointments",
+          "2": "11-25 appointments",
+          "3": "26-50 appointments",
+          "4": "50+ appointments"
+        }
+      },
+      "2": {
+        "question": "How many customer calls do you miss daily while working on your business?",
+        "options": {
+          "1": "0-1 calls",
+          "2": "2-3 calls",
+          "3": "4-6 calls",
+          "4": "6+ calls"
+        }
+      },
+      "3": {
+        "question": "How do customers typically book with you?",
+        "options": {
+          "1": "Phone calls only",
+          "2": "Phone and text messages",
+          "3": "Social media + phone",
+          "4": "Online booking system"
+        }
+      },
+      "4": {
+        "question": "How much time do you spend daily on booking and scheduling?",
+        "options": {
+          "1": "15-30 minutes",
+          "2": "30-60 minutes",
+          "3": "1-2 hours",
+          "4": "2+ hours"
+        }
+      },
+      "5": {
+        "question": "Do you send appointment reminders to customers?",
+        "options": {
+          "1": "Never",
+          "2": "Manual texts/calls",
+          "3": "Sometimes automated",
+          "4": "Fully automated system"
+        }
+      },
+      "6": {
+        "question": "What's your biggest challenge running your business?",
+        "options": {
+          "1": "Missing customer calls while working",
+          "2": "Managing appointment scheduling",
+          "3": "Dealing with no-shows",
+          "4": "Pricing my services competitively"
+        }
+      },
+      "7": {
+        "question": "How do you currently follow up with potential customers?",
+        "options": {
+          "1": "No follow-up system",
+          "2": "Manual calls when I remember",
+          "3": "Scheduled reminder system",
+          "4": "Automated follow-up messages"
+        }
+      },
+      "8": {
+        "question": "What's your monthly revenue target for your business?",
+        "options": {
+          "1": "Under $5K",
+          "2": "$5K - $10K",
+          "3": "$10K - $20K",
+          "4": "$20K+"
+        }
+      }
+    },
+    "results": {
+      "heading": "Quiz Results",
+      "scoreHeading": "Your Automation Score",
+      "levels": {
+        "high": "High Automation Potential",
+        "medium": "Medium Automation Potential",
+        "need": "High Automation Need"
+      },
+      "recommendations": {
+        "high": "Your business is ready for advanced automation! You're missing significant revenue from manual processes. Our AI can immediately help with appointment booking, customer follow-up, and reducing missed calls.",
+        "medium": "Your business has good fundamentals but you're losing money to inefficient processes. Start with automated booking and SMS reminders to capture more customers while you're working.",
+        "need": "Your business would see immediate ROI from automation. You're likely missing 30-50% of potential bookings. Start with basic automated booking and appointment reminders to stop revenue leakage."
+      },
+      "cta": "Book a Call - Get AI Solutions",
+      "ctaSub": "Get on a call with us to learn how AI can transform your business"
+    }
+  }
+}

@@ -15,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SparklesCore } from "@/components/SparklesCore";
 import SEOHead from "@/components/SEOHead";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Accordion,
   AccordionItem,
@@ -231,21 +232,233 @@ const INDUSTRIES = [
 ];
 
 export default function ServicePackages() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const [selected, setSelected] = useState(INDUSTRIES[0].key);
   const industry = INDUSTRIES.find((i) => i.key === selected);
 
+  // Arabic translations for industries, packages, features, etc.
+  const INDUSTRIES_AR = [
+    {
+      key: "car-detailers",
+      label: "مراكز تلميع السيارات",
+      icon: Car,
+      packages: [
+        {
+          name: "الباقة الأساسية",
+          price: "$500",
+          originalPrice: "$600", // Increased for compelling savings
+          monthlyRetainer: "$199",
+          originalMonthlyRetainer: "$249", // Increased for compelling savings
+          savings: "وفر $50/شهريًا",
+          features: [
+            "دردشة وحجز ذكي على مدار الساعة",
+            "جدولة ومواعيد تلقائية",
+            "تذكيرات تلقائية بالرسائل",
+            "تحليلات وتقارير أساسية",
+          ],
+          bookings: "تعامل مع أكثر من 50 استفسار شهريًا",
+          description:
+            "مصممة للأعمال الصغيرة أو الجديدة التي ترغب في أتمتة التواصل مع العملاء والحجوزات. تشمل روبوت دردشة للإجابة على الأسئلة الشائعة وجمع العملاء المحتملين، وحجز إلكتروني لتقليل المكالمات، وتذكيرات تلقائية لتقليل الغياب. كل بيانات العملاء تدار في لوحة تحكم مبسطة.",
+          popular: false,
+        },
+        {
+          name: "باقة النمو الاحترافية",
+          price: "$900",
+          originalPrice: "$1200", // Increased for compelling savings
+          monthlyRetainer: "$349",
+          originalMonthlyRetainer: "$449", // Increased for compelling savings
+          savings: "وفر $100/شهريًا",
+          features: [
+            "جميع ميزات الباقة الأساسية",
+            "متابعة وتكرار العملاء تلقائياً",
+            "تحليلات متقدمة للأعمال",
+          ],
+          bookings: "تعامل مع أكثر من 150 استفسار شهريًا",
+          description:
+            "مثالية للأعمال المتنامية التي ترغب في زيادة العملاء المتكررين وتحسين السمعة. تضيف طلب تقييمات تلقائي، رسائل متابعة، ولوحة تحكم لمتابعة الأداء. تشمل جميع ميزات الباقة الأساسية.",
+          popular: true,
+        },
+        {
+          name: "الباقة الكاملة الشاملة",
+          price: "$1800",
+          originalPrice: "$2200", // Increased for compelling savings
+          monthlyRetainer: "$599",
+          originalMonthlyRetainer: "$799", // Increased for compelling savings
+          savings: "وفر $200/شهريًا",
+          features: [
+            "جميع ميزات الباقات السابقة",
+            "الرد الهاتفي الذكي (24/7)",
+            "تقارير وتحليلات متقدمة",
+            "تكامل مع جوجل وفيسبوك",
+          ],
+          bookings: "تعامل مع أكثر من 500 استفسار شهريًا",
+          description:
+            "للأعمال الجاهزة للأتمتة الكاملة. تشمل الرد الهاتفي الذكي، تقارير متقدمة، تكامل مع جوجل وفيسبوك، وجميع الميزات السابقة.",
+          popular: false,
+        },
+      ],
+    },
+    {
+      key: "real-estate",
+      label: "الوكلاء والوسطاء في العقارات",
+      icon: Home,
+      packages: [
+        {
+          name: "الوكيل المستقل",
+          price: "$800",
+          originalPrice: "$950", // Increased for compelling savings
+          monthlyRetainer: "$249",
+          originalMonthlyRetainer: "$299", // Increased for compelling savings
+          savings: "وفر $50/شهريًا",
+          features: [
+            "دردشة ذكية للإحصائيات 24/7",
+            "جدولة إظهار تلقائية",
+            "تذكيرات إظهار بالرسائل",
+            "سجل CRM أساسي",
+          ],
+          bookings: "تعامل مع أكثر من 50 إستفسار شهريًا",
+          description:
+            "مثالي للوكلاء المستقلين أو الفرق الصغيرة التي ترغب في أتمتة جمع الإحصائيات وجدولة المواعيد. عبر الدردشة الذكي يجيب عن أسئلة العقارات ويحجز الإظهارات، بينما يتم تنظيم جميع معلومات العملاء في بوابة بسيطة.",
+          popular: false,
+        },
+        {
+          name: "الفريق",
+          price: "$1,750",
+          originalPrice: "$2,000", // Increased for compelling savings
+          monthlyRetainer: "$599",
+          originalMonthlyRetainer: "$749", // Increased for compelling savings
+          savings: "وفر $150/شهريًا",
+          features: [
+            "جميع ميزات الوكيل المستقل",
+            "حملات بريد إلكتروني تلقائية",
+            "طلب إنتاج مراجع تلقائي",
+            "تحليل أداء العملاء",
+            "متبع المعاملات",
+          ],
+          bookings: "تعامل مع أكثر من 150 إستفسار شهريًا",
+          description:
+            "مثالي للوكلاء والفرق التي ترغب في تربية الإحصائيات وإنشاء السمعة. يضيف حملات تدريبية تلقائية للمشترين/البائعين، طلبات إنتاج المراجع، ولوحة تحكم لمتابعة الأداء. تشمل جميع ميزات الباقة الأساسية.",
+          popular: true,
+        },
+        {
+          name: "الوكالة",
+          price: "$3,500",
+          originalPrice: "$4,000", // Increased for compelling savings
+          monthlyRetainer: "$1,200",
+          originalMonthlyRetainer: "$1,500", // Increased for compelling savings
+          savings: "وفر $300/شهريًا",
+          features: [
+            "جميع ميزات الفريق",
+            "خدمة إجابة هاتف تلقائية",
+            "تقارير أعمال تلقائية",
+            "نشر اجتماعي تلقائي",
+          ],
+          bookings: "تعامل مع أكثر من 500 إستفسار شهريًا",
+          description:
+            "للوكالات والوسطاء الكبار الجاهزين لأتمتة كل نقطة تواصل. تشمل الرد الهاتفي الذكي، تحليلات متقدمة، نشر اجتماعي تلقائي، وتكامل مع منصات العقارات الكبرى. تشمل جميع ميزات الباقات السابقة.",
+          popular: false,
+        },
+      ],
+    },
+    {
+      key: "home-services",
+      label: "الخدمات المنزلية",
+      icon: Wrench,
+      packages: [
+        {
+          name: "المشغل المستقل",
+          price: "$500",
+          originalPrice: "$650", // Increased for compelling savings
+          monthlyRetainer: "$149",
+          originalMonthlyRetainer: "$199", // Increased for compelling savings
+          savings: "وفر $50/شهريًا",
+          features: [
+            "حجز ذكي على مدار الساعة",
+            "جدولة وظائف تلقائية",
+            "تذكيرات بالرسائل/البريد",
+            "تحليلات وتقارير أساسية",
+          ],
+          bookings: "تعامل مع أكثر من 40 وظيفة شهريًا",
+          description:
+            "مثالي للمشغلين المستقلين في الخدمات المنزلية (سباكة، كهرباء، تنظيف، إلخ) الذين يرغبون في أتمتة الحجوزات والتذكيرات. يشمل الرد الهاتفي الذكي، الجدولة الإلكترونية، ولوحة إدارة العملاء.",
+          popular: false,
+          relatedServices: [
+            "السباكة",
+            "الكهرباء",
+            "النظافة",
+            "الحدائق",
+            "مكافحة الآفات",
+            "إصلاح الأجهزة",
+          ],
+        },
+        {
+          name: "الفريق الصغير",
+          price: "$900",
+          originalPrice: "$1,200", // Increased for compelling savings
+          monthlyRetainer: "$299",
+          originalMonthlyRetainer: "$399", // Increased for compelling savings
+          savings: "وفر $100/شهريًا",
+          features: [
+            "جميع ميزات المشغل المستقل",
+            "جدولة وتوجيه الفريق",
+            "حملات ترويجية/تحويل عبر البيع",
+            "تحليلات وتقارير متقدمة",
+          ],
+          bookings: "تعامل مع أكثر من 120 وظيفة شهريًا",
+          description:
+            "مثالي لفرق الخدمات المنزلية الصغيرة التي ترغب في تحسين الكفاءة والحفاظ على العملاء. يضيف الجدولة الفريقية، حملات الترويج، والتحليلات المتقدمة.",
+          popular: true,
+          relatedServices: [
+            "السباكة",
+            "الكهرباء",
+            "النظافة",
+            "الحدائق",
+            "مكافحة الآفات",
+            "إصلاح الأجهزة",
+          ],
+        },
+      ],
+    },
+  ];
+  const industriesToUse = isArabic ? INDUSTRIES_AR : INDUSTRIES;
+  const industryToShow = industriesToUse.find((i) => i.key === selected);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden relative">
+    <div
+      className={`min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden relative${
+        isArabic ? " font-cairo" : ""
+      }`}
+    >
       {/* SEO Head Component */}
       <SEOHead
-        title="AI Automation Packages & Pricing | DashInfluence"
-        description="Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages for automotive services, real estate agents, and more. Start at $400."
-        keywords="AI automation packages, automation pricing, automotive automation, real estate automation, business automation packages"
-        ogTitle="AI Automation Packages & Pricing | DashInfluence"
-        ogDescription="Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages starting at $400."
+        title={
+          isArabic
+            ? "باقات وخطط الأتمتة بالذكاء الاصطناعي | داش إنفلونس"
+            : "AI Automation Packages & Pricing | DashInfluence"
+        }
+        description={
+          isArabic
+            ? "اختر الباقة المثالية لأتمتة عملك بالذكاء الاصطناعي. باقات أساسية واحترافية وكاملة لمراكز السيارات، العقارات، الخدمات المنزلية وأكثر. تبدأ من $400."
+            : "Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages for automotive services, real estate agents, and more. Start at $400."
+        }
+        keywords={
+          isArabic
+            ? "باقات الأتمتة، أسعار الأتمتة، أتمتة السيارات، أتمتة العقارات، باقات الأعمال"
+            : "AI automation packages, automation pricing, automotive automation, real estate automation, business automation packages"
+        }
+        ogTitle={
+          isArabic
+            ? "باقات وخطط الأتمتة بالذكاء الاصطناعي | داش إنفلونس"
+            : "AI Automation Packages & Pricing | DashInfluence"
+        }
+        ogDescription={
+          isArabic
+            ? "اختر الباقة المثالية لأتمتة عملك بالذكاء الاصطناعي. باقات أساسية واحترافية وكاملة تبدأ من $400."
+            : "Choose the perfect AI automation package for your business. Essential, Professional, and Complete packages starting at $400."
+        }
         canonical="https://dashinfluence.com/packages"
       />
-
       {/* Hero Section */}
       <section className="relative z-10 text-white min-h-screen overflow-hidden pt-28 pb-2">
         <div className="absolute inset-0 z-0">
@@ -263,14 +476,17 @@ export default function ServicePackages() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-2">
-                AI Automation Packages
+                {isArabic
+                  ? "باقات الأتمتة بالذكاء الاصطناعي"
+                  : "AI Automation Packages"}
               </h1>
               <p className="text-xl mb-2 opacity-90">
-                Choose the perfect AI solution to automate your{" "}
-                {industry?.label.toLowerCase()} business
+                {isArabic
+                  ? `اختر الحل الأمثل لأتمتة ${industryToShow?.label || ""}`
+                  : `Choose the perfect AI solution to automate your ${industry?.label.toLowerCase()} business`}
               </p>
             </div>
-            {/* Industry Tabs/Cards - moved here, right below heading */}
+            {/* Industry Tabs/Cards */}
             <div className="flex flex-wrap justify-center gap-4 pt-2 pb-2 w-full overflow-hidden">
               {/* Stars Background for Industry Tabs */}
               <div className="absolute inset-0 z-0">
@@ -284,7 +500,7 @@ export default function ServicePackages() {
                   particleColor="#B0B3B8"
                 />
               </div>
-              {INDUSTRIES.map((ind) => (
+              {industriesToUse.map((ind) => (
                 <div key={ind.key} className="relative">
                   <button
                     onClick={() => setSelected(ind.key)}
@@ -303,7 +519,7 @@ export default function ServicePackages() {
                 </div>
               ))}
             </div>
-            {/* Package Cards - right below tabs */}
+            {/* Package Cards */}
             <div className="section-padding relative overflow-hidden">
               {/* Stars Background for Package Cards */}
               <div className="absolute inset-0 z-0">
@@ -318,9 +534,9 @@ export default function ServicePackages() {
                 />
               </div>
               <div className="max-w-6xl mx-auto px-6 relative z-10">
-                {industry ? (
+                {industryToShow ? (
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {industry.packages?.map((pkg, index) => (
+                    {industryToShow.packages?.map((pkg, index) => (
                       <motion.div
                         key={pkg.name}
                         initial={{ opacity: 0, y: 50 }}
@@ -339,7 +555,7 @@ export default function ServicePackages() {
                             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none"
                             style={{ fontSize: 120, zIndex: 0 }}
                           >
-                            <industry.icon className="w-[120px] h-[120px] mx-auto text-blue-400" />
+                            <industryToShow.icon className="w-[120px] h-[120px] mx-auto text-blue-400" />
                           </div>
                           {pkg.popular && (
                             <div
@@ -348,7 +564,7 @@ export default function ServicePackages() {
                                 top: "-16px",
                               }}
                             >
-                              Most Popular
+                              {isArabic ? "الأكثر شهرة" : "Most Popular"}
                             </div>
                           )}
                           <CardHeader className="text-center relative z-10">
@@ -359,22 +575,22 @@ export default function ServicePackages() {
                               <div className="text-4xl font-bold text-[#ffcf00] mb-1">
                                 {pkg.price}
                                 <span className="text-lg text-muted-foreground">
-                                  {" "}
-                                  setup
+                                  {isArabic ? " رسوم تأسيس" : " setup"}
                                 </span>
                               </div>
                               <div className="text-2xl font-bold text-foreground mb-1">
                                 {pkg.monthlyRetainer}
                                 <span className="text-sm text-muted-foreground">
-                                  {" "}
-                                  /month
+                                  {isArabic ? " /شهريًا" : " /month"}
                                 </span>
                               </div>
                               <div className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-1">
                                 {pkg.savings}
                               </div>
                               <div className="text-sm text-muted-foreground line-through">
-                                Originally {pkg.originalMonthlyRetainer}/month
+                                {isArabic
+                                  ? `سابقًا ${pkg.originalMonthlyRetainer}/شهريًا`
+                                  : `Originally ${pkg.originalMonthlyRetainer}/month`}
                               </div>
                             </div>
                           </CardHeader>
@@ -387,7 +603,9 @@ export default function ServicePackages() {
                             </div>
                             <div className="space-y-3">
                               <h4 className="font-semibold text-foreground">
-                                Features Included:
+                                {isArabic
+                                  ? "المزايا المشمولة:"
+                                  : "Features Included:"}
                               </h4>
                               {pkg.features.map((feature, idx) => (
                                 <div
@@ -404,7 +622,9 @@ export default function ServicePackages() {
                             <Accordion type="single" collapsible>
                               <AccordionItem value="desc">
                                 <AccordionTrigger className="w-full text-left px-0 py-2 font-semibold text-blue-700 hover:underline">
-                                  Show More Details
+                                  {isArabic
+                                    ? "عرض المزيد من التفاصيل"
+                                    : "Show More Details"}
                                 </AccordionTrigger>
                                 <AccordionContent>
                                   <div className="text-sm text-foreground/90 whitespace-pre-line">
@@ -427,7 +647,7 @@ export default function ServicePackages() {
                               }
                             >
                               <span className="text-sm sm:text-base">
-                                Get Started
+                                {isArabic ? "ابدأ الآن" : "Get Started"}
                               </span>
                             </Button>
                           </CardContent>
@@ -441,6 +661,26 @@ export default function ServicePackages() {
           </div>
         </div>
       </section>
+      {/* Add-ons Section */}
+      <div className="max-w-6xl mx-auto px-6 mt-8 mb-4">
+        <div className="bg-blue-900/80 border border-blue-700 rounded-xl p-6 text-white shadow-lg flex flex-col items-center">
+          <h3 className="text-lg font-bold mb-2 text-[#ffcf00]">
+            {isArabic ? "الإضافات الاختيارية" : "Optional Add-Ons"}
+          </h3>
+          <ul className="text-base mb-2">
+            <li className="mb-1">
+              {isArabic ? "تكامل جوجل" : "Google Integration"}{" "}
+              <span className="font-semibold">($50/mo)</span>
+            </li>
+            {/* Add more add-ons here as needed */}
+          </ul>
+          <p className="text-sm text-blue-200">
+            {isArabic
+              ? "تحسين خطة الأساس مع التكاملات القوية والميزات. يمكن تحديد الإضافات أثناء التنصيب أو من خلال إتصال الفريق."
+              : "Enhance your base plan with powerful integrations and features. Add-ons can be selected during onboarding or by contacting our team."}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -9,51 +9,55 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
+import { BrandText } from "./BrandText";
 
 export default function AIPackagesPreview() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const packages = [
     {
-      name: "Essential AI Package",
-      description:
-        "Perfect for small detailing shops starting with AI automation",
+      name: isArabic ? "الباقة الأساسية" : "Essential Package",
+      description: isArabic
+        ? "مثالية للأعمال الصغيرة أو الجديدة: دردشة ذكية على مدار الساعة، حجز تلقائي، تذكيرات بالرسائل، ولوحة تحكم بسيطة."
+        : "Perfect for small or new businesses: 24/7 AI chat, online booking, SMS reminders, and a simple dashboard.",
       features: [
-        "Simple AI Chat Agent",
-        "Basic Appointment Booking",
-        "SMS Reminders",
-        "Customer Contact Management",
+        isArabic ? "دردشة وحجز ذكي على مدار الساعة" : "24/7 Booking AI Chat",
+        isArabic ? "جدولة ومواعيد تلقائية" : "Real-Time Scheduling",
+        isArabic ? "تذكيرات تلقائية بالرسائل" : "Automated SMS Reminders",
+        isArabic ? "تحليلات وتقارير أساسية" : "Basic Analytics",
       ],
       icon: <MessageCircle className="w-8 h-8" />,
       color: "blue",
     },
     {
-      name: "Professional AI Package",
-      description:
-        "Ideal for growing detailing businesses ready to scale with AI",
+      name: isArabic ? "باقة النمو الاحترافية" : "Professional Package",
+      description: isArabic
+        ? "للمشاريع المتنامية: أتمتة المتابعة، طلب تقييمات العملاء، حملات تكرار العملاء، وتحليلات متقدمة."
+        : "For growing businesses: follow-up automation, review requests, repeat customer campaigns, and advanced analytics.",
       features: [
-        "AI Phone Assistant",
-        "Advanced Chat Agent",
-        "Automated Booking System",
-        "SMS & Email Follow-ups",
-        "Review Generation",
-        "Lead Qualification",
+        isArabic ? "جميع ميزات الباقة الأساسية" : "All Essential features",
+        isArabic
+          ? "متابعة وتكرار العملاء تلقائياً"
+          : "Repeat Customer Automation",
+        isArabic ? "تحليلات متقدمة للأعمال" : "Service Analytics Dashboard",
       ],
       icon: <Phone className="w-8 h-8" />,
       color: "green",
       popular: true,
     },
     {
-      name: "Complete AI Suite",
-      description:
-        "Complete AI voice agents, chatbots, and full automation solution",
+      name: isArabic ? "الباقة الكاملة الشاملة" : "Complete Suite Package",
+      description: isArabic
+        ? "للأعمال الجاهزة للأتمتة الكاملة: الرد الهاتفي الذكي، تقارير متقدمة، تكامل مع جوجل وفيسبوك، وجميع الميزات السابقة."
+        : "For businesses ready for full automation: AI phone handling, advanced reports, Google/Facebook integration, and all previous features.",
       features: [
-        "AI Voice Agent (24/7 Phone)",
-        "Advanced AI Chatbot",
-        "Full Process Automation",
-        "Customer Journey Mapping",
-        "Revenue Analytics AI",
-        "Multi-channel Communication",
-        "Custom Workflow Design",
-        "Priority Support & Training",
+        isArabic ? "جميع ميزات الباقات السابقة" : "All Professional features",
+        isArabic
+          ? "الرد الهاتفي الذكي (24/7)"
+          : "AI Phone Call Handling (24/7)",
+        isArabic ? "تقارير وتحليلات متقدمة" : "Advanced Business Reports",
+        isArabic ? "تكامل مع جوجل وفيسبوك" : "Google/Facebook Integration",
       ],
       icon: <Zap className="w-8 h-8" />,
       color: "purple",
@@ -61,16 +65,24 @@ export default function AIPackagesPreview() {
   ];
 
   return (
-    <div className="section-padding bg-transparent">
+    <div
+      className={`section-padding bg-transparent${
+        isArabic ? " font-cairo" : ""
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">
-            AI Automation Packages
+          <h2 className="text-4xl font-bold mb-4 text-foreground text-center">
+            {isArabic
+              ? "باقات الأتمتة بالذكاء الاصطناعي"
+              : "AI Automation Packages"}
           </h2>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Choose the perfect AI solution to automate your business
+            {isArabic
+              ? "اختر الحل الأمثل للأتمتة بالذكاء الاصطناعي لتحسين عملك"
+              : "Choose the perfect AI solution to automate your business"}
           </p>
         </div>
 
@@ -102,12 +114,12 @@ export default function AIPackagesPreview() {
 
                 {/* Package Name */}
                 <h3 className="text-2xl font-bold text-center mb-4 text-foreground">
-                  {pkg.name}
+                  <BrandText isArabic={isArabic}>{pkg.name}</BrandText>
                 </h3>
 
                 {/* Description */}
                 <p className="text-muted-foreground text-center mb-6">
-                  {pkg.description}
+                  <BrandText isArabic={isArabic}>{pkg.description}</BrandText>
                 </p>
 
                 {/* Features */}
@@ -125,9 +137,22 @@ export default function AIPackagesPreview() {
                 {/* CTA Button */}
                 <div className="text-center">
                   <Link href="/packages">
-                    <Button className="w-full bg-[#ffcf00] text-black font-bold hover:bg-yellow-300 transition-colors text-sm whitespace-nowrap">
-                      <span className="text-xs sm:text-sm">Learn More</span>
-                      <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                    <Button
+                      className={`w-full bg-[#ffcf00] text-black font-bold hover:bg-yellow-300 transition-colors text-sm whitespace-nowrap flex items-center justify-center gap-2 ${
+                        isArabic ? "flex-row-reverse" : ""
+                      }`}
+                    >
+                      {isArabic ? (
+                        <>
+                          المزيد عن الباقة
+                          <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4 rotate-180" />
+                        </>
+                      ) : (
+                        <>
+                          <ArrowRight className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                          Learn More
+                        </>
+                      )}
                     </Button>
                   </Link>
                 </div>
@@ -152,21 +177,37 @@ export default function AIPackagesPreview() {
               />
             </div>
             <CardContent className="p-0 relative z-10">
-              <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                {isArabic ? "جاهز للبدء؟" : "Ready to Get Started?"}
+              </h3>
               <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
-                Get detailed pricing and start your AI automation journey today
+                {isArabic
+                  ? "احصل على أسعار مفصلة وابدأ رحلتك في الأتمتة الذكية اليوم."
+                  : "Get detailed pricing and start your AI automation journey today"}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/packages">
-                  <Button className="bg-[#ffcf00] text-black font-bold px-4 sm:px-8 py-3 hover:bg-yellow-300 transition-colors text-sm sm:text-base whitespace-nowrap">
+                  <Button
+                    className={`bg-[#ffcf00] text-black font-bold px-4 sm:px-8 py-3 hover:bg-yellow-300 transition-colors text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2 ${
+                      isArabic ? "flex-row-reverse" : ""
+                    }`}
+                  >
                     <span className="text-xs sm:text-sm">
-                      View All Packages
+                      {isArabic ? "عرض جميع الباقات" : "View All Packages"}
                     </span>
-                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                    <ArrowRight
+                      className={
+                        isArabic
+                          ? "ml-2 h-4 w-4 sm:h-5 sm:w-5 rotate-180"
+                          : "mr-2 h-4 w-4 sm:h-5 sm:w-5"
+                      }
+                    />
                   </Button>
                 </Link>
                 <Button
-                  className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 sm:px-8 py-3 transition-colors text-sm sm:text-base whitespace-nowrap"
+                  className={`bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 sm:px-8 py-3 transition-colors text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2 ${
+                    isArabic ? "flex-row-reverse" : ""
+                  }`}
                   onClick={() =>
                     window.open(
                       "https://calendly.com/dashinfluence/new-meeting",
@@ -174,8 +215,16 @@ export default function AIPackagesPreview() {
                     )
                   }
                 >
-                  <span className="text-xs sm:text-sm">Free Consultation</span>
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  <span className="text-xs sm:text-sm">
+                    {isArabic ? "استشارة مجانية" : "Free Consultation"}
+                  </span>
+                  <ArrowRight
+                    className={
+                      isArabic
+                        ? "ml-2 h-4 w-4 sm:h-5 sm:w-5 rotate-180"
+                        : "mr-2 h-4 w-4 sm:h-5 sm:w-5"
+                    }
+                  />
                 </Button>
               </div>
             </CardContent>

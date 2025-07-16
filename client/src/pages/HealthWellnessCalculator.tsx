@@ -13,6 +13,7 @@ import {
   HeartPulse,
 } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
 
 interface CalculatorState {
   avgAppointments: number;
@@ -23,6 +24,8 @@ interface CalculatorState {
 }
 
 export default function HealthWellnessCalculator() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const [values, setValues] = useState<CalculatorState>({
     avgAppointments: 30,
     avgAppointmentValue: 120,
@@ -101,7 +104,12 @@ export default function HealthWellnessCalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden pt-8 md:pt-12 pb-8 px-2 md:px-0">
+    <div
+      className={`min-h-screen bg-background relative overflow-hidden pt-20 md:pt-28 pb-8 px-2 md:px-0${
+        isArabic ? " font-cairo" : ""
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
       {/* Stars Background - now covers the whole page */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -124,12 +132,15 @@ export default function HealthWellnessCalculator() {
             <HeartPulse className="w-[220px] h-[220px] mx-auto text-blue-400" />
           </div>
           <h1 className="text-4xl font-bold mb-4 text-foreground relative z-10">
-            Health & Wellness Leakage Calculator
+            {isArabic
+              ? t("healthCalc.heading")
+              : "Health & Wellness Leakage Calculator"}
           </h1>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00] relative z-10"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 relative z-10">
-            Calculate how much revenue you're losing to missed calls, no-shows,
-            and manual processes
+            {isArabic
+              ? t("healthCalc.intro")
+              : "Calculate how much revenue you're losing to missed calls, no-shows, and manual processes"}
           </p>
           {/* Scientific Facts Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 relative z-10">
@@ -137,10 +148,14 @@ export default function HealthWellnessCalculator() {
               <CardContent className="p-0 text-center">
                 <Target className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <h3 className="font-bold text-blue-900 dark:text-blue-100 mb-1">
-                  Missed Opportunities
+                  {isArabic
+                    ? t("healthCalc.facts.industry")
+                    : "Missed Opportunities"}
                 </h3>
                 <p className="text-sm text-blue-700 dark:text-blue-200">
-                  30% of calls to clinics go unanswered (MGMA)
+                  {isArabic
+                    ? t("healthCalc.facts.industryDesc")
+                    : "30% of calls to clinics go unanswered (MGMA)"}
                 </p>
               </CardContent>
             </Card>
@@ -148,10 +163,12 @@ export default function HealthWellnessCalculator() {
               <CardContent className="p-0 text-center">
                 <Zap className="w-8 h-8 text-green-600 mx-auto mb-2" />
                 <h3 className="font-bold text-green-900 dark:text-green-100 mb-1">
-                  AI Efficiency
+                  {isArabic ? t("healthCalc.facts.ai") : "AI Efficiency"}
                 </h3>
                 <p className="text-sm text-green-700 dark:text-green-200">
-                  Automated reminders reduce no-shows by 40%
+                  {isArabic
+                    ? t("healthCalc.facts.aiDesc")
+                    : "Automated reminders reduce no-shows by 40%"}
                 </p>
               </CardContent>
             </Card>
@@ -159,10 +176,12 @@ export default function HealthWellnessCalculator() {
               <CardContent className="p-0 text-center">
                 <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-2" />
                 <h3 className="font-bold text-purple-900 dark:text-purple-100 mb-1">
-                  ROI Proven
+                  {isArabic ? t("healthCalc.facts.roi") : "ROI Proven"}
                 </h3>
                 <p className="text-sm text-purple-700 dark:text-purple-200">
-                  Clinics using automation see 120%+ ROI in 12 months
+                  {isArabic
+                    ? t("healthCalc.facts.roiDesc")
+                    : "Clinics using automation see 120%+ ROI in 12 months"}
                 </p>
               </CardContent>
             </Card>
@@ -171,11 +190,15 @@ export default function HealthWellnessCalculator() {
         {/* Input and Results Sections (identical to car detailer, but with health & wellness fields) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Input Section */}
-          <Card className="p-8 bg-card border-border">
+          <Card
+            className={`p-8 bg-card border-border${
+              isArabic ? " text-right" : ""
+            }`}
+          >
             <CardHeader className="p-0 mb-8">
               <CardTitle className="text-2xl font-bold text-card-foreground flex items-center">
                 <Target className="w-6 h-6 mr-2" />
-                Your Business Metrics
+                {isArabic ? t("healthCalc.metrics") : "Your Business Metrics"}
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
@@ -183,7 +206,9 @@ export default function HealthWellnessCalculator() {
                 {/* Business Size Selection */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Select Your Business Type:
+                    {isArabic
+                      ? t("healthCalc.selectPackage")
+                      : "Select Your Package:"}
                   </label>
                   <select
                     value={values.businessSize}
@@ -193,20 +218,28 @@ export default function HealthWellnessCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="solo">
-                      Solo Practitioner ($500 setup + $99/month)
+                      {isArabic
+                        ? t("healthCalc.packages.solo")
+                        : "Solo Practitioner ($500 setup + $99/month)"}
                     </option>
                     <option value="clinic">
-                      Clinic ($1,200 setup + $299/month)
+                      {isArabic
+                        ? t("healthCalc.packages.clinic")
+                        : "Clinic ($1,200 setup + $299/month)"}
                     </option>
                     <option value="center">
-                      Center ($2,500 setup + $699/month)
+                      {isArabic
+                        ? t("healthCalc.packages.center")
+                        : "Center ($2,500 setup + $699/month)"}
                     </option>
                   </select>
                 </div>
                 {/* Average Appointments per Week */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Appointments per Week:
+                    {isArabic
+                      ? t("healthCalc.avgAppointments")
+                      : "Average Appointments per Week:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -230,7 +263,9 @@ export default function HealthWellnessCalculator() {
                 {/* Average Appointment Value */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Appointment Value ($):
+                    {isArabic
+                      ? t("healthCalc.avgAppointmentValue")
+                      : "Average Appointment Value ($):"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -255,7 +290,9 @@ export default function HealthWellnessCalculator() {
                 {/* Missed Calls per Week */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Missed Calls per Week:
+                    {isArabic
+                      ? t("healthCalc.missedCalls")
+                      : "Missed Calls per Week:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -279,7 +316,9 @@ export default function HealthWellnessCalculator() {
                 {/* No-show Rate (%) */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    No-show Rate (%):
+                    {isArabic
+                      ? t("healthCalc.noShowRate")
+                      : "No-show Rate (%):"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -309,14 +348,18 @@ export default function HealthWellnessCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <TrendingUp className="w-5 h-5 mr-2" />
-                  Revenue Analysis
+                  {isArabic
+                    ? t("healthCalc.revenueAnalysis")
+                    : "Revenue Analysis"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-6">
                   <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Current Monthly Revenue:
+                      {isArabic
+                        ? t("healthCalc.currentRevenue")
+                        : "Current Monthly Revenue:"}
                     </span>
                     <span className="text-2xl font-bold text-red-600 dark:text-red-400">
                       {formatCurrency(results.currentRevenue)}
@@ -324,7 +367,9 @@ export default function HealthWellnessCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Potential Monthly Revenue:
+                      {isArabic
+                        ? t("healthCalc.potentialRevenue")
+                        : "Potential Monthly Revenue:"}
                     </span>
                     <span className="text-2xl font-bold text-green-600 dark:text-green-400">
                       {formatCurrency(results.potentialRevenue)}
@@ -332,7 +377,9 @@ export default function HealthWellnessCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Monthly Revenue Lost:
+                      {isArabic
+                        ? t("healthCalc.monthlyLeakage")
+                        : "Monthly Revenue Lost:"}
                     </span>
                     <span className="text-3xl font-bold text-[#ffcf00]">
                       {formatCurrency(results.monthlyLeakage)}
@@ -345,36 +392,16 @@ export default function HealthWellnessCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <DollarSign className="w-5 h-5 mr-2" />
-                  Investment Analysis
+                  {isArabic
+                    ? t("healthCalc.investmentAnalysis")
+                    : "Investment Analysis"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg mb-4">
-                    <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                      Select Your Business Type:
-                    </label>
-                    <select
-                      value={values.businessSize}
-                      onChange={(e) =>
-                        handleSelectChange("businessSize", e.target.value)
-                      }
-                      className="w-full p-3 border rounded-lg bg-background text-card-foreground"
-                    >
-                      <option value="solo">
-                        Solo Practitioner ($499 setup + $99/month)
-                      </option>
-                      <option value="clinic">
-                        Clinic ($1,199 setup + $299/month)
-                      </option>
-                      <option value="center">
-                        Center ($2,499 setup + $699/month)
-                      </option>
-                    </select>
-                  </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Setup Cost:
+                      {isArabic ? t("healthCalc.setupCost") : "Setup Cost:"}
                     </span>
                     <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
                       {formatCurrency(results.implementationCost)}
@@ -382,7 +409,9 @@ export default function HealthWellnessCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Monthly Retainer:
+                      {isArabic
+                        ? t("healthCalc.monthlyRetainer")
+                        : "Monthly Retainer:"}
                     </span>
                     <span className="text-lg font-bold text-purple-600 dark:text-purple-400">
                       {formatCurrency(results.monthlyCost)}
@@ -390,7 +419,9 @@ export default function HealthWellnessCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Annual Revenue Gain:
+                      {isArabic
+                        ? t("healthCalc.annualRevenueGain")
+                        : "Annual Revenue Gain:"}
                     </span>
                     <span className="text-lg font-bold text-green-600 dark:text-green-400">
                       {formatCurrency(results.annualLeakage)}
@@ -400,17 +431,25 @@ export default function HealthWellnessCalculator() {
                     <>
                       <div className="flex justify-between items-center p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
                         <span className="font-semibold text-card-foreground">
-                          Payback Period:
+                          {isArabic
+                            ? t("healthCalc.paybackPeriod")
+                            : "Payback Period:"}
                         </span>
                         <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
                           {results.paybackPeriod > 24
-                            ? "More than 24 months"
+                            ? isArabic
+                              ? t("healthCalc.moreThan24Months")
+                              : "More than 24 months"
+                            : isArabic
+                            ? t("healthCalc.months", {
+                                count: Number(results.paybackPeriod.toFixed(1)),
+                              })
                             : `${results.paybackPeriod.toFixed(1)} months`}
                         </span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
                         <span className="font-semibold text-card-foreground">
-                          ROI:
+                          {isArabic ? t("healthCalc.roi") : "ROI:"}
                         </span>
                         <span className="text-lg font-bold text-teal-600 dark:text-teal-400">
                           {results.roi.toFixed(1)}%
@@ -420,10 +459,12 @@ export default function HealthWellnessCalculator() {
                   ) : (
                     <div className="flex justify-between items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
                       <span className="font-semibold text-card-foreground">
-                        Note:
+                        {isArabic ? t("healthCalc.note") : "Note:"}
                       </span>
                       <span className="text-lg font-bold text-yellow-600 dark:text-yellow-400">
-                        Low missed calls - consider other benefits
+                        {isArabic
+                          ? t("healthCalc.lowMissedCalls")
+                          : "Low missed calls - consider other benefits"}
                       </span>
                     </div>
                   )}
@@ -434,7 +475,7 @@ export default function HealthWellnessCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <Calendar className="w-5 h-5 mr-2" />
-                  Implementation
+                  {isArabic ? t("healthCalc.implementation") : "Implementation"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
@@ -442,25 +483,37 @@ export default function HealthWellnessCalculator() {
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Setup Time:</span>
+                      <span className="font-semibold">
+                        {isArabic ? t("healthCalc.setupTime") : "Setup Time:"}
+                      </span>
                       <span className="ml-2 text-muted-foreground">
-                        2-3 weeks
+                        {isArabic ? t("healthCalc.setupTimeDesc") : "2-3 weeks"}
                       </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Training:</span>
-                      <span className="ml-2 text-muted-foreground">1 week</span>
+                      <span className="font-semibold">
+                        {isArabic ? t("healthCalc.training") : "Training:"}
+                      </span>
+                      <span className="ml-2 text-muted-foreground">
+                        {isArabic ? t("healthCalc.trainingDesc") : "1 week"}
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Full Automation:</span>
+                      <span className="font-semibold">
+                        {isArabic
+                          ? t("healthCalc.fullAutomation")
+                          : "Full Automation:"}
+                      </span>
                       <span className="ml-2 text-muted-foreground">
-                        1 month
+                        {isArabic
+                          ? t("healthCalc.fullAutomationDesc")
+                          : "1 month"}
                       </span>
                     </div>
                   </div>
@@ -488,25 +541,31 @@ export default function HealthWellnessCalculator() {
             </div>
             <CardContent className="p-0 relative z-10">
               <h4 className="text-2xl font-bold mb-4">
-                Health & Wellness AI Automation Coming Soon!
+                {isArabic
+                  ? t("healthCalc.cta.heading")
+                  : "Health & Wellness AI Automation Coming Soon!"}
               </h4>
               <p className="mb-6 opacity-90">
-                We're expanding our team to serve health and wellness
-                businesses. Get early access and be the first to know when we
-                launch.
+                {isArabic
+                  ? t("healthCalc.cta.intro")
+                  : "We're expanding our team to serve health and wellness businesses. Get early access and be the first to know when we launch."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"
                   onClick={() => (window.location.href = "/early-access")}
                 >
-                  Get Early Access
+                  {isArabic
+                    ? t("healthCalc.cta.earlyAccess")
+                    : "Get Early Access"}
                 </Button>
                 <Button
                   className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 py-3 transition-colors"
                   onClick={() => (window.location.href = "/packages")}
                 >
-                  View Available Packages
+                  {isArabic
+                    ? t("healthCalc.cta.viewPackages")
+                    : "View Available Packages"}
                 </Button>
               </div>
             </CardContent>

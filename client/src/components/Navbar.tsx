@@ -3,19 +3,25 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import logo_long from "@assets/logo-long.png";
+import { useTranslation } from "react-i18next";
+import { BrandText } from "./BrandText";
 
 // Loading/progress line component
 function LoadingLine({
   coloredNavbar,
   progress,
+  isQuizPage = false,
 }: {
   coloredNavbar: boolean;
   progress: number;
+  isQuizPage?: boolean;
 }) {
   return (
     <div
       className={`w-full h-1 z-[100] ${
-        coloredNavbar ? "absolute left-0 bottom-0" : "fixed left-0 top-0"
+        isQuizPage || coloredNavbar
+          ? "absolute left-0 bottom-0"
+          : "fixed left-0 top-0"
       }`}
       style={{ pointerEvents: "none" }}
     >
@@ -32,6 +38,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ forceDark = false }: NavbarProps) {
+  const { t, i18n } = useTranslation();
   const [location] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -41,15 +48,20 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // In navItems, use only 'Why' for both languages
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/why-us", label: "Why Influence", isLogo: true },
-    { href: "/packages", label: "Services" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", key: "home", isLogo: false },
+    { href: "/why-us", key: "why", isLogo: true },
+    { href: "/packages", key: "services", isLogo: false },
+    { href: "/contact", key: "contact", isLogo: false },
   ];
 
   // Determine if on mobile
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 767;
+
+  // Use isCalculatorPage and isQuizPage for per-page logic
+  const isCalculatorPage = location.startsWith("/calculator");
+  const isQuizPage = location === "/quiz";
 
   // Page-specific navbar behavior configuration
   const pageConfigs = {
@@ -75,8 +87,9 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
     }, // Contact
   };
 
-  const currentPageConfig =
-    pageConfigs[location as keyof typeof pageConfigs] || pageConfigs["/"];
+  const currentPageConfig = isCalculatorPage
+    ? { disableTransform: true, scrollThreshold: 0, darkenOnly: false }
+    : pageConfigs[location as keyof typeof pageConfigs] || pageConfigs["/"];
 
   useEffect(() => {
     setIsHome(location === "/");
@@ -107,15 +120,18 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
   }
 
   // Show colored navbar based on page-specific configuration
-  const coloredNavbar = currentPageConfig.disableTransform
-    ? false // Never show colored navbar on pages with disabled transformation
-    : currentPageConfig.darkenOnly
-    ? location === "/packages" &&
-      typeof window !== "undefined" &&
-      window.innerWidth <= 767
-      ? mobilePackagesTrigger
-      : scrollProgress >= currentPageConfig.scrollThreshold
-    : scrollProgress >= currentPageConfig.scrollThreshold;
+  const coloredNavbar =
+    isCalculatorPage || isQuizPage
+      ? true // Always show colored navbar on calculator and quiz pages
+      : currentPageConfig.disableTransform
+      ? false
+      : currentPageConfig.darkenOnly
+      ? location === "/packages" &&
+        typeof window !== "undefined" &&
+        window.innerWidth <= 767
+        ? mobilePackagesTrigger
+        : scrollProgress >= currentPageConfig.scrollThreshold
+      : scrollProgress >= currentPageConfig.scrollThreshold;
 
   // Animation effect for colored navbar (only if transformation is enabled)
   useEffect(() => {
@@ -142,6 +158,20 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  // Language switcher
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "ar" ? "en" : "ar";
+    i18n.changeLanguage(newLang);
+    document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";
+  };
+
+  // Set dir on mount and language change
+  useEffect(() => {
+    const isArabic = i18n.language === "ar";
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+    document.body.classList.toggle("rtl", isArabic);
+  }, [i18n.language]);
 
   // Navbar classes for smooth transition
   const navbarBase =
@@ -178,13 +208,230 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
 
   return (
     <>
-      {/* Transparent navbar always rendered, but hidden when colored navbar is visible */}
+      {/* Only render transparent navbar if not on calculator or quiz pages */}
+      {!isCalculatorPage && !isQuizPage && (
+        <nav
+          className={`${navbarBase} ${navbarTransparent} ${slideUp} ${
+            i18n.language === "ar" ? "font-cairo" : ""
+          }`}
+          ref={navRef}
+          style={{ position: "fixed" }}
+        >
+          <LoadingLine
+            coloredNavbar={false}
+            progress={scrollProgress}
+            isQuizPage={isQuizPage}
+          />
+          <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 relative">
+            <div className={navRow}>
+              {/* Logo Section */}
+              <div className={logoCol}>
+                <Link
+                  href="/"
+                  className="flex items-center group"
+                  onClick={closeMenu}
+                >
+                  <img
+                    src={logo_long}
+                    alt="DashInfluence Logo"
+                    className="h-7 sm:h-8 w-auto max-w-[110px] sm:max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-105 ml-0"
+                    style={{ minWidth: 32 }}
+                  />
+                  <span className="sr-only">
+                    <BrandText isArabic={i18n.language === "ar"}>
+                      {i18n.language === "ar" ? "داش إنفلونس" : "DashInfluence"}
+                    </BrandText>
+                  </span>
+                </Link>
+              </div>
+              {/* Desktop Navigation Links */}
+              <div
+                className={
+                  navCol + " hidden lg:flex justify-center items-center"
+                }
+              >
+                <div
+                  className={`flex ${
+                    i18n.language === "ar" ? "gap-8 font-cairo" : "space-x-8"
+                  } bg-black/20 rounded-[0.75rem] px-4`}
+                >
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`text-white no-underline font-extrabold text-lg leading-none dash-underline px-3 py-2 transition-all duration-300 flex items-center relative group rounded-t-[0.75rem] h-16 justify-center ${
+                        location === item.href ? activeNavClass : hoverNavClass
+                      }`}
+                      style={{ lineHeight: "2.5rem" }}
+                      onClick={closeMenu}
+                    >
+                      {item.isLogo ? (
+                        i18n.language === "ar" ? (
+                          <span className="font-extrabold text-lg leading-none">
+                            لماذا نحن
+                          </span>
+                        ) : (
+                          <span className="flex items-center gap-1 px-3 py-2">
+                            <span className="font-extrabold text-lg leading-none">
+                              Why
+                            </span>
+                            <img
+                              src={logo_long}
+                              alt="DashInfluence Logo"
+                              className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 -mt-1.5"
+                            />
+                          </span>
+                        )
+                      ) : (
+                        <span className="relative z-10">
+                          {t(`nav.${item.key}`)}
+                        </span>
+                      )}
+                      <div
+                        className="absolute left-0 right-0 bottom-0 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 h-16 rounded-t-[0.75rem]"
+                        style={{ borderRadius: "0.75rem 0.75rem 0 0" }}
+                      ></div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              {/* Desktop CTA Section */}
+              <div className={ctaCol + " hidden lg:flex gap-4"}>
+                <Button
+                  className={`bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-4 sm:px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform${
+                    i18n.language === "ar" ? " font-cairo" : ""
+                  }`}
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/dashinfluence/new-meeting",
+                      "_blank"
+                    )
+                  }
+                >
+                  {t("nav.getStarted")}
+                </Button>
+                <Button
+                  className={`bg-white/20 text-white font-bold px-3 py-2 rounded-lg hover:bg-white/30 transition-all duration-300${
+                    i18n.language === "ar" ? " font-cairo" : ""
+                  }`}
+                  onClick={toggleLanguage}
+                >
+                  {t("language")}
+                </Button>
+              </div>
+              {/* Mobile Menu Button */}
+              <div
+                className={
+                  ctaCol + " lg:hidden flex items-center space-x-3 justify-end"
+                }
+              >
+                <Button
+                  className="text-white hover:bg-white/10 p-2 ml-1 transition-all duration-300 hover:scale-110 min-w-[40px] min-h-[40px] flex items-center justify-center relative overflow-hidden focus:outline-none focus:ring-0 focus:border-none active:outline-none active:ring-0 active:border-none"
+                  style={{ borderRadius: 8 }}
+                  onClick={toggleMenu}
+                >
+                  <span
+                    className="absolute inset-0 flex items-center justify-center transition-all duration-300"
+                    style={{
+                      opacity: isMenuOpen ? 0 : 1,
+                      transform: isMenuOpen
+                        ? "rotate(90deg) scale(0.7)"
+                        : "rotate(0deg) scale(1)",
+                      transition: "opacity 0.3s, transform 0.3s",
+                    }}
+                  >
+                    <Menu className="h-6 w-6" />
+                  </span>
+                  <span
+                    className="absolute inset-0 flex items-center justify-center transition-all duration-300"
+                    style={{
+                      opacity: isMenuOpen ? 1 : 0,
+                      transform: isMenuOpen
+                        ? "rotate(0deg) scale(1)"
+                        : "rotate(-90deg) scale(0.7)",
+                      transition: "opacity 0.3s, transform 0.3s",
+                    }}
+                  >
+                    <X className="h-6 w-6" />
+                  </span>
+                </Button>
+              </div>
+            </div>
+            {/* Mobile Menu */}
+            <div
+              className={`lg:hidden border-t-0 bg-transparent transition-all duration-400 overflow-hidden ${
+                isMenuOpen
+                  ? "max-h-96 opacity-100 backdrop-blur-md bg-black/40"
+                  : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="px-4 py-4 space-y-4">
+                {navItems.map((item, index) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`block text-white font-extrabold text-lg leading-none py-3 px-4 transition-all duration-300 transform hover:scale-105${
+                      i18n.language === "ar" ? " font-cairo" : ""
+                    } ${
+                      location === item.href
+                        ? "bg-white/20 rounded-xl"
+                        : "hover:bg-white/10 rounded-xl"
+                    }`}
+                    onClick={closeMenu}
+                    style={{
+                      animationDelay: `${index * 100}ms`,
+                      animation: isMenuOpen
+                        ? "slideInDown 0.3s ease-out forwards"
+                        : "none",
+                    }}
+                  >
+                    {item.isLogo ? (
+                      i18n.language === "ar" ? (
+                        <span className="font-extrabold text-lg leading-none">
+                          لماذا نحن
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1">
+                          <span className="font-extrabold text-lg leading-none">
+                            Why
+                          </span>
+                          <img
+                            src={logo_long}
+                            alt="DashInfluence Logo"
+                            className="h-6 w-auto max-w-[100px] object-contain -mt-1.5"
+                          />
+                        </span>
+                      )
+                    ) : (
+                      <span className="relative z-10">
+                        {t(`nav.${item.key}`)}
+                      </span>
+                    )}
+                  </Link>
+                ))}
+                <Button
+                  className="w-full bg-white/20 text-white font-bold px-3 py-2 rounded-lg hover:bg-white/30 transition-all duration-300"
+                  onClick={toggleLanguage}
+                >
+                  {t("language")}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      )}
+      {/* Colored navbar with slide-down animation */}
       <nav
-        className={`${navbarBase} ${navbarTransparent} ${slideUp}`}
-        ref={navRef}
-        style={{ position: "fixed" }}
+        className={`${navbarBase} ${navbarColored} ${slideDown}`}
+        style={{
+          position: isQuizPage ? "fixed" : isCalculatorPage ? "fixed" : "fixed",
+        }}
       >
-        <LoadingLine coloredNavbar={false} progress={scrollProgress} />
+        <LoadingLine
+          coloredNavbar={true}
+          progress={scrollProgress}
+          isQuizPage={isQuizPage}
+        />
         <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 relative">
           <div className={navRow}>
             {/* Logo Section */}
@@ -200,36 +447,53 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
                   className="h-7 sm:h-8 w-auto max-w-[110px] sm:max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-105 ml-0"
                   style={{ minWidth: 32 }}
                 />
+                <span className="sr-only">
+                  <BrandText isArabic={i18n.language === "ar"}>
+                    {i18n.language === "ar" ? "داش إنفلونس" : "DashInfluence"}
+                  </BrandText>
+                </span>
               </Link>
             </div>
             {/* Desktop Navigation Links */}
             <div
               className={navCol + " hidden lg:flex justify-center items-center"}
             >
-              <div className="flex space-x-8 bg-black/20 rounded-[0.75rem] px-4">
+              <div
+                className={`flex ${
+                  i18n.language === "ar" ? "gap-8 font-cairo" : "space-x-8"
+                } bg-black/20 rounded-[0.75rem] px-4`}
+              >
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`text-white no-underline font-extrabold text-base dash-underline px-3 py-2 transition-all duration-300 flex items-center relative group rounded-t-[0.75rem] h-16 justify-center ${
+                    className={`text-white no-underline font-extrabold text-lg leading-none dash-underline px-3 py-2 transition-all duration-300 flex items-center relative group rounded-t-[0.75rem] h-16 justify-center ${
                       location === item.href ? activeNavClass : hoverNavClass
                     }`}
                     style={{ lineHeight: "2.5rem" }}
                     onClick={closeMenu}
                   >
                     {item.isLogo ? (
-                      <span className="flex items-center gap-1 px-3 py-2">
+                      i18n.language === "ar" ? (
                         <span className="font-extrabold text-lg leading-none">
-                          Why
+                          لماذا نحن
                         </span>
-                        <img
-                          src={logo_long}
-                          alt="DashInfluence Logo"
-                          className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 -mt-1.5"
-                        />
-                      </span>
+                      ) : (
+                        <span className="flex items-center gap-1 px-3 py-2">
+                          <span className="font-extrabold text-lg leading-none">
+                            Why
+                          </span>
+                          <img
+                            src={logo_long}
+                            alt="DashInfluence Logo"
+                            className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 -mt-1.5"
+                          />
+                        </span>
+                      )
                     ) : (
-                      <span className="relative z-10">{item.label}</span>
+                      <span className="relative z-10">
+                        {t(`nav.${item.key}`)}
+                      </span>
                     )}
                     <div
                       className="absolute left-0 right-0 bottom-0 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 h-16 rounded-t-[0.75rem]"
@@ -240,9 +504,11 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
               </div>
             </div>
             {/* Desktop CTA Section */}
-            <div className={ctaCol + " hidden lg:flex"}>
+            <div className={ctaCol + " hidden lg:flex gap-4"}>
               <Button
-                className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-4 sm:px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform"
+                className={`bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-4 sm:px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform${
+                  i18n.language === "ar" ? " font-cairo" : ""
+                }`}
                 onClick={() =>
                   window.open(
                     "https://calendly.com/dashinfluence/new-meeting",
@@ -250,7 +516,15 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
                   )
                 }
               >
-                Get Started
+                {t("nav.getStarted")}
+              </Button>
+              <Button
+                className={`bg-white/20 text-white font-bold px-3 py-2 rounded-lg hover:bg-white/30 transition-all duration-300${
+                  i18n.language === "ar" ? " font-cairo" : ""
+                }`}
+                onClick={toggleLanguage}
+              >
+                {t("language")}
               </Button>
             </div>
             {/* Mobile Menu Button */}
@@ -304,7 +578,9 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block text-white font-bold text-lg py-3 px-4 transition-all duration-300 transform hover:scale-105 ${
+                  className={`block text-white font-extrabold text-lg leading-none py-3 px-4 transition-all duration-300 transform hover:scale-105${
+                    i18n.language === "ar" ? " font-cairo" : ""
+                  } ${
                     location === item.href
                       ? "bg-white/20 rounded-xl"
                       : "hover:bg-white/10 rounded-xl"
@@ -318,148 +594,35 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
                   }}
                 >
                   {item.isLogo ? (
-                    <span className="flex items-center gap-1">
+                    i18n.language === "ar" ? (
                       <span className="font-extrabold text-lg leading-none">
-                        Why
+                        لماذا نحن
                       </span>
-                      <img
-                        src={logo_long}
-                        alt="DashInfluence Logo"
-                        className="h-6 w-auto max-w-[100px] object-contain -mt-1.5"
-                      />
-                    </span>
+                    ) : (
+                      <span className="flex items-center gap-1">
+                        <span className="font-extrabold text-lg leading-none">
+                          Why
+                        </span>
+                        <img
+                          src={logo_long}
+                          alt="DashInfluence Logo"
+                          className="h-6 w-auto max-w-[100px] object-contain -mt-1.5"
+                        />
+                      </span>
+                    )
                   ) : (
-                    <span className="relative z-10">{item.label}</span>
+                    <span className="relative z-10">
+                      {t(`nav.${item.key}`)}
+                    </span>
                   )}
                 </Link>
               ))}
-            </div>
-          </div>
-        </div>
-      </nav>
-      {/* Colored navbar with slide-down animation */}
-      <nav
-        className={`${navbarBase} ${navbarColored} ${slideDown}`}
-        style={{ position: "fixed" }}
-      >
-        <LoadingLine coloredNavbar={true} progress={scrollProgress} />
-        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 relative">
-          <div className={navRow}>
-            {/* Logo Section */}
-            <div className={logoCol}>
-              <Link
-                href="/"
-                className="flex items-center group"
-                onClick={closeMenu}
-              >
-                <img
-                  src={logo_long}
-                  alt="DashInfluence Logo"
-                  className="h-6 sm:h-8 w-auto max-w-[120px] sm:max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
-                />
-              </Link>
-            </div>
-            {/* Desktop Navigation Links */}
-            <div className={navCol + " hidden lg:flex space-x-8"}>
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-white no-underline font-extrabold text-base dash-underline px-3 py-2 transition-all duration-300 flex items-center relative group rounded-t-[0.75rem] h-16 justify-center ${
-                    location === item.href ? activeNavClass : hoverNavClass
-                  }`}
-                  style={{ lineHeight: "2.5rem" }}
-                  onClick={closeMenu}
-                >
-                  {item.isLogo ? (
-                    <span className="flex items-center gap-1 px-3 py-2">
-                      <span className="font-extrabold text-lg leading-none">
-                        Why
-                      </span>
-                      <img
-                        src={logo_long}
-                        alt="DashInfluence Logo"
-                        className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 -mt-1.5"
-                      />
-                    </span>
-                  ) : (
-                    <span className="relative z-10">{item.label}</span>
-                  )}
-                  <div
-                    className="absolute left-0 right-0 bottom-0 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 h-16 rounded-t-[0.75rem]"
-                    style={{ borderRadius: "0.75rem 0.75rem 0 0" }}
-                  ></div>
-                </Link>
-              ))}
-            </div>
-            {/* Desktop CTA Section */}
-            <div className={ctaCol + " hidden lg:flex"}>
               <Button
-                className="bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-4 sm:px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform"
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
+                className="w-full bg-white/20 text-white font-bold px-3 py-2 rounded-lg hover:bg-white/30 transition-all duration-300"
+                onClick={toggleLanguage}
               >
-                Get Started
+                {t("language")}
               </Button>
-            </div>
-            {/* Mobile Menu Button */}
-            <div className={ctaCol + " lg:hidden flex space-x-2 justify-end"}>
-              <Button
-                className="text-white hover:bg-white/10 p-2 transition-all duration-300 hover:scale-110"
-                onClick={toggleMenu}
-              >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6 transition-transform duration-300 rotate-180" />
-                ) : (
-                  <Menu className="h-6 w-6 transition-transform duration-300" />
-                )}
-              </Button>
-            </div>
-          </div>
-          {/* Mobile Menu */}
-          <div
-            className={`lg:hidden border-t border-white/20 bg-gradient-to-r from-[#203ab5] via-[#3553e0] to-[#3046c5] transition-all duration-400 overflow-hidden ${
-              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            }`}
-          >
-            <div className="px-4 py-4 space-y-4">
-              {navItems.map((item, index) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`block text-white font-bold text-lg py-3 px-4 transition-all duration-300 transform hover:scale-105 ${
-                    location === item.href
-                      ? "bg-white/20 rounded-xl"
-                      : "hover:bg-white/10 rounded-xl"
-                  }`}
-                  onClick={closeMenu}
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                    animation: isMenuOpen
-                      ? "slideInDown 0.3s ease-out forwards"
-                      : "none",
-                  }}
-                >
-                  {item.isLogo ? (
-                    <span className="flex items-center gap-1">
-                      <span className="font-extrabold text-lg leading-none">
-                        Why
-                      </span>
-                      <img
-                        src={logo_long}
-                        alt="DashInfluence Logo"
-                        className="h-6 w-auto max-w-[100px] object-contain -mt-1.5"
-                      />
-                    </span>
-                  ) : (
-                    <span className="relative z-10">{item.label}</span>
-                  )}
-                </Link>
-              ))}
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ import {
   Car,
 } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
 
 interface CalculatorState {
   avgWashes: number;
@@ -25,6 +26,8 @@ interface CalculatorState {
 }
 
 export default function CarDetailingCalculator() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const [values, setValues] = useState<CalculatorState>({
     avgWashes: 15,
     avgDetails: 5,
@@ -111,7 +114,12 @@ export default function CarDetailingCalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden pt-8 md:pt-12 pb-8 px-2 md:px-0">
+    <div
+      className={`min-h-screen bg-background relative overflow-hidden pt-20 md:pt-28 pb-8 px-2 md:px-0${
+        isArabic ? " font-cairo" : ""
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
       {/* Stars Background - now covers the whole page */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -134,11 +142,13 @@ export default function CarDetailingCalculator() {
             <Car className="w-[220px] h-[220px] mx-auto text-blue-400" />
           </div>
           <h1 className="text-4xl font-bold mb-4 text-foreground">
-            Revenue Calculator
+            {isArabic ? t("carCalc.heading") : "Revenue Calculator"}
           </h1>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Calculate how much revenue you're losing to manual processes
+            {isArabic
+              ? t("carCalc.intro")
+              : "Calculate how much revenue you're losing to manual processes"}
           </p>
 
           {/* Scientific Facts Section */}
@@ -147,10 +157,12 @@ export default function CarDetailingCalculator() {
               <CardContent className="p-0 text-center">
                 <Target className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <h3 className="font-bold text-blue-900 dark:text-blue-100 mb-1">
-                  Industry Standard
+                  {isArabic ? t("carCalc.facts.industry") : "Industry Standard"}
                 </h3>
                 <p className="text-sm text-blue-700 dark:text-blue-200">
-                  78% of businesses lose revenue due to missed calls
+                  {isArabic
+                    ? t("carCalc.facts.industryDesc")
+                    : "78% of businesses lose revenue due to missed calls"}
                 </p>
               </CardContent>
             </Card>
@@ -159,10 +171,12 @@ export default function CarDetailingCalculator() {
               <CardContent className="p-0 text-center">
                 <Zap className="w-8 h-8 text-green-600 mx-auto mb-2" />
                 <h3 className="font-bold text-green-900 dark:text-green-100 mb-1">
-                  AI Efficiency
+                  {isArabic ? t("carCalc.facts.ai") : "AI Efficiency"}
                 </h3>
                 <p className="text-sm text-green-700 dark:text-green-200">
-                  AI automation increases booking rates by 40%
+                  {isArabic
+                    ? t("carCalc.facts.aiDesc")
+                    : "AI automation increases booking rates by 40%"}
                 </p>
               </CardContent>
             </Card>
@@ -171,10 +185,12 @@ export default function CarDetailingCalculator() {
               <CardContent className="p-0 text-center">
                 <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-2" />
                 <h3 className="font-bold text-purple-900 dark:text-purple-100 mb-1">
-                  ROI Proven
+                  {isArabic ? t("carCalc.facts.roi") : "ROI Proven"}
                 </h3>
                 <p className="text-sm text-purple-700 dark:text-purple-200">
-                  Average 300% ROI within 18 months
+                  {isArabic
+                    ? t("carCalc.facts.roiDesc")
+                    : "Average 300% ROI within 18 months"}
                 </p>
               </CardContent>
             </Card>
@@ -183,11 +199,15 @@ export default function CarDetailingCalculator() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Input Section */}
-          <Card className="p-8 bg-card border-border">
+          <Card
+            className={`p-8 bg-card border-border${
+              isArabic ? " text-right" : ""
+            }`}
+          >
             <CardHeader className="p-0 mb-8">
               <CardTitle className="text-2xl font-bold text-card-foreground flex items-center">
                 <Target className="w-6 h-6 mr-2" />
-                Your Business Metrics
+                {isArabic ? t("carCalc.metrics") : "Your Business Metrics"}
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
@@ -195,7 +215,9 @@ export default function CarDetailingCalculator() {
                 {/* Business Size Selection */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Select Your Package:
+                    {isArabic
+                      ? t("carCalc.selectPackage")
+                      : "Select Your Package:"}
                   </label>
                   <select
                     value={values.businessSize}
@@ -205,13 +227,19 @@ export default function CarDetailingCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="essential">
-                      Essential AI Package ($400 setup + $149/month)
+                      {isArabic
+                        ? t("carCalc.packages.essential")
+                        : "Essential AI Package ($500 setup + $199/month)"}
                     </option>
                     <option value="professional">
-                      Professional AI Package ($900 setup + $299/month)
+                      {isArabic
+                        ? t("carCalc.packages.professional")
+                        : "Professional AI Package ($900 setup + $349/month)"}
                     </option>
                     <option value="complete">
-                      Complete AI Suite ($1,800 setup + $499/month)
+                      {isArabic
+                        ? t("carCalc.packages.complete")
+                        : "Complete AI Suite ($1,800 setup + $599/month)"}
                     </option>
                   </select>
                 </div>
@@ -219,7 +247,9 @@ export default function CarDetailingCalculator() {
                 {/* Average Weekly Washes */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Weekly Washes:
+                    {isArabic
+                      ? t("carCalc.avgWashes")
+                      : "Average Weekly Washes:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -244,7 +274,9 @@ export default function CarDetailingCalculator() {
                 {/* Average Weekly Details */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Weekly Details:
+                    {isArabic
+                      ? t("carCalc.avgDetails")
+                      : "Average Weekly Details:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -269,7 +301,7 @@ export default function CarDetailingCalculator() {
                 {/* Wash Price */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Wash Price ($):
+                    {isArabic ? t("carCalc.washPrice") : "Wash Price ($):"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -295,7 +327,7 @@ export default function CarDetailingCalculator() {
                 {/* Detail Price */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Detail Price ($):
+                    {isArabic ? t("carCalc.detailPrice") : "Detail Price ($):"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -321,7 +353,9 @@ export default function CarDetailingCalculator() {
                 {/* Missed Calls Weekly */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Missed Calls (Weekly):
+                    {isArabic
+                      ? t("carCalc.missedCalls")
+                      : "Missed Calls (Weekly):"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -353,14 +387,16 @@ export default function CarDetailingCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <TrendingUp className="w-5 h-5 mr-2" />
-                  Revenue Analysis
+                  {isArabic ? t("carCalc.revenueAnalysis") : "Revenue Analysis"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-6">
                   <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Current Monthly Revenue:
+                      {isArabic
+                        ? t("carCalc.currentRevenue")
+                        : "Current Monthly Revenue:"}
                     </span>
                     <span className="text-2xl font-bold text-red-600 dark:text-red-400">
                       {formatCurrency(results.currentRevenue)}
@@ -369,7 +405,9 @@ export default function CarDetailingCalculator() {
 
                   <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Potential Monthly Revenue:
+                      {isArabic
+                        ? t("carCalc.potentialRevenue")
+                        : "Potential Monthly Revenue:"}
                     </span>
                     <span className="text-2xl font-bold text-green-600 dark:text-green-400">
                       {formatCurrency(results.potentialRevenue)}
@@ -378,7 +416,9 @@ export default function CarDetailingCalculator() {
 
                   <div className="flex justify-between items-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Monthly Revenue Lost:
+                      {isArabic
+                        ? t("carCalc.monthlyLeakage")
+                        : "Monthly Revenue Lost:"}
                     </span>
                     <span className="text-3xl font-bold text-[#ffcf00]">
                       {formatCurrency(results.monthlyLeakage)}
@@ -393,82 +433,63 @@ export default function CarDetailingCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <DollarSign className="w-5 h-5 mr-2" />
-                  Investment Analysis
+                  {isArabic
+                    ? t("carCalc.investmentAnalysis")
+                    : "Investment Analysis"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-4">
-                  {/* Package Selection Widget */}
-                  <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg mb-4">
-                    <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                      Select Your AI Package:
-                    </label>
-                    <select
-                      value={values.businessSize}
-                      onChange={(e) =>
-                        handleSelectChange("businessSize", e.target.value)
-                      }
-                      className="w-full p-3 border rounded-lg bg-background text-card-foreground"
-                    >
-                      <option value="essential">
-                        Essential AI Package ($299 setup + $100/month)
-                      </option>
-                      <option value="professional">
-                        Professional AI Package ($799 setup + $250/month)
-                      </option>
-                      <option value="complete">
-                        Complete AI Suite ($1,499 setup + $350/month)
-                      </option>
-                    </select>
-                    <p className="text-xs text-muted-foreground mt-2">
-                      Choose the package that best fits your business size and
-                      needs
-                    </p>
-                  </div>
-
+                  {/* Removed repetitive package selection dropdown */}
                   <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Setup Cost:
+                      {isArabic ? t("carCalc.setupCost") : "Setup Cost:"}
                     </span>
                     <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
                       {formatCurrency(results.implementationCost)}
                     </span>
                   </div>
-
                   <div className="flex justify-between items-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Monthly Retainer:
+                      {isArabic
+                        ? t("carCalc.monthlyRetainer")
+                        : "Monthly Retainer:"}
                     </span>
                     <span className="text-lg font-bold text-purple-600 dark:text-purple-400">
                       {formatCurrency(results.monthlyCost)}
                     </span>
                   </div>
-
                   <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Annual Revenue Gain:
+                      {isArabic
+                        ? t("carCalc.annualRevenueGain")
+                        : "Annual Revenue Gain:"}
                     </span>
                     <span className="text-lg font-bold text-green-600 dark:text-green-400">
                       {formatCurrency(results.annualLeakage)}
                     </span>
                   </div>
-
                   {results.roi > 0 ? (
                     <>
                       <div className="flex justify-between items-center p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
                         <span className="font-semibold text-card-foreground">
-                          Payback Period:
+                          {isArabic
+                            ? t("carCalc.paybackPeriod")
+                            : "Payback Period:"}
                         </span>
                         <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
                           {results.paybackPeriod > 24
-                            ? "More than 24 months"
-                            : `${results.paybackPeriod.toFixed(1)} months`}
+                            ? isArabic
+                              ? t("carCalc.paybackMoreThan24")
+                              : "More than 24 months"
+                            : `${results.paybackPeriod.toFixed(1)} ${
+                                isArabic ? t("carCalc.months") : "months"
+                              }`}
                         </span>
                       </div>
-
                       <div className="flex justify-between items-center p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
                         <span className="font-semibold text-card-foreground">
-                          ROI:
+                          {isArabic ? t("carCalc.roi") : "ROI:"}
                         </span>
                         <span className="text-lg font-bold text-teal-600 dark:text-teal-400">
                           {results.roi.toFixed(1)}%
@@ -478,10 +499,12 @@ export default function CarDetailingCalculator() {
                   ) : (
                     <div className="flex justify-between items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
                       <span className="font-semibold text-card-foreground">
-                        Note:
+                        {isArabic ? t("carCalc.note") : "Note:"}
                       </span>
                       <span className="text-lg font-bold text-yellow-600 dark:text-yellow-400">
-                        Low missed calls - consider other benefits
+                        {isArabic
+                          ? t("carCalc.considerBenefits")
+                          : "Low missed calls - consider other benefits"}
                       </span>
                     </div>
                   )}
@@ -494,7 +517,7 @@ export default function CarDetailingCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <Calendar className="w-5 h-5 mr-2" />
-                  Implementation
+                  {isArabic ? t("carCalc.implementation") : "Implementation"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
@@ -502,9 +525,11 @@ export default function CarDetailingCalculator() {
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Setup Time:</span>
+                      <span className="font-semibold">
+                        {isArabic ? t("carCalc.setupTime") : "Setup Time:"}
+                      </span>
                       <span className="ml-2 text-muted-foreground">
-                        2-3 weeks
+                        {isArabic ? t("carCalc.setupTimeDesc") : "2-3 weeks"}
                       </span>
                     </div>
                   </div>
@@ -512,17 +537,25 @@ export default function CarDetailingCalculator() {
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Training:</span>
-                      <span className="ml-2 text-muted-foreground">1 week</span>
+                      <span className="font-semibold">
+                        {isArabic ? t("carCalc.training") : "Training:"}
+                      </span>
+                      <span className="ml-2 text-muted-foreground">
+                        {isArabic ? t("carCalc.trainingDesc") : "1 week"}
+                      </span>
                     </div>
                   </div>
 
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Full Automation:</span>
+                      <span className="font-semibold">
+                        {isArabic
+                          ? t("carCalc.fullAutomation")
+                          : "Full Automation:"}
+                      </span>
                       <span className="ml-2 text-muted-foreground">
-                        1 month
+                        {isArabic ? t("carCalc.fullAutomationDesc") : "1 month"}
                       </span>
                     </div>
                   </div>
@@ -550,10 +583,14 @@ export default function CarDetailingCalculator() {
             </div>
             <CardContent className="p-0 relative z-10">
               <h4 className="text-2xl font-bold mb-4">
-                Ready to Stop Losing Revenue?
+                {isArabic
+                  ? t("carCalc.cta.heading")
+                  : "Ready to Stop Losing Revenue?"}
               </h4>
               <p className="mb-6 opacity-90">
-                Get a personalized plan to capture your missed opportunities
+                {isArabic
+                  ? t("carCalc.cta.intro")
+                  : "Get a personalized plan to capture your missed opportunities"}
               </p>
               <Button
                 className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-colors text-sm"
@@ -564,7 +601,9 @@ export default function CarDetailingCalculator() {
                   )
                 }
               >
-                Schedule Free Consultation
+                {isArabic
+                  ? t("carCalc.cta.button")
+                  : "Schedule Free Consultation"}
               </Button>
             </CardContent>
           </Card>

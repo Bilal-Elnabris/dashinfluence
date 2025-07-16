@@ -2,6 +2,7 @@ import { useLocation } from "wouter";
 import { Car, Home, Wrench, HeartPulse, Coffee } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
 
 const niches = [
   {
@@ -51,8 +52,9 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 
 export default function RevenueCalculatorSelection() {
   const [, setLocation] = useLocation();
+  const { t } = useTranslation();
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background py-16 px-4 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background py-28 px-4 relative overflow-hidden">
       {/* Stars Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <SparklesCore
@@ -77,13 +79,10 @@ export default function RevenueCalculatorSelection() {
 
       <div className="max-w-2xl mx-auto text-center mb-8 relative z-10">
         <h1 className="text-4xl font-bold mb-4 text-foreground">
-          Discover Your Missed Revenue & Automation Potential
+          {t("discover_missed_revenue_title")}
         </h1>
         <p className="text-lg text-muted-foreground mb-4">
-          Use our calculator to see how much revenue your business could be
-          losing to missed calls, manual scheduling, and inefficient processes.
-          Select your business type below to get started and see your automation
-          ROI.
+          {t("discover_missed_revenue_description")}
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl relative z-10">
@@ -114,7 +113,7 @@ export default function RevenueCalculatorSelection() {
                   className="mt-4 bg-gradient-to-r from-[#ffcf00] to-yellow-400 text-[hsl(217,69%,34%)] font-bold px-6 py-2 rounded-lg border border-yellow-300 shadow-md hover:brightness-110 hover:scale-105 transition-all flex items-center justify-center gap-2 w-full"
                   onClick={() => setLocation(niche.link)}
                 >
-                  Calculate My Leakage
+                  {t("calculate_my_leakage_button")}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4 ml-1"

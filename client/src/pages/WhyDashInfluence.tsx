@@ -15,8 +15,12 @@ import {
 import { useState, useEffect } from "react";
 import { SparklesCore } from "@/components/SparklesCore";
 import Footer from "@/components/Footer";
+import { useTranslation } from "react-i18next";
+import { BrandText } from "../components/BrandText";
 
 export default function WhyDashInfluence() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const [currentIndex, setCurrentIndex] = useState(0);
   const [testimonialsPerPage, setTestimonialsPerPage] = useState(3);
 
@@ -35,108 +39,212 @@ export default function WhyDashInfluence() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const testimonials = [
-    {
-      name: "Mike Thompson",
-      company: "Thompson's Auto Detail",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "I was skeptical at first, but this AI thing actually works. Used to miss calls all the time when I was working on cars. Now it catches everything and books appointments even when I'm not around. Pretty cool.",
-      result: "No more missed calls",
-      rating: 5,
-    },
-    {
-      name: "Sarah Chen",
-      company: "Elite Car Care",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "Our team was spending way too much time on the phone and scheduling. Now the AI handles most of that stuff so we can focus on what we're good at - making cars look amazing.",
-      result: "Saved 20+ hours/week",
-      rating: 5,
-    },
-    {
-      name: "Dave Rodriguez",
-      company: "Mobile Detail Pro",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "Running a mobile business is tough - you're always driving around. This AI answers calls and books jobs while I'm on the road. It's like having a secretary that never takes breaks.",
-      result: "Bookings up 25%",
-      rating: 4,
-    },
-    {
-      name: "Jen Martinez",
-      company: "Sparkle Auto Spa",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "I was losing customers because I couldn't answer the phone when I was busy with clients. The AI catches those calls and books them. Simple solution to a big problem.",
-      result: "Revenue up 30%",
-      rating: 5,
-    },
-    {
-      name: "Rob Johnson",
-      company: "Classic Auto Care",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "I work on classic cars - that's my passion. But I was spending half my day on the phone instead of working on cars. Now the AI handles all the scheduling stuff.",
-      result: "More time for cars",
-      rating: 5,
-    },
-    {
-      name: "Amanda Wilson",
-      company: "Express Wash & Detail",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "We're a busy shop and things were getting chaotic with double bookings and missed calls. The AI keeps everything organized. No more scheduling headaches.",
-      result: "Eliminated double bookings",
-      rating: 4,
-    },
-    {
-      name: "Carlos Mendez",
-      company: "Luxury Auto Care",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "Our clients expect professional service. The AI gives them that experience - always polite, always available, always gets the details right. It's been great for our reputation.",
-      result: "Better customer reviews",
-      rating: 5,
-    },
-    {
-      name: "Lisa Park",
-      company: "Eco-Friendly Detailing",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "I was worried the AI wouldn't understand our eco-friendly approach, but it actually explains our green products and methods really well to customers. Pretty impressed.",
-      result: "More repeat customers",
-      rating: 4,
-    },
-    {
-      name: "Tom Anderson",
-      company: "Mobile Detail Express",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "Mobile detailing means I'm always on the move. The AI handles all the customer stuff while I'm driving between jobs. Saves me a ton of time and stress.",
-      result: "Less admin work",
-      rating: 5,
-    },
-    {
-      name: "Rachel Green",
-      company: "Family Auto Care",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-      quote:
-        "We're a small family business and couldn't afford to hire more staff. The AI helps us handle more customers without the overhead. It's been perfect for us.",
-      result: "Grew without hiring",
-      rating: 5,
-    },
-  ];
+  // Testimonials: add Arabic translations
+  const testimonials = isArabic
+    ? [
+        {
+          name: "مايك طومسون",
+          company: "تومسون لخدمات السيارات",
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "كنت مترددًا في البداية، لكن الذكاء الاصطناعي فعلاً أحدث فرقًا. لم أعد أفوت أي مكالمة، وأصبحت المواعيد تُحجز حتى أثناء انشغالي. تجربة رائعة!",
+          result: "لا مزيد من المكالمات الفائتة",
+          rating: 5,
+        },
+        {
+          name: "سارة تشين",
+          company: "إيليت كار كير",
+          image:
+            "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "كان فريقنا يقضي وقتًا طويلاً في المكالمات والجدولة. الآن الذكاء الاصطناعي يتولى كل ذلك ونركز على تقديم أفضل خدمة لعملائنا.",
+          result: "وفرنا أكثر من 20 ساعة أسبوعيًا",
+          rating: 5,
+        },
+        {
+          name: "ديف رودريغيز",
+          company: "موبايل ديتيل برو",
+          image:
+            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "إدارة الأعمال المتنقلة صعبة، لكن الذكاء الاصطناعي يرد على المكالمات ويحجز المواعيد أثناء تنقلي. كأن لدي سكرتير لا يتوقف عن العمل!",
+          result: "زيادة الحجوزات بنسبة 25%",
+          rating: 4,
+        },
+        {
+          name: "جين مارتينيز",
+          company: "سباركل أوتو سبا",
+          image:
+            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "كنت أفقد عملاء لأنني لم أستطع الرد على الهاتف عندما كنت مشغولاً بالعملاء. الذكاء الاصطناعي يلتقط تلك المكالمات ويحجزها. حل بسيط لمشكلة كبيرة.",
+          result: "زيادة الإيرادات بنسبة 30%",
+          rating: 5,
+        },
+        {
+          name: "روب جونسون",
+          company: "كلاسيك أوتو كير",
+          image:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "أعمل على سيارات كلاسيكية - هذا هو حبي. لكنني كنت أقضي نصف يوم في المكالمات بدلاً من العمل على السيارات. الآن الذكاء الاصطناعي يتولى كل الأمور الجدولية.",
+          result: "المزيد من الوقت للسيارات",
+          rating: 5,
+        },
+        {
+          name: "أماندا ويلسون",
+          company: "تومسون لخدمات السيارات",
+          image:
+            "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "نحن متاجر حريصين والأمور كانت تصبح أكثر تعقيداً بسبب الحجوزات المزدوجة والمكالمات الفائتة. الذكاء الاصطناعي يحافظ على كل شيء منظم. لا مزيد من التخطيط المعقد.",
+          result: "إزالة الحجوزات المزدوجة",
+          rating: 4,
+        },
+        {
+          name: "كارلوس مينديز",
+          company: "لوكسوري أوتو كير",
+          image:
+            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "يتوقع عملائنا خدمة مهنية عالية. الذكاء الاصطناعي يعطيهم تجربة - دائماً مهذب، دائماً متاح، دائماً يحصل على التفاصيل بشكل صحيح. كانت رائعة لسمعتنا.",
+          result: "تقييمات أفضل للعملاء",
+          rating: 5,
+        },
+        {
+          name: "ليزا بارك",
+          company: "تيليفوني أوتو ديتيل",
+          image:
+            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "كنت أقلق من أن الذكاء الاصطناعي لن يفهم نهجنا البيئي، لكنه فعلاً يشرح أفضل نهجنا البيئي والطرق الخضراء لعملائنا. لقد أثبتت رائعة.",
+          result: "عملاء تكرارية أكثر",
+          rating: 4,
+        },
+        {
+          name: "توم آندرسون",
+          company: "موبايل ديتيل إكسبريس",
+          image:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "التنظيف الموبايلي يعني أنني دائماً أتنقل. الذكاء الاصطناعي يتولى كل الأمور العملية مع العملاء أثناء تنقلي بين الوظائف. يوفر لي الكثير من الوقت والإجهاد.",
+          result: "أقل عمل تنظيف",
+          rating: 5,
+        },
+        {
+          name: "راشيل جرين",
+          company: "تومسون لخدمات السيارات",
+          image:
+            "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "نحن مؤسسة صغيرة ولم نتمكن من توظيف المزيد من الموظفين. الذكاء الاصطناعي يساعدنا في التعامل مع المزيد من العملاء بدون التكلفة الزائدة. كان عظيماً لنا.",
+          result: "نمو بدون توظيف",
+          rating: 5,
+        },
+      ]
+    : [
+        {
+          name: "Mike Thompson",
+          company: "Thompson's Auto Detail",
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "I was skeptical at first, but this AI thing actually works. Used to miss calls all the time when I was working on cars. Now it catches everything and books appointments even when I'm not around. Pretty cool.",
+          result: "No more missed calls",
+          rating: 5,
+        },
+        {
+          name: "Sarah Chen",
+          company: "Elite Car Care",
+          image:
+            "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "Our team was spending way too much time on the phone and scheduling. Now the AI handles most of that stuff so we can focus on what we're good at - making cars look amazing.",
+          result: "Saved 20+ hours/week",
+          rating: 5,
+        },
+        {
+          name: "Dave Rodriguez",
+          company: "Mobile Detail Pro",
+          image:
+            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "Running a mobile business is tough - you're always driving around. This AI answers calls and books jobs while I'm on the road. It's like having a secretary that never takes breaks.",
+          result: "Bookings up 25%",
+          rating: 4,
+        },
+        {
+          name: "Jen Martinez",
+          company: "Sparkle Auto Spa",
+          image:
+            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "I was losing customers because I couldn't answer the phone when I was busy with clients. The AI catches those calls and books them. Simple solution to a big problem.",
+          result: "Revenue up 30%",
+          rating: 5,
+        },
+        {
+          name: "Rob Johnson",
+          company: "Classic Auto Care",
+          image:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "I work on classic cars - that's my passion. But I was spending half my day on the phone instead of working on cars. Now the AI handles all the scheduling stuff.",
+          result: "More time for cars",
+          rating: 5,
+        },
+        {
+          name: "Amanda Wilson",
+          company: "Express Wash & Detail",
+          image:
+            "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "We're a busy shop and things were getting chaotic with double bookings and missed calls. The AI keeps everything organized. No more scheduling headaches.",
+          result: "Eliminated double bookings",
+          rating: 4,
+        },
+        {
+          name: "Carlos Mendez",
+          company: "Luxury Auto Care",
+          image:
+            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "Our clients expect professional service. The AI gives them that experience - always polite, always available, always gets the details right. It's been great for our reputation.",
+          result: "Better customer reviews",
+          rating: 5,
+        },
+        {
+          name: "Lisa Park",
+          company: "Eco-Friendly Detailing",
+          image:
+            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "I was worried the AI wouldn't understand our eco-friendly approach, but it actually explains our green products and methods really well to customers. Pretty impressed.",
+          result: "More repeat customers",
+          rating: 4,
+        },
+        {
+          name: "Tom Anderson",
+          company: "Mobile Detail Express",
+          image:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "Mobile detailing means I'm always on the move. The AI handles all the customer stuff while I'm driving between jobs. Saves me a ton of time and stress.",
+          result: "Less admin work",
+          rating: 5,
+        },
+        {
+          name: "Rachel Green",
+          company: "Family Auto Care",
+          image:
+            "https://images.unsplash.com/photo-1494790108755-2616b412f526?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+          quote:
+            "We're a small family business and couldn't afford to hire more staff. The AI helps us handle more customers without the overhead. It's been perfect for us.",
+          result: "Grew without hiring",
+          rating: 5,
+        },
+      ];
 
   // Group testimonials based on testimonialsPerPage
   const testimonialGroups = [];
@@ -199,7 +307,11 @@ export default function WhyDashInfluence() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+    <div
+      className={`min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden${
+        isArabic ? " font-cairo" : ""
+      }`}
+    >
       {/* Hero Section with Stars */}
       <section className="relative min-h-screen overflow-hidden w-full pt-0 pb-0 mb-0">
         <div className="absolute inset-0 z-0 pointer-events-none">
@@ -319,9 +431,19 @@ export default function WhyDashInfluence() {
               </div>
 
               {/* Mobile Navigation and Dots Indicator */}
-              <div className="flex flex-col items-center mt-12 space-y-6">
+              <div
+                className={`flex flex-col items-center mt-12 space-y-6${
+                  isArabic ? " font-cairo" : ""
+                }`}
+              >
                 {/* Mobile Navigation Arrows */}
-                <div className="flex md:hidden items-center justify-center space-x-4">
+                <div
+                  className={`flex md:hidden items-center justify-center ${
+                    isArabic
+                      ? "flex-row-reverse space-x-reverse space-x-4"
+                      : "space-x-4"
+                  }`}
+                >
                   <Button
                     onClick={prevTestimonial}
                     className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
@@ -330,7 +452,11 @@ export default function WhyDashInfluence() {
                   </Button>
 
                   {/* Dots Indicator */}
-                  <div className="flex items-center space-x-2 mt-0 mb-0">
+                  <div
+                    className={`flex items-center ${
+                      isArabic ? "flex-row-reverse space-x-2" : "space-x-2"
+                    } mt-0 mb-0`}
+                  >
                     {testimonialGroups.map((_, index) => (
                       <button
                         key={index}
@@ -353,7 +479,11 @@ export default function WhyDashInfluence() {
                 </div>
 
                 {/* Desktop Dots Indicator */}
-                <div className="hidden md:flex justify-center items-center space-x-2 mt-0 mb-0">
+                <div
+                  className={`hidden md:flex justify-center items-center ${
+                    isArabic ? "flex-row-reverse space-x-2" : "space-x-2"
+                  } mt-0 mb-0`}
+                >
                   {testimonialGroups.map((_, index) => (
                     <button
                       key={index}
@@ -403,56 +533,83 @@ export default function WhyDashInfluence() {
           />
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-              Why Choose DashInfluence?
-            </h1>
-            <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
-            <p className="text-xl text-white max-w-3xl mx-auto">
-              We don't just automate processes – we transform businesses with AI
-              that actually works
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-4 text-white">
+              <BrandText isArabic={isArabic}>
+                {isArabic
+                  ? "لماذا تختار داش إنفلونس؟"
+                  : "Why Choose DashInfluence?"}
+              </BrandText>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mx-auto mb-6 rounded-full"></div>
+            <p className="text-lg text-white max-w-2xl mx-auto mb-6 text-center">
+              {isArabic ? (
+                <>
+                  إذا كنت تبحث عن شريك موثوق يقود أعمالك نحو التحول الرقمي
+                  الحقيقي، فنحن في داش إنفلونس نضع خبرتنا بين يديك. نحن لا نقدم
+                  حلولاً جاهزة، بل نصمم لكل عميل استراتيجية مخصصة تضمن له نتائج
+                  ملموسة ونموًا مستدامًا. خبرتنا العميقة، ونجاحاتنا المثبتة،
+                  ودعمنا المستمر هي ما يجعلنا الخيار الأمثل لرواد الأعمال
+                  الطموحين.
+                </>
+              ) : (
+                <>
+                  We are a professional agency specializing in business
+                  automation and delivering real, measurable results for our
+                  clients through AI. Our expertise, custom solutions, and
+                  ongoing support set us apart.
+                </>
+              )}
             </p>
           </div>
-
-          {/* Key Differentiators */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Zap className="w-10 h-10 text-[#ffcf00]" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-white">
-                Industry Expertise
+          {/* Differentiators */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {/* Card 1 */}
+            <div className="bg-white/10 rounded-xl p-6 text-center shadow-lg">
+              <Zap className="w-10 h-10 mx-auto mb-4 text-[#ffcf00]" />
+              <h3 className="font-bold text-lg mb-2 text-white">
+                {isArabic ? "خبرة عملية متنوعة" : "Industry Expertise"}
               </h3>
-              <p className="text-white">
-                Specialized in business automation with deep understanding of
-                your unique challenges and opportunities across multiple
-                industries.
+              <p className="text-white text-sm">
+                {isArabic
+                  ? "سنوات من العمل مع شركات من مختلف القطاعات، مما يمنحنا فهماً عميقاً لتحدياتك واحتياجاتك."
+                  : "Years of automation experience across diverse industries."}
               </p>
             </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-[#ffcf00]" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-white">
-                Proven Results
+            {/* Card 2 */}
+            <div className="bg-white/10 rounded-xl p-6 text-center shadow-lg">
+              <CheckCircle className="w-10 h-10 mx-auto mb-4 text-[#ffcf00]" />
+              <h3 className="font-bold text-lg mb-2 text-white">
+                {isArabic ? "نتائج حقيقية وملموسة" : "Proven Results"}
               </h3>
-              <p className="text-white">
-                70+ successful implementations with average 300% ROI within 90
-                days of deployment.
+              <p className="text-white text-sm">
+                {isArabic
+                  ? "مشاريعنا الناجحة تتحدث عن نفسها، مع تحقيق عوائد استثمارية عالية لعملائنا في وقت قياسي."
+                  : "Dozens of successful projects and high ROI."}
               </p>
             </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Target className="w-10 h-10 text-[#ffcf00]" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-white">
-                Custom Solutions
+            {/* Card 3 */}
+            <div className="bg-white/10 rounded-xl p-6 text-center shadow-lg">
+              <Target className="w-10 h-10 mx-auto mb-4 text-[#ffcf00]" />
+              <h3 className="font-bold text-lg mb-2 text-white">
+                {isArabic ? "حلول مصممة خصيصًا لك" : "Custom Solutions"}
               </h3>
-              <p className="text-white">
-                Tailored automation that fits your existing processes, not
-                generic one-size-fits-all solutions.
+              <p className="text-white text-sm">
+                {isArabic
+                  ? "نبتكر حلولاً تناسب طبيعة عملك وأهدافك، بعيدًا عن القوالب الجاهزة."
+                  : "We tailor solutions to your unique needs."}
+              </p>
+            </div>
+            {/* Card 4 */}
+            <div className="bg-white/10 rounded-xl p-6 text-center shadow-lg">
+              <Award className="w-10 h-10 mx-auto mb-4 text-[#ffcf00]" />
+              <h3 className="font-bold text-lg mb-2 text-white">
+                {isArabic ? "دعم متواصل وشراكة حقيقية" : "Ongoing Support"}
+              </h3>
+              <p className="text-white text-sm">
+                {isArabic
+                  ? "نرافقك في كل خطوة، من البداية وحتى تحقيق النجاح، ونبقى معك لضمان استمرارية التطوير."
+                  : "We support you every step for guaranteed success."}
               </p>
             </div>
           </div>
@@ -475,10 +632,20 @@ export default function WhyDashInfluence() {
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-4 text-white">
-              Our Implementation Process
+              {isArabic
+                ? "رحلتنا معك خطوة بخطوة"
+                : "Our Implementation Process"}
             </h2>
             <p className="text-xl text-white">
-              From discovery to optimization, we ensure your success
+              {isArabic ? (
+                <>
+                  من أول لقاء حتى تحقيق النتائج، نعمل معك كشريك حقيقي: نكتشف
+                  احتياجاتك، نصمم الحلول الأنسب، ننفذها بسلاسة مع تدريب فريقك ودعمك الكامل، ونواصل التحسين
+                  والتطوير لضمان نجاحك الدائم.
+                </>
+              ) : (
+                <>From discovery to optimization, we ensure your success</>
+              )}
             </p>
           </div>
 
@@ -488,8 +655,32 @@ export default function WhyDashInfluence() {
                 <div className="w-16 h-16 bg-[hsl(217,69%,34%)] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
                   {step.step}
                 </div>
-                <h4 className="font-bold mb-2 text-white">{step.title}</h4>
-                <p className="text-sm text-white">{step.description}</p>
+                <h4 className="font-bold mb-2 text-white">
+                  {isArabic
+                    ? step.step === 1
+                      ? "اكتشاف وتحليل"
+                      : step.step === 2
+                      ? "تصميم الحلول"
+                      : step.step === 3
+                      ? "تنفيذ متكامل"
+                      : step.step === 4
+                      ? "تحسين مستمر"
+                      : step.title
+                    : step.title}
+                </h4>
+                <p className="text-sm text-white">
+                  {isArabic
+                    ? step.step === 1
+                      ? "نغوص في تفاصيل أعمالك ونحدد التحديات والفرص."
+                      : step.step === 2
+                      ? "نرسم خطة أتمتة مخصصة تلبي أهدافك بدقة."
+                      : step.step === 3
+                      ? "ننفذ الحلول بسلاسة مع تدريب فريقك ودعمك الكامل."
+                      : step.step === 4
+                      ? "نراقب الأداء ونطور الحلول باستمرار لتحقيق أفضل النتائج."
+                      : step.description
+                    : step.description}
+                </p>
               </div>
             ))}
 
@@ -518,56 +709,33 @@ export default function WhyDashInfluence() {
 
       {/* CTA Section with Stars in the Box Background */}
       <section className="relative w-full pb-16 mb-12">
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <div className="text-center relative">
-            {/* Stars behind the entire CTA section - extending beyond the box */}
-            <div className="absolute inset-0 -m-8 z-0 pointer-events-none">
-              <SparklesCore
-                id="tsparticles-y-cta-section"
-                background="transparent"
-                minSize={0.6}
-                maxSize={1.4}
-                particleDensity={60}
-                className="w-full h-full"
-                particleColor="#FFFFFF"
-              />
-            </div>
-            <div className="bg-white text-[hsl(217,69%,34%)] rounded-xl p-8 relative overflow-hidden shadow-xl border border-gray-100">
-              {/* Stars behind the CTA button only */}
-              <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-72 h-20 z-0 pointer-events-none">
-                <SparklesCore
-                  id="tsparticles-y-cta-btn"
-                  background="transparent"
-                  minSize={0.6}
-                  maxSize={1.4}
-                  particleDensity={20}
-                  className="w-full h-full"
-                  particleColor="#FFFFFF"
-                />
-              </div>
-              <div className="relative z-20">
-                <h3 className="text-2xl font-bold mb-4 text-[hsl(217,69%,34%)]">
-                  Ready to Transform Your Business?
-                </h3>
-                <p className="text-lg mb-6 text-gray-700 max-w-2xl mx-auto">
-                  Join hundreds of successful businesses that have already
-                  automated their way to success
-                </p>
-                <Button
-                  className="bg-[hsl(217,69%,34%)] text-white font-bold px-6 sm:px-8 py-3 hover:bg-[hsl(217,69%,28%)] transition-colors text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl"
-                  onClick={() =>
-                    window.open(
-                      "https://calendly.com/dashinfluence/new-meeting",
-                      "_blank"
-                    )
-                  }
-                >
-                  <span className="text-sm sm:text-base font-semibold">
-                    Schedule Your Free Consultation
-                  </span>
-                </Button>
-              </div>
-            </div>
+        <div className="relative z-10 max-w-3xl mx-auto px-6">
+          <div className="bg-white text-[hsl(217,69%,34%)] rounded-xl p-8 relative overflow-hidden shadow-xl border border-gray-100 text-center">
+            <h3 className="text-2xl font-bold mb-4 text-[hsl(217,69%,34%)]">
+              {isArabic
+                ? "هل أنت مستعد للانطلاق نحو مستقبل أعمالك؟"
+                : "Ready to Transform Your Business?"}
+            </h3>
+            <p className="text-lg mb-6 text-gray-700 max-w-2xl mx-auto text-center">
+              {isArabic
+                ? "احجز استشارتك المجانية اليوم وابدأ رحلتك مع داش إنفلونس نحو التميز الرقمي والنجاح المستدام."
+                : "Book your free consultation now and start your digital transformation journey with DashInfluence."}
+            </p>
+            <Button
+              className="bg-[hsl(217,69%,34%)] text-white font-bold px-6 sm:px-8 py-3 hover:bg-[hsl(217,69%,28%)] transition-colors text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl"
+              onClick={() =>
+                window.open(
+                  "https://calendly.com/dashinfluence/new-meeting",
+                  "_blank"
+                )
+              }
+            >
+              <span className="text-sm sm:text-base font-semibold">
+                {isArabic
+                  ? "احجز استشارتك المجانية الآن"
+                  : "Schedule Your Free Consultation"}
+              </span>
+            </Button>
           </div>
         </div>
       </section>

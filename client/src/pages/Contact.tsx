@@ -6,20 +6,35 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
 import SEOHead from "@/components/SEOHead";
 import FAQSection from "@/components/FAQSection";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+    <div
+      className={`min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden${
+        isArabic ? " font-cairo" : ""
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
       {/* SEO Head Component */}
       <SEOHead
-        title="Contact Us & FAQ - AI Automation Experts | DashInfluence"
-        description="Ready to transform your business with AI automation? Contact our experts for a free consultation. Find answers to frequently asked questions about AI automation, pricing, and implementation."
-        keywords="contact us, AI automation FAQ, business automation experts, free consultation, automation support, AI automation questions, automation pricing"
-        ogTitle="Contact Us & FAQ - AI Automation Experts | DashInfluence"
-        ogDescription="Ready to transform your business with AI automation? Contact our experts for a free consultation. Find answers to frequently asked questions."
+        title={isArabic ? t("contact.seo.title") : t("contact.seo.title")}
+        description={
+          isArabic ? t("contact.seo.description") : t("contact.seo.description")
+        }
+        keywords={
+          isArabic ? t("contact.seo.keywords") : t("contact.seo.keywords")
+        }
+        ogTitle={isArabic ? t("contact.seo.ogTitle") : t("contact.seo.ogTitle")}
+        ogDescription={
+          isArabic
+            ? t("contact.seo.ogDescription")
+            : t("contact.seo.ogDescription")
+        }
         canonical="https://dashinfluence.com/contact"
       />
-
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -32,7 +47,6 @@ export default function Contact() {
           particleColor="#ffcf00"
         />
       </div>
-
       {/* Hero Section */}
       <section className="text-white min-h-screen overflow-hidden pt-28 pb-2 relative z-10">
         <div className="absolute inset-0 z-0">
@@ -50,76 +64,91 @@ export default function Contact() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-2">
-                Let's Transform Your Business Together
+                {t("contact.hero.heading")}
               </h1>
               <p className="text-xl mb-2 opacity-90">
-                Ready to automate your way to success? Get in touch with our AI
-                automation experts.
+                {t("contact.hero.intro")}
               </p>
             </div>
             {/* Contact Content - form and info right below heading */}
-            <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div
+              className={`section-padding grid grid-cols-1 lg:grid-cols-2 gap-12${
+                isArabic ? " text-right" : ""
+              }`}
+            >
               {/* Contact Form */}
               <div>
                 <Card className="shadow-lg">
                   <CardHeader>
                     <CardTitle className="text-2xl text-foreground">
-                      Send Us a Message
+                      {t("contact.form.heading")}
                     </CardTitle>
                     <p className="text-muted-foreground">
-                      Fill out the form below and we'll get back to you within
-                      24 hours.
+                      {t("contact.form.intro")}
                     </p>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium mb-2">
-                          First Name
+                          {t("contact.form.firstName")}
                         </label>
-                        <Input placeholder="John" />
+                        <Input
+                          placeholder={t("contact.form.firstNamePlaceholder")}
+                        />
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2">
-                          Last Name
+                          {t("contact.form.lastName")}
                         </label>
-                        <Input placeholder="Doe" />
+                        <Input
+                          placeholder={t("contact.form.lastNamePlaceholder")}
+                        />
                       </div>
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">
-                        Email
+                        {t("contact.form.email")}
                       </label>
-                      <Input type="email" placeholder="john@example.com" />
+                      <Input
+                        type="email"
+                        placeholder={t("contact.form.emailPlaceholder")}
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">
-                        Phone
+                        {t("contact.form.phone")}
                       </label>
-                      <Input type="tel" placeholder="+1 (825) 250-0262" />
+                      <Input
+                        type="tel"
+                        placeholder={t("contact.form.phonePlaceholder")}
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">
-                        Company
+                        {t("contact.form.company")}
                       </label>
-                      <Input placeholder="Your Company Name" />
+                      <Input
+                        placeholder={t("contact.form.companyPlaceholder")}
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">
-                        How can we help you?
+                        {t("contact.form.message")}
                       </label>
                       <Textarea
-                        placeholder="Tell us about your business challenges and automation needs..."
+                        placeholder={t("contact.form.messagePlaceholder")}
                         rows={4}
                       />
                     </div>
                     <Button className="w-full bg-[#ffcf00] text-foreground hover:bg-yellow-300 text-sm sm:text-lg py-3 whitespace-nowrap">
-                      <span className="text-sm sm:text-base">Send Message</span>
+                      <span className="text-sm sm:text-base">
+                        {t("contact.form.button")}
+                      </span>
                     </Button>
                   </CardContent>
                 </Card>
               </div>
-
               {/* Contact Information */}
               <div className="space-y-8 relative overflow-hidden">
                 {/* Animated Background for Contact Info */}
@@ -134,29 +163,30 @@ export default function Contact() {
                     particleColor="#ffcf00"
                   />
                 </div>
-
                 <div className="relative z-10">
                   <h2 className="text-3xl font-bold text-white mb-6">
-                    Get In Touch
+                    {t("contact.info.heading")}
                   </h2>
-                  <p className="text-white mb-8">
-                    Ready to revolutionize your business with AI automation? Our
-                    experts are standing by to help you identify opportunities,
-                    design solutions, and implement systems that drive real
-                    results.
-                  </p>
+                  <p className="text-white mb-8">{t("contact.info.intro")}</p>
                 </div>
-
                 {/* Contact Cards */}
                 <div className="space-y-4 relative z-10">
                   <Card className="p-6">
-                    <div className="flex items-center space-x-4">
+                    <div
+                      className={`flex items-center ${
+                        isArabic
+                          ? "flex-row-reverse space-x-reverse"
+                          : "space-x-4"
+                      }`}
+                    >
                       <div className="w-12 h-12 bg-[#ffcf00] rounded-full flex items-center justify-center">
                         <Mail className="w-6 h-6 text-foreground" />
                       </div>
-                      <div>
+                      <div
+                        className={isArabic ? "text-right w-full" : "w-full"}
+                      >
                         <h3 className="font-semibold text-foreground">
-                          Email Us
+                          {t("contact.info.emailHeading")}
                         </h3>
                         <p className="text-muted-foreground">
                           hello@dashinfluence.com
@@ -164,47 +194,57 @@ export default function Contact() {
                       </div>
                     </div>
                   </Card>
-
                   <Card className="p-6">
-                    <div className="flex items-center space-x-4">
+                    <div
+                      className={`flex items-center ${
+                        isArabic
+                          ? "flex-row-reverse space-x-reverse"
+                          : "space-x-4"
+                      }`}
+                    >
                       <div className="w-12 h-12 bg-[#ffcf00] rounded-full flex items-center justify-center">
                         <Phone className="w-6 h-6 text-foreground" />
                       </div>
-                      <div>
+                      <div
+                        className={isArabic ? "text-right w-full" : "w-full"}
+                      >
                         <h3 className="font-semibold text-foreground">
-                          Call Us
+                          {t("contact.info.phoneHeading")}
                         </h3>
                         <p className="text-muted-foreground">(825) 250-0262</p>
                       </div>
                     </div>
                   </Card>
-
                   <Card className="p-6">
-                    <div className="flex items-center space-x-4">
+                    <div
+                      className={`flex items-center ${
+                        isArabic
+                          ? "flex-row-reverse space-x-reverse"
+                          : "space-x-4"
+                      }`}
+                    >
                       <div className="w-12 h-12 bg-[#ffcf00] rounded-full flex items-center justify-center">
                         <Clock className="w-6 h-6 text-foreground" />
                       </div>
-                      <div>
+                      <div
+                        className={isArabic ? "text-right w-full" : "w-full"}
+                      >
                         <h3 className="font-semibold text-foreground">
-                          Business Hours
+                          {t("contact.info.hoursHeading")}
                         </h3>
                         <p className="text-muted-foreground">
-                          Mon-Fri: 9:00 AM - 6:00 PM MST
+                          {t("contact.info.hours")}
                         </p>
                       </div>
                     </div>
                   </Card>
                 </div>
-
                 {/* CTA Section */}
                 <Card className="p-6 bg-gradient-to-r from-[hsl(217,69%,34%)] to-[hsl(225,71%,53%)] text-white border-0 relative z-10">
                   <h3 className="text-xl font-bold mb-4">
-                    Ready to Get Started?
+                    {t("contact.cta.heading")}
                   </h3>
-                  <p className="mb-6 opacity-90">
-                    Book a free 30-minute consultation to discuss your
-                    automation needs and see how we can help.
-                  </p>
+                  <p className="mb-6 opacity-90">{t("contact.cta.intro")}</p>
                   <Button
                     className="w-full bg-[#ffcf00] text-foreground hover:bg-yellow-300 font-bold py-3 text-sm sm:text-base whitespace-nowrap"
                     onClick={() =>
@@ -215,7 +255,7 @@ export default function Contact() {
                     }
                   >
                     <span className="text-sm sm:text-base">
-                      Schedule a Call
+                      {t("contact.cta.button")}
                     </span>
                   </Button>
                 </Card>
@@ -224,7 +264,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
       {/* FAQ Section */}
       <FAQSection />
     </div>

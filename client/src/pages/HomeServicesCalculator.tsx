@@ -13,15 +13,18 @@ import {
   Wrench,
 } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
 
 interface CalculatorState {
   avgJobs: number;
   avgJobValue: number;
   missedCalls: number;
-  businessSize: "solo" | "small-team" | "company";
+  businessSize: "solo" | "small-team";
 }
 
 export default function HomeServicesCalculator() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const [values, setValues] = useState<CalculatorState>({
     avgJobs: 20,
     avgJobValue: 350,
@@ -44,7 +47,6 @@ export default function HomeServicesCalculator() {
   const packageCosts = {
     solo: { setup: 400, monthly: 79 },
     "small-team": { setup: 900, monthly: 199 },
-    company: { setup: 1800, monthly: 499 },
   };
 
   useEffect(() => {
@@ -95,7 +97,12 @@ export default function HomeServicesCalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden pt-8 md:pt-12 pb-8 px-2 md:px-0">
+    <div
+      className={`min-h-screen bg-background relative overflow-hidden pt-20 md:pt-28 pb-8 px-2 md:px-0${
+        isArabic ? " font-cairo" : ""
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
       {/* Stars Background - now covers the whole page */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -118,12 +125,15 @@ export default function HomeServicesCalculator() {
             <Wrench className="w-[220px] h-[220px] mx-auto text-blue-400" />
           </div>
           <h1 className="text-4xl font-bold mb-4 text-foreground relative z-10">
-            Home Services Leakage Calculator
+            {isArabic
+              ? t("homeServicesCalc.heading")
+              : "Home Services Leakage Calculator"}
           </h1>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00] relative z-10"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 relative z-10">
-            Calculate how much revenue you're losing to missed calls and manual
-            processes
+            {isArabic
+              ? t("homeServicesCalc.intro")
+              : "Calculate how much revenue you're losing to missed calls and manual processes"}
           </p>
           {/* Scientific Facts Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 relative z-10">
@@ -131,10 +141,14 @@ export default function HomeServicesCalculator() {
               <CardContent className="p-0 text-center">
                 <Target className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <h3 className="font-bold text-blue-900 dark:text-blue-100 mb-1">
-                  Missed Opportunities
+                  {isArabic
+                    ? t("homeServicesCalc.facts.industry")
+                    : "Missed Opportunities"}
                 </h3>
                 <p className="text-sm text-blue-700 dark:text-blue-200">
-                  60% of home service calls go unanswered (ServiceTitan)
+                  {isArabic
+                    ? t("homeServicesCalc.facts.industryDesc")
+                    : "60% of home service calls go unanswered (ServiceTitan)"}
                 </p>
               </CardContent>
             </Card>
@@ -142,10 +156,12 @@ export default function HomeServicesCalculator() {
               <CardContent className="p-0 text-center">
                 <Zap className="w-8 h-8 text-green-600 mx-auto mb-2" />
                 <h3 className="font-bold text-green-900 dark:text-green-100 mb-1">
-                  AI Efficiency
+                  {isArabic ? t("homeServicesCalc.facts.ai") : "AI Efficiency"}
                 </h3>
                 <p className="text-sm text-green-700 dark:text-green-200">
-                  Automated booking increases job conversion by 30%
+                  {isArabic
+                    ? t("homeServicesCalc.facts.aiDesc")
+                    : "Automated booking increases job conversion by 30%"}
                 </p>
               </CardContent>
             </Card>
@@ -153,10 +169,12 @@ export default function HomeServicesCalculator() {
               <CardContent className="p-0 text-center">
                 <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-2" />
                 <h3 className="font-bold text-purple-900 dark:text-purple-100 mb-1">
-                  ROI Proven
+                  {isArabic ? t("homeServicesCalc.facts.roi") : "ROI Proven"}
                 </h3>
                 <p className="text-sm text-purple-700 dark:text-purple-200">
-                  Companies using automation see 150%+ ROI in 12 months
+                  {isArabic
+                    ? t("homeServicesCalc.facts.roiDesc")
+                    : "Companies using automation see 150%+ ROI in 12 months"}
                 </p>
               </CardContent>
             </Card>
@@ -165,11 +183,17 @@ export default function HomeServicesCalculator() {
         {/* Input and Results Sections (identical to car detailer, but with home services fields) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Input Section */}
-          <Card className="p-8 bg-card border-border">
+          <Card
+            className={`p-8 bg-card border-border${
+              isArabic ? " text-right" : ""
+            }`}
+          >
             <CardHeader className="p-0 mb-8">
               <CardTitle className="text-2xl font-bold text-card-foreground flex items-center">
                 <Target className="w-6 h-6 mr-2" />
-                Your Business Metrics
+                {isArabic
+                  ? t("homeServicesCalc.metrics")
+                  : "Your Business Metrics"}
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
@@ -177,7 +201,9 @@ export default function HomeServicesCalculator() {
                 {/* Business Size Selection */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Select Your Business Type:
+                    {isArabic
+                      ? t("homeServicesCalc.selectPackage")
+                      : "Select Your Package:"}
                   </label>
                   <select
                     value={values.businessSize}
@@ -187,20 +213,23 @@ export default function HomeServicesCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="solo">
-                      Solo Operator ($400 setup + $79/month)
+                      {isArabic
+                        ? t("homeServicesCalc.packages.solo")
+                        : "Solo Operator ($500 setup + $149/month)"}
                     </option>
                     <option value="small-team">
-                      Small Team ($900 setup + $199/month)
-                    </option>
-                    <option value="company">
-                      Company ($1,800 setup + $499/month)
+                      {isArabic
+                        ? t("homeServicesCalc.packages.smallTeam")
+                        : "Small Team ($900 setup + $299/month)"}
                     </option>
                   </select>
                 </div>
                 {/* Average Jobs per Week */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Jobs per Week:
+                    {isArabic
+                      ? t("homeServicesCalc.avgJobs")
+                      : "Average Jobs per Week:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -221,7 +250,9 @@ export default function HomeServicesCalculator() {
                 {/* Average Job Value */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Job Value ($):
+                    {isArabic
+                      ? t("homeServicesCalc.avgJobValue")
+                      : "Average Job Value ($):"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -246,7 +277,9 @@ export default function HomeServicesCalculator() {
                 {/* Missed Calls per Week */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Missed Calls per Week:
+                    {isArabic
+                      ? t("homeServicesCalc.missedCalls")
+                      : "Missed Calls per Week:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -276,14 +309,18 @@ export default function HomeServicesCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <TrendingUp className="w-5 h-5 mr-2" />
-                  Revenue Analysis
+                  {isArabic
+                    ? t("homeServicesCalc.revenueAnalysis")
+                    : "Revenue Analysis"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-6">
                   <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Current Monthly Revenue:
+                      {isArabic
+                        ? t("homeServicesCalc.currentRevenue")
+                        : "Current Monthly Revenue:"}
                     </span>
                     <span className="text-2xl font-bold text-red-600 dark:text-red-400">
                       {formatCurrency(results.currentRevenue)}
@@ -291,7 +328,9 @@ export default function HomeServicesCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Potential Monthly Revenue:
+                      {isArabic
+                        ? t("homeServicesCalc.potentialRevenue")
+                        : "Potential Monthly Revenue:"}
                     </span>
                     <span className="text-2xl font-bold text-green-600 dark:text-green-400">
                       {formatCurrency(results.potentialRevenue)}
@@ -299,7 +338,9 @@ export default function HomeServicesCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Monthly Revenue Lost:
+                      {isArabic
+                        ? t("homeServicesCalc.monthlyLeakage")
+                        : "Monthly Revenue Lost:"}
                     </span>
                     <span className="text-3xl font-bold text-[#ffcf00]">
                       {formatCurrency(results.monthlyLeakage)}
@@ -312,36 +353,18 @@ export default function HomeServicesCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <DollarSign className="w-5 h-5 mr-2" />
-                  Investment Analysis
+                  {isArabic
+                    ? t("homeServicesCalc.investmentAnalysis")
+                    : "Investment Analysis"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg mb-4">
-                    <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                      Select Your Business Type:
-                    </label>
-                    <select
-                      value={values.businessSize}
-                      onChange={(e) =>
-                        handleSelectChange("businessSize", e.target.value)
-                      }
-                      className="w-full p-3 border rounded-lg bg-background text-card-foreground"
-                    >
-                      <option value="solo">
-                        Solo Operator ($399 setup + $79/month)
-                      </option>
-                      <option value="small-team">
-                        Small Team ($899 setup + $199/month)
-                      </option>
-                      <option value="company">
-                        Company ($1,799 setup + $499/month)
-                      </option>
-                    </select>
-                  </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Setup Cost:
+                      {isArabic
+                        ? t("homeServicesCalc.setupCost")
+                        : "Setup Cost:"}
                     </span>
                     <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
                       {formatCurrency(results.implementationCost)}
@@ -349,7 +372,9 @@ export default function HomeServicesCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Monthly Retainer:
+                      {isArabic
+                        ? t("homeServicesCalc.monthlyRetainer")
+                        : "Monthly Retainer:"}
                     </span>
                     <span className="text-lg font-bold text-purple-600 dark:text-purple-400">
                       {formatCurrency(results.monthlyCost)}
@@ -357,7 +382,9 @@ export default function HomeServicesCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Annual Revenue Gain:
+                      {isArabic
+                        ? t("homeServicesCalc.annualRevenueGain")
+                        : "Annual Revenue Gain:"}
                     </span>
                     <span className="text-lg font-bold text-green-600 dark:text-green-400">
                       {formatCurrency(results.annualLeakage)}
@@ -367,17 +394,25 @@ export default function HomeServicesCalculator() {
                     <>
                       <div className="flex justify-between items-center p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
                         <span className="font-semibold text-card-foreground">
-                          Payback Period:
+                          {isArabic
+                            ? t("homeServicesCalc.paybackPeriod")
+                            : "Payback Period:"}
                         </span>
                         <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
                           {results.paybackPeriod > 24
-                            ? "More than 24 months"
+                            ? isArabic
+                              ? t("homeServicesCalc.moreThan24Months")
+                              : "More than 24 months"
+                            : isArabic
+                            ? t("homeServicesCalc.months", {
+                                count: Number(results.paybackPeriod.toFixed(1)),
+                              })
                             : `${results.paybackPeriod.toFixed(1)} months`}
                         </span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
                         <span className="font-semibold text-card-foreground">
-                          ROI:
+                          {isArabic ? t("homeServicesCalc.roi") : "ROI:"}
                         </span>
                         <span className="text-lg font-bold text-teal-600 dark:text-teal-400">
                           {results.roi.toFixed(1)}%
@@ -387,10 +422,12 @@ export default function HomeServicesCalculator() {
                   ) : (
                     <div className="flex justify-between items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
                       <span className="font-semibold text-card-foreground">
-                        Note:
+                        {isArabic ? t("homeServicesCalc.note") : "Note:"}
                       </span>
                       <span className="text-lg font-bold text-yellow-600 dark:text-yellow-400">
-                        Low missed calls - consider other benefits
+                        {isArabic
+                          ? t("homeServicesCalc.lowMissedCalls")
+                          : "Low missed calls - consider other benefits"}
                       </span>
                     </div>
                   )}
@@ -401,7 +438,9 @@ export default function HomeServicesCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <Calendar className="w-5 h-5 mr-2" />
-                  Implementation
+                  {isArabic
+                    ? t("homeServicesCalc.implementation")
+                    : "Implementation"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
@@ -409,25 +448,45 @@ export default function HomeServicesCalculator() {
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Setup Time:</span>
+                      <span className="font-semibold">
+                        {isArabic
+                          ? t("homeServicesCalc.setupTime")
+                          : "Setup Time:"}
+                      </span>
                       <span className="ml-2 text-muted-foreground">
-                        2-3 weeks
+                        {isArabic
+                          ? t("homeServicesCalc.setupTimeDesc")
+                          : "2-3 weeks"}
                       </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Training:</span>
-                      <span className="ml-2 text-muted-foreground">1 week</span>
+                      <span className="font-semibold">
+                        {isArabic
+                          ? t("homeServicesCalc.training")
+                          : "Training:"}
+                      </span>
+                      <span className="ml-2 text-muted-foreground">
+                        {isArabic
+                          ? t("homeServicesCalc.trainingDesc")
+                          : "1 week"}
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Full Automation:</span>
+                      <span className="font-semibold">
+                        {isArabic
+                          ? t("homeServicesCalc.fullAutomation")
+                          : "Full Automation:"}
+                      </span>
                       <span className="ml-2 text-muted-foreground">
-                        1 month
+                        {isArabic
+                          ? t("homeServicesCalc.fullAutomationDesc")
+                          : "1 month"}
                       </span>
                     </div>
                   </div>
@@ -455,24 +514,31 @@ export default function HomeServicesCalculator() {
             </div>
             <CardContent className="p-0 relative z-10">
               <h4 className="text-2xl font-bold mb-4">
-                Home Services AI Automation Coming Soon!
+                {isArabic
+                  ? t("homeServicesCalc.cta.heading")
+                  : "Home Services AI Automation Coming Soon!"}
               </h4>
               <p className="mb-6 opacity-90">
-                We're expanding our team to serve home services businesses. Get
-                early access and be the first to know when we launch.
+                {isArabic
+                  ? t("homeServicesCalc.cta.intro")
+                  : "We're expanding our team to serve home services businesses. Get early access and be the first to know when we launch."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   className="bg-[#ffcf00] text-black font-bold px-6 py-3 hover:bg-yellow-300 transition-colors"
                   onClick={() => (window.location.href = "/early-access")}
                 >
-                  Get Early Access
+                  {isArabic
+                    ? t("homeServicesCalc.cta.earlyAccess")
+                    : "Get Early Access"}
                 </Button>
                 <Button
                   className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 py-3 transition-colors"
                   onClick={() => (window.location.href = "/packages")}
                 >
-                  View Available Packages
+                  {isArabic
+                    ? t("homeServicesCalc.cta.viewPackages")
+                    : "View Available Packages"}
                 </Button>
               </div>
             </CardContent>

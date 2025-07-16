@@ -12,34 +12,51 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
+import { BrandText } from "./BrandText";
 
 export default function WhyChooseAISection() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const benefits = [
     {
       icon: <Lightbulb className="w-12 h-12 text-blue-600" />,
-      title: "Smart Automation",
-      description:
-        "AI handles 24/7 customer interactions, never missing a call or opportunity",
+      title: isArabic
+        ? t("home.why.benefits.0.title")
+        : "Diverse Industry Experience",
+      description: isArabic
+        ? t("home.why.benefits.0.description")
+        : "Years of working with companies across industries gives us deep insight into your challenges and needs.",
       color: "blue",
     },
     {
       icon: <TrendingUp className="w-12 h-12 text-green-600" />,
-      title: "Proven Results",
-      description:
-        "Average 40% increase in booking rates and 300% ROI within 18 months",
+      title: isArabic
+        ? t("home.why.benefits.1.title")
+        : "Real, Measurable Results",
+      description: isArabic
+        ? t("home.why.benefits.1.description")
+        : "Our successful projects speak for themselves, delivering high ROI for our clients in record time.",
       color: "green",
     },
     {
       icon: <Zap className="w-12 h-12 text-purple-600" />,
-      title: "Instant Setup",
-      description:
-        "Get started in 2-3 weeks with minimal disruption to your current operations",
+      title: isArabic
+        ? t("home.why.benefits.2.title")
+        : "Solutions Tailored to You",
+      description: isArabic
+        ? t("home.why.benefits.2.description")
+        : "We create solutions that fit your business and goals—never one-size-fits-all.",
       color: "purple",
     },
     {
       icon: <Target className="w-12 h-12 text-orange-600" />,
-      title: "Industry Leader",
-      description: "Trusted by 150+ businesses across North America",
+      title: isArabic
+        ? t("home.why.benefits.3.title")
+        : "Ongoing Support & True Partnership",
+      description: isArabic
+        ? t("home.why.benefits.3.description")
+        : "We’re with you every step, from launch to success, and stay by your side to ensure continuous improvement.",
       color: "orange",
     },
   ];
@@ -75,14 +92,17 @@ export default function WhyChooseAISection() {
     <div className="section-padding bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 ${isArabic ? "font-cairo" : ""}`}>
           <h2 className="text-4xl font-bold mb-4 text-foreground">
-            Why Leading Businesses Choose AI Automation
+            <BrandText isArabic={isArabic}>
+              {isArabic ? t("home.why.heading") : "Why Choose DashInfluence?"}
+            </BrandText>
           </h2>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Join thousands of successful businesses that have transformed their
-            operations with AI
+            {isArabic
+              ? t("home.why.intro")
+              : "We don’t offer cookie-cutter solutions—we craft a custom strategy for every client, ensuring real results and sustainable growth. Our deep expertise, proven track record, and ongoing support make us the top choice for ambitious business owners."}
           </p>
         </div>
 
@@ -98,7 +118,7 @@ export default function WhyChooseAISection() {
                 <h3
                   className={`font-bold text-lg mb-2 text-${benefit.color}-900 dark:text-${benefit.color}-100`}
                 >
-                  {benefit.title}
+                  <BrandText isArabic={isArabic}>{benefit.title}</BrandText>
                 </h3>
                 <p
                   className={`text-sm text-${benefit.color}-700 dark:text-${benefit.color}-200`}
@@ -111,17 +131,26 @@ export default function WhyChooseAISection() {
         </div>
 
         {/* Key Differentiators */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 ${
+            isArabic ? "font-cairo" : ""
+          }`}
+        >
           <div className="text-center">
             <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <Zap className="w-10 h-10 text-[#ffcf00]" />
             </div>
             <h3 className="text-xl font-bold mb-4 text-foreground">
-              Industry Expertise
+              <BrandText isArabic={isArabic}>
+                {isArabic
+                  ? t("home.why.diff.0.title")
+                  : "Advanced AI Technology"}
+              </BrandText>
             </h3>
             <p className="text-muted-foreground">
-              Specialized in business automation with deep understanding of your
-              unique challenges and opportunities.
+              {isArabic
+                ? t("home.why.diff.0.description")
+                : "We use the latest AI technology to deliver the best results."}
             </p>
           </div>
 
@@ -130,11 +159,16 @@ export default function WhyChooseAISection() {
               <CheckCircle className="w-10 h-10 text-[#ffcf00]" />
             </div>
             <h3 className="text-xl font-bold mb-4 text-foreground">
-              Proven Results
+              <BrandText isArabic={isArabic}>
+                {isArabic
+                  ? t("home.why.diff.1.title")
+                  : "Exceptional Client Experience"}
+              </BrandText>
             </h3>
             <p className="text-muted-foreground">
-              70+ successful implementations with average 300% ROI within 90
-              days of deployment.
+              {isArabic
+                ? t("home.why.diff.1.description")
+                : "We focus on providing a seamless, professional experience for every client."}
             </p>
           </div>
 
@@ -143,11 +177,16 @@ export default function WhyChooseAISection() {
               <Target className="w-10 h-10 text-[#ffcf00]" />
             </div>
             <h3 className="text-xl font-bold mb-4 text-foreground">
-              Custom Solutions
+              <BrandText isArabic={isArabic}>
+                {isArabic
+                  ? t("home.why.diff.2.title")
+                  : "Continuous Improvement"}
+              </BrandText>
             </h3>
             <p className="text-muted-foreground">
-              Tailored automation that fits your existing processes, not generic
-              one-size-fits-all solutions.
+              {isArabic
+                ? t("home.why.diff.2.description")
+                : "We monitor performance and continually enhance your solution for the best possible results."}
             </p>
           </div>
         </div>

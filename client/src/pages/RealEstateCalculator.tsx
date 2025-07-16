@@ -13,6 +13,7 @@ import {
   Home as HomeIcon,
 } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
 
 interface CalculatorState {
   avgLeads: number;
@@ -24,6 +25,8 @@ interface CalculatorState {
 }
 
 export default function RealEstateCalculator() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const [values, setValues] = useState<CalculatorState>({
     avgLeads: 30,
     avgDeals: 2,
@@ -99,7 +102,12 @@ export default function RealEstateCalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden pt-8 md:pt-12 pb-8 px-2 md:px-0">
+    <div
+      className={`min-h-screen bg-background relative overflow-hidden pt-20 md:pt-28 pb-8 px-2 md:px-0${
+        isArabic ? " font-cairo" : ""
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
       {/* Stars Background - now covers the whole page */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -122,12 +130,15 @@ export default function RealEstateCalculator() {
             <HomeIcon className="w-[220px] h-[220px] mx-auto text-blue-400" />
           </div>
           <h1 className="text-4xl font-bold mb-4 text-foreground relative z-10">
-            Real Estate Leakage Calculator
+            {isArabic
+              ? t("realEstateCalc.heading")
+              : "Real Estate Leakage Calculator"}
           </h1>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00] relative z-10"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 relative z-10">
-            Calculate how much revenue you're losing to missed leads and manual
-            processes
+            {isArabic
+              ? t("realEstateCalc.intro")
+              : "Calculate how much revenue you're losing to missed leads and manual processes"}
           </p>
           {/* Scientific Facts Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 relative z-10">
@@ -135,10 +146,14 @@ export default function RealEstateCalculator() {
               <CardContent className="p-0 text-center">
                 <Target className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <h3 className="font-bold text-blue-900 dark:text-blue-100 mb-1">
-                  Missed Opportunities
+                  {isArabic
+                    ? t("realEstateCalc.facts.industry")
+                    : "Missed Opportunities"}
                 </h3>
                 <p className="text-sm text-blue-700 dark:text-blue-200">
-                  40% of real estate leads are never followed up (NAR)
+                  {isArabic
+                    ? t("realEstateCalc.facts.industryDesc")
+                    : "40% of real estate leads are never followed up (NAR)"}
                 </p>
               </CardContent>
             </Card>
@@ -146,10 +161,12 @@ export default function RealEstateCalculator() {
               <CardContent className="p-0 text-center">
                 <Zap className="w-8 h-8 text-green-600 mx-auto mb-2" />
                 <h3 className="font-bold text-green-900 dark:text-green-100 mb-1">
-                  AI Efficiency
+                  {isArabic ? t("realEstateCalc.facts.ai") : "AI Efficiency"}
                 </h3>
                 <p className="text-sm text-green-700 dark:text-green-200">
-                  Automated follow-up increases conversion by 50%
+                  {isArabic
+                    ? t("realEstateCalc.facts.aiDesc")
+                    : "Automated follow-up increases conversion by 50%"}
                 </p>
               </CardContent>
             </Card>
@@ -157,10 +174,12 @@ export default function RealEstateCalculator() {
               <CardContent className="p-0 text-center">
                 <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-2" />
                 <h3 className="font-bold text-purple-900 dark:text-purple-100 mb-1">
-                  ROI Proven
+                  {isArabic ? t("realEstateCalc.facts.roi") : "ROI Proven"}
                 </h3>
                 <p className="text-sm text-purple-700 dark:text-purple-200">
-                  Teams using automation see 200%+ ROI in 12 months
+                  {isArabic
+                    ? t("realEstateCalc.facts.roiDesc")
+                    : "Teams using automation see 200%+ ROI in 12 months"}
                 </p>
               </CardContent>
             </Card>
@@ -169,11 +188,17 @@ export default function RealEstateCalculator() {
         {/* Input and Results Sections (identical to car detailer, but with real estate fields) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Input Section */}
-          <Card className="p-8 bg-card border-border">
+          <Card
+            className={`p-8 bg-card border-border${
+              isArabic ? " text-right" : ""
+            }`}
+          >
             <CardHeader className="p-0 mb-8">
               <CardTitle className="text-2xl font-bold text-card-foreground flex items-center">
                 <Target className="w-6 h-6 mr-2" />
-                Your Business Metrics
+                {isArabic
+                  ? t("realEstateCalc.metrics")
+                  : "Your Business Metrics"}
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
@@ -181,7 +206,9 @@ export default function RealEstateCalculator() {
                 {/* Business Size Selection */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Select Your Business Type:
+                    {isArabic
+                      ? t("realEstateCalc.selectPackage")
+                      : "Select Your Package:"}
                   </label>
                   <select
                     value={values.businessSize}
@@ -191,20 +218,28 @@ export default function RealEstateCalculator() {
                     className="w-full p-3 border rounded-lg bg-background text-card-foreground"
                   >
                     <option value="solo">
-                      Solo Agent ($750 setup + $199/month)
+                      {isArabic
+                        ? t("realEstateCalc.packages.solo")
+                        : "Solo Agent ($750 setup + $199/month)"}
                     </option>
                     <option value="team">
-                      Team ($1,750 setup + $499/month)
+                      {isArabic
+                        ? t("realEstateCalc.packages.team")
+                        : "Team ($1,750 setup + $499/month)"}
                     </option>
                     <option value="agency">
-                      Agency ($3,500 setup + $999/month)
+                      {isArabic
+                        ? t("realEstateCalc.packages.agency")
+                        : "Agency ($3,500 setup + $999/month)"}
                     </option>
                   </select>
                 </div>
                 {/* Average Monthly Leads */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average New Leads per Month:
+                    {isArabic
+                      ? t("realEstateCalc.avgLeads")
+                      : "Average New Leads per Month:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -225,7 +260,9 @@ export default function RealEstateCalculator() {
                 {/* Average Deals per Month */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Closed Deals per Month:
+                    {isArabic
+                      ? t("realEstateCalc.avgDeals")
+                      : "Average Closed Deals per Month:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -246,7 +283,9 @@ export default function RealEstateCalculator() {
                 {/* Average Commission per Deal */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Average Commission per Deal ($):
+                    {isArabic
+                      ? t("realEstateCalc.avgCommission")
+                      : "Average Commission per Deal ($):"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -271,7 +310,9 @@ export default function RealEstateCalculator() {
                 {/* Missed Leads per Month */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Missed Leads per Month:
+                    {isArabic
+                      ? t("realEstateCalc.missedLeads")
+                      : "Missed Leads per Month:"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -295,7 +336,9 @@ export default function RealEstateCalculator() {
                 {/* Follow-up Rate (%) */}
                 <div>
                   <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                    Follow-up Rate (%):
+                    {isArabic
+                      ? t("realEstateCalc.followUpRate")
+                      : "Follow-up Rate (%):"}
                   </label>
                   <div className="flex items-center space-x-4">
                     <input
@@ -325,14 +368,18 @@ export default function RealEstateCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <TrendingUp className="w-5 h-5 mr-2" />
-                  Revenue Analysis
+                  {isArabic
+                    ? t("realEstateCalc.revenueAnalysis")
+                    : "Revenue Analysis"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-6">
                   <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Current Monthly Revenue:
+                      {isArabic
+                        ? t("realEstateCalc.currentRevenue")
+                        : "Current Monthly Revenue:"}
                     </span>
                     <span className="text-2xl font-bold text-red-600 dark:text-red-400">
                       {formatCurrency(results.currentRevenue)}
@@ -340,7 +387,9 @@ export default function RealEstateCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Potential Monthly Revenue:
+                      {isArabic
+                        ? t("realEstateCalc.potentialRevenue")
+                        : "Potential Monthly Revenue:"}
                     </span>
                     <span className="text-2xl font-bold text-green-600 dark:text-green-400">
                       {formatCurrency(results.potentialRevenue)}
@@ -348,7 +397,9 @@ export default function RealEstateCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Monthly Revenue Lost:
+                      {isArabic
+                        ? t("realEstateCalc.monthlyLeakage")
+                        : "Monthly Revenue Lost:"}
                     </span>
                     <span className="text-3xl font-bold text-[#ffcf00]">
                       {formatCurrency(results.monthlyLeakage)}
@@ -361,36 +412,16 @@ export default function RealEstateCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <DollarSign className="w-5 h-5 mr-2" />
-                  Investment Analysis
+                  {isArabic
+                    ? t("realEstateCalc.investmentAnalysis")
+                    : "Investment Analysis"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg mb-4">
-                    <label className="block text-sm font-semibold mb-3 text-card-foreground">
-                      Select Your Business Type:
-                    </label>
-                    <select
-                      value={values.businessSize}
-                      onChange={(e) =>
-                        handleSelectChange("businessSize", e.target.value)
-                      }
-                      className="w-full p-3 border rounded-lg bg-background text-card-foreground"
-                    >
-                      <option value="solo">
-                        Solo Agent ($699 setup + $149/month)
-                      </option>
-                      <option value="team">
-                        Team ($1,499 setup + $399/month)
-                      </option>
-                      <option value="agency">
-                        Agency ($2,999 setup + $899/month)
-                      </option>
-                    </select>
-                  </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Setup Cost:
+                      {isArabic ? t("realEstateCalc.setupCost") : "Setup Cost:"}
                     </span>
                     <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
                       {formatCurrency(results.implementationCost)}
@@ -398,7 +429,9 @@ export default function RealEstateCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Monthly Retainer:
+                      {isArabic
+                        ? t("realEstateCalc.monthlyRetainer")
+                        : "Monthly Retainer:"}
                     </span>
                     <span className="text-lg font-bold text-purple-600 dark:text-purple-400">
                       {formatCurrency(results.monthlyCost)}
@@ -406,7 +439,9 @@ export default function RealEstateCalculator() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span className="font-semibold text-card-foreground">
-                      Annual Revenue Gain:
+                      {isArabic
+                        ? t("realEstateCalc.annualRevenueGain")
+                        : "Annual Revenue Gain:"}
                     </span>
                     <span className="text-lg font-bold text-green-600 dark:text-green-400">
                       {formatCurrency(results.annualLeakage)}
@@ -416,17 +451,25 @@ export default function RealEstateCalculator() {
                     <>
                       <div className="flex justify-between items-center p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
                         <span className="font-semibold text-card-foreground">
-                          Payback Period:
+                          {isArabic
+                            ? t("realEstateCalc.paybackPeriod")
+                            : "Payback Period:"}
                         </span>
                         <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
                           {results.paybackPeriod > 24
-                            ? "More than 24 months"
+                            ? isArabic
+                              ? t("realEstateCalc.moreThan24Months")
+                              : "More than 24 months"
+                            : isArabic
+                            ? t("realEstateCalc.months", {
+                                count: Number(results.paybackPeriod.toFixed(1)),
+                              })
                             : `${results.paybackPeriod.toFixed(1)} months`}
                         </span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
                         <span className="font-semibold text-card-foreground">
-                          ROI:
+                          {isArabic ? t("realEstateCalc.roi") : "ROI:"}
                         </span>
                         <span className="text-lg font-bold text-teal-600 dark:text-teal-400">
                           {results.roi.toFixed(1)}%
@@ -436,10 +479,12 @@ export default function RealEstateCalculator() {
                   ) : (
                     <div className="flex justify-between items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
                       <span className="font-semibold text-card-foreground">
-                        Note:
+                        {isArabic ? t("realEstateCalc.note") : "Note:"}
                       </span>
                       <span className="text-lg font-bold text-yellow-600 dark:text-yellow-400">
-                        Low missed leads - consider other benefits
+                        {isArabic
+                          ? t("realEstateCalc.lowMissedLeads")
+                          : "Low missed leads - consider other benefits"}
                       </span>
                     </div>
                   )}
@@ -450,7 +495,9 @@ export default function RealEstateCalculator() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <Calendar className="w-5 h-5 mr-2" />
-                  Implementation
+                  {isArabic
+                    ? t("realEstateCalc.implementation")
+                    : "Implementation"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
@@ -458,25 +505,41 @@ export default function RealEstateCalculator() {
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Setup Time:</span>
+                      <span className="font-semibold">
+                        {isArabic
+                          ? t("realEstateCalc.setupTime")
+                          : "Setup Time:"}
+                      </span>
                       <span className="ml-2 text-muted-foreground">
-                        2-3 weeks
+                        {isArabic
+                          ? t("realEstateCalc.setupTimeDesc")
+                          : "2-3 weeks"}
                       </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Training:</span>
-                      <span className="ml-2 text-muted-foreground">1 week</span>
+                      <span className="font-semibold">
+                        {isArabic ? t("realEstateCalc.training") : "Training:"}
+                      </span>
+                      <span className="ml-2 text-muted-foreground">
+                        {isArabic ? t("realEstateCalc.trainingDesc") : "1 week"}
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-500" />
                     <div>
-                      <span className="font-semibold">Full Automation:</span>
+                      <span className="font-semibold">
+                        {isArabic
+                          ? t("realEstateCalc.fullAutomation")
+                          : "Full Automation:"}
+                      </span>
                       <span className="ml-2 text-muted-foreground">
-                        1 month
+                        {isArabic
+                          ? t("realEstateCalc.fullAutomationDesc")
+                          : "1 month"}
                       </span>
                     </div>
                   </div>
@@ -505,10 +568,14 @@ export default function RealEstateCalculator() {
             </div>
             <CardContent className="p-0 relative z-10">
               <h4 className="text-2xl font-bold mb-4">
-                Ready to Stop Losing Revenue?
+                {isArabic
+                  ? t("realEstateCalc.cta.heading")
+                  : "Ready to Stop Losing Revenue?"}
               </h4>
               <p className="mb-6 opacity-90">
-                Get a personalized plan to capture your missed opportunities
+                {isArabic
+                  ? t("realEstateCalc.cta.intro")
+                  : "Get a personalized plan to capture your missed opportunities"}
               </p>
               <Button
                 className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-colors text-sm"
@@ -519,7 +586,9 @@ export default function RealEstateCalculator() {
                   )
                 }
               >
-                Schedule Free Consultation
+                {isArabic
+                  ? t("realEstateCalc.cta.button")
+                  : "Schedule Free Consultation"}
               </Button>
             </CardContent>
           </Card>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
 
 interface Question {
   id: number;
@@ -13,100 +14,89 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "How many appointments or jobs do you book weekly?",
+    question: "quiz.questions.1.question",
     options: [
-      { value: "1-10", label: "1-10 appointments", score: 1 },
-      { value: "11-25", label: "11-25 appointments", score: 2 },
-      { value: "26-50", label: "26-50 appointments", score: 3 },
-      { value: "50+", label: "50+ appointments", score: 4 },
+      { value: "1-10", label: "quiz.questions.1.options.1", score: 1 },
+      { value: "11-25", label: "quiz.questions.1.options.2", score: 2 },
+      { value: "26-50", label: "quiz.questions.1.options.3", score: 3 },
+      { value: "50+", label: "quiz.questions.1.options.4", score: 4 },
     ],
   },
   {
     id: 2,
-    question:
-      "How many customer calls do you miss daily while working on your business?",
+    question: "quiz.questions.2.question",
     options: [
-      { value: "0-1", label: "0-1 calls", score: 1 },
-      { value: "2-3", label: "2-3 calls", score: 2 },
-      { value: "4-6", label: "4-6 calls", score: 3 },
-      { value: "6+", label: "6+ calls", score: 4 },
+      { value: "0-1", label: "quiz.questions.2.options.1", score: 1 },
+      { value: "2-3", label: "quiz.questions.2.options.2", score: 2 },
+      { value: "4-6", label: "quiz.questions.2.options.3", score: 3 },
+      { value: "6+", label: "quiz.questions.2.options.4", score: 4 },
     ],
   },
   {
     id: 3,
-    question: "How do customers typically book with you?",
+    question: "quiz.questions.3.question",
     options: [
-      { value: "phone-only", label: "Phone calls only", score: 1 },
-      { value: "phone-text", label: "Phone and text messages", score: 2 },
-      { value: "social", label: "Social media + phone", score: 3 },
-      { value: "online", label: "Online booking system", score: 4 },
+      { value: "phone-only", label: "quiz.questions.3.options.1", score: 1 },
+      { value: "phone-text", label: "quiz.questions.3.options.2", score: 2 },
+      { value: "social", label: "quiz.questions.3.options.3", score: 3 },
+      { value: "online", label: "quiz.questions.3.options.4", score: 4 },
     ],
   },
   {
     id: 4,
-    question: "How much time do you spend daily on booking and scheduling?",
+    question: "quiz.questions.4.question",
     options: [
-      { value: "15-30min", label: "15-30 minutes", score: 1 },
-      { value: "30-60min", label: "30-60 minutes", score: 2 },
-      { value: "1-2h", label: "1-2 hours", score: 3 },
-      { value: "2h+", label: "2+ hours", score: 4 },
+      { value: "15-30min", label: "quiz.questions.4.options.1", score: 1 },
+      { value: "30-60min", label: "quiz.questions.4.options.2", score: 2 },
+      { value: "1-2h", label: "quiz.questions.4.options.3", score: 3 },
+      { value: "2h+", label: "quiz.questions.4.options.4", score: 4 },
     ],
   },
   {
     id: 5,
-    question: "Do you send appointment reminders to customers?",
+    question: "quiz.questions.5.question",
     options: [
-      { value: "never", label: "Never", score: 1 },
-      { value: "manual", label: "Manual texts/calls", score: 2 },
-      { value: "sometimes", label: "Sometimes automated", score: 3 },
-      { value: "automated", label: "Fully automated system", score: 4 },
+      { value: "never", label: "quiz.questions.5.options.1", score: 1 },
+      { value: "manual", label: "quiz.questions.5.options.2", score: 2 },
+      { value: "sometimes", label: "quiz.questions.5.options.3", score: 3 },
+      { value: "automated", label: "quiz.questions.5.options.4", score: 4 },
     ],
   },
   {
     id: 6,
-    question: "What's your biggest challenge running your business?",
+    question: "quiz.questions.6.question",
     options: [
-      {
-        value: "missing-calls",
-        label: "Missing customer calls while working",
-        score: 4,
-      },
-      {
-        value: "scheduling",
-        label: "Managing appointment scheduling",
-        score: 3,
-      },
-      { value: "no-shows", label: "Dealing with no-shows", score: 2 },
-      {
-        value: "pricing",
-        label: "Pricing my services competitively",
-        score: 1,
-      },
+      { value: "missing-calls", label: "quiz.questions.6.options.1", score: 4 },
+      { value: "scheduling", label: "quiz.questions.6.options.2", score: 3 },
+      { value: "no-shows", label: "quiz.questions.6.options.3", score: 2 },
+      { value: "pricing", label: "quiz.questions.6.options.4", score: 1 },
     ],
   },
   {
     id: 7,
-    question: "How do you currently follow up with potential customers?",
+    question: "quiz.questions.7.question",
     options: [
-      { value: "none", label: "No follow-up system", score: 1 },
-      { value: "manual", label: "Manual calls when I remember", score: 2 },
-      { value: "scheduled", label: "Scheduled reminder system", score: 3 },
-      { value: "automated", label: "Automated follow-up messages", score: 4 },
+      { value: "none", label: "quiz.questions.7.options.1", score: 1 },
+      { value: "manual", label: "quiz.questions.7.options.2", score: 2 },
+      { value: "scheduled", label: "quiz.questions.7.options.3", score: 3 },
+      { value: "automated", label: "quiz.questions.7.options.4", score: 4 },
     ],
   },
   {
     id: 8,
-    question: "What's your monthly revenue target for your business?",
+    question: "quiz.questions.8.question",
     options: [
-      { value: "5k", label: "Under $5K", score: 1 },
-      { value: "10k", label: "$5K - $10K", score: 2 },
-      { value: "20k", label: "$10K - $20K", score: 3 },
-      { value: "20k+", label: "$20K+", score: 4 },
+      { value: "5k", label: "quiz.questions.8.options.1", score: 1 },
+      { value: "10k", label: "quiz.questions.8.options.2", score: 2 },
+      { value: "20k", label: "quiz.questions.8.options.3", score: 3 },
+      { value: "20k+", label: "quiz.questions.8.options.4", score: 4 },
     ],
   },
 ];
 
 export default function AutomationQuiz() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
@@ -147,24 +137,18 @@ export default function AutomationQuiz() {
   const getScoreAnalysis = (score: number) => {
     if (score >= 80) {
       return {
-        level: "High Automation Potential",
+        levelKey: "high",
         color: "text-green-600",
-        recommendation:
-          "Your business is ready for advanced automation! You're missing significant revenue from manual processes. Our AI can immediately help with appointment booking, customer follow-up, and reducing missed calls.",
       };
     } else if (score >= 60) {
       return {
-        level: "Medium Automation Potential",
+        levelKey: "medium",
         color: "text-orange-600",
-        recommendation:
-          "Your business has good fundamentals but you're losing money to inefficient processes. Start with automated booking and SMS reminders to capture more customers while you're working.",
       };
     } else {
       return {
-        level: "High Automation Need",
+        levelKey: "need",
         color: "text-red-600",
-        recommendation:
-          "Your business would see immediate ROI from automation. You're likely missing 30-50% of potential bookings. Start with basic automated booking and appointment reminders to stop revenue leakage.",
       };
     }
   };
@@ -172,7 +156,6 @@ export default function AutomationQuiz() {
   if (showResults) {
     const score = calculateScore();
     const analysis = getScoreAnalysis(score);
-
     return (
       <div className="section-padding bg-background relative overflow-hidden">
         {/* Animated Background */}
@@ -187,24 +170,26 @@ export default function AutomationQuiz() {
             particleColor="#6b7280"
           />
         </div>
-
         <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4 text-foreground">
-              Quiz Results
+          <div className="text-center mb-12 mt-10 md:mt-16">
+            <h1 className="text-4xl font-bold mb-4 text-black">
+              {t("quiz.results.heading")}
             </h1>
             <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
           </div>
-
-          <Card className="gradient-bg text-white p-8 text-center">
+          <Card className="bg-black text-white p-8 text-center">
             <CardContent className="p-0">
-              <h3 className="text-3xl font-bold mb-4">Your Automation Score</h3>
+              <h3 className="text-3xl font-bold mb-4">
+                {t("quiz.results.scoreHeading")}
+              </h3>
               <div className="text-6xl font-bold mb-2">{score}</div>
               <p className={`text-xl mb-6 ${analysis.color}`}>
-                {analysis.level}
+                {t(`quiz.results.levels.${analysis.levelKey}`)}
               </p>
               <div className="max-w-2xl mx-auto">
-                <p className="mb-6 opacity-90">{analysis.recommendation}</p>
+                <p className="mb-6 opacity-90">
+                  {t(`quiz.results.recommendations.${analysis.levelKey}`)}
+                </p>
                 <Button
                   className="px-8 py-3 bg-[#ffcf00] text-foreground rounded-lg font-bold hover:bg-yellow-300 transition-colors"
                   onClick={() =>
@@ -214,11 +199,10 @@ export default function AutomationQuiz() {
                     )
                   }
                 >
-                  Book a Call - Get AI Solutions
+                  {t("quiz.results.cta")}
                 </Button>
                 <p className="mt-4 text-sm opacity-75">
-                  Get on a call with us to learn how AI can transform your
-                  business
+                  {t("quiz.results.ctaSub")}
                 </p>
               </div>
             </CardContent>
@@ -227,9 +211,13 @@ export default function AutomationQuiz() {
       </div>
     );
   }
-
   return (
-    <div className="section-padding bg-background relative overflow-hidden">
+    <div
+      className={`min-h-screen bg-background relative overflow-hidden pt-20 md:pt-28 pb-8 px-2 md:px-0${
+        isArabic ? " font-cairo" : ""
+      } text-black`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -242,38 +230,40 @@ export default function AutomationQuiz() {
           particleColor="#6b7280"
         />
       </div>
-
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">
-            Automation Readiness Quiz
+        <div className="text-center mb-12 mt-10 md:mt-16">
+          <h1 className="text-4xl font-bold mb-4 text-black">
+            {t("quiz.heading")}
           </h1>
           <div className="w-24 h-1 bg-[#ffcf00] mx-auto mb-6 border-b-2 border-dashed border-[#ffcf00]"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Assess your business automation potential in just 2 minutes
+          <p className="text-xl text-black max-w-3xl mx-auto">
+            {t("quiz.intro")}
           </p>
         </div>
-
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between text-sm font-medium mb-2">
             <span>
-              Question {currentQuestion + 1} of {questions.length}
+              {t("quiz.progress", {
+                current: currentQuestion + 1,
+                total: questions.length,
+              })}
             </span>
-            <span>{Math.round(progress)}% Complete</span>
+            <span>
+              {t("quiz.percentComplete", { percent: Math.round(progress) })}
+            </span>
           </div>
           <Progress value={progress} className="h-2" />
         </div>
-
         {/* Quiz Card */}
         <Card className="border-2 border-gray-100 p-8">
           <CardContent className="p-0">
             <div className="quiz-question">
-              <h3 className="text-2xl font-bold mb-6 text-foreground">
-                {questions[currentQuestion].question}
+              <h3 className="text-2xl font-bold mb-6 text-black">
+                {t(`quiz.questions.${questions[currentQuestion].id}.question`)}
               </h3>
               <div className="space-y-3">
-                {questions[currentQuestion].options.map((option) => (
+                {questions[currentQuestion].options.map((option, idx) => (
                   <label
                     key={option.value}
                     className={`flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer transition-colors ${
@@ -290,22 +280,26 @@ export default function AutomationQuiz() {
                       onChange={() => handleAnswer(option.score, option.value)}
                       className="w-4 h-4 text-[#ffcf00]"
                     />
-                    <span className="ml-3 text-lg">{option.label}</span>
+                    <span className="ml-3 text-lg text-black">
+                      {t(
+                        `quiz.questions.${
+                          questions[currentQuestion].id
+                        }.options.${idx + 1}`
+                      )}
+                    </span>
                   </label>
                 ))}
               </div>
             </div>
-
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-8">
               <Button
                 onClick={previousQuestion}
-                variant="outline"
                 className={`px-6 py-3 ${
                   currentQuestion === 0 ? "invisible" : ""
                 }`}
               >
-                Previous
+                {t("quiz.previous")}
               </Button>
               <Button
                 onClick={nextQuestion}
@@ -313,8 +307,8 @@ export default function AutomationQuiz() {
                 className="px-6 py-3 bg-[#ffcf00] text-foreground hover:bg-yellow-300"
               >
                 {currentQuestion === questions.length - 1
-                  ? "Get Results"
-                  : "Next Question"}
+                  ? t("quiz.getResults")
+                  : t("quiz.nextQuestion")}
               </Button>
             </div>
           </CardContent>

@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -25,6 +25,8 @@ import HomeServicesCalculator from "@/pages/HomeServicesCalculator";
 import HealthWellnessCalculator from "@/pages/HealthWellnessCalculator";
 import RestaurantsCafesCalculator from "@/pages/RestaurantsCafesCalculator";
 import EarlyAccess from "@/pages/EarlyAccess";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
 
 function Router() {
   useScrollToTop();
@@ -63,24 +65,28 @@ function Router() {
 }
 
 function App() {
+  const [location] = useLocation();
+  const isQuizPage = location === "/quiz";
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <TooltipProvider>
-          <LenisProvider>
-            <ScrollProgress />
-            <div className="min-h-screen flex flex-col smooth-scroll">
-              <Navbar />
-              <main className="flex-1">
-                <Router />
-              </main>
-              <Footer />
-            </div>
-            <Toaster />
-          </LenisProvider>
-        </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <I18nextProvider i18n={i18n}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <TooltipProvider>
+            <LenisProvider>
+              <ScrollProgress />
+              <div className="min-h-screen flex flex-col smooth-scroll">
+                <Navbar forceDark={isQuizPage} />
+                <main className="flex-1">
+                  <Router />
+                </main>
+                <Footer isQuizPage={isQuizPage} />
+              </div>
+              <Toaster />
+            </LenisProvider>
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </I18nextProvider>
   );
 }
 
