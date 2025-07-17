@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/tooltip";
 import { SparklesCore } from "@/components/SparklesCore";
 import SEOHead from "@/components/SEOHead";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Accordion,
@@ -616,6 +616,7 @@ export default function ServicePackages() {
   const [selected, setSelected] = useState(INDUSTRIES[0].key);
   const industriesToUse = isArabic ? INDUSTRIES_AR : INDUSTRIES;
   const industryToShow = industriesToUse.find((i) => i.key === selected);
+  const [openTooltipIdx, setOpenTooltipIdx] = useState<number | null>(null);
 
   return (
     <TooltipProvider>
@@ -793,16 +794,8 @@ export default function ServicePackages() {
                                 isArabic ? " text-right" : ""
                               }`}
                             >
-                              <div
-                                className={`flex items-center ${
-                                  isArabic ? "justify-end" : "justify-center"
-                                } space-x-2 text-foreground`}
-                              >
-                                <Calendar
-                                  className={`w-5 h-5 ${
-                                    isArabic ? "ml-2" : ""
-                                  }`}
-                                />
+                              <div className="flex justify-center items-center gap-2 text-foreground">
+                                <Calendar className="w-5 h-5" />
                                 <span className="font-semibold">
                                   {pkg.bookings}
                                 </span>
@@ -814,33 +807,11 @@ export default function ServicePackages() {
                                     : "Features Included:"}
                                 </h4>
                                 {pkg.features.map((feature, idx) => (
-                                  <TooltipProvider key={idx}>
-                                    <Tooltip>
-                                      <TooltipTrigger asChild>
-                                        <div className="flex flex-row items-center gap-3 cursor-pointer">
-                                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                          <span className="text-muted-foreground">
-                                            {isArabic ? feature : feature}
-                                          </span>
-                                        </div>
-                                      </TooltipTrigger>
-                                      <TooltipContent
-                                        side="bottom"
-                                        align="center"
-                                        className="max-w-xs text-center p-3 bg-white text-black rounded shadow-lg"
-                                      >
-                                        <span className="text-sm font-medium">
-                                          {isArabic
-                                            ? SERVICE_DESCRIPTIONS[feature]
-                                                ?.ar ||
-                                              "لا يوجد شرح متاح لهذه الخدمة."
-                                            : SERVICE_DESCRIPTIONS[feature]
-                                                ?.en ||
-                                              "No explanation available for this service."}
-                                        </span>
-                                      </TooltipContent>
-                                    </Tooltip>
-                                  </TooltipProvider>
+                                  <FeatureTooltip
+                                    key={idx}
+                                    feature={feature}
+                                    isArabic={isArabic}
+                                  />
                                 ))}
                               </div>
                               <Accordion type="single" collapsible>
@@ -890,6 +861,49 @@ export default function ServicePackages() {
           </div>
         </section>
       </div>
+    </TooltipProvider>
+  );
+}
+
+function FeatureTooltip({
+  feature,
+  isArabic,
+}: {
+  feature: string;
+  isArabic: boolean;
+}) {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <TooltipProvider>
+      <Tooltip open={open} onOpenChange={setOpen}>
+        <TooltipTrigger asChild>
+          <div
+            className="flex flex-row items-center gap-3 cursor-pointer"
+            onClick={() => setOpen((prev) => !prev)}
+            onTouchStart={() => setOpen((prev) => !prev)}
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+          >
+            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+            <span className="text-muted-foreground">
+              {isArabic ? feature : feature}
+            </span>
+          </div>
+        </TooltipTrigger>
+        <TooltipContent
+          side="bottom"
+          align="center"
+          className="max-w-xs text-center p-3 bg-white text-black rounded shadow-lg"
+        >
+          <span className="text-sm font-medium">
+            {isArabic
+              ? SERVICE_DESCRIPTIONS[feature]?.ar ||
+                "لا يوجد شرح متاح لهذه الخدمة."
+              : SERVICE_DESCRIPTIONS[feature]?.en ||
+                "No explanation available for this service."}
+          </span>
+        </TooltipContent>
+      </Tooltip>
     </TooltipProvider>
   );
 }
