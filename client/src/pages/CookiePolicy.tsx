@@ -1,9 +1,19 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useTranslation } from "react-i18next";
 
 export default function CookiePolicy() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div
+      className={`min-h-screen bg-background relative overflow-hidden${
+        isArabic ? " font-cairo" : ""
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
+      {/* Colored Top Margin */}
+      <div className="gradient-bg w-full pt-8 md:pt-12" />
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -18,212 +28,213 @@ export default function CookiePolicy() {
       </div>
       {/* Hero Section */}
       <div className="gradient-bg text-white section-padding relative z-10">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Cookie Policy</h1>
-          <p className="text-xl opacity-90">
-            Learn about how we use cookies and similar technologies on our
-            website.
+        <div
+          className={`max-w-4xl mx-auto px-6 ${
+            isArabic ? "text-right" : "text-center"
+          }`}
+        >
+          <h1
+            className={`text-4xl md:text-5xl font-bold mb-6${
+              isArabic ? " text-right" : " text-center"
+            }`}
+          >
+            {t("cookiePolicy.title")}
+          </h1>
+          <p
+            className={`text-xl opacity-90${
+              isArabic ? " text-right" : " text-center"
+            }`}
+          >
+            {t("cookiePolicy.intro")}
           </p>
-          <p className="text-sm opacity-75 mt-4">
-            Last Updated: January 1, 2025
+          <p
+            className={`text-sm opacity-75 mt-4${
+              isArabic ? " text-right" : " text-center"
+            }`}
+          >
+            {t("cookiePolicy.lastUpdated")}
           </p>
         </div>
       </div>
-
       {/* Content */}
       <div className="section-padding relative z-10">
-        <div className="max-w-4xl mx-auto px-6">
+        <div
+          className={`max-w-4xl mx-auto px-6${isArabic ? " text-right" : ""}`}
+        >
           <div className="space-y-8">
             <Card>
               <CardHeader>
                 <CardTitle className="text-foreground">
-                  What Are Cookies?
+                  {t("cookiePolicy.whatAreCookies.title")}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Cookies are small text files that are stored on your device
-                  when you visit a website. They help websites remember
-                  information about your visit, such as your preferred language
-                  and other settings. This can make your next visit easier and
-                  the site more useful to you.
+                  {t("cookiePolicy.whatAreCookies.body")}
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-foreground">
-                  How We Use Cookies
+                  {t("cookiePolicy.howWeUseCookies.title")}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  We use cookies and similar technologies for several purposes:
+                  {t("cookiePolicy.howWeUseCookies.body")}
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                   <li>
-                    <strong>Essential Cookies:</strong> Required for basic
-                    website functionality
+                    <strong>
+                      {t("cookiePolicy.howWeUseCookies.essential")}
+                    </strong>{" "}
+                    {t("cookiePolicy.howWeUseCookies.essentialDesc")}
                   </li>
                   <li>
-                    <strong>Performance Cookies:</strong> Help us understand how
-                    visitors interact with our site
+                    <strong>
+                      {t("cookiePolicy.howWeUseCookies.performance")}
+                    </strong>{" "}
+                    {t("cookiePolicy.howWeUseCookies.performanceDesc")}
                   </li>
                   <li>
-                    <strong>Functional Cookies:</strong> Remember your
-                    preferences and personalize your experience
+                    <strong>
+                      {t("cookiePolicy.howWeUseCookies.functional")}
+                    </strong>{" "}
+                    {t("cookiePolicy.howWeUseCookies.functionalDesc")}
                   </li>
                   <li>
-                    <strong>Analytics Cookies:</strong> Provide insights into
-                    website usage and performance
+                    <strong>
+                      {t("cookiePolicy.howWeUseCookies.analytics")}
+                    </strong>{" "}
+                    {t("cookiePolicy.howWeUseCookies.analyticsDesc")}
                   </li>
                 </ul>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-foreground">
-                  Types of Cookies We Use
+                  {t("cookiePolicy.typesOfCookies.title")}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">
-                    Strictly Necessary Cookies
+                    {t("cookiePolicy.typesOfCookies.strictlyNecessary.title")}
                   </h3>
                   <p className="text-muted-foreground">
-                    These cookies are essential for the website to function
-                    properly. They enable core functionality such as security,
-                    network management, and accessibility. Without these
-                    cookies, services you have asked for cannot be provided.
+                    {t("cookiePolicy.typesOfCookies.strictlyNecessary.body")}
                   </p>
                 </div>
-
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">
-                    Performance Cookies
+                    {t("cookiePolicy.typesOfCookies.performance.title")}
                   </h3>
                   <p className="text-muted-foreground">
-                    These cookies collect information about how visitors use our
-                    website, such as which pages are visited most often. This
-                    data helps us optimize our website and improve user
-                    experience. All information collected by these cookies is
-                    aggregated and anonymous.
+                    {t("cookiePolicy.typesOfCookies.performance.body")}
                   </p>
                 </div>
-
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">
-                    Functional Cookies
+                    {t("cookiePolicy.typesOfCookies.functional.title")}
                   </h3>
                   <p className="text-muted-foreground">
-                    These cookies allow our website to remember choices you make
-                    and provide enhanced, more personalized features. They may
-                    be set by us or by third-party providers whose services we
-                    have added to our pages.
+                    {t("cookiePolicy.typesOfCookies.functional.body")}
                   </p>
                 </div>
-
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">
-                    Analytics Cookies
+                    {t("cookiePolicy.typesOfCookies.analytics.title")}
                   </h3>
                   <p className="text-muted-foreground">
-                    We use analytics services to help analyze how users interact
-                    with our website. These cookies collect information such as
-                    the number of visitors, bounce rate, traffic source, etc.
-                    This information helps us improve our website and services.
+                    {t("cookiePolicy.typesOfCookies.analytics.body")}
                   </p>
                 </div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-foreground">
-                  Third-Party Cookies
+                  {t("cookiePolicy.thirdPartyCookies.title")}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  We may use third-party services that set cookies on our
-                  website, including:
+                  {t("cookiePolicy.thirdPartyCookies.body")}
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                  <li>Google Analytics for website performance analysis</li>
-                  <li>Social media platforms for content sharing</li>
-                  <li>Customer support and chat services</li>
-                  <li>Marketing and advertising platforms</li>
+                  <li>{t("cookiePolicy.thirdPartyCookies.googleAnalytics")}</li>
+                  <li>{t("cookiePolicy.thirdPartyCookies.socialMedia")}</li>
+                  <li>{t("cookiePolicy.thirdPartyCookies.support")}</li>
+                  <li>{t("cookiePolicy.thirdPartyCookies.marketing")}</li>
                 </ul>
                 <p className="text-muted-foreground mt-4">
-                  These third parties have their own privacy policies and cookie
-                  policies, which we encourage you to review.
+                  {t("cookiePolicy.thirdPartyCookies.note")}
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-foreground">
-                  Managing Your Cookie Preferences
+                  {t("cookiePolicy.managePreferences.title")}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  You have several options to manage cookies:
+                  {t("cookiePolicy.managePreferences.body")}
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                   <li>
-                    <strong>Browser Settings:</strong> Most browsers allow you
-                    to control cookies through their settings
+                    <strong>
+                      {t("cookiePolicy.managePreferences.browser")}
+                    </strong>{" "}
+                    {t("cookiePolicy.managePreferences.browserDesc")}
                   </li>
                   <li>
-                    <strong>Opt-Out Tools:</strong> Many advertising networks
-                    provide opt-out tools
+                    <strong>
+                      {t("cookiePolicy.managePreferences.optOut")}
+                    </strong>{" "}
+                    {t("cookiePolicy.managePreferences.optOutDesc")}
                   </li>
                   <li>
-                    <strong>Cookie Preferences:</strong> You can adjust your
-                    preferences using our cookie banner
+                    <strong>
+                      {t("cookiePolicy.managePreferences.banner")}
+                    </strong>{" "}
+                    {t("cookiePolicy.managePreferences.bannerDesc")}
                   </li>
                 </ul>
                 <p className="text-muted-foreground mt-4">
-                  Please note that disabling certain cookies may affect website
-                  functionality and your user experience.
+                  {t("cookiePolicy.managePreferences.note")}
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-foreground">
-                  Updates to This Policy
+                  {t("cookiePolicy.updates.title")}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  We may update this Cookie Policy from time to time to reflect
-                  changes in our practices or applicable laws. We will notify
-                  you of any material changes by posting the updated policy on
-                  our website with a new "Last Updated" date.
+                  {t("cookiePolicy.updates.body")}
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
-                <CardTitle className="text-foreground">Contact Us</CardTitle>
+                <CardTitle className="text-foreground">
+                  {t("cookiePolicy.contact.title")}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  If you have any questions about our use of cookies, please
-                  contact us at:
+                  {t("cookiePolicy.contact.body")}
                 </p>
                 <div className="mt-4 space-y-1 text-muted-foreground">
-                  <p>Email: privacy@dashinfluence.com</p>
-                  <p>Phone: (825) 250-0262</p>
-                  <p>Address: DashInfluence, Privacy Officer</p>
+                  <p>{t("cookiePolicy.contact.email")}</p>
+                  <p>{t("cookiePolicy.contact.phone")}</p>
+                  <p>{t("cookiePolicy.contact.address")}</p>
                 </div>
               </CardContent>
             </Card>

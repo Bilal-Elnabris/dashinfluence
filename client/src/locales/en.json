@@ -425,5 +425,222 @@
       "heading2": "Clients Say",
       "intro": "Join hundreds of businesses that have transformed their operations with AI automation"
     }
+  },
+  "calculatorSelection": {
+    "discover_missed_revenue_title": "Discover Your Missed Revenue",
+    "discover_missed_revenue_description": "See how much revenue you’re missing and how automation can help.",
+    "calculate_my_leakage_button": "Calculate My Leakage",
+    "niches": {
+      "car-detailing": {
+        "title": "Car Detailers",
+        "description": "Calculate lost revenue and automation potential for your car detailing business."
+      },
+      "real-estate": {
+        "title": "Real Estate Agents & Brokers",
+        "description": "See how much revenue slips through the cracks in your real estate business and how AI can help."
+      },
+      "home-services": {
+        "title": "Home Services",
+        "description": "For plumbers, HVAC, electricians, and contractors: discover your automation ROI."
+      },
+      "health-wellness": {
+        "title": "Health & Wellness Clinics",
+        "description": "Dentists, massage therapists, and clinics: estimate your missed revenue and automation impact."
+      },
+      "restaurants-cafes": {
+        "title": "Restaurants & Cafes",
+        "description": "Find out how much revenue you could recover with automation in your restaurant or cafe."
+      }
+    }
+  },
+  "cookiePolicy": {
+    "title": "Cookie Policy",
+    "intro": "Learn about how we use cookies and similar technologies on our website.",
+    "lastUpdated": "Last Updated: January 1, 2025",
+    "whatAreCookies": {
+      "title": "What Are Cookies?",
+      "body": "Cookies are small text files that are stored on your device when you visit a website. They help websites remember information about your visit, such as your preferred language and other settings. This can make your next visit easier and the site more useful to you."
+    },
+    "howWeUseCookies": {
+      "title": "How We Use Cookies",
+      "body": "We use cookies and similar technologies for several purposes:",
+      "essential": "Essential Cookies:",
+      "essentialDesc": "Required for basic website functionality",
+      "performance": "Performance Cookies:",
+      "performanceDesc": "Help us understand how visitors interact with our site",
+      "functional": "Functional Cookies:",
+      "functionalDesc": "Remember your preferences and personalize your experience",
+      "analytics": "Analytics Cookies:",
+      "analyticsDesc": "Provide insights into website usage and performance"
+    },
+    "typesOfCookies": {
+      "title": "Types of Cookies We Use",
+      "strictlyNecessary": {
+        "title": "Strictly Necessary Cookies",
+        "body": "These cookies are essential for the website to function properly. They enable core functionality such as security, network management, and accessibility. Without these cookies, services you have asked for cannot be provided."
+      },
+      "performance": {
+        "title": "Performance Cookies",
+        "body": "These cookies collect information about how visitors use our website, such as which pages are visited most often. This data helps us optimize our website and improve user experience. All information collected by these cookies is aggregated and anonymous."
+      },
+      "functional": {
+        "title": "Functional Cookies",
+        "body": "These cookies allow our website to remember choices you make and provide enhanced, more personalized features. They may be set by us or by third-party providers whose services we have added to our pages."
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "body": "We use analytics services to help analyze how users interact with our website. These cookies collect information such as the number of visitors, bounce rate, traffic source, etc. This information helps us improve our website and services."
+      }
+    },
+    "thirdPartyCookies": {
+      "title": "Third-Party Cookies",
+      "body": "We may use third-party services that set cookies on our website, including:",
+      "googleAnalytics": "Google Analytics for website performance analysis",
+      "socialMedia": "Social media platforms for content sharing",
+      "support": "Customer support and chat services",
+      "marketing": "Marketing and advertising platforms",
+      "note": "These third parties have their own privacy policies and cookie policies, which we encourage you to review."
+    },
+    "managePreferences": {
+      "title": "Managing Your Cookie Preferences",
+      "body": "You have several options to manage cookies:",
+      "browser": "Browser Settings:",
+      "browserDesc": "Most browsers allow you to control cookies through their settings",
+      "optOut": "Opt-Out Tools:",
+      "optOutDesc": "Many advertising networks provide opt-out tools",
+      "banner": "Cookie Preferences:",
+      "bannerDesc": "You can adjust your preferences using our cookie banner",
+      "note": "Please note that disabling certain cookies may affect website functionality and your user experience."
+    },
+    "updates": {
+      "title": "Updates to This Policy",
+      "body": "We may update this Cookie Policy from time to time to reflect changes in our practices or applicable laws. We will notify you of any material changes by posting the updated policy on our website with a new 'Last Updated' date."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "body": "If you have any questions about our use of cookies, please contact us at:",
+      "email": "Email: privacy@dashinfluence.com",
+      "phone": "Phone: (825) 250-0262",
+      "address": "Address: DashInfluence, Privacy Officer"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "Your privacy is important to us. Learn how we collect, use, and protect your information.",
+    "lastUpdated": "Last Updated: January 1, 2025",
+    "collect": {
+      "title": "Information We Collect",
+      "personal": {
+        "title": "Personal Information",
+        "body": "We collect information you provide directly to us, such as when you create an account, contact us, or use our services. This may include your name, email address, phone number, company information, and other contact details."
+      },
+      "usage": {
+        "title": "Usage Information",
+        "body": "We collect information about how you use our website and services, including pages visited, features used, and interactions with our automation tools and calculators."
+      },
+      "technical": {
+        "title": "Technical Information",
+        "body": "We automatically collect certain technical information, including your IP address, browser type, device information, and operating system."
+      }
+    },
+    "use": {
+      "title": "How We Use Your Information",
+      "provide": "Provide, maintain, and improve our services",
+      "process": "Process transactions and send related information",
+      "admin": "Send administrative information and updates",
+      "respond": "Respond to your comments, questions, and customer service requests",
+      "develop": "Develop new products and services",
+      "personalize": "Personalize your experience on our platform",
+      "analyze": "Analyze usage patterns to improve our services"
+    },
+    "sharing": {
+      "title": "Information Sharing",
+      "body": "We do not sell, trade, or otherwise transfer your personal information to third parties, except as described in this Privacy Policy:",
+      "providers": "With service providers who assist us in operating our website and services",
+      "law": "When required by law or to protect our rights and safety",
+      "transaction": "In connection with a business transaction (merger, acquisition, etc.)",
+      "consent": "With your explicit consent"
+    },
+    "security": {
+      "title": "Data Security",
+      "body": "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no internet transmission is completely secure, and we cannot guarantee absolute security."
+    },
+    "rights": {
+      "title": "Your Rights",
+      "body": "You have the right to:",
+      "access": "Access and receive a copy of your personal information",
+      "update": "Update or correct your personal information",
+      "delete": "Delete your personal information",
+      "object": "Object to or restrict certain processing of your information",
+      "portability": "Data portability",
+      "withdraw": "Withdraw consent where processing is based on consent"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "body": "If you have any questions about this Privacy Policy or our data practices, please contact us at:",
+      "email": "Email: privacy@dashinfluence.com",
+      "phone": "Phone: (825) 250-0262",
+      "address": "Address: DashInfluence, Privacy Officer"
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "intro": "Please read these terms carefully before using our services.",
+    "lastUpdated": "Last Updated: January 1, 2025",
+    "acceptance": {
+      "title": "Acceptance of Terms",
+      "body": "By accessing and using DashInfluence's website and services, you accept and agree to be bound by the terms and provision of this agreement. These Terms of Service govern your use of our website, services, and products."
+    },
+    "services": {
+      "title": "Description of Services",
+      "body": "DashInfluence provides AI automation solutions and consulting services for real estate professionals and businesses. Our services include:",
+      "consulting": "AI automation consulting and implementation",
+      "calculators": "Revenue calculators and business assessment tools",
+      "workflow": "Workflow mapping and optimization services",
+      "custom": "Custom automation solutions",
+      "training": "Training and support services"
+    },
+    "responsibilities": {
+      "title": "User Responsibilities",
+      "body": "As a user of our services, you agree to:",
+      "accurate": "Provide accurate and complete information when requested",
+      "security": "Maintain the security of your account and password",
+      "compliance": "Use our services in compliance with applicable laws and regulations",
+      "noMisuse": "Not misuse or attempt to harm our systems or services",
+      "respectIP": "Respect intellectual property rights",
+      "noProhibited": "Not engage in any prohibited activities as outlined in these terms"
+    },
+    "ip": {
+      "title": "Intellectual Property",
+      "body": "All content, materials, and intellectual property on our website and services are owned by DashInfluence or our licensors. This includes but is not limited to text, graphics, logos, software, and methodologies. You may not reproduce, distribute, or create derivative works without our express written permission."
+    },
+    "availability": {
+      "title": "Service Availability",
+      "body": "We strive to maintain high availability of our services, but we cannot guarantee uninterrupted access. We reserve the right to modify, suspend, or discontinue any part of our services at any time with or without notice. We are not liable for any loss or inconvenience caused by service interruptions."
+    },
+    "payment": {
+      "title": "Payment Terms",
+      "body": "For paid services:",
+      "due": "Payment is due according to the agreed-upon schedule",
+      "nonRefundable": "All fees are non-refundable unless otherwise specified",
+      "pricingChange": "We reserve the right to change pricing with 30 days notice",
+      "late": "Late payments may result in service suspension",
+      "taxes": "You are responsible for all applicable taxes"
+    },
+    "limitation": {
+      "title": "Limitation of Liability",
+      "body": "To the maximum extent permitted by law, DashInfluence shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or business opportunities. Our total liability shall not exceed the amount paid by you for our services in the 12 months preceding the claim."
+    },
+    "termination": {
+      "title": "Termination",
+      "body": "Either party may terminate this agreement at any time with written notice. Upon termination, your right to use our services will cease immediately. Provisions that by their nature should survive termination will remain in effect."
+    },
+    "contact": {
+      "title": "Contact Information",
+      "body": "For questions about these Terms of Service, please contact us at:",
+      "email": "Email: legal@dashinfluence.com",
+      "phone": "Phone: (825) 250-0262",
+      "address": "Address: DashInfluence, Legal Department"
+    }
   }
 }
