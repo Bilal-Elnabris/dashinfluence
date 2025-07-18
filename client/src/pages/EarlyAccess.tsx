@@ -13,8 +13,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { SparklesCore } from "@/components/SparklesCore";
 import { useState } from "react";
 import { useLocation } from "wouter";
+import { useTranslation } from "react-i18next";
 
 export default function EarlyAccess() {
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   const [location, setLocation] = useLocation();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -30,50 +33,73 @@ export default function EarlyAccess() {
     budget: "",
     additionalInfo: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState<string | null>(null);
 
-  const industries = [
-    "Home Services (Plumbing, Electrical, Cleaning, etc.)",
-    "Health & Wellness Clinics",
-    "Restaurants & Cafes",
-    "Real Estate",
-    "Automotive Services",
-    "Other",
-  ];
-
-  const businessSizes = [
-    "Solo/Single Owner",
-    "Small Team (2-10 employees)",
-    "Medium Business (11-50 employees)",
-    "Large Business (50+ employees)",
-  ];
-
-  const automationNeeds = [
-    "Customer Communication & Chat",
-    "Appointment/Booking Management",
-    "Lead Capture & Follow-up",
-    "Review Management",
-    "Phone Call Handling",
-    "Social Media Management",
-    "Analytics & Reporting",
-    "Payment Processing",
-    "Inventory Management",
-    "Staff Scheduling",
-  ];
-
-  const timelines = [
-    "Immediately (within 1 month)",
-    "Soon (1-3 months)",
-    "Planning phase (3-6 months)",
-    "Future consideration (6+ months)",
-  ];
-
-  const budgets = [
-    "Under $200/month",
-    "$200-$500/month",
-    "$500-$1000/month",
-    "$1000+/month",
-    "Not sure yet",
-  ];
+  // Prepare translated arrays with fallback
+  const industriesList = Array.isArray(
+    t("earlyAccess.form.industries", { returnObjects: true }) as string[]
+  )
+    ? (t("earlyAccess.form.industries", { returnObjects: true }) as string[])
+    : [
+        "Home Services (Plumbing, Electrical, Cleaning, etc.)",
+        "Health & Wellness Clinics",
+        "Restaurants & Cafes",
+        "Real Estate",
+        "Automotive Services",
+        "Other",
+      ];
+  const businessSizesList = Array.isArray(
+    t("earlyAccess.form.businessSizes", { returnObjects: true }) as string[]
+  )
+    ? (t("earlyAccess.form.businessSizes", { returnObjects: true }) as string[])
+    : [
+        "Solo/Single Owner",
+        "Small Team (2-10 employees)",
+        "Medium Business (11-50 employees)",
+        "Large Business (50+ employees)",
+      ];
+  const automationNeedsList = Array.isArray(
+    t("earlyAccess.form.automationNeedsList", {
+      returnObjects: true,
+    }) as string[]
+  )
+    ? (t("earlyAccess.form.automationNeedsList", {
+        returnObjects: true,
+      }) as string[])
+    : [
+        "Customer Communication & Chat",
+        "Appointment/Booking Management",
+        "Lead Capture & Follow-up",
+        "Review Management",
+        "Phone Call Handling",
+        "Social Media Management",
+        "Analytics & Reporting",
+        "Payment Processing",
+        "Inventory Management",
+        "Staff Scheduling",
+      ];
+  const timelinesList = Array.isArray(
+    t("earlyAccess.form.timelines", { returnObjects: true }) as string[]
+  )
+    ? (t("earlyAccess.form.timelines", { returnObjects: true }) as string[])
+    : [
+        "Immediately (within 1 month)",
+        "Soon (1-3 months)",
+        "Planning phase (3-6 months)",
+        "Future consideration (6+ months)",
+      ];
+  const budgetsList = Array.isArray(
+    t("earlyAccess.form.budgets", { returnObjects: true }) as string[]
+  )
+    ? (t("earlyAccess.form.budgets", { returnObjects: true }) as string[])
+    : [
+        "Under $200/month",
+        "$200-$500/month",
+        "$500-$1000/month",
+        "$1000+/month",
+        "Not sure yet",
+      ];
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -88,16 +114,51 @@ export default function EarlyAccess() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log("Early Access Form Data:", formData);
-    // Redirect to thank you page or show success message
-    alert("Thank you for your interest! We'll be in touch soon.");
+    setSubmitting(true);
+    setSubmitMessage(null);
+    try {
+      const res = await fetch("/api/early-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setSubmitMessage(
+          t("Thank you for your interest! We'll be in touch soon.")
+        );
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          industry: "",
+          businessSize: "",
+          currentChallenges: "",
+          automationNeeds: [],
+          timeline: "",
+          budget: "",
+          additionalInfo: "",
+        });
+      } else {
+        setSubmitMessage(t("Something went wrong. Please try again later."));
+      }
+    } catch (err) {
+      setSubmitMessage(t("Something went wrong. Please try again later."));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+    <div
+      className={`min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden${
+        isArabic ? " font-cairo" : ""
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -110,10 +171,8 @@ export default function EarlyAccess() {
           particleColor="#ffcf00"
         />
       </div>
-
       {/* Hero Section */}
-      <div className="text-white section-padding relative z-10 relative overflow-hidden">
-        {/* Animated Background for Hero Section */}
+      <div className="text-white section-padding relative z-10 relative overflow-hidden pt-28">
         <div className="absolute inset-0 z-0">
           <SparklesCore
             id="tsparticlesheroearlyaccess"
@@ -125,22 +184,17 @@ export default function EarlyAccess() {
             particleColor="#ffcf00"
           />
         </div>
-
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Get Early Access to AI Automation
+            {t("earlyAccess.hero.heading")}
           </h1>
           <p className="text-xl mb-8 opacity-90">
-            Be among the first to experience our cutting-edge AI solutions for
-            your industry. Join our exclusive early access program and shape the
-            future of business automation.
+            {t("earlyAccess.hero.intro")}
           </p>
         </div>
       </div>
-
       {/* Form Section */}
       <div className="section-padding relative z-10 relative overflow-hidden">
-        {/* Animated Background for Form Section */}
         <div className="absolute inset-0 z-0">
           <SparklesCore
             id="tsparticlesformearlyaccess"
@@ -152,16 +206,14 @@ export default function EarlyAccess() {
             particleColor="#ffcf00"
           />
         </div>
-
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <Card className="shadow-lg">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl text-foreground">
-                Early Access Application
+                {t("earlyAccess.form.heading")}
               </CardTitle>
               <p className="text-muted-foreground">
-                Tell us about your business and automation needs. We'll
-                prioritize your access based on your requirements.
+                {t("earlyAccess.form.intro")}
               </p>
             </CardHeader>
             <CardContent>
@@ -170,10 +222,10 @@ export default function EarlyAccess() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      First Name *
+                      {t("earlyAccess.form.firstName")}
                     </label>
                     <Input
-                      placeholder="John"
+                      placeholder={t("earlyAccess.form.firstNamePlaceholder")}
                       value={formData.firstName}
                       onChange={(e) =>
                         handleInputChange("firstName", e.target.value)
@@ -183,10 +235,10 @@ export default function EarlyAccess() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Last Name *
+                      {t("earlyAccess.form.lastName")}
                     </label>
                     <Input
-                      placeholder="Doe"
+                      placeholder={t("earlyAccess.form.lastNamePlaceholder")}
                       value={formData.lastName}
                       onChange={(e) =>
                         handleInputChange("lastName", e.target.value)
@@ -195,15 +247,14 @@ export default function EarlyAccess() {
                     />
                   </div>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Email *
+                      {t("earlyAccess.form.email")}
                     </label>
                     <Input
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder={t("earlyAccess.form.emailPlaceholder")}
                       value={formData.email}
                       onChange={(e) =>
                         handleInputChange("email", e.target.value)
@@ -213,11 +264,11 @@ export default function EarlyAccess() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Phone
+                      {t("earlyAccess.form.phone")}
                     </label>
                     <Input
                       type="tel"
-                      placeholder="+1 (825) 250-0262"
+                      placeholder={t("earlyAccess.form.phonePlaceholder")}
                       value={formData.phone}
                       onChange={(e) =>
                         handleInputChange("phone", e.target.value)
@@ -225,14 +276,13 @@ export default function EarlyAccess() {
                     />
                   </div>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Company Name *
+                      {t("earlyAccess.form.company")}
                     </label>
                     <Input
-                      placeholder="Your Company Name"
+                      placeholder={t("earlyAccess.form.companyPlaceholder")}
                       value={formData.company}
                       onChange={(e) =>
                         handleInputChange("company", e.target.value)
@@ -242,7 +292,7 @@ export default function EarlyAccess() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Industry *
+                      {t("earlyAccess.form.industry")}
                     </label>
                     <Select
                       value={formData.industry}
@@ -251,10 +301,14 @@ export default function EarlyAccess() {
                       }
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select your industry" />
+                        <SelectValue
+                          placeholder={t(
+                            "earlyAccess.form.industryPlaceholder"
+                          )}
+                        />
                       </SelectTrigger>
                       <SelectContent>
-                        {industries.map((industry) => (
+                        {industriesList.map((industry: string, idx: number) => (
                           <SelectItem key={industry} value={industry}>
                             {industry}
                           </SelectItem>
@@ -263,11 +317,10 @@ export default function EarlyAccess() {
                     </Select>
                   </div>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Business Size *
+                      {t("earlyAccess.form.businessSize")}
                     </label>
                     <Select
                       value={formData.businessSize}
@@ -276,10 +329,14 @@ export default function EarlyAccess() {
                       }
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select business size" />
+                        <SelectValue
+                          placeholder={t(
+                            "earlyAccess.form.businessSizePlaceholder"
+                          )}
+                        />
                       </SelectTrigger>
                       <SelectContent>
-                        {businessSizes.map((size) => (
+                        {businessSizesList.map((size: string, idx: number) => (
                           <SelectItem key={size} value={size}>
                             {size}
                           </SelectItem>
@@ -289,7 +346,7 @@ export default function EarlyAccess() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Timeline for Implementation *
+                      {t("earlyAccess.form.timeline")}
                     </label>
                     <Select
                       value={formData.timeline}
@@ -298,10 +355,14 @@ export default function EarlyAccess() {
                       }
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select timeline" />
+                        <SelectValue
+                          placeholder={t(
+                            "earlyAccess.form.timelinePlaceholder"
+                          )}
+                        />
                       </SelectTrigger>
                       <SelectContent>
-                        {timelines.map((timeline) => (
+                        {timelinesList.map((timeline: string, idx: number) => (
                           <SelectItem key={timeline} value={timeline}>
                             {timeline}
                           </SelectItem>
@@ -310,10 +371,9 @@ export default function EarlyAccess() {
                     </Select>
                   </div>
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Budget Range *
+                    {t("earlyAccess.form.budget")}
                   </label>
                   <Select
                     value={formData.budget}
@@ -322,10 +382,12 @@ export default function EarlyAccess() {
                     }
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select budget range" />
+                      <SelectValue
+                        placeholder={t("earlyAccess.form.budgetPlaceholder")}
+                      />
                     </SelectTrigger>
                     <SelectContent>
-                      {budgets.map((budget) => (
+                      {budgetsList.map((budget: string, idx: number) => (
                         <SelectItem key={budget} value={budget}>
                           {budget}
                         </SelectItem>
@@ -333,13 +395,14 @@ export default function EarlyAccess() {
                     </SelectContent>
                   </Select>
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Current Business Challenges *
+                    {t("earlyAccess.form.currentChallenges")}
                   </label>
                   <Textarea
-                    placeholder="What are the biggest challenges your business faces today? (e.g., managing appointments, customer communication, lead generation, etc.)"
+                    placeholder={t(
+                      "earlyAccess.form.currentChallengesPlaceholder"
+                    )}
                     rows={3}
                     value={formData.currentChallenges}
                     onChange={(e) =>
@@ -348,13 +411,12 @@ export default function EarlyAccess() {
                     required
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Automation Needs (Select all that apply) *
+                    {t("earlyAccess.form.automationNeeds")}
                   </label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
-                    {automationNeeds.map((need) => (
+                    {automationNeedsList.map((need: string, idx: number) => (
                       <div key={need} className="flex items-center space-x-2">
                         <Checkbox
                           id={need}
@@ -373,13 +435,14 @@ export default function EarlyAccess() {
                     ))}
                   </div>
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Additional Information
+                    {t("earlyAccess.form.additionalInfo")}
                   </label>
                   <Textarea
-                    placeholder="Tell us more about your business, specific requirements, or any questions you have..."
+                    placeholder={t(
+                      "earlyAccess.form.additionalInfoPlaceholder"
+                    )}
                     rows={3}
                     value={formData.additionalInfo}
                     onChange={(e) =>
@@ -387,14 +450,14 @@ export default function EarlyAccess() {
                     }
                   />
                 </div>
-
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     type="submit"
                     className="flex-1 bg-[#ffcf00] text-foreground hover:bg-yellow-300 text-sm sm:text-lg py-3 whitespace-nowrap"
+                    disabled={submitting}
                   >
                     <span className="text-sm sm:text-base">
-                      Submit Early Access Request
+                      {t("earlyAccess.form.submit")}
                     </span>
                   </Button>
                   <Button
@@ -403,11 +466,16 @@ export default function EarlyAccess() {
                     onClick={() => setLocation("/packages")}
                   >
                     <span className="text-sm sm:text-base">
-                      View Available Packages
+                      {t("earlyAccess.form.viewPackages")}
                     </span>
                   </Button>
                 </div>
               </form>
+              {submitMessage && (
+                <div className="mt-4 text-center text-base font-semibold text-green-600 dark:text-green-400">
+                  {submitMessage}
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

@@ -28,6 +28,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { useLocation } from "wouter";
 
 // Update SERVICE_DESCRIPTIONS to match the user's table
 const SERVICE_DESCRIPTIONS: Record<string, { en?: string; ar?: string }> = {
@@ -617,6 +618,7 @@ export default function ServicePackages() {
   const industriesToUse = isArabic ? INDUSTRIES_AR : INDUSTRIES;
   const industryToShow = industriesToUse.find((i) => i.key === selected);
   const [openTooltipIdx, setOpenTooltipIdx] = useState<number | null>(null);
+  const [location, setLocation] = useLocation();
 
   return (
     <TooltipProvider>
@@ -838,12 +840,7 @@ export default function ServicePackages() {
                                     ? "bg-[#ffcf00] text-foreground hover:bg-yellow-300"
                                     : "bg-[hsl(217,69%,34%)] text-white hover:bg-[hsl(217,69%,40%)]"
                                 }`}
-                                onClick={() =>
-                                  window.open(
-                                    "https://calendly.com/dashinfluence/new-meeting",
-                                    "_blank"
-                                  )
-                                }
+                                onClick={() => setLocation("/business-intake")}
                               >
                                 <span className="text-sm sm:text-base">
                                   {isArabic ? "ابدأ الآن" : "Get Started"}

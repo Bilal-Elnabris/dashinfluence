@@ -17,12 +17,14 @@ import { SparklesCore } from "@/components/SparklesCore";
 import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import { BrandText } from "../components/BrandText";
+import { useLocation } from "wouter";
 
 export default function WhyDashInfluence() {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
   const [currentIndex, setCurrentIndex] = useState(0);
   const [testimonialsPerPage, setTestimonialsPerPage] = useState(3);
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     function handleResize() {
@@ -760,12 +762,7 @@ export default function WhyDashInfluence() {
             </p>
             <Button
               className="bg-[hsl(217,69%,34%)] text-white font-bold px-6 sm:px-8 py-3 hover:bg-[hsl(217,69%,28%)] transition-colors text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl"
-              onClick={() =>
-                window.open(
-                  "https://calendly.com/dashinfluence/new-meeting",
-                  "_blank"
-                )
-              }
+              onClick={() => setLocation("/business-intake")}
             >
               <span className="text-sm sm:text-base font-semibold">
                 {isArabic

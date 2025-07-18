@@ -7,7 +7,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { SparklesCore } from "@/components/SparklesCore";
 import { useTranslation } from "react-i18next";
 import { BrandText } from "./BrandText";
@@ -63,6 +63,8 @@ export default function AIPackagesPreview() {
       color: "purple",
     },
   ];
+
+  const [location, setLocation] = useLocation();
 
   return (
     <div
@@ -208,12 +210,7 @@ export default function AIPackagesPreview() {
                   className={`bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 sm:px-8 py-3 transition-colors text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2 ${
                     isArabic ? "flex-row-reverse" : ""
                   }`}
-                  onClick={() =>
-                    window.open(
-                      "https://calendly.com/dashinfluence/new-meeting",
-                      "_blank"
-                    )
-                  }
+                  onClick={() => setLocation("/business-intake")}
                 >
                   <span className="text-xs sm:text-sm">
                     {isArabic ? "استشارة مجانية" : "Free Consultation"}

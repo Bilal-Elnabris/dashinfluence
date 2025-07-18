@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Lightbulb, Zap, TrendingUp, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { SparklesCore } from "@/components/SparklesCore";
 import { useTranslation } from "react-i18next";
 import { BrandText } from "./BrandText";
@@ -43,6 +43,8 @@ export default function ImplementationProcessSection() {
       icon: <TrendingUp className="w-6 h-6" />,
     },
   ];
+
+  const [location, setLocation] = useLocation();
 
   return (
     <div
@@ -127,12 +129,7 @@ export default function ImplementationProcessSection() {
                 </Link>
                 <Button
                   className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold px-4 sm:px-8 py-3 transition-colors text-sm sm:text-base whitespace-nowrap"
-                  onClick={() =>
-                    window.open(
-                      "https://calendly.com/dashinfluence/new-meeting",
-                      "_blank"
-                    )
-                  }
+                  onClick={() => setLocation("/business-intake")}
                 >
                   <span className="text-xs sm:text-sm">
                     {t("home.implementation.freeConsultation")}

@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/SparklesCore";
 import { useTranslation } from "react-i18next";
+import { Link } from "wouter";
 
 export default function FAQSection() {
   const { t, i18n } = useTranslation();
@@ -352,14 +353,11 @@ export default function FAQSection() {
               : "Still have questions? We're here to help!"}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://calendly.com/dashinfluence/new-meeting"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              {isArabic ? t("faq.ctaBook") : "Schedule Free Consultation"}
-            </a>
+            <Link href="/business-intake">
+              <a className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                {isArabic ? t("faq.ctaBook") : "Schedule Free Consultation"}
+              </a>
+            </Link>
             <a
               href="mailto:hello@dashinfluence.com"
               className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors dark:border-slate-600 dark:text-gray-300 dark:hover:bg-slate-700"

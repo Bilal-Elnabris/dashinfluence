@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import logoPath from "@assets/Transparent-logo_1751231371630.png";
 
 import logo_long from "@assets/logo-long.png";
@@ -13,6 +13,7 @@ export default function Footer({
 }) {
   const { i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
+  const [location, setLocation] = useLocation();
   return (
     <footer
       className={`${
@@ -117,14 +118,14 @@ export default function Footer({
                 </Link>
               </li>
               <li>
-                <a
-                  href="https://calendly.com/dashinfluence/new-meeting"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/business-intake"
                   className="opacity-80 hover:opacity-100 transition-opacity"
                 >
-                  {isArabic ? "احجز استشارة" : "Schedule Consultation"}
-                </a>
+                  <a className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                    {isArabic ? "احجز استشارة" : "Schedule Free Consultation"}
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>

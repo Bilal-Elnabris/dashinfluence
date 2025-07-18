@@ -35,11 +35,15 @@ function LoadingLine({
 
 interface NavbarProps {
   forceDark?: boolean;
+  forceBlue?: boolean;
 }
 
-export default function Navbar({ forceDark = false }: NavbarProps) {
+export default function Navbar({
+  forceDark = false,
+  forceBlue = false,
+}: NavbarProps) {
   const { t, i18n } = useTranslation();
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [isHome, setIsHome] = useState(false);
@@ -176,11 +180,17 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
   // Navbar classes for smooth transition
   const navbarBase =
     "fixed top-0 left-0 w-full z-50 static-optimized border-b-0 transition-all duration-400 ease-in-out";
+  const blueGradient =
+    "bg-gradient-to-r from-[#203ab5] via-[#3553e0] to-[#3046c5] shadow-lg border-b border-white/10 backdrop-blur-lg";
   const navbarColored = forceDark
     ? "bg-black text-white shadow-lg border-b border-white/10 backdrop-blur-lg"
-    : "bg-gradient-to-r from-[#203ab5] via-[#3553e0] to-[#3046c5] shadow-lg border-b border-white/10 backdrop-blur-lg";
+    : forceBlue
+    ? blueGradient
+    : blueGradient;
   const navbarTransparent = forceDark
     ? "bg-black text-white shadow-lg border-b border-white/10 backdrop-blur-lg"
+    : forceBlue
+    ? blueGradient
     : location === "/contact" && scrollProgress >= (isMobile ? 0.1 : 1 / 7)
     ? "bg-black/30 shadow-none backdrop-blur-lg"
     : "bg-transparent shadow-none backdrop-blur-lg";
@@ -298,12 +308,7 @@ export default function Navbar({ forceDark = false }: NavbarProps) {
                 className={`bg-[#ffcf00] text-[hsl(217,69%,34%)] font-semibold px-4 sm:px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition-all duration-300 text-sm sm:text-base whitespace-nowrap shadow-lg hover:shadow-xl hover:scale-105 transform${
                   i18n.language === "ar" ? " font-cairo" : ""
                 }`}
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
+                onClick={() => setLocation("/business-intake")}
               >
                 {t("nav.getStarted")}
               </Button>

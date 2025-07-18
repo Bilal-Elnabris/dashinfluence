@@ -11,7 +11,7 @@ import {
   Users,
   Star,
 } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { SparklesCore } from "@/components/SparklesCore";
 import { useTranslation } from "react-i18next";
 import { BrandText } from "./BrandText";
@@ -21,6 +21,7 @@ export default function NewHeroSection() {
   // const { addScrollListener } = useLenisScrollAnimation();
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
+  const [location, setLocation] = useLocation();
 
   // useEffect(() => {
   //   const unsubscribe = addScrollListener((e: any) => {
@@ -124,19 +125,13 @@ export default function NewHeroSection() {
               </Link>
               <Button
                 className="group bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold text-base sm:text-lg px-4 sm:px-8 py-4 sm:py-6 rounded-xl shadow-2xl shadow-yellow-400/25 transition-all duration-300 hover:shadow-yellow-400/40 hover:scale-105 whitespace-nowrap"
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/dashinfluence/new-meeting",
-                    "_blank"
-                  )
-                }
+                onClick={() => setLocation("/business-intake")}
               >
                 <span className="text-sm sm:text-base">
                   {isArabic ? "استشارة مجانية" : "Free Consultation"}
                 </span>
               </Button>
             </div>
-
             {/* Trust Indicators */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-gray-400 mb-12">
               <div className="flex items-center">

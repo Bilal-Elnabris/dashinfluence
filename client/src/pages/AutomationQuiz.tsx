@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { SparklesCore } from "@/components/SparklesCore";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "wouter";
 
 interface Question {
   id: number;
@@ -101,6 +102,7 @@ export default function AutomationQuiz() {
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>("");
+  const [location, setLocation] = useLocation();
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
@@ -192,12 +194,7 @@ export default function AutomationQuiz() {
                 </p>
                 <Button
                   className="px-8 py-3 bg-[#ffcf00] text-foreground rounded-lg font-bold hover:bg-yellow-300 transition-colors"
-                  onClick={() =>
-                    window.open(
-                      "https://calendly.com/dashinfluence/new-meeting",
-                      "_blank"
-                    )
-                  }
+                  onClick={() => setLocation("/business-intake")}
                 >
                   {t("quiz.results.cta")}
                 </Button>

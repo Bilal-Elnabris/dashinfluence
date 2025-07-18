@@ -7,10 +7,57 @@ import { SparklesCore } from "@/components/SparklesCore";
 import SEOHead from "@/components/SEOHead";
 import FAQSection from "@/components/FAQSection";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 export default function Contact() {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState<string | null>(null);
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setSubmitMessage(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setSubmitMessage(
+          t("Thank you for contacting us! We'll be in touch soon.")
+        );
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+        });
+      } else {
+        setSubmitMessage(t("Something went wrong. Please try again later."));
+      }
+    } catch (err) {
+      setSubmitMessage(t("Something went wrong. Please try again later."));
+    } finally {
+      setSubmitting(false);
+    }
+  };
   return (
     <div
       className={`min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden${
@@ -88,64 +135,103 @@ export default function Contact() {
                     </p>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">
+                            {t("contact.form.firstName")}
+                          </label>
+                          <Input
+                            placeholder={t("contact.form.firstNamePlaceholder")}
+                            value={formData.firstName}
+                            onChange={(e) =>
+                              handleInputChange("firstName", e.target.value)
+                            }
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium mb-2">
+                            {t("contact.form.lastName")}
+                          </label>
+                          <Input
+                            placeholder={t("contact.form.lastNamePlaceholder")}
+                            value={formData.lastName}
+                            onChange={(e) =>
+                              handleInputChange("lastName", e.target.value)
+                            }
+                            required
+                          />
+                        </div>
+                      </div>
                       <div>
                         <label className="block text-sm font-medium mb-2">
-                          {t("contact.form.firstName")}
+                          {t("contact.form.email")}
                         </label>
                         <Input
-                          placeholder={t("contact.form.firstNamePlaceholder")}
+                          type="email"
+                          placeholder={t("contact.form.emailPlaceholder")}
+                          value={formData.email}
+                          onChange={(e) =>
+                            handleInputChange("email", e.target.value)
+                          }
+                          required
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2">
-                          {t("contact.form.lastName")}
+                          {t("contact.form.phone")}
                         </label>
                         <Input
-                          placeholder={t("contact.form.lastNamePlaceholder")}
+                          type="tel"
+                          placeholder={t("contact.form.phonePlaceholder")}
+                          value={formData.phone}
+                          onChange={(e) =>
+                            handleInputChange("phone", e.target.value)
+                          }
                         />
                       </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">
-                        {t("contact.form.email")}
-                      </label>
-                      <Input
-                        type="email"
-                        placeholder={t("contact.form.emailPlaceholder")}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">
-                        {t("contact.form.phone")}
-                      </label>
-                      <Input
-                        type="tel"
-                        placeholder={t("contact.form.phonePlaceholder")}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">
-                        {t("contact.form.company")}
-                      </label>
-                      <Input
-                        placeholder={t("contact.form.companyPlaceholder")}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">
-                        {t("contact.form.message")}
-                      </label>
-                      <Textarea
-                        placeholder={t("contact.form.messagePlaceholder")}
-                        rows={4}
-                      />
-                    </div>
-                    <Button className="w-full bg-[#ffcf00] text-foreground hover:bg-yellow-300 text-sm sm:text-lg py-3 whitespace-nowrap">
-                      <span className="text-sm sm:text-base">
-                        {t("contact.form.button")}
-                      </span>
-                    </Button>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">
+                          {t("contact.form.company")}
+                        </label>
+                        <Input
+                          placeholder={t("contact.form.companyPlaceholder")}
+                          value={formData.company}
+                          onChange={(e) =>
+                            handleInputChange("company", e.target.value)
+                          }
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">
+                          {t("contact.form.message")}
+                        </label>
+                        <Textarea
+                          placeholder={t("contact.form.messagePlaceholder")}
+                          rows={4}
+                          value={formData.message}
+                          onChange={(e) =>
+                            handleInputChange("message", e.target.value)
+                          }
+                          required
+                        />
+                      </div>
+                      <Button
+                        type="submit"
+                        className="w-full bg-[#ffcf00] text-foreground hover:bg-yellow-300 text-sm sm:text-lg py-3 whitespace-nowrap"
+                        disabled={submitting}
+                      >
+                        <span className="text-sm sm:text-base">
+                          {t("contact.form.button")}
+                        </span>
+                      </Button>
+                      {submitMessage && (
+                        <div className="mt-4 text-center text-base font-semibold text-green-600 dark:text-green-400">
+                          {submitMessage}
+                        </div>
+                      )}
+                    </form>
                   </CardContent>
                 </Card>
               </div>
