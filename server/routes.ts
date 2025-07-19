@@ -47,6 +47,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/contact", async (req, res) => {
     const form = req.body;
+    // Basic validation
+    if (!form.email || !form.message) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Email and message are required." });
+    }
     try {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST || "mail.privateemail.com",
@@ -57,7 +63,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
           pass: process.env.SMTP_PASS || "",
         },
       });
-
       const mailOptions = {
         from: process.env.SMTP_USER || "hello@dashinfluence.com",
         to: "hello@dashinfluence.com",
@@ -73,12 +78,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           2
         )}</pre>`,
       };
-
       await transporter.sendMail(mailOptions);
       res.status(200).json({ success: true });
-    } catch (error) {
-      const err = error as Error;
-      res.status(500).json({ success: false, error: err.message });
+    } catch (error: any) {
+      console.error("Contact form error:", error);
+      res
+        .status(500)
+        .json({ success: false, error: error.message || "Unknown error" });
     }
   });
 
