@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // put application routes here
@@ -10,20 +10,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/early-access", async (req, res) => {
     const form = req.body;
     try {
-      // Configure nodemailer transporter for Namecheap/PrivateEmail
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "mail.privateemail.com",
-        port: Number(process.env.SMTP_PORT) || 465,
-        secure: true, // true for 465, false for 587
-        auth: {
-          user: process.env.SMTP_USER || "hello@dashinfluence.com",
-          pass: process.env.SMTP_PASS || "",
-        },
-      });
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error("Resend API key not configured");
+      }
 
-      const mailOptions = {
-        from: process.env.SMTP_USER || "hello@dashinfluence.com",
-        to: "hello@dashinfluence.com",
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      const { data, error } = await resend.emails.send({
+        from: "Dash Influence <hello@dashinfluence.com>",
+        to: ["hello@dashinfluence.com"],
         subject: "New Early Access Application",
         text: `New Early Access Application:\n\n${JSON.stringify(
           form,
@@ -35,9 +30,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           null,
           2
         )}</pre>`,
-      };
+      });
 
-      await transporter.sendMail(mailOptions);
+      if (error) {
+        throw new Error(error.message);
+      }
+
       res.status(200).json({ success: true });
     } catch (error) {
       const err = error as Error;
@@ -54,18 +52,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         .json({ success: false, error: "Email and message are required." });
     }
     try {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "mail.privateemail.com",
-        port: Number(process.env.SMTP_PORT) || 465,
-        secure: true, // true for 465, false for 587
-        auth: {
-          user: process.env.SMTP_USER || "hello@dashinfluence.com",
-          pass: process.env.SMTP_PASS || "",
-        },
-      });
-      const mailOptions = {
-        from: process.env.SMTP_USER || "hello@dashinfluence.com",
-        to: "hello@dashinfluence.com",
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error("Resend API key not configured");
+      }
+
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      const { data, error } = await resend.emails.send({
+        from: "Dash Influence <hello@dashinfluence.com>",
+        to: ["hello@dashinfluence.com"],
         subject: "New Contact Form Submission",
         text: `New Contact Form Submission:\n\n${JSON.stringify(
           form,
@@ -77,8 +72,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           null,
           2
         )}</pre>`,
-      };
-      await transporter.sendMail(mailOptions);
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
       res.status(200).json({ success: true });
     } catch (error: any) {
       console.error("Contact form error:", error);
@@ -91,19 +90,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/business-intake", async (req, res) => {
     const form = req.body;
     try {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "mail.privateemail.com",
-        port: Number(process.env.SMTP_PORT) || 465,
-        secure: true, // true for 465, false for 587
-        auth: {
-          user: process.env.SMTP_USER || "hello@dashinfluence.com",
-          pass: process.env.SMTP_PASS || "",
-        },
-      });
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error("Resend API key not configured");
+      }
 
-      const mailOptions = {
-        from: process.env.SMTP_USER || "hello@dashinfluence.com",
-        to: "hello@dashinfluence.com",
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      const { data, error } = await resend.emails.send({
+        from: "Dash Influence <hello@dashinfluence.com>",
+        to: ["hello@dashinfluence.com"],
         subject: "New Business Intake Submission",
         text: `New Business Intake Submission:\n\n${JSON.stringify(
           form,
@@ -115,9 +110,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           null,
           2
         )}</pre>`,
-      };
+      });
 
-      await transporter.sendMail(mailOptions);
+      if (error) {
+        throw new Error(error.message);
+      }
+
       res.status(200).json({ success: true });
     } catch (error) {
       const err = error as Error;

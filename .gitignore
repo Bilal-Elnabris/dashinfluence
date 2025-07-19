@@ -5,6 +5,8 @@ server/public
 vite.config.ts.*
 *.tar.gz
 .env
+.env.local
+.env.*.local
 backend.log
 *.log
 .DS_Store
