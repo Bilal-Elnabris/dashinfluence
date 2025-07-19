@@ -37,9 +37,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       res.status(200).json({ success: true });
-    } catch (error) {
-      const err = error as Error;
-      res.status(500).json({ success: false, error: err.message });
+    } catch (error: any) {
+      console.error("Early access form error:", error);
+      const errorMessage =
+        error?.message || error?.toString() || "Unknown error";
+      res.status(500).json({ success: false, error: errorMessage });
     }
   });
 
@@ -81,9 +83,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(200).json({ success: true });
     } catch (error: any) {
       console.error("Contact form error:", error);
-      res
-        .status(500)
-        .json({ success: false, error: error.message || "Unknown error" });
+      const errorMessage =
+        error?.message || error?.toString() || "Unknown error";
+      res.status(500).json({ success: false, error: errorMessage });
     }
   });
 
@@ -117,9 +119,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       res.status(200).json({ success: true });
-    } catch (error) {
-      const err = error as Error;
-      res.status(500).json({ success: false, error: err.message });
+    } catch (error: any) {
+      console.error("Business intake form error:", error);
+      const errorMessage =
+        error?.message || error?.toString() || "Unknown error";
+      res.status(500).json({ success: false, error: errorMessage });
     }
   });
 

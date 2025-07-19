@@ -2,11 +2,30 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import dotenv from "dotenv";
+import cors from "cors";
 
 // Load environment variables from .env file
 dotenv.config();
 
 const app = express();
+
+// Enable CORS for all routes
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "development"
+        ? [
+            "http://localhost:3000",
+            "http://localhost:5173",
+            "http://localhost:4173",
+          ]
+        : ["https://dashinfluence.com", "https://www.dashinfluence.com"],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

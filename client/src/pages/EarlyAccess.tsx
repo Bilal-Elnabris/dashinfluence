@@ -14,6 +14,7 @@ import { SparklesCore } from "@/components/SparklesCore";
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
+import { API_ENDPOINTS } from "@/config/api";
 
 export default function EarlyAccess() {
   const { t, i18n } = useTranslation();
@@ -119,10 +120,13 @@ export default function EarlyAccess() {
     setSubmitting(true);
     setSubmitMessage(null);
     try {
-      const res = await fetch("/api/early-access", {
+      const res = await fetch(API_ENDPOINTS.earlyAccess, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          formType: "early-access",
+          ...formData,
+        }),
       });
       if (res.ok) {
         setSubmitMessage(
@@ -230,6 +234,7 @@ export default function EarlyAccess() {
                       onChange={(e) =>
                         handleInputChange("firstName", e.target.value)
                       }
+                      autoComplete="given-name"
                       required
                     />
                   </div>
@@ -243,6 +248,7 @@ export default function EarlyAccess() {
                       onChange={(e) =>
                         handleInputChange("lastName", e.target.value)
                       }
+                      autoComplete="family-name"
                       required
                     />
                   </div>
@@ -259,6 +265,7 @@ export default function EarlyAccess() {
                       onChange={(e) =>
                         handleInputChange("email", e.target.value)
                       }
+                      autoComplete="email"
                       required
                     />
                   </div>
@@ -273,6 +280,7 @@ export default function EarlyAccess() {
                       onChange={(e) =>
                         handleInputChange("phone", e.target.value)
                       }
+                      autoComplete="tel"
                     />
                   </div>
                 </div>
@@ -287,6 +295,7 @@ export default function EarlyAccess() {
                       onChange={(e) =>
                         handleInputChange("company", e.target.value)
                       }
+                      autoComplete="organization"
                       required
                     />
                   </div>

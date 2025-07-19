@@ -8,6 +8,7 @@ import SEOHead from "@/components/SEOHead";
 import FAQSection from "@/components/FAQSection";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { API_ENDPOINTS } from "@/config/api";
 
 export default function Contact() {
   const { t, i18n } = useTranslation();
@@ -32,10 +33,13 @@ export default function Contact() {
     setSubmitting(true);
     setSubmitMessage(null);
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(API_ENDPOINTS.contact, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          formType: "contact",
+          ...formData,
+        }),
       });
       if (res.ok) {
         setSubmitMessage(
@@ -147,6 +151,7 @@ export default function Contact() {
                             onChange={(e) =>
                               handleInputChange("firstName", e.target.value)
                             }
+                            autoComplete="given-name"
                             required
                           />
                         </div>
@@ -160,6 +165,7 @@ export default function Contact() {
                             onChange={(e) =>
                               handleInputChange("lastName", e.target.value)
                             }
+                            autoComplete="family-name"
                             required
                           />
                         </div>
@@ -175,6 +181,7 @@ export default function Contact() {
                           onChange={(e) =>
                             handleInputChange("email", e.target.value)
                           }
+                          autoComplete="email"
                           required
                         />
                       </div>
@@ -189,6 +196,7 @@ export default function Contact() {
                           onChange={(e) =>
                             handleInputChange("phone", e.target.value)
                           }
+                          autoComplete="tel"
                         />
                       </div>
                       <div>
@@ -201,6 +209,7 @@ export default function Contact() {
                           onChange={(e) =>
                             handleInputChange("company", e.target.value)
                           }
+                          autoComplete="organization"
                         />
                       </div>
                       <div>
@@ -214,6 +223,7 @@ export default function Contact() {
                           onChange={(e) =>
                             handleInputChange("message", e.target.value)
                           }
+                          autoComplete="off"
                           required
                         />
                       </div>

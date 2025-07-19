@@ -14,6 +14,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import { SparklesCore } from "@/components/SparklesCore";
+import { API_ENDPOINTS } from "@/config/api";
+
+// Email validation function
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 
 export default function BusinessIntake() {
   const { t, i18n } = useTranslation();
@@ -40,6 +47,7 @@ export default function BusinessIntake() {
   const [submitting, setSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
   const [step, setStep] = useState(0);
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   const industries = [
     t("earlyAccess.form.industries", { returnObjects: true }) as string[],
@@ -72,7 +80,13 @@ export default function BusinessIntake() {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+
+    // Clear email error when user starts typing
+    if (field === "email") {
+      setEmailError(null);
+    }
   };
+
   const handleCheckboxChange = (process: string, checked: boolean) => {
     setFormData((prev) => ({
       ...prev,
@@ -81,15 +95,32 @@ export default function BusinessIntake() {
         : prev.processes.filter((p) => p !== process),
     }));
   };
+
+  const handleNextStep = () => {
+    // Validate email on step 1
+    if (step === 1 && formData.email) {
+      if (!validateEmail(formData.email)) {
+        setEmailError("Please enter a valid email address");
+        return;
+      }
+    }
+
+    setEmailError(null);
+    setStep(step + 1);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     setSubmitMessage(null);
     try {
-      const res = await fetch("/api/business-intake", {
+      const res = await fetch(API_ENDPOINTS.businessIntake, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          formType: "business-intake",
+          ...formData,
+        }),
       });
       if (res.ok) {
         setSubmitMessage(
@@ -186,6 +217,7 @@ export default function BusinessIntake() {
                       onChange={(e) =>
                         handleInputChange("businessName", e.target.value)
                       }
+                      autoComplete="organization"
                       required
                     />
                   </div>
@@ -199,6 +231,7 @@ export default function BusinessIntake() {
                         handleInputChange("website", e.target.value)
                       }
                       type="url"
+                      autoComplete="url"
                     />
                   </div>
                   <div>
@@ -279,6 +312,7 @@ export default function BusinessIntake() {
                       onChange={(e) =>
                         handleInputChange("name", e.target.value)
                       }
+                      autoComplete="name"
                       required
                     />
                   </div>
@@ -292,8 +326,13 @@ export default function BusinessIntake() {
                         handleInputChange("email", e.target.value)
                       }
                       type="email"
+                      autoComplete="email"
                       required
+                      className={emailError ? "border-red-500" : ""}
                     />
+                    {emailError && (
+                      <p className="text-red-500 text-sm mt-1">{emailError}</p>
+                    )}
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
@@ -305,6 +344,7 @@ export default function BusinessIntake() {
                         handleInputChange("phone", e.target.value)
                       }
                       type="tel"
+                      autoComplete="tel"
                     />
                   </div>
                   <div>
@@ -484,6 +524,19 @@ export default function BusinessIntake() {
                   </div>
                 </div>
               )}
+
+              {/* Note for final step */}
+              {step === 2 && (
+                <div className="text-center mb-6">
+                  <p className="text-sm text-muted-foreground">
+                    {t(
+                      "After submitting this form, you'll be redirected to book a time and date for your consultation appointment. Please make sure to choose a slot that works best for you.",
+                      "After submitting this form, you'll be redirected to book a time and date for your consultation appointment. Please make sure to choose a slot that works best for you."
+                    )}
+                  </p>
+                </div>
+              )}
+
               {/* Step navigation buttons */}
               <div
                 className={`flex justify-between mt-8 ${
@@ -491,18 +544,30 @@ export default function BusinessIntake() {
                 }`}
               >
                 {step > 0 && (
-                  <Button type="button" onClick={() => setStep(step - 1)}>
+                  <Button
+                    type="button"
+                    onClick={() => setStep(step - 1)}
+                    className="px-6 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium transition-all duration-200 bg-white"
+                  >
                     {t("Back", "Back")}
                   </Button>
                 )}
                 <div className="flex-1" />
                 {step < 2 && (
-                  <Button type="button" onClick={() => setStep(step + 1)}>
+                  <Button
+                    type="button"
+                    onClick={handleNextStep}
+                    className="px-8 py-2 bg-[#ffcf00] hover:bg-[#e6b800] text-black font-semibold transition-all duration-200 shadow-sm hover:shadow-md"
+                  >
                     {t("Next", "Next")}
                   </Button>
                 )}
                 {step === 2 && (
-                  <Button type="submit" disabled={submitting}>
+                  <Button
+                    type="submit"
+                    disabled={submitting}
+                    className="px-8 py-2 bg-[#ffcf00] hover:bg-[#e6b800] text-black font-semibold transition-all duration-200 shadow-sm hover:shadow-md"
+                  >
                     {submitting
                       ? t("Submitting...", "Submitting...")
                       : t("Submit", "Submit")}
