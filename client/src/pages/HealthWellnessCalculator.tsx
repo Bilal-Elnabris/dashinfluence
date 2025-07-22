@@ -344,7 +344,7 @@ export default function HealthWellnessCalculator() {
           </Card>
           {/* Results Section (same as car detailer) */}
           <div className="space-y-6">
-            <Card className="p-8">
+            <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <TrendingUp className="w-5 h-5 mr-2" />
@@ -388,7 +388,7 @@ export default function HealthWellnessCalculator() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="p-8">
+            <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <DollarSign className="w-5 h-5 mr-2" />
@@ -471,7 +471,7 @@ export default function HealthWellnessCalculator() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="p-8">
+            <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <Calendar className="w-5 h-5 mr-2" />
@@ -571,6 +571,25 @@ export default function HealthWellnessCalculator() {
             </CardContent>
           </Card>
         </div>
+      </div>
+      {/* Methodology Note */}
+      <div className="max-w-3xl mx-auto mt-8">
+        <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg bg-white dark:bg-zinc-900 text-left">
+          <CardContent className="p-0">
+            <div className="grid gap-2">
+              <h3 className="text-xl font-bold mb-2 text-blue-700 dark:text-blue-300">
+                {isArabic
+                  ? "كيف تم بناء هذه الحاسبة؟"
+                  : "How Was This Calculator Built?"}
+              </h3>
+              <p className="text-base text-muted-foreground">
+                {isArabic
+                  ? "تم تطوير هذه الحاسبة خصيصًا لقطاع الصحة والعافية، بناءً على بيانات السوق، معدلات الاحتفاظ بالعملاء، وتجاربنا في أتمتة الأعمال. الأرقام المقدمة تستند إلى متوسطات الصناعة وتقديرات دقيقة لمساعدة مقدمي الخدمات على فهم تأثير الأتمتة وزيادة الإيرادات."
+                  : "This calculator was developed specifically for the health & wellness sector, using market data, client retention rates, and our experience automating businesses. The numbers are based on industry averages and careful estimates to help providers understand the impact of automation and increase revenue."}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

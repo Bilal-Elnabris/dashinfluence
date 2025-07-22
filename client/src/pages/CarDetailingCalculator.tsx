@@ -383,7 +383,7 @@ export default function CarDetailingCalculator() {
           {/* Results Section */}
           <div className="space-y-6">
             {/* Revenue Analysis */}
-            <Card className="p-8">
+            <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <TrendingUp className="w-5 h-5 mr-2" />
@@ -429,7 +429,7 @@ export default function CarDetailingCalculator() {
             </Card>
 
             {/* ROI Analysis */}
-            <Card className="p-8">
+            <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <DollarSign className="w-5 h-5 mr-2" />
@@ -513,7 +513,7 @@ export default function CarDetailingCalculator() {
             </Card>
 
             {/* Implementation Info */}
-            <Card className="p-8">
+            <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   <Calendar className="w-5 h-5 mr-2" />
@@ -608,6 +608,25 @@ export default function CarDetailingCalculator() {
             </CardContent>
           </Card>
         </div>
+      </div>
+      {/* Methodology Note */}
+      <div className="max-w-3xl mx-auto mt-8">
+        <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg bg-white dark:bg-zinc-900 text-left">
+          <CardContent className="p-0">
+            <div className="grid gap-2">
+              <h3 className="text-xl font-bold mb-2 text-blue-700 dark:text-blue-300">
+                {isArabic
+                  ? "كيف تم بناء هذه الحاسبة؟"
+                  : "How Was This Calculator Built?"}
+              </h3>
+              <p className="text-base text-muted-foreground">
+                {isArabic
+                  ? "تم تطوير هذه الحاسبة خصيصًا لمجال تلميع السيارات، بناءً على بيانات السوق، معدلات فقدان العملاء، وتجاربنا في أتمتة الأعمال. الأرقام المقدمة تستند إلى متوسطات الصناعة وتقديرات دقيقة لمساعدة أصحاب الأعمال على فهم تأثير الأتمتة وتقليل الفاقد في الإيرادات."
+                  : "This calculator was developed specifically for the car detailing industry, using market data, missed call rates, and our experience automating businesses. The numbers are based on industry averages and careful estimates to help business owners understand the impact of automation and reduce revenue leakage."}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

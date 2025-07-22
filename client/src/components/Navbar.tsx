@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import logo_long from "@assets/logo-long.png";
+// import logo_long from "@assets/logo-long.png";
 import { useTranslation } from "react-i18next";
 import { BrandText } from "./BrandText";
 
@@ -231,7 +231,14 @@ export default function Navbar({
           progress={scrollProgress}
           isQuizPage={isQuizPage}
         />
-        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 relative">
+        <div
+          className={`w-full px-3 sm:px-4 md:px-6 lg:px-8 relative ${
+            isMenuOpen
+              ? "bg-gradient-to-br from-[#203ab5] via-[#3553e0] to-[#3046c5] backdrop-blur-md rounded-2xl"
+              : ""
+          }`}
+        >
+          {/* No dark overlay, just blue gradient and blur when menu is open */}
           <div className={navRow}>
             {/* Logo Section */}
             <div className={logoCol}>
@@ -241,7 +248,7 @@ export default function Navbar({
                 onClick={closeMenu}
               >
                 <img
-                  src={logo_long}
+                  src="/assets/logo-long.png"
                   alt="DashInfluence Logo"
                   className="h-7 sm:h-8 w-auto max-w-[110px] sm:max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-105 ml-0"
                   style={{ minWidth: 32 }}
@@ -283,7 +290,7 @@ export default function Navbar({
                             Why
                           </span>
                           <img
-                            src={logo_long}
+                            src="/assets/logo-long.png"
                             alt="DashInfluence Logo"
                             className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 -mt-1.5"
                           />
@@ -362,9 +369,7 @@ export default function Navbar({
           {/* Mobile Menu */}
           <div
             className={`lg:hidden border-t-0 bg-transparent transition-all duration-400 overflow-hidden ${
-              isMenuOpen
-                ? "max-h-96 opacity-100 backdrop-blur-md bg-black/40"
-                : "max-h-0 opacity-0"
+              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             <div className="px-4 py-4 space-y-4">
@@ -398,7 +403,7 @@ export default function Navbar({
                           Why
                         </span>
                         <img
-                          src={logo_long}
+                          src="/assets/logo-long.png"
                           alt="DashInfluence Logo"
                           className="h-6 w-auto max-w-[100px] object-contain -mt-1.5"
                         />
@@ -443,7 +448,7 @@ export default function Navbar({
                 onClick={closeMenu}
               >
                 <img
-                  src={logo_long}
+                  src="/assets/logo-long.png"
                   alt="DashInfluence Logo"
                   className="h-7 sm:h-8 w-auto max-w-[110px] sm:max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-105 ml-0"
                   style={{ minWidth: 32 }}
@@ -485,7 +490,7 @@ export default function Navbar({
                             Why
                           </span>
                           <img
-                            src={logo_long}
+                            src="/assets/logo-long.png"
                             alt="DashInfluence Logo"
                             className="h-6 w-auto max-w-[100px] object-contain transition-transform duration-300 -mt-1.5"
                           />
@@ -535,7 +540,7 @@ export default function Navbar({
               }
             >
               <Button
-                className="text-white hover:bg-white/10 p-2 ml-1 transition-all duration-300 hover:scale-110 min-w-[40px] min-h-[40px] flex items-center justify-center relative overflow-hidden focus:outline-none focus:ring-0 focus:border-none active:outline-none active:ring-0 active:border-none"
+                className="rounded-md bg-blue-600 text-sm font-medium shadow disabled:opacity-50 disabled:pointer-events-none text-white hover:bg-white/10 p-2 ml-1 transition-all duration-300 hover:scale-110 min-w-[40px] min-h-[40px] flex items-center justify-center relative overflow-hidden focus:outline-none focus:ring-0 focus:border-none active:outline-none active:ring-0 active:border-none"
                 style={{ borderRadius: 8 }}
                 onClick={toggleMenu}
               >
@@ -569,9 +574,7 @@ export default function Navbar({
           {/* Mobile Menu */}
           <div
             className={`lg:hidden border-t-0 bg-transparent transition-all duration-400 overflow-hidden ${
-              isMenuOpen
-                ? "max-h-96 opacity-100 backdrop-blur-md bg-black/40"
-                : "max-h-0 opacity-0"
+              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             <div className="px-4 py-4 space-y-4">
@@ -605,7 +608,7 @@ export default function Navbar({
                           Why
                         </span>
                         <img
-                          src={logo_long}
+                          src="/assets/logo-long.png"
                           alt="DashInfluence Logo"
                           className="h-6 w-auto max-w-[100px] object-contain -mt-1.5"
                         />

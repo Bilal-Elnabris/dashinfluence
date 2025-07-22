@@ -1,4 +1,4 @@
-"use client";
+p"use client";
 
 import { useState, useEffect } from "react";
 // import { useLenisScrollAnimation } from "@/hooks/useLenisScroll";
@@ -113,12 +113,12 @@ export default function NewHeroSection() {
             </p>
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16">
-              <Link href="/calculator">
+              <Link href="/packages">
                 <Button className="group bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold text-base sm:text-lg px-4 sm:px-8 py-4 sm:py-6 rounded-xl transition-all duration-300 hover:scale-105 whitespace-nowrap">
                   <span className="text-sm sm:text-base">
                     {isArabic
-                      ? "احسب خسارة الإيرادات"
-                      : "Calculate Revenue Loss"}
+                      ? "استعرض الباقات والخدمات"
+                      : "View Services & Packages"}
                   </span>
                   <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>

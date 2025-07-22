@@ -79,10 +79,10 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 3000
+  // ALWAYS serve the app on port 4000 in development to avoid conflict with Vite
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = 3000;
+  const port = 4000;
   server.listen(
     {
       port,

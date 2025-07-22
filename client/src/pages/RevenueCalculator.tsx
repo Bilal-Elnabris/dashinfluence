@@ -1,11 +1,18 @@
 import { useLocation } from "wouter";
-import { Car, Home, Wrench, HeartPulse, Coffee } from "lucide-react";
+import { Car, Home, Wrench, HeartPulse, Coffee, Users } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { SparklesCore } from "@/components/SparklesCore";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 
 const niches = [
+  {
+    key: "consultants",
+    title: "Consultants & Consultancy Agencies",
+    description:
+      "Business consultants, marketing consultants, health/wellness/life coaches, financial and legal advisors.",
+    link: "/calculator/consultants",
+  },
   {
     key: "car-detailing",
     title: "Car Detailers",
@@ -44,6 +51,7 @@ const niches = [
 ];
 
 const iconMap: Record<string, React.ComponentType<any>> = {
+  consultants: Users,
   "car-detailing": Car,
   "real-estate": Home,
   "home-services": Wrench,

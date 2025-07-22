@@ -28,6 +28,7 @@ import EarlyAccess from "@/pages/EarlyAccess";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 import BusinessIntake from "@/pages/BusinessIntake";
+import ConsultantsCalculator from "@/pages/ConsultantsCalculator";
 
 function Router() {
   useScrollToTop();
@@ -61,6 +62,7 @@ function Router() {
       <Route path="/terms-of-service" component={TermsOfService} />
       <Route path="/cookie-policy" component={CookiePolicy} />
       <Route path="/business-intake" component={BusinessIntake} />
+      <Route path="/calculator/consultants" component={ConsultantsCalculator} />
       <Route component={NotFound} />
     </Switch>
   );

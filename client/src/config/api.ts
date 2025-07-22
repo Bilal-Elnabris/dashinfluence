@@ -1,5 +1,6 @@
 // API Configuration
-const isDevelopment = import.meta.env.DEV;
+// @ts-ignore
+const isDevelopment = (import.meta as any).env.DEV;
 
 // API Base URL - Use Cloudflare Worker for production, localhost for development
 export const API_BASE_URL = isDevelopment

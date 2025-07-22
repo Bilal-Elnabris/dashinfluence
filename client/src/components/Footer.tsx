@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
-import logoPath from "@assets/Transparent-logo_1751231371630.png";
+// import logoPath from "@assets/Transparent-logo_1751231371630.png";
 
-import logo_long from "@assets/logo-long.png";
+// import logo_long from "@assets/logo-long.png";
 import { BrandText } from "./BrandText";
 import { useTranslation } from "react-i18next";
 import React from "react";
@@ -30,7 +30,7 @@ export default function Footer({
           >
             <div className="flex items-center mb-4">
               <img
-                src={logo_long}
+                src="/assets/logo-long.png"
                 alt="DashInfluence Logo"
                 className="h-8 w-auto mr-3"
               />

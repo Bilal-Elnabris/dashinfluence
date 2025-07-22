@@ -1,0 +1,12 @@
+
+> rest-express@1.0.0 dev /Users/bilalelnabris/Desktop/Main_Folder/endeavors/Dashinfluence-agency/dashinfluence-code
+> vite
+
+Forced re-optimization of dependencies
+Port 5173 is in use, trying another one...
+
+  VITE v5.4.19  ready in 180 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help

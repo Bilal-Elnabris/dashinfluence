@@ -20,22 +20,28 @@ import {
   Wrench,
   HeartPulse,
   Coffee,
+  Users,
 } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
 import { Progress } from "@/components/ui/progress";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { useTranslation } from "react-i18next";
+import BackgroundPaths from "../components/BackgroundPaths";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
   const BUSINESS_TYPES = [
     {
-      key: "car-detailing",
-      label: t("home.businessTypes.carDetailers.label"),
-      description: t("home.businessTypes.carDetailers.description"),
-      icon: Car,
-      link: "/calculator/car-detailing",
+      key: "consultants",
+      label: isArabic
+        ? "المستشارون والوكالات الاستشارية"
+        : "Consultants & Consultancy Agencies",
+      description: isArabic
+        ? "المستشارون التجاريون، مستشارو التسويق، المدربون الصحيون، المستشارون الماليون والقانونيون"
+        : "Business consultants, marketing consultants, health/wellness/life coaches, financial and legal advisors",
+      icon: Users,
+      link: "/calculator/consultants",
     },
     {
       key: "real-estate",
@@ -50,6 +56,13 @@ export default function Home() {
       description: t("home.businessTypes.homeServices.description"),
       icon: Wrench,
       link: "/calculator/home-services",
+    },
+    {
+      key: "car-detailing",
+      label: t("home.businessTypes.carDetailers.label"),
+      description: t("home.businessTypes.carDetailers.description"),
+      icon: Car,
+      link: "/calculator/car-detailing",
     },
     {
       key: "health-wellness",
@@ -227,109 +240,236 @@ export default function Home() {
             <ImplementationProcessSection />
           </div>
         </section>
-
-        {/* Persuasive Calculator Section */}
-        <section className="section-padding bg-gradient-to-r from-slate-100 to-gray-100 dark:from-slate-800 dark:to-gray-800 relative overflow-hidden">
-          {/* Stars Background */}
+        {/* Replace the wavy SVG transition so the straight line is at the bottom (no rotation) */}
+        <div
+          className="relative w-full"
+          style={{
+            overflow: "hidden",
+            background: "transparent",
+            border: "none",
+            outline: "none",
+            boxShadow: "none",
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          {/* Stars effect behind the top SVG wave */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <SparklesCore
-              id="tsparticlescalculator"
+              id="tsparticleswave-top"
               background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={50}
+              minSize={0.9}
+              maxSize={1.6}
+              particleDensity={45}
               className="w-full h-full"
-              particleColor="#6b7280"
+              particleColor="#fff"
             />
           </div>
-          <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 120"
+            className="w-full h-auto block relative z-10"
+            style={{
+              display: "block",
+              width: "100%",
+              marginBottom: "-1px",
+              border: "none",
+              outline: "none",
+              boxShadow: "none",
+              background: "transparent",
+              padding: 0,
+            }}
+          >
+            <defs>
+              <linearGradient
+                id="blue-gradient"
+                x1="0"
+                y1="0"
+                x2="1440"
+                y2="0"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" stopColor="#1e3a8a"></stop>
+                <stop offset="50%" stopColor="#1e3a8a"></stop>
+                <stop offset="100%" stopColor="#1e3a8a"></stop>
+              </linearGradient>
+            </defs>
+            <path
+              fill="url(#blue-gradient)"
+              fillOpacity="1"
+              d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,58.7C1200,64,1320,64,1380,64L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Persuasive Calculator Section */}
+        <section
+          className="section-padding bg-gradient-to-br from-[#1e3a8a] via-[#1e3a8a] to-[#1e3a8a] relative overflow-visible backdrop-blur-md"
+          style={{
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            boxShadow: "none",
+            marginTop: 0,
+            paddingTop: 0,
+            border: "none",
+            outline: "none",
+          }}
+        >
+          {/* Stars effect background for calculators section */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticlescalculators"
+              background="transparent"
+              minSize={0.9}
+              maxSize={1.6}
+              particleDensity={45}
+              className="w-full h-full"
+              particleColor="#fff"
+            />
+          </div>
+          <div className="max-w-5xl mx-auto px-6 text-center relative z-20">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-white pt-8">
               {isArabic ? "حاسبة تسرب الإيرادات" : t("home.calculator.heading")}
             </h2>
-            <p className="text-lg mb-8 opacity-90 max-w-3xl mx-auto text-center">
-              {isArabic
-                ? "اكتشف كم من الإيرادات تخسرها بسبب المكالمات الفائتة والعمليات اليدوية، وكيف يمكن للأتمتة بالذكاء الاصطناعي أن تزيد أرباحك وتطور عملك."
-                : t("home.calculator.intro")}
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-              {BUSINESS_TYPES.map((type) => {
-                const Icon = type.icon;
-                return (
-                  <Link key={type.key} href={type.link}>
-                    <Card className="relative p-8 cursor-pointer hover:shadow-xl transition-shadow group overflow-hidden min-h-[220px] h-full">
-                      {/* Icon Background */}
-                      <div
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none z-0"
-                        style={{ fontSize: 120 }}
-                      >
-                        <Icon className="w-[120px] h-[120px] mx-auto text-blue-400" />
+          </div>
+          <p className="text-lg mb-8 opacity-90 max-w-3xl mx-auto text-center text-white">
+            {isArabic
+              ? "اكتشف كم من الإيرادات تخسرها بسبب المكالمات الفائتة والعمليات اليدوية، وكيف يمكن للأتمتة بالذكاء الاصطناعي أن تزيد أرباحك وتطور عملك."
+              : "Discover how much revenue you’re losing to missed calls and manual work, and how AI automation can boost your profits and grow your business."}
+          </p>
+          {/* Niche selection prompt */}
+          <p className="text-base font-semibold mb-6 text-center text-white">
+            {isArabic ? "اختر مجال عملك:" : "Choose your business niche:"}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto px-4 md:px-8 relative z-10">
+            {BUSINESS_TYPES.map((type) => {
+              const Icon = type.icon;
+              return (
+                <Link key={type.key} href={type.link}>
+                  <Card className="relative p-8 cursor-pointer hover:shadow-xl transition-shadow group overflow-hidden min-h-[220px] h-full">
+                    {/* Icon Background */}
+                    <div
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none z-0"
+                      style={{ fontSize: 120 }}
+                    >
+                      <Icon className="w-[120px] h-[120px] mx-auto text-blue-400" />
+                    </div>
+                    <CardContent className="relative z-10 flex flex-col h-full justify-between items-center text-center w-full">
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-[#ffcf00] transition-colors flex items-center justify-center gap-2">
+                          {type.label}
+                        </h3>
+                        <p className="text-muted-foreground mb-2">
+                          {type.description}
+                        </p>
                       </div>
-                      <CardContent className="relative z-10 flex flex-col h-full justify-between items-center text-center w-full">
-                        <div>
-                          <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-[#ffcf00] transition-colors flex items-center justify-center gap-2">
-                            {type.label}
-                          </h3>
-                          <p className="text-muted-foreground mb-2">
-                            {type.description}
-                          </p>
-                        </div>
-                        <Button
-                          className={`mt-4 bg-gradient-to-r from-[#ffcf00] to-yellow-400 text-[hsl(217,69%,34%)] font-bold px-6 py-2 rounded-lg border border-yellow-300 shadow-md hover:brightness-110 hover:scale-105 transition-all flex items-center justify-center gap-2 w-full ${
-                            isArabic ? "flex-row-reverse" : ""
-                          }`}
-                        >
-                          {isArabic ? (
-                            <>
-                              احسب الآن
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-4 w-4 mr-1"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M3 8l4 4m0 0l-4 4m4-4h14"
-                                />
-                              </svg>
-                            </>
-                          ) : (
-                            <>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-4 w-4 mr-1"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                />
-                              </svg>
-                              {t("home.calculator.button")}
-                            </>
-                          )}
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                );
-              })}
-            </div>
+                      <Button
+                        className={`mt-4 bg-gradient-to-r from-[#ffcf00] to-yellow-400 text-[hsl(217,69%,34%)] font-bold px-6 py-2 rounded-lg border border-yellow-300 shadow-md hover:brightness-110 hover:scale-105 transition-all flex items-center justify-center gap-2 w-full ${
+                          isArabic ? "flex-row-reverse" : ""
+                        }`}
+                      >
+                        {isArabic ? (
+                          <>
+                            احسب الآن
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4 mr-1"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M3 8l4 4m0 0l-4 4m4-4h14"
+                              />
+                            </svg>
+                          </>
+                        ) : (
+                          <>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4 mr-1"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                              />
+                            </svg>
+                            {t("home.calculator.button")}
+                          </>
+                        )}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
         </section>
-
-        {/* AI Automation Packages Preview */}
-        <section className="relative overflow-visible bg-transparent pt-8 pb-0">
+        {/* Seamless SVG merge at the bottom of the calculators section */}
+        <div
+          className="relative w-full"
+          style={{
+            overflow: "hidden",
+            background: "transparent",
+            border: "none",
+            outline: "none",
+            boxShadow: "none",
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          {/* Stars effect behind the bottom SVG wave */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SparklesCore
+              id="tsparticleswave-bottom"
+              background="transparent"
+              minSize={0.9}
+              maxSize={1.6}
+              particleDensity={45}
+              className="w-full h-full"
+              particleColor="#fff"
+            />
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 120"
+            className="w-full h-auto block relative z-10"
+            style={{
+              display: "block",
+              width: "100%",
+              marginTop: "-1px",
+              border: "none",
+              outline: "none",
+              boxShadow: "none",
+              background: "transparent",
+              padding: 0,
+              transform: "rotate(180deg)",
+            }}
+          >
+            <path
+              fill="#1e3a8a"
+              fillOpacity="1"
+              d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,58.7C1200,64,1320,64,1380,64L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"
+            ></path>
+          </svg>
+        </div>
+        {/* AI Automation Packages Preview with lines animation only here */}
+        <section className="relative overflow-visible pt-8 pb-0 bg-white dark:bg-slate-900">
+          {/* Lines animation only for this section */}
+          <div className="absolute inset-0 pointer-events-none z-0">
+            <BackgroundPaths />
+          </div>
           {/* Continuous Stars Background from Packages to Footer */}
           <div
-            className="absolute inset-0 z-0 pointer-events-none h-[calc(100%+8rem)]"
+            className="absolute inset-0 z-10 pointer-events-none h-[calc(100%+8rem)]"
             style={{ bottom: "-8rem" }}
           >
             <SparklesCore
@@ -342,7 +482,7 @@ export default function Home() {
               particleColor="#6b7280"
             />
           </div>
-          <div className="relative z-10">
+          <div className="relative z-20">
             <AIPackagesPreview />
           </div>
         </section>

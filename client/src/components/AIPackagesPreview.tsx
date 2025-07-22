@@ -87,15 +87,21 @@ export default function AIPackagesPreview() {
               : "Choose the perfect AI solution to automate your business"}
           </p>
         </div>
-
         {/* Package Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className={`relative p-8 hover:shadow-xl transition-all duration-300 border-2 ${
-                pkg.popular ? "border-[#ffcf00] shadow-lg" : "border-border"
-              }`}
+              className={`relative p-8 transition-all duration-300 rounded-2xl
+                ${
+                  index === 1
+                    ? "border-2 border-yellow-400 shadow-2xl"
+                    : "border border-blue-200 shadow-lg"
+                }
+                hover:shadow-2xl hover:scale-[1.03]
+                bg-white/90 dark:bg-slate-900/80
+                backdrop-blur-md
+              `}
             >
               <CardContent className="p-0">
                 {/* Popular Badge */}
@@ -106,24 +112,20 @@ export default function AIPackagesPreview() {
                     </div>
                   </div>
                 )}
-
                 {/* Package Icon */}
                 <div
                   className={`w-16 h-16 bg-${pkg.color}-100 rounded-2xl flex items-center justify-center mx-auto mb-6`}
                 >
                   <div className={`text-${pkg.color}-600`}>{pkg.icon}</div>
                 </div>
-
                 {/* Package Name */}
                 <h3 className="text-2xl font-bold text-center mb-4 text-foreground">
                   <BrandText isArabic={isArabic}>{pkg.name}</BrandText>
                 </h3>
-
                 {/* Description */}
                 <p className="text-muted-foreground text-center mb-6">
                   <BrandText isArabic={isArabic}>{pkg.description}</BrandText>
                 </p>
-
                 {/* Features */}
                 <div className="space-y-3 mb-8">
                   {pkg.features.map((feature, featureIndex) => (
@@ -135,7 +137,6 @@ export default function AIPackagesPreview() {
                     </div>
                   ))}
                 </div>
-
                 {/* CTA Button */}
                 <div className="text-center">
                   <Link href="/packages">
@@ -162,7 +163,6 @@ export default function AIPackagesPreview() {
             </Card>
           ))}
         </div>
-
         {/* CTA Section */}
         <div className="text-center relative">
           <Card className="p-8 bg-gradient-to-r from-[hsl(217,69%,34%)] to-blue-800 text-white relative overflow-hidden">
@@ -171,10 +171,10 @@ export default function AIPackagesPreview() {
               <SparklesCore
                 id="tsparticlescta"
                 background="transparent"
-                minSize={0.6}
-                maxSize={1.4}
-                particleDensity={50}
-                className="w-full h-full"
+                minSize={0.5}
+                maxSize={1.0}
+                particleDensity={40}
+                className="w-full h-[320px] sm:h-[400px] md:h-[480px] lg:h-[520px]"
                 particleColor="#FFFFFF"
               />
             </div>

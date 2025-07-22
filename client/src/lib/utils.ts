@@ -6,17 +6,20 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+export function formatCurrency(
+  amount: number,
+  isArabic: boolean = false
+): string {
+  return new Intl.NumberFormat(isArabic ? "ar-SA" : "en-CA", {
+    style: "currency",
+    currency: isArabic ? "SAR" : "CAD",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(amount);
 }
 
 export function formatNumber(num: number): string {
-  return new Intl.NumberFormat('en-US').format(num);
+  return new Intl.NumberFormat("en-US").format(num);
 }
 
 // Highlight every occurrence of 'Dash' (English) or 'داش' (Arabic) in a string with a yellow gradient

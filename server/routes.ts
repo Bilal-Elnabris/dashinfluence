@@ -17,8 +17,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const resend = new Resend(process.env.RESEND_API_KEY);
 
       const { data, error } = await resend.emails.send({
-        from: "Dash Influence <onboarding@resend.dev>",
-        to: ["hello@dashinfluence.com"],
+        from: "Dash Influence <dashinfluence@gmail.com>",
+        to: ["dashinfluence@gmail.com"],
         subject: "New Early Access Application",
         text: `New Early Access Application:\n\n${JSON.stringify(
           form,
@@ -61,8 +61,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const resend = new Resend(process.env.RESEND_API_KEY);
 
       const { data, error } = await resend.emails.send({
-        from: "Dash Influence <onboarding@resend.dev>",
-        to: ["hello@dashinfluence.com"],
+        from: "Dash Influence <dashinfluence@gmail.com>",
+        to: ["dashinfluence@gmail.com"],
         subject: "New Contact Form Submission",
         text: `New Contact Form Submission:\n\n${JSON.stringify(
           form,
@@ -99,8 +99,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const resend = new Resend(process.env.RESEND_API_KEY);
 
       const { data, error } = await resend.emails.send({
-        from: "Dash Influence <onboarding@resend.dev>",
-        to: ["hello@dashinfluence.com"],
+        from: "Dash Influence <dashinfluence@gmail.com>",
+        to: ["dashinfluence@gmail.com"],
         subject: "New Business Intake Submission",
         text: `New Business Intake Submission:\n\n${JSON.stringify(
           form,
