@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import SEOHead from "@/components/SEOHead";
 import FAQSection from "@/components/FAQSection";
 import { useTranslation } from "react-i18next";
@@ -23,6 +24,7 @@ export default function Contact() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
+  const isMobile = useIsMobile();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -91,11 +93,11 @@ export default function Contact() {
         <SparklesCore
           id="tsparticlescontact"
           background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={60}
+          minSize={isMobile ? 0.3 : 0.6}
+          maxSize={isMobile ? 0.7 : 1.4}
+          particleDensity={isMobile ? 40 : 60}
           className="w-full h-full"
-          particleColor="#ffcf00"
+          particleColor="#fff"
         />
       </div>
       {/* Hero Section */}
@@ -104,11 +106,11 @@ export default function Contact() {
           <SparklesCore
             id="tsparticlesherocontact"
             background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={80}
+            minSize={isMobile ? 0.3 : 0.6}
+            maxSize={isMobile ? 0.7 : 1.4}
+            particleDensity={isMobile ? 40 : 80}
             className="w-full h-full"
-            particleColor="#ffcf00"
+            particleColor="#fff"
           />
         </div>
         <div className="relative z-10 container mx-auto px-4">
@@ -252,11 +254,11 @@ export default function Contact() {
                   <SparklesCore
                     id="tsparticlescontactinfo"
                     background="transparent"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={50}
+                    minSize={isMobile ? 0.3 : 0.6}
+                    maxSize={isMobile ? 0.7 : 1.4}
+                    particleDensity={isMobile ? 40 : 50}
                     className="w-full h-full"
-                    particleColor="#ffcf00"
+                    particleColor="#fff"
                   />
                 </div>
                 <div className="relative z-10">

@@ -61,7 +61,7 @@ export default function Navbar({
   ];
 
   // Determine if on mobile
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 767;
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
 
   // Use isCalculatorPage and isQuizPage for per-page logic
   const isCalculatorPage = location.startsWith("/calculator");
@@ -250,7 +250,9 @@ export default function Navbar({
                 <img
                   src="/assets/logo-long.png"
                   alt="DashInfluence Logo"
-                  className="h-7 sm:h-8 w-auto max-w-[110px] sm:max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-105 ml-0"
+                  className={`h-7 sm:h-8 w-auto max-w-[110px] sm:max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-105 ${
+                    i18n.language === "ar" && isMobile ? "ml-2" : "ml-0"
+                  }`}
                   style={{ minWidth: 32 }}
                 />
                 <span className="sr-only">

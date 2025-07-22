@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import { BrandText } from "../components/BrandText";
@@ -25,6 +26,7 @@ export default function WhyDashInfluence() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [testimonialsPerPage, setTestimonialsPerPage] = useState(3);
   const [location, setLocation] = useLocation();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     function handleResize() {
@@ -321,11 +323,11 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-testimonials-stars-section"
             background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={60}
+            minSize={isMobile ? 0.3 : 0.6}
+            maxSize={isMobile ? 0.7 : 1.4}
+            particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
-            particleColor="#FFD700"
+            particleColor="#fff"
           />
         </div>
         <div className="relative z-10 container mx-auto px-4 pt-32 pb-16">
@@ -394,11 +396,11 @@ export default function WhyDashInfluence() {
                       <SparklesCore
                         id={`tsparticles-testimonial-avatar-stars-${index}`}
                         background="transparent"
-                        minSize={0.4}
-                        maxSize={1.0}
-                        particleDensity={18}
+                        minSize={isMobile ? 0.3 : 0.6}
+                        maxSize={isMobile ? 0.7 : 1.0}
+                        particleDensity={isMobile ? 18 : 60}
                         className="w-full h-full"
-                        particleColor="#FFD700"
+                        particleColor="#fff"
                       />
                     </div>
 
@@ -518,11 +520,11 @@ export default function WhyDashInfluence() {
                   <SparklesCore
                     id="tsparticles-testimonials-lower-gap"
                     background="transparent"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={40}
+                    minSize={isMobile ? 0.3 : 0.6}
+                    maxSize={isMobile ? 0.7 : 1.4}
+                    particleDensity={isMobile ? 40 : 100}
                     className="w-full h-full"
-                    particleColor="#FFD700"
+                    particleColor="#fff"
                   />
                 </div>
               </div>
@@ -537,11 +539,11 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-y-gap-above-whychoose"
             background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={40}
+            minSize={isMobile ? 0.3 : 0.6}
+            maxSize={isMobile ? 0.7 : 1.4}
+            particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
-            particleColor="#FFFFFF"
+            particleColor="#fff"
           />
         </div>
       </div>
@@ -552,11 +554,11 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-y-whychoose"
             background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={80}
+            minSize={isMobile ? 0.3 : 0.6}
+            maxSize={isMobile ? 0.7 : 1.4}
+            particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
-            particleColor="#FFFFFF"
+            particleColor="#fff"
           />
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-6">
@@ -649,11 +651,11 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-y-process"
             background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={80}
+            minSize={isMobile ? 0.3 : 0.6}
+            maxSize={isMobile ? 0.7 : 1.4}
+            particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
-            particleColor="#FFFFFF"
+            particleColor="#fff"
           />
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-6">
@@ -741,11 +743,11 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-cta-stars-section"
             background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={60}
+            minSize={isMobile ? 0.3 : 0.6}
+            maxSize={isMobile ? 0.7 : 1.4}
+            particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
-            particleColor="#FFD700"
+            particleColor="#fff"
           />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6">
@@ -780,11 +782,11 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-y-bottom-gap"
             background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={70}
+            minSize={isMobile ? 0.3 : 0.6}
+            maxSize={isMobile ? 0.7 : 1.4}
+            particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
-            particleColor="#FFFFFF"
+            particleColor="#fff"
           />
         </div>
       </div>
