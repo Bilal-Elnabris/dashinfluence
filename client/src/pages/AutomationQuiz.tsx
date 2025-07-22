@@ -193,7 +193,7 @@ export default function AutomationQuiz() {
                   {t(`quiz.results.recommendations.${analysis.levelKey}`)}
                 </p>
                 <Button
-                  className="px-8 py-3 bg-[#ffcf00] text-foreground rounded-lg font-bold hover:bg-yellow-300 transition-colors"
+                  className="px-8 py-3 bg-gray-100 text-black rounded-lg font-bold hover:bg-gray-200 transition-colors"
                   onClick={() => setLocation("/business-intake")}
                 >
                   {t("quiz.results.cta")}

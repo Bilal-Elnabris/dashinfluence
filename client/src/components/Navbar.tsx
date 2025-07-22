@@ -370,9 +370,9 @@ export default function Navbar({
           </div>
           {/* Mobile Menu */}
           <div
-            className={`lg:hidden border-t-0 bg-transparent transition-all duration-400 overflow-hidden ${
+            className={`lg:hidden border-t-0 transition-all duration-400 overflow-hidden ${
               isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            }`}
+            } ${location === "/quiz" ? "bg-[#23242a]" : "bg-transparent"}`}
           >
             <div className="px-4 py-4 space-y-4">
               {navItems.map((item, index) => (
