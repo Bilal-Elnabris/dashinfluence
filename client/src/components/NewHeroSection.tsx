@@ -48,7 +48,7 @@ export default function NewHeroSection() {
           background="transparent"
           minSize={isMobile ? 0.3 : 0.6}
           maxSize={isMobile ? 0.7 : 1.4}
-          particleDensity={isMobile ? 40 : 100}
+          particleDensity={isMobile ? 10 : 18}
           className="w-full h-full"
           particleColor="#FFFFFF"
         />
