@@ -15,6 +15,7 @@ import { Link, useLocation } from "wouter";
 import { SparklesCore } from "@/components/SparklesCore";
 import { useTranslation } from "react-i18next";
 import { BrandText } from "./BrandText";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function NewHeroSection() {
   const [scrollY, setScrollY] = useState(0);
@@ -22,6 +23,7 @@ export default function NewHeroSection() {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
   const [location, setLocation] = useLocation();
+  const isMobile = useIsMobile();
 
   // useEffect(() => {
   //   const unsubscribe = addScrollListener((e: any) => {
@@ -44,9 +46,9 @@ export default function NewHeroSection() {
         <SparklesCore
           id="tsparticlesherohome"
           background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
+          minSize={isMobile ? 0.3 : 0.6}
+          maxSize={isMobile ? 0.7 : 1.4}
+          particleDensity={isMobile ? 40 : 100}
           className="w-full h-full"
           particleColor="#FFFFFF"
         />
@@ -162,9 +164,9 @@ export default function NewHeroSection() {
               <SparklesCore
                 id="tsparticlesherostats"
                 background="transparent"
-                minSize={0.6}
-                maxSize={1.4}
-                particleDensity={100}
+                minSize={isMobile ? 0.3 : 0.6}
+                maxSize={isMobile ? 0.7 : 1.4}
+                particleDensity={isMobile ? 40 : 100}
                 className="w-full h-full"
                 particleColor="#FFFFFF"
               />

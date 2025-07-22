@@ -27,10 +27,12 @@ import { Progress } from "@/components/ui/progress";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { useTranslation } from "react-i18next";
 import BackgroundPaths from "../components/BackgroundPaths";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
+  const isMobile = useIsMobile();
   const BUSINESS_TYPES = [
     {
       key: "consultants",
@@ -108,9 +110,9 @@ export default function Home() {
             <SparklesCore
               id="tsparticleshowai"
               background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={100}
+              minSize={isMobile ? 0.3 : 0.6}
+              maxSize={isMobile ? 0.7 : 1.4}
+              particleDensity={isMobile ? 40 : 100}
               className="w-full h-full"
               particleColor="#6b7280"
             />
@@ -210,9 +212,9 @@ export default function Home() {
             <SparklesCore
               id="tsparticleswhy-choose"
               background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={50}
+              minSize={isMobile ? 0.3 : 0.6}
+              maxSize={isMobile ? 0.7 : 1.4}
+              particleDensity={isMobile ? 20 : 50}
               className="w-full h-full"
               particleColor="#6b7280"
             />
@@ -229,9 +231,9 @@ export default function Home() {
             <SparklesCore
               id="tsparticlesimplementation"
               background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={50}
+              minSize={isMobile ? 0.3 : 0.6}
+              maxSize={isMobile ? 0.7 : 1.4}
+              particleDensity={isMobile ? 40 : 100}
               className="w-full h-full"
               particleColor="#6b7280"
             />
@@ -258,9 +260,9 @@ export default function Home() {
             <SparklesCore
               id="tsparticleswave-top"
               background="transparent"
-              minSize={0.9}
-              maxSize={1.6}
-              particleDensity={45}
+              minSize={isMobile ? 0.9 : 1.6}
+              maxSize={isMobile ? 1.6 : 2.4}
+              particleDensity={isMobile ? 45 : 100}
               className="w-full h-full"
               particleColor="#fff"
             />
@@ -320,9 +322,9 @@ export default function Home() {
             <SparklesCore
               id="tsparticlescalculators"
               background="transparent"
-              minSize={0.9}
-              maxSize={1.6}
-              particleDensity={45}
+              minSize={isMobile ? 0.9 : 1.6}
+              maxSize={isMobile ? 1.6 : 2.4}
+              particleDensity={isMobile ? 45 : 100}
               className="w-full h-full"
               particleColor="#fff"
             />
@@ -431,9 +433,9 @@ export default function Home() {
             <SparklesCore
               id="tsparticleswave-bottom"
               background="transparent"
-              minSize={0.9}
-              maxSize={1.6}
-              particleDensity={45}
+              minSize={isMobile ? 0.9 : 1.6}
+              maxSize={isMobile ? 1.6 : 2.4}
+              particleDensity={isMobile ? 45 : 100}
               className="w-full h-full"
               particleColor="#fff"
             />
@@ -475,9 +477,9 @@ export default function Home() {
             <SparklesCore
               id="tsparticlespackages-continuous"
               background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={80}
+              minSize={isMobile ? 0.6 : 1.4}
+              maxSize={isMobile ? 1.4 : 2.4}
+              particleDensity={isMobile ? 80 : 100}
               className="w-full h-full"
               particleColor="#6b7280"
             />

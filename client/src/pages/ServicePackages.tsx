@@ -19,6 +19,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { SparklesCore } from "@/components/SparklesCore";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import SEOHead from "@/components/SEOHead";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -619,6 +620,7 @@ export default function ServicePackages() {
   const industryToShow = industriesToUse.find((i) => i.key === selected);
   const [openTooltipIdx, setOpenTooltipIdx] = useState<number | null>(null);
   const [location, setLocation] = useLocation();
+  const isMobile = useIsMobile();
 
   return (
     <TooltipProvider>
@@ -662,9 +664,9 @@ export default function ServicePackages() {
             <SparklesCore
               id="tsparticleshero"
               background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={80}
+              minSize={isMobile ? 0.3 : 0.6}
+              maxSize={isMobile ? 0.7 : 1.4}
+              particleDensity={isMobile ? 40 : 100}
               className="w-full h-full"
               particleColor="#B0B3B8"
             />
@@ -690,9 +692,9 @@ export default function ServicePackages() {
                   <SparklesCore
                     id="tsparticlesindustrytabs"
                     background="transparent"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={60}
+                    minSize={isMobile ? 0.3 : 0.6}
+                    maxSize={isMobile ? 0.7 : 1.4}
+                    particleDensity={isMobile ? 40 : 100}
                     className="w-full h-full"
                     particleColor="#B0B3B8"
                   />
@@ -723,9 +725,9 @@ export default function ServicePackages() {
                   <SparklesCore
                     id="tsparticlespackagecards"
                     background="transparent"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={80}
+                    minSize={isMobile ? 0.3 : 0.6}
+                    maxSize={isMobile ? 0.7 : 1.4}
+                    particleDensity={isMobile ? 40 : 100}
                     className="w-full h-full"
                     particleColor="#B0B3B8"
                   />
