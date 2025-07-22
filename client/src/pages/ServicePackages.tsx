@@ -262,10 +262,6 @@ const INDUSTRIES = [
     packages: [
       {
         name: "Essential",
-        price: "$400",
-        monthlyRetainer: "$149",
-        originalMonthlyRetainer: "$199",
-        savings: "SAVE $50/month",
         bookings: "Handle 50+ inquiries/month",
         description:
           "Perfect for small car detailing businesses looking to automate their customer communication and booking process. Includes a website chatbot to answer common questions and capture leads, online booking to reduce phone tag, and automated SMS reminders to cut no-shows.",
@@ -280,10 +276,6 @@ const INDUSTRIES = [
       },
       {
         name: "Professional",
-        price: "$900",
-        monthlyRetainer: "$299",
-        originalMonthlyRetainer: "$349",
-        savings: "SAVE $50/month",
         bookings: "Handle 150+ inquiries/month",
         description:
           "Ideal for growing car detailers who want to boost repeat business and online reputation. Adds automated review requests after each job, follow-up messages to encourage repeat bookings, and loyalty programs to increase customer retention.",
@@ -297,10 +289,6 @@ const INDUSTRIES = [
       },
       {
         name: "Complete",
-        price: "$1800",
-        monthlyRetainer: "$499",
-        originalMonthlyRetainer: "$599",
-        savings: "SAVE $100/month",
         bookings: "Handle 500+ inquiries/month",
         description:
           "For established car detailing businesses ready to fully automate and scale. Includes AI-powered call handling, comprehensive business analytics dashboard, and advanced automation features for maximum efficiency.",
@@ -322,10 +310,6 @@ const INDUSTRIES = [
     packages: [
       {
         name: "Essential",
-        price: "$750",
-        monthlyRetainer: "$199",
-        originalMonthlyRetainer: "$249",
-        savings: "SAVE $50/month",
         bookings: "Handle 60+ leads/month",
         description:
           "For solo agents or small teams who want to automate lead capture and appointment scheduling. Includes AI chat for property questions, online showing booking, and automated SMS reminders.",
@@ -339,10 +323,6 @@ const INDUSTRIES = [
       },
       {
         name: "Professional",
-        price: "$1,750",
-        monthlyRetainer: "$499",
-        originalMonthlyRetainer: "$599",
-        savings: "SAVE $100/month",
         bookings: "Handle 150+ leads/month",
         description:
           "For agents and teams looking to nurture leads and build reputation. Adds CRM dashboard, automated email campaigns, and advanced lead management features.",
@@ -356,10 +336,6 @@ const INDUSTRIES = [
       },
       {
         name: "Complete",
-        price: "$3,500",
-        monthlyRetainer: "$999",
-        originalMonthlyRetainer: "$1,199",
-        savings: "SAVE $200/month",
         bookings: "Handle 500+ leads/month",
         description:
           "For brokerages and top producers ready to automate every touchpoint. Includes AI call handling, integrations with major real estate platforms, and advanced analytics for maximum lead conversion.",
@@ -380,10 +356,6 @@ const INDUSTRIES = [
     packages: [
       {
         name: "Essential",
-        price: "$400",
-        monthlyRetainer: "$129",
-        originalMonthlyRetainer: "$179",
-        savings: "SAVE $50/month",
         bookings: "Handle 50+ jobs/month",
         description:
           "For solo home service operators (plumbers, electricians, cleaners, etc.) who want to automate bookings and reminders. Includes AI chat, online scheduling, and customer management.",
@@ -397,10 +369,6 @@ const INDUSTRIES = [
       },
       {
         name: "Professional",
-        price: "$900",
-        monthlyRetainer: "$199",
-        originalMonthlyRetainer: "$249",
-        savings: "SAVE $50/month",
         bookings: "Handle 120+ jobs/month",
         description:
           "For small home service teams looking to boost efficiency and customer retention. Adds analytics dashboard, upsell campaigns, and advanced reporting features.",
@@ -414,10 +382,6 @@ const INDUSTRIES = [
       },
       {
         name: "Complete",
-        price: "$1,800",
-        monthlyRetainer: "$499",
-        originalMonthlyRetainer: "$599",
-        savings: "SAVE $100/month",
         bookings: "Handle 300+ jobs/month",
         description:
           "For established home service companies ready to scale. Includes multi-location management, loyalty and referral programs, and advanced automation features for maximum business growth.",
@@ -441,10 +405,6 @@ const INDUSTRIES_AR = [
     packages: [
       {
         name: "الأساسية",
-        price: "$400",
-        monthlyRetainer: "$149",
-        originalMonthlyRetainer: "$199",
-        savings: "وفر $50/شهريًا",
         bookings: "تعامل مع أكثر من 50 استفسار شهريًا",
         description:
           "مثالية للأعمال الصغيرة في تلميع السيارات التي ترغب في أتمتة التواصل مع العملاء وعملية الحجز. تشمل روبوت دردشة للإجابة على الأسئلة الشائعة وجمع العملاء المحتملين، وحجز عبر الإنترنت لتقليل المكالمات، وتذكيرات SMS تلقائية لتقليل الغياب.",
@@ -459,10 +419,6 @@ const INDUSTRIES_AR = [
       },
       {
         name: "الاحترافية",
-        price: "$900",
-        monthlyRetainer: "$299",
-        originalMonthlyRetainer: "$349",
-        savings: "وفر $50/شهريًا",
         bookings: "تعامل مع أكثر من 150 استفسار شهريًا",
         description:
           "مثالية للأعمال المتنامية التي ترغب في زيادة العملاء المتكررين وتحسين السمعة. تضيف طلب تقييمات تلقائي بعد كل خدمة، رسائل متابعة لتشجيع الحجوزات المتكررة، وبرامج ولاء لزيادة الاحتفاظ بالعملاء.",
@@ -476,10 +432,6 @@ const INDUSTRIES_AR = [
       },
       {
         name: "الكاملة",
-        price: "$1800",
-        monthlyRetainer: "$499",
-        originalMonthlyRetainer: "$599",
-        savings: "وفر $100/شهريًا",
         bookings: "تعامل مع أكثر من 500 استفسار شهريًا",
         description:
           "للشركات الراسخة في تلميع السيارات الجاهزة للأتمتة الكاملة والتوسع. تشمل إدارة المكالمات بالذكاء الاصطناعي، لوحة تحكم شاملة للأعمال، وميزات أتمتة متقدمة لأقصى كفاءة.",
@@ -501,10 +453,6 @@ const INDUSTRIES_AR = [
     packages: [
       {
         name: "الأساسية",
-        price: "$750",
-        monthlyRetainer: "$199",
-        originalMonthlyRetainer: "$249",
-        savings: "وفر $50/شهريًا",
         bookings: "تعامل مع أكثر من 60 عميل محتمل شهريًا",
         description:
           "مثالية للوكلاء المستقلين أو الفرق الصغيرة الذين يرغبون في أتمتة جمع العملاء وجدولة المواعيد. تشمل دردشة ذكية للإجابة على أسئلة العقارات، حجز عروض العقارات عبر الإنترنت، وتذكيرات SMS تلقائية.",
@@ -518,10 +466,6 @@ const INDUSTRIES_AR = [
       },
       {
         name: "الاحترافية",
-        price: "$1,750",
-        monthlyRetainer: "$499",
-        originalMonthlyRetainer: "$599",
-        savings: "وفر $100/شهريًا",
         bookings: "تعامل مع أكثر من 150 عميل محتمل شهريًا",
         description:
           "مثالية للوكلاء والفرق الذين يرغبون في تنمية العملاء وبناء السمعة. تضيف لوحة CRM شاملة، حملات بريد إلكتروني تلقائية، وميزات إدارة عملاء متقدمة.",
@@ -535,10 +479,6 @@ const INDUSTRIES_AR = [
       },
       {
         name: "الكاملة",
-        price: "$3,500",
-        monthlyRetainer: "$999",
-        originalMonthlyRetainer: "$1,199",
-        savings: "وفر $200/شهريًا",
         bookings: "تعامل مع أكثر من 500 عميل محتمل شهريًا",
         description:
           "للوكالات والوسطاء الكبار الجاهزين لأتمتة كل نقطة تواصل. تشمل إدارة المكالمات بالذكاء الاصطناعي، تكامل مع منصات العقارات الكبرى، وتحليلات متقدمة لأقصى تحويل للعملاء المحتملين.",
@@ -559,10 +499,6 @@ const INDUSTRIES_AR = [
     packages: [
       {
         name: "الأساسية",
-        price: "$400",
-        monthlyRetainer: "$129",
-        originalMonthlyRetainer: "$179",
-        savings: "وفر $50/شهريًا",
         bookings: "تعامل مع أكثر من 50 مهمة شهريًا",
         description:
           "مثالية للمشغلين المستقلين في الخدمات المنزلية (سباكة، كهرباء، تنظيف، إلخ) الذين يرغبون في أتمتة الحجوزات والتذكيرات. تشمل دردشة AI، جدولة إلكترونية، وإدارة العملاء.",
@@ -576,10 +512,6 @@ const INDUSTRIES_AR = [
       },
       {
         name: "الاحترافية",
-        price: "$900",
-        monthlyRetainer: "$199",
-        originalMonthlyRetainer: "$249",
-        savings: "وفر $50/شهريًا",
         bookings: "تعامل مع أكثر من 120 مهمة شهريًا",
         description:
           "مثالية لفرق الخدمات المنزلية الصغيرة التي ترغب في تحسين الكفاءة والحفاظ على العملاء. تضيف لوحة تحليلات، حملات بيع إضافي، وميزات تقارير متقدمة.",
@@ -593,10 +525,6 @@ const INDUSTRIES_AR = [
       },
       {
         name: "الكاملة",
-        price: "$1,800",
-        monthlyRetainer: "$499",
-        originalMonthlyRetainer: "$599",
-        savings: "وفر $100/شهريًا",
         bookings: "تعامل مع أكثر من 300 مهمة شهريًا",
         description:
           "للشركات الراسخة في الخدمات المنزلية الجاهزة للتوسع. تشمل إدارة متعددة المواقع، برامج ولاء وإحالة، وميزات أتمتة متقدمة لأقصى نمو للأعمال.",
@@ -770,28 +698,6 @@ export default function ServicePackages() {
                               <CardTitle className="text-2xl font-bold text-foreground">
                                 {pkg.name}
                               </CardTitle>
-                              <div className="price-display mb-4">
-                                <div className="text-4xl font-bold text-[#ffcf00] mb-1">
-                                  {pkg.price}
-                                  <span className="text-lg text-muted-foreground">
-                                    {isArabic ? " رسوم تأسيس" : " setup"}
-                                  </span>
-                                </div>
-                                <div className="text-2xl font-bold text-foreground mb-1">
-                                  {pkg.monthlyRetainer}
-                                  <span className="text-sm text-muted-foreground">
-                                    {isArabic ? " /شهريًا" : " /month"}
-                                  </span>
-                                </div>
-                                <div className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-1">
-                                  {pkg.savings}
-                                </div>
-                                <div className="text-sm text-muted-foreground line-through">
-                                  {isArabic
-                                    ? `سابقًا ${pkg.originalMonthlyRetainer}/شهريًا`
-                                    : `Originally ${pkg.originalMonthlyRetainer}/month`}
-                                </div>
-                              </div>
                             </CardHeader>
                             <CardContent
                               className={`space-y-6 relative z-10${
