@@ -550,7 +550,12 @@ export default function ConsultantsCalculator() {
       </div>
       {/* Methodology Note */}
       <div className="max-w-3xl mx-auto mt-8">
-        <Card className="p-8 border border-gray-200 dark:border-gray-700 shadow-lg bg-white dark:bg-zinc-900 text-left">
+        <Card
+          className={`p-8 border border-gray-200 dark:border-gray-700 shadow-lg bg-white dark:bg-zinc-900 ${
+            isArabic ? "text-right" : "text-left"
+          }`}
+          dir={isArabic ? "rtl" : "ltr"}
+        >
           <CardContent className="p-0">
             <div className="grid gap-2">
               <h3 className="text-xl font-bold mb-2 text-blue-700 dark:text-blue-300">
