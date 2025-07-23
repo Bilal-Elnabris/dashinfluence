@@ -396,8 +396,8 @@ export default function WhyDashInfluence() {
                       <SparklesCore
                         id={`tsparticles-testimonial-avatar-stars-${index}`}
                         background="transparent"
-                        minSize={isMobile ? 0.3 : 0.6}
-                        maxSize={isMobile ? 0.7 : 1.0}
+                        minSize={isMobile ? 0.2 : 0.3}
+                        maxSize={isMobile ? 0.4 : 0.7}
                         particleDensity={isMobile ? 18 : 60}
                         className="w-full h-full"
                         particleColor="#fff"
@@ -520,8 +520,8 @@ export default function WhyDashInfluence() {
                   <SparklesCore
                     id="tsparticles-testimonials-lower-gap"
                     background="transparent"
-                    minSize={isMobile ? 0.3 : 0.6}
-                    maxSize={isMobile ? 0.7 : 1.4}
+                    minSize={isMobile ? 0.2 : 0.3}
+                    maxSize={isMobile ? 0.4 : 0.7}
                     particleDensity={isMobile ? 40 : 100}
                     className="w-full h-full"
                     particleColor="#fff"
@@ -539,8 +539,8 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-y-gap-above-whychoose"
             background="transparent"
-            minSize={isMobile ? 0.3 : 0.6}
-            maxSize={isMobile ? 0.7 : 1.4}
+            minSize={isMobile ? 0.2 : 0.3}
+            maxSize={isMobile ? 0.4 : 0.7}
             particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
             particleColor="#fff"
@@ -554,8 +554,8 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-y-whychoose"
             background="transparent"
-            minSize={isMobile ? 0.3 : 0.6}
-            maxSize={isMobile ? 0.7 : 1.4}
+            minSize={isMobile ? 0.2 : 0.3}
+            maxSize={isMobile ? 0.4 : 0.7}
             particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
             particleColor="#fff"
@@ -651,8 +651,8 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-y-process"
             background="transparent"
-            minSize={isMobile ? 0.3 : 0.6}
-            maxSize={isMobile ? 0.7 : 1.4}
+            minSize={isMobile ? 0.2 : 0.3}
+            maxSize={isMobile ? 0.4 : 0.7}
             particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
             particleColor="#fff"
@@ -743,8 +743,8 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-cta-stars-section"
             background="transparent"
-            minSize={isMobile ? 0.3 : 0.6}
-            maxSize={isMobile ? 0.7 : 1.4}
+            minSize={isMobile ? 0.2 : 0.3}
+            maxSize={isMobile ? 0.4 : 0.7}
             particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
             particleColor="#fff"
@@ -782,8 +782,8 @@ export default function WhyDashInfluence() {
           <SparklesCore
             id="tsparticles-y-bottom-gap"
             background="transparent"
-            minSize={isMobile ? 0.3 : 0.6}
-            maxSize={isMobile ? 0.7 : 1.4}
+            minSize={isMobile ? 0.2 : 0.3}
+            maxSize={isMobile ? 0.4 : 0.7}
             particleDensity={isMobile ? 40 : 100}
             className="w-full h-full"
             particleColor="#fff"
