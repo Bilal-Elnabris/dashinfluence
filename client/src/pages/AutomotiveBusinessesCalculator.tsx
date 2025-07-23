@@ -25,7 +25,7 @@ interface CalculatorState {
   businessSize: "essential" | "professional" | "complete";
 }
 
-export default function CarDetailingCalculator() {
+export default function AutomotiveBusinessesCalculator() {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
   const [values, setValues] = useState<CalculatorState>({

@@ -72,9 +72,9 @@
       "freeConsultation": "Free Consultation"
     },
     "businessTypes": {
-      "carDetailers": {
-        "label": "Car Detailers",
-        "description": "For car detailing businesses looking to automate bookings and follow-ups."
+      "automotiveBusinesses": {
+        "label": "Automotive Businesses",
+        "description": "For auto repair shops, car washes, detailing, and all car-related businesses."
       },
       "realEstate": {
         "label": "Real Estate Agents & Brokers",
@@ -156,7 +156,7 @@
     }
   },
   "carCalc": {
-    "heading": "Car Detailing Revenue Calculator",
+    "heading": "Automotive Revenue Calculator",
     "intro": "Calculate how much revenue you're losing to manual processes and missed calls, and see how AI automation can boost your business.",
     "facts": {
       "industry": "Industry Standard",
@@ -431,9 +431,9 @@
     "discover_missed_revenue_description": "See how much revenue you’re missing and how automation can help.",
     "calculate_my_leakage_button": "Calculate My Leakage",
     "niches": {
-      "car-detailing": {
-        "title": "Car Detailers",
-        "description": "Calculate lost revenue and automation potential for your car detailing business."
+      "automotive-businesses": {
+        "title": "Automotive Businesses",
+        "description": "Calculate lost revenue and automation potential for your automotive business."
       },
       "real-estate": {
         "title": "Real Estate Agents & Brokers",

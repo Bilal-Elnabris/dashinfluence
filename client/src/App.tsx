@@ -19,7 +19,7 @@ import NotFound from "@/pages/not-found";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { ScrollProgress } from "@/components/ScrollOptimizer";
 import { LenisProvider } from "@/components/LenisProvider";
-import CarDetailingCalculator from "@/pages/CarDetailingCalculator";
+import AutomotiveBusinessesCalculator from "@/pages/AutomotiveBusinessesCalculator";
 import RealEstateCalculator from "@/pages/RealEstateCalculator";
 import HomeServicesCalculator from "@/pages/HomeServicesCalculator";
 import HealthWellnessCalculator from "@/pages/HealthWellnessCalculator";
@@ -37,8 +37,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/calculator" component={RevenueCalculator} />
       <Route
-        path="/calculator/car-detailing"
-        component={CarDetailingCalculator}
+        path="/calculator/automotive-businesses"
+        component={AutomotiveBusinessesCalculator}
       />
       <Route path="/calculator/real-estate" component={RealEstateCalculator} />
       <Route

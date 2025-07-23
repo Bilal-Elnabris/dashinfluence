@@ -44,14 +44,14 @@ export default function FAQSection() {
             answer: t("faq.technical.a3"),
           },
         ],
-        carDetailing: [
+        automotiveBusinesses: [
           {
-            question: t("faq.carDetailing.q1"),
-            answer: t("faq.carDetailing.a1"),
+            question: t("faq.automotiveBusinesses.q1"),
+            answer: t("faq.automotiveBusinesses.a1"),
           },
           {
-            question: t("faq.carDetailing.q2"),
-            answer: t("faq.carDetailing.a2"),
+            question: t("faq.automotiveBusinesses.q2"),
+            answer: t("faq.automotiveBusinesses.a2"),
           },
         ],
         realEstate: [
@@ -152,7 +152,7 @@ export default function FAQSection() {
               "Our AI is designed to gracefully transfer complex inquiries to your team. It learns from every interaction to improve its responses over time.",
           },
         ],
-        carDetailing: [
+        automotiveBusinesses: [
           {
             question: "How does AI automation work for automotive businesses?",
             answer:
@@ -246,8 +246,8 @@ export default function FAQSection() {
         { key: "general", label: t("faq.categories.general"), icon: "🤖" },
         { key: "technical", label: t("faq.categories.technical"), icon: "⚙️" },
         {
-          key: "carDetailing",
-          label: t("faq.categories.carDetailing"),
+          key: "automotiveBusinesses",
+          label: t("faq.categories.automotiveBusinesses"),
           icon: "🚗",
         },
         {
@@ -267,7 +267,11 @@ export default function FAQSection() {
     : [
         { key: "general", label: "General Questions", icon: "🤖" },
         { key: "technical", label: "Technical Setup", icon: "⚙️" },
-        { key: "carDetailing", label: "Automotive Services", icon: "🚗" },
+        {
+          key: "automotiveBusinesses",
+          label: "Automotive Services",
+          icon: "🚗",
+        },
         { key: "realEstate", label: "Real Estate", icon: "🏠" },
         { key: "pricing", label: "Pricing & Packages", icon: "💰" },
         { key: "support", label: "Support & Service", icon: "🛠️" },

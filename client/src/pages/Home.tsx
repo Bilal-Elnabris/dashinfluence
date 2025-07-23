@@ -60,11 +60,13 @@ export default function Home() {
       link: "/calculator/home-services",
     },
     {
-      key: "car-detailing",
-      label: t("home.businessTypes.carDetailers.label"),
-      description: t("home.businessTypes.carDetailers.description"),
+      key: "automotive-businesses",
+      label: isArabic ? "أعمال السيارات" : "Automotive Businesses",
+      description: isArabic
+        ? "ورش السيارات، مراكز الصيانة، محلات قطع الغيار، وكل الأعمال المتعلقة بالسيارات"
+        : "Auto repair shops, car washes, detailing, parts stores, and all car-related businesses",
       icon: Car,
-      link: "/calculator/car-detailing",
+      link: "/calculator/automotive-businesses",
     },
     {
       key: "health-wellness",

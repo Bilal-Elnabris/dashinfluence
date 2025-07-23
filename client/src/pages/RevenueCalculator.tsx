@@ -14,11 +14,11 @@ const niches = [
     link: "/calculator/consultants",
   },
   {
-    key: "car-detailing",
-    title: "Car Detailers",
+    key: "automotive-businesses",
+    title: "Automotive Businesses",
     description:
       "Calculate lost revenue and automation potential for your car detailing business.",
-    link: "/calculator/car-detailing",
+    link: "/calculator/automotive-businesses",
   },
   {
     key: "real-estate",
@@ -52,7 +52,7 @@ const niches = [
 
 const iconMap: Record<string, React.ComponentType<any>> = {
   consultants: Users,
-  "car-detailing": Car,
+  "automotive-businesses": Car,
   "real-estate": Home,
   "home-services": Wrench,
   "health-wellness": HeartPulse,
